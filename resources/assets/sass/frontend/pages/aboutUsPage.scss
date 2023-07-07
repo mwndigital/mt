@@ -1,0 +1,63 @@
+#aboutUsPageTop {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    h1 {
+        color: $w;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+}
+
+#aboutPageBannerOne {
+    background-color: $w;
+
+    h2 {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $b;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 90%;
+    }
+}
+#aboutPageBannerTwo,
+#aboutPageBannerThree{
+    background-color: $w;
+    padding: 80px 0;
+    h2,
+    h3{
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $b;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 90%;
+    }
+}

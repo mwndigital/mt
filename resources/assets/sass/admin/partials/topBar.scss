@@ -1,0 +1,65 @@
+.topBar {
+    background-color: $lightGrey;
+    padding: .5rem 0;
+    position: fixed;
+    top: 0 ;
+    width: 100%;
+    z-index: 1080;
+    img.adminTopBarLogo {
+        display: block;
+        height: 70px;
+        width: auto;
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 20px;
+        margin: 0;
+        li {
+            a {
+                box-shadow: none;
+                color: $darkBlue;
+                &:hover {
+
+                }
+            }
+            button {
+                background-color: transparent;
+                border: 0;
+                border-radius: 0;
+                color :$darkGrey;
+                font-size: 1rem;
+
+                &:hover {
+
+                }
+            }
+
+            &.dropdown {
+
+                .dropdown-menu {
+                    background-color: $lightGrey;
+                    border: 0;
+                    border-radius: 0;
+                    -webkit-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                    -moz-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                    box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+
+                    a {
+                        color: $darkBlue;
+                        font-family: $libReg;
+                        font-size: 1rem;
+                        @include transition(all .4s ease-in-out);
+                        &:hover {
+                            background-color: transparent;
+                            color: $darkGold;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}

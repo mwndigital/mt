@@ -1,0 +1,11 @@
+main.main {
+    margin-top: 80px;
+    margin-left: auto;
+    padding: 1.5rem 0;
+    width: calc(100% - 20%);
+
+    &.full {
+        margin-left: 0;
+        width: 100%;
+    }
+}

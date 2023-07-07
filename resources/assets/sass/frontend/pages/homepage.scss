@@ -1,0 +1,182 @@
+#homepageTop {
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+
+    img.mainBgImage {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;;
+        height: 100%;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        .inner {
+            background-color: rgba(0, 44, 80, .75);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 20px;
+            -webkit-box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
+            -moz-box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
+            box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
+            padding: 2.5rem;
+
+            h1 {
+                color: $w;
+                font-family: $libBold;
+                font-size: 3rem;
+                margin-bottom: 40px;
+            }
+            p {
+                color: $w;
+                font-family: $libReg;
+                font-size: 1.15rem;
+            }
+        }
+    }
+}
+#homepageWelcomeBanner {
+    background-color: $w;
+
+    img {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    h2 {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $darkGrey;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}
+#homepageHomeFromHomeBanner {
+    background-color: $w;
+    padding: 60px 0;
+
+    h5 {
+        color: $mediumGrey;
+        font-family: $libItal;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    h2 {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $mediumGrey;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+    a.darkGoldBtn {}
+
+    .homeFromHomeSlider {
+        margin: auto;
+        width: 85%;
+        .item {
+            .card {
+                background-color: transparent;
+                border: 0;
+                border-radius: 0;
+                .card-header {
+                    background-color: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    padding: 0;
+
+                    img {
+                        height: auto;
+                        max-height: 300px;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+                .card-body {
+                    background-color: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    padding: 1rem 0;
+
+                    h3 {
+                        color: $darkBlue;
+                        font-family: $libBold;
+                        font-size: 1.5rem;
+                        font-style: italic;
+
+                    }
+                }
+            }
+        }
+        .owl-dots {
+            button.owl-dot {
+                margin-right: 20px;
+                span {
+                    background-color: transparent;
+                    border: 1px solid $darkGrey;
+                    border-radius: 100%;
+                    display: block;
+                    content: '';
+                    height: 10px;
+                    @include transition(all .4s ease-in-out);
+                    width: 10px;
+                }
+                &.active {
+                    span {
+                        background-color: $darkBlue;
+                        border: 1px solid $darkBlue;
+                    }
+                }
+            }
+        }
+    }
+}
+#homepageBookRoomBanner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+    text-align: center;
+
+    h4 {
+        color: $w;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    p {
+        color: $w;
+        font-family: $libReg;
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+}

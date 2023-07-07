@@ -1,0 +1,28 @@
+.awardsBanner {
+    background-color: $w;
+    padding: 50px 0;
+
+    .awardsWrap {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        justify-content: center;
+
+        a {
+
+            img {
+                display: block;
+                height: 90px;
+                margin: 0;
+                @include transition(all .4s ease-in-out);
+                width: auto;
+            }
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}

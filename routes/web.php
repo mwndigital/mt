@@ -1,0 +1,93 @@
+<?php
+
+use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\MenuCategoryController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
+use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
+use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
+use App\Http\Controllers\Admin\Pages\AdminHomepageController;
+use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\WhiskyController;
+use App\Http\Controllers\Frontend\AboutUsPageController;
+use App\Http\Controllers\Frontend\BarRestaurantPageController;
+use App\Http\Controllers\Frontend\ContactPageController;
+use App\Http\Controllers\Frontend\HomepageController;
+use App\Http\Controllers\Frontend\RoomsPageController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+//Frontend routes
+Route::get('/', [HomepageController::class, 'index']);
+Route::get('/about-us', [AboutUsPageController::class, 'index'])->name('about-us');
+Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
+Route::get('/the-bar-restaurant', [BarRestaurantPageController::class, 'index'])->name('bar-restaurant');
+Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contact-us');
+Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
+
+//Admin Routes
+Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('admin')->group(function(){
+    //Dashboard
+    Route::post('contact-form-submission-test-email', [AdminIndexController::class, 'formSubmissionTestEmail'])->name('contact-form-submission-test-email');
+    Route::get('dashboard', [AdminIndexController::class, 'index'])->name('dashboard');
+
+
+    //Rooms
+    Route::resource('rooms', RoomController::class);
+
+    //Menu Category
+    Route::prefix('menu')->group(function(){
+        Route::resource('category', MenuCategoryController::class)->names([
+            'index' => 'menu-category.index',
+            'create' => 'menu-category.create',
+            'store' => 'menu-category.store',
+            'show' => 'menu-category.show',
+            'edit' => 'menu-category.edit',
+            'update' => 'menu-category.update',
+            'destroy' => 'menu-category.destroy',
+        ]);
+    });
+
+    //Menu
+    Route::resource('menu', MenuController::class);
+
+    //Whisky
+    Route::resource('whisky', WhiskyController::class);
+
+    //Pages
+    Route::prefix('pages')->group(function(){
+        Route::resource('about-us', AdminAboutUsPageController::class);
+        Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
+        Route::resource('contact-us', AdminContactUsPageController::class);
+        Route::resource('homepage', AdminHomepageController::class);
+        Route::resource('rooms', AdminRoomsPageController::class);
+    });
+});
+
+//Staff Routes
+Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->group(function(){
+    //Dashboard
+    Route::get('dashboard', [\App\Http\Controllers\Staff\StaffIndexController::class, 'index'])->name('dashboard');
+
+});
+
+//Customer Routes
+Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('customer')->group(function(){
+    //Dashboard
+    Route::get('dashboard', [\App\Http\Controllers\Customer\CustomerIndexController::class, 'index'])->name('dashboard');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

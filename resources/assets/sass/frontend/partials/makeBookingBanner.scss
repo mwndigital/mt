@@ -1,0 +1,22 @@
+.makeBookingBanner {
+
+    padding: 60px 0;
+    text-align: center;
+
+    h2 {
+        color: $w;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    p {
+        color: $w;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+        margin-bottom: 40px;
+    }
+    .darkGoldBtn {
+        margin-top: 40px;
+    }
+}

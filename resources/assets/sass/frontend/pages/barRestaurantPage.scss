@@ -1,0 +1,85 @@
+#barRestaurantPageTop {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    h1 {
+        color: $w;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+
+    .btn-group {
+        gap: 20px;
+    }
+}
+#barRestaurantPageBannerOne {
+    background-color: $w;
+    padding: 60px 0;
+
+    p {
+        color: $b;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+
+        strong {
+            font-family: $libBold;
+        }
+
+        &:last-of-type {
+            margin-bottom: 40px;
+        }
+    }
+
+    img.secondryImage {
+        display: block;
+        height: auto;
+        margin: 40px 0 0 0;
+        width: 100%;
+    }
+
+    img.mainImage {
+        display: block;
+        height: 800px;
+        margin: auto;
+        width: auto;
+    }
+}
+
+#barRestaurantImageBanner {
+    height: 300px;
+}
+#barRestaurantPageWhiskysBanner {
+    background-color: $w;
+    padding: 60px 0;
+    h2 {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    p {
+        color: $b;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;
+
+        &:last-of-type {
+            margin-bottom: 40px;
+        }
+    }
+
+    img.mainImage {
+        display: block;
+        height: auto;
+        margin: auto;
+        width: 95%;
+    }
+}

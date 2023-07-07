@@ -1,0 +1,244 @@
+.pageMain {
+    background-color: $lightGrey;
+    border-radius: 0;
+    display: block;
+    padding: 4rem  2rem;
+
+    table {
+        thead {
+            tr {
+                th {
+                    color: $darkBlue;
+                    font-family: $libBold;
+                    font-size: 1.1rem;
+                    height: auto;
+                    min-width: 200px;
+                    width: auto;
+                    &:last-of-type {
+                        display: flex;
+                        justify-content: flex-end;
+
+                        min-width: 200px;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    //display: table-cell;
+                    font-family: $libReg;
+                    font-size: 1rem;
+                    //height: 100%;
+
+
+                    &:last-of-type {
+                        justify-content: flex-end;
+                    }
+                    .dropdown {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        .dropdown-toggle {
+                            background-color: transparent;
+                            border: 0;
+                            box-shadow: none;
+                            color: $darkBlue;
+                            display: block;
+                            font-size: 1.5rem;
+                            height: 100%;
+                            outline: none;
+                            text-align: right;
+                            @include transition(all .4s ease-in-out);
+                            width: 100%;
+
+                            &:after {
+                                display: none;
+                            }
+
+                            &:hover,
+                            &:focus {
+                                background-color: transparent;
+                                border: 0;
+                                border-radius: 0;
+                                color: $darkBlue;
+                                outline: none;
+                            }
+                        }
+                        div.dropdown-menu {
+                            border: 0;
+                            -webkit-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            -moz-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            padding: 1rem;
+
+                            ul {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                li {
+                                    margin-bottom: 10px;
+                                    a {
+                                        background-color: transparent;
+                                        border: 0;
+                                        border-radius: 0;
+                                        color: $darkBlue;
+                                        font-family: $libReg;
+                                        font-size: 1rem;
+                                        outline: none;
+                                        text-decoration: none;
+                                        @include transition(all .4s ease-in-out);
+
+                                        &:hover,
+                                        &:focus,
+                                        &:active {
+                                            background-color: transparent;
+                                            border: 0;
+                                            box-shadow: none;
+                                            color: $darkGold;
+                                            outline: none;
+                                            text-decoration: none;
+                                        }
+                                    }
+                                    form {
+                                        margin: 0;
+                                        padding: 0;
+
+                                        button {
+                                            background-color: transparent;
+                                            border: 0;
+                                            border-radius: 0;
+                                            box-shadow: none;
+                                            color: $darkBlue;
+                                            font-family: $libReg;
+                                            font-size: 1rem;
+                                            margin: 0;
+                                            padding: 0;
+                                            text-align: left;
+
+                                            &:hover,
+                                            &:focus,
+                                            &:active {
+                                                background-color: transparent;
+                                                border: 0;
+                                                border-radius: 0;
+                                                color: $darkGold;
+                                                outline: none;
+                                                text-decoration: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    table.showTable {
+        tbody {
+            tr {
+                td {
+                    &:first-of-type {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+
+    form {
+        .row {
+            margin-bottom: 20px;
+        }
+        label {
+            color: $darkBlue;
+            display: block;
+            font-family: $libBold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        input[type='text'],
+        input[type='tel'],
+        input[type='number'],
+        input[type='email'],
+        input[type='url'],
+        input[type='password'] {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            height: 40px;
+
+            padding: .5rem;
+            text-align: left;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                box-shadow: none;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        select {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            height: 40px;
+            padding: .5rem;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        textarea {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            padding: .5rem;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                box-shadow: none;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        button {
+            margin-top: 20px;
+        }
+    }
+}

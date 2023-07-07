@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'libBold';
+    src: url("../fonts/LibreBaskerville-Bold.ttf");
+}
+@font-face {
+    font-family: 'libItal';
+    src: url("../fonts/LibreBaskerville-Italic.ttf");
+}
+@font-face {
+    font-family: 'libReg';
+    src: url("../fonts/LibreBaskerville-Regular.ttf");
+}
+@font-face {
+    font-family: 'monts';
+    src: url("../fonts/Montserrat-Regular.ttf");
+}
+
+
+$libBold: 'libBold', serif;
+$libItal: 'libItal', serif;
+$libReg: 'libReg', serif;
+$monts: 'monts', sans-serif;

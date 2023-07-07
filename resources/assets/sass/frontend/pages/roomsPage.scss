@@ -1,0 +1,76 @@
+#roomsPageTop {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    h1 {
+        color: $darkBlue;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+}
+
+#roomsPageInfoBanner {
+    background-color: $lightGrey;
+    padding: 60px 0;
+
+    p {
+        color: $darkBlue;
+        font-family: $libReg;
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
+#roomsPageRoomsBanner {
+    background-color: $w;
+    padding: 60px 0;
+    .roomItem {
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 30px;
+        .card-header {
+            background-color: transparent;
+            border: 0;
+            border-radius: 0;
+            height: 300px;
+            padding: 0;
+            img {
+                display: block;
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        .card-body {
+            min-height: 230px;
+            h4 {
+                color: $darkGold;
+                font-family: $libBold;
+                font-size: 1.75rem;
+                margin-bottom: 30px;
+            }
+            .content {
+                color: $darkGrey;
+                font-family: $libReg;
+                font-style: italic;
+            }
+        }
+        .card-footer {
+            background-color: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            a.blueBtn {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
