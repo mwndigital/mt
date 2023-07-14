@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarRestaurantPageController;
+use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
@@ -35,13 +36,20 @@ Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
 Route::get('/the-bar-restaurant', [BarRestaurantPageController::class, 'index'])->name('bar-restaurant');
 Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contact-us');
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
+Route::prefix('book-a-room')->group(function(){
+    Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
+
+    Route::get('step-3', [BookingController::class, 'stepThreeShow'])->name('book-a-room-step-3');
+
+    Route::get('step-4', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
+});
+Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
 
 //Admin Routes
 Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('admin')->group(function(){
     //Dashboard
     Route::post('contact-form-submission-test-email', [AdminIndexController::class, 'formSubmissionTestEmail'])->name('contact-form-submission-test-email');
     Route::get('dashboard', [AdminIndexController::class, 'index'])->name('dashboard');
-
 
     //Rooms
     Route::resource('rooms', RoomController::class);
@@ -67,10 +75,12 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
 
     //Pages
     Route::prefix('pages')->group(function(){
+        Route::resource('homepage', AdminHomepageController::class);
         Route::resource('about-us', AdminAboutUsPageController::class);
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
+        Route::resource('rooms-page', AdminRoomsPageController::class);
         Route::resource('contact-us', AdminContactUsPageController::class);
-        Route::resource('homepage', AdminHomepageController::class);
+
         Route::resource('rooms', AdminRoomsPageController::class);
     });
 });

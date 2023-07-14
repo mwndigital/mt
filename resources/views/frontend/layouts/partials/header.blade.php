@@ -11,6 +11,21 @@
 
         <title>@stack('page-title') - {{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Meta -->
+        <meta name="description" content="@stack('page-description')">
+        <meta name="keywords" content="@stack('page-keywords')">
+
+        <link rel="canonical" href="{{ config('configurations.app_url', config('app.url')) }}/@stack('page-slug')">
+
+        <!-- Open Graph Stuff -->
+        <meta property="og:title" content="@stack('page-title')">
+        <meta property="og:description" content="@stack('page-description')">
+        <meta property="og:url" content="{{ config('configurations.app_url', config('app.url')) }}/@stack('page-slug')">
+        <meta property="og:type" content="@stack('page-type')">
+        <meta property="og:site_name" content="{{ config('configurations.app_name', config('app.name')) }}">
+        <meta property="og:image" content="@stack('page-image')"/>
+        <meta property="og:locale" content="en_GB">
+
         <!-- styles -->
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">

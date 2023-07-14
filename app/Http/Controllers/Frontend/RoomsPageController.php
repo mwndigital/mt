@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rooms;
+use App\Models\RoomsPageContent;
 use Illuminate\Http\Request;
 
 class RoomsPageController extends Controller
@@ -14,7 +15,8 @@ class RoomsPageController extends Controller
     public function index()
     {
         $rooms = Rooms::all();
-        return view('frontend.pages.roomsPage', compact('rooms'));
+        $rpc = RoomsPageContent::first();
+        return view('frontend.pages.roomsPage', compact('rooms', 'rpc'));
     }
 
     /**

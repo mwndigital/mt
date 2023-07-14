@@ -12,6 +12,7 @@
                 <li><a href="{{ route('about-us') }}">About Us</a></li>
                 <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
+                <li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
             </ul>
         </div>

@@ -8,13 +8,13 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-                <a href="">Homepage</a>
+                <a href="{{ route('admin.homepage.edit', ['homepage' => 1]) }}">Homepage</a>
             </li>
             <li>
-                <a href="">About us</a>
+                <a href="{{ route('admin.about-us.edit', ['about_u' => 1]) }}">About us</a>
             </li>
-            <li><a href="">The Bar & Restaurant</a></li>
-            <li><a href="">The Rooms</a></li>
+            <li><a href="{{ route('admin.bar-restaurant.edit', ['bar_restaurant' => 1]) }}">The Bar & Restaurant</a></li>
+            <li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>
             <li><a href="">Contact Us</a></li>
         </ul>
     </li>

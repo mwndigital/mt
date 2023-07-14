@@ -3,20 +3,32 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\HomePageContent;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
+use Monarobase\CountryList\CountryListFacade;
 
-class HomepageController extends Controller
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $hpcontent = HomepageContent::first();
         $rooms = Rooms::all();
-        return view('frontend.pages.homepage', compact('rooms', 'hpcontent'));
+        return view('frontend.pages.booking.index', compact('rooms'));
+    }
+
+    public function stepTwoShow() {
+        return view('frontend.pages.booking.step-2');
+    }
+
+    public function stepThreeShow() {
+        $countries = CountryListFacade::getList('en');
+        return view('frontend.pages.booking.step-3', compact('countries'));
+    }
+
+    public function paymentStep(){
+        return view('frontend.pages.booking.step-4-payment');
     }
 
     /**
