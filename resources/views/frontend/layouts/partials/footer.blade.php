@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="img-fluid footerLogo" src="{{ asset('logos/main-logo.webp') }}">
+                            <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
                             <ul class="list-inline socialLinks">
                                 <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><img class="img-fluid tripAdvisorLogo" src="{{ asset('logos/trip-advisor.svg') }}" alt="TripAdvisor Logo"></a></li>
                                 <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>

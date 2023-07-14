@@ -67,9 +67,11 @@ header {
         .navbar-brand {
             img {
                 display: block;
-                height: 80px;
-                margin: 0;
+                height: 100px;
+                margin: 0 0 -40px 0;
+                position: relative;
                 width: auto;
+                z-index: 1080;
             }
         }
         button.navbar-toggler {
