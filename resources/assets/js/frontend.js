@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    $('.navbar-toggler').click(function(){
+       $(this).find('i').toggleClass('fa-bars fa-times');
+    });
+
     //Homepage home from home carousel
     $('.homeFromHomeSlider').owlCarousel({
         autoplay: true,

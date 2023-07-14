@@ -1,0 +1,180 @@
+header {
+    .topBar {
+
+        ul.contactDetails {
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        ul.socialLinks {
+            display: none;
+        }
+    }
+    .navbar {
+        #frontendMainNavbar {
+            padding: 1rem .5rem;
+        }
+        ul {
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+#homepageTop {
+    height: 70vh;
+    .content {
+        .inner {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+#homepageWelcomeBanner {
+    img {
+        margin-bottom: 30px;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+#homepageHomeFromHomeBanner {
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    .homeFromHomeSlider {
+        display: block;
+        margin-top: 50px;
+        width: 100%;
+    }
+}
+#homepageBookRoomBanner {
+    h4 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+#aboutUsPageTop {
+    h1 {
+        font-size: 2rem;
+    }
+}
+#aboutPageBannerOne {
+    padding: 80px 0;
+}
+#aboutPageBannerTwo,
+#aboutPageBannerThree{
+    padding: 40px 0;
+    img.mainImg {
+        display: block;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    h3 {
+        margin-top: 30px;
+    }
+}
+#barRestaurantPageTop {
+    height: 50vh;
+    h1 {
+        font-size: 2rem;
+    }
+    .btn-group {
+        flex-direction: column;
+
+        .darkGoldBtn {
+            font-size: 1rem;
+            padding: .5rem 2rem;
+        }
+        .blueBtn {
+            font-size: 1rem;
+            padding: .5rem 2rem;
+        }
+    }
+}
+#barRestaurantPageBannerOne {
+    img.secondryImage {
+        margin-bottom: 50px;
+    }
+    img.mainImage {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+}
+#barRestaurantImageBanner {
+    height: 200px;
+}
+#barRestaurantPageWhiskysBanner {
+    h2 {
+        font-size: 2rem;
+    }
+    img.mainImage {
+        display: block;
+        height: auto;
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+.makeBookingBanner {
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+#roomsPageTop {
+    h1 {
+        font-size: 2rem;
+    }
+}
+.bookingPageTop {
+    h1 {
+        font-size: 2rem;
+    }
+}
+#contactPageTop {
+    h1 {
+        font-size: 2rem;
+    }
+}
+#contactPageMain {
+
+    ul.socialLinks {
+        margin-bottom: 50px;
+    }
+}
+
+
+
+
+
+
+.awardsBanner {
+    .awardsWrap {
+        flex-direction: column;
+    }
+}
+
+footer {
+    .footerMain {
+        ul.socialLinks {
+            margin-bottom: 30px;
+        }
+    }
+}
