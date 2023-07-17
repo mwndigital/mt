@@ -1,0 +1,33 @@
+.policyPageTop {
+    align-items: center;
+    background-color: $w;
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    h1 {
+        color: $darkBlue;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+}
+.policyPageMain {
+    background-color: $w;
+    padding: 80px 0;
+
+    h1,h2,h3,h4,h5,h6 {
+        color: $darkBlue;
+        font-family: $libBold;
+        margin-bottom: 30px;
+    }
+
+    p {
+        color: $b;
+        font-family: $libReg;
+        font-size: 1rem;
+    }
+}

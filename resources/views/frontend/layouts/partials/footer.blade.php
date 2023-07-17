@@ -38,6 +38,8 @@
                                 <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+                                <li><a href="/deposit-cancellations-policy">Deposit & Cancellations Policy</a></li>
+                                <li><a href="/terms-conditions">Terms & Conditions</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">

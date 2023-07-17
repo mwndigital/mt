@@ -50,6 +50,17 @@
             </li>
         </ul>
     </li>
+    <li class="dropdown">
+        <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Policy Pages
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{{ route('admin.policy-pages.index') }}">All Policy Pages</a>
+            </li>
+            <li><a href="{{ route('admin.policy-pages.create') }}">Create New Policy Page</a></li>
+        </ul>
+    </li>
     <li><a href="">Settings</a></li>
 
 </ul>

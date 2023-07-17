@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
 use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminHomepageController;
+use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
 use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarRestaurantPageController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
+use App\Http\Controllers\Frontend\FrontendPolicyPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +46,7 @@ Route::prefix('book-a-room')->group(function(){
     Route::get('step-4', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
+Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])->name('policy-page.show');
 
 //Admin Routes
 Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('admin')->group(function(){
@@ -80,8 +83,8 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
         Route::resource('rooms-page', AdminRoomsPageController::class);
         Route::resource('contact-us', AdminContactUsPageController::class);
-
         Route::resource('rooms', AdminRoomsPageController::class);
+        Route::resource('policy-pages', AdminPolicyPagesController::class);
     });
 });
 

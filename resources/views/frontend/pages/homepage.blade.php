@@ -1,7 +1,17 @@
 @extends('layouts.frontend')
 @push('page-title')
-Mash Tun Whisky Bar &amp; Restaurant | Aberlour Moray Scotland
+    Mash Tun Whisky Bar &amp; Restaurant | Aberlour Moray Scotland
 @endpush
+@push('page-description')
+    {{--{{ $rpc->page_description }}--}}
+@endpush
+@push('page-keywords')
+    {{--{{ $rpc->page_keywords }}--}}
+@endpush
+@push('page-image')
+    {{--{{ Storage::url($rpc->page_image) }}--}}
+@endpush
+@extends('layouts.frontend')
 @section('content')
     <section id="homepageTop">
         <img class="img-fluid mainBgImage" src="{{ Storage::url($hpcontent->hero_banner_background_image) }}" alt="Mash Tun outside image">
