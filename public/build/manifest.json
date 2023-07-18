@@ -63,7 +63,7 @@
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-5c7718ca.css",
+    "file": "assets/admin-a363f22a.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },
@@ -73,7 +73,7 @@
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-e0eea427.css",
+    "file": "assets/frontend-6d164f91.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   }

@@ -11,7 +11,6 @@
 @push('page-image')
     {{--{{ Storage::url($rpc->page_image) }}--}}
 @endpush
-@extends('layouts.frontend')
 @section('content')
     <section id="homepageTop">
         <img class="img-fluid mainBgImage" src="{{ Storage::url($hpcontent->hero_banner_background_image) }}" alt="Mash Tun outside image">
