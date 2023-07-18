@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.about-us.update', ['about-u' => $apc->id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.about-us.update', ['about_u' => $apc->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">
