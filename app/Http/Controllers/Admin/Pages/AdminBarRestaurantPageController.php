@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BarRestaurantContentStoreRequest;
+use App\Http\Requests\BarRestaurantContentUpdateStoreRequest;
 use App\Models\BarRestaurantContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -121,7 +122,7 @@ class AdminBarRestaurantPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(BarRestaurantContentStoreRequest $request, string $id)
+    public function update(BarRestaurantContentUpdateStoreRequest $request, string $id)
     {
         $brc = BarRestaurantContent::findOrFail($id);
 
@@ -132,6 +133,14 @@ class AdminBarRestaurantPageController extends Controller
         $oldBannerTwoImage = $brc->banner_two_image;
         $oldBookStayBannerBackgroundImage = $brc->book_stay_banner_background_image;
         $oldPageImage = $brc->page_image;
+        $heroBannerBackgroundImagePath = NULL;
+        $bannerOneBigImagePath = NULL;
+        $bannerOneSmallImagePath = NULL;
+        $separatorImagePath = NULL;
+        $bannerTwoImagePath = NULL;
+        $bookStayBannerBackgroundImagePath = NULL;
+        $pageImagePath = NULL;
+
 
         if($request->hasFile('hero_banner_background_image')){
             $heroBannerBackgroundImage = $request->file('hero_banner_background_image');

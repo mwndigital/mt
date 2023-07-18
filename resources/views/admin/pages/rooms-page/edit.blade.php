@@ -32,8 +32,9 @@
     <section class="pageMain">
         <div class="container">
             <div class="row">
-                <form action="{{ route('admin.rooms-page.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.rooms-page.update', ['rooms_page' => $rpc->id]) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="row">
                         <div class="col-12">
                             <label for="">Page Title</label>
@@ -65,7 +66,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Background image *</label>
-                            <input type="file" name="hero_banner_background_image" id="hero_banner_background_image" required>
+                            <input type="file" name="hero_banner_background_image" id="hero_banner_background_image">
                             @error('hero_banner_background_image')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

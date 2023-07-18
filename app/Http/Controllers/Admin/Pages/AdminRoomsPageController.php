@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomsContentStoreRequest;
+use App\Http\Requests\RoomsContentUpdateStoreRequest;
 use App\Models\RoomsPageContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -87,12 +88,14 @@ class AdminRoomsPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(RoomsContentStoreRequest $request, string $id)
+    public function update(RoomsContentUpdateStoreRequest $request, string $id)
     {
         $rpc = RoomsPageContent::findOrFail($id);
 
         $oldHeroBannerBackgroundImage = $rpc->head_banner_background_image;
         $oldPageImage = $rpc->page_image;
+        $heroBannerBackgroundImagePath = NULL;
+        $pageImagePath = NULL;
 
         if($request->hasFile('hero_banner_background_image')) {
             $heroBannerBackgroundImage = $request->file('hero_banner_background_image');

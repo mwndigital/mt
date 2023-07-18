@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AboutPageContentStoreRequest;
+use App\Http\Requests\AboutPageContentUpdateStoreRequest;
 use App\Models\AboutPageContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -104,7 +105,7 @@ class AdminAboutUsPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AboutPageContentStoreRequest $request, string $id)
+    public function update(AboutPageContentUpdateStoreRequest $request, string $id)
     {
         $apc = AboutPageContent::findOrFail($id);
 
@@ -112,6 +113,10 @@ class AdminAboutUsPageController extends Controller
         $oldAboutBannerImage = $apc->about_banner_image;
         $oldBannerOneImage = $apc->banner_one_image;
         $oldBannerTwoImage = $apc->banner_two_image;
+        $heroBannerBackgroundImagePath = NULL;
+        $aboutBannerImagePath = NULL;
+        $bannerOneImagePath = NULL;
+        $bannerTwoImagePath = NULL;
 
         if($request->hasFile('hero_banner_background_image')) {
             $heroBannerBackgroundImage = $request->file('hero_banner_background_image');

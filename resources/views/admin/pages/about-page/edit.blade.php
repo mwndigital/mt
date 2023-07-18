@@ -33,6 +33,7 @@
                 <div class="col-12">
                     <form action="{{ route('admin.about-us.update', ['about_u' => $apc->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Page Title *</label>
@@ -64,7 +65,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Background Image *</label>
-                                <input type="file" name="hero_banner_background_image" id="hero_banner_background_image" required>
+                                <input type="file" name="hero_banner_background_image" id="hero_banner_background_image">
                                 @error('hero_banner_background_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -111,7 +112,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Image *</label>
-                                <input type="file" name="about_banner_image" id="about_banner_image" required>
+                                <input type="file" name="about_banner_image" id="about_banner_image">
                                 @error('about_banner_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -136,7 +137,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Image *</label>
-                                <input type="file" name="banner_one_image" id="banner_one_image" required>
+                                <input type="file" name="banner_one_image" id="banner_one_image">
                                 @error('banner_one_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -193,7 +194,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Image *</label>
-                                <input type="file" name="banner_two_image" id="banner_two_image" required>
+                                <input type="file" name="banner_two_image" id="banner_two_image" >
                                 @error('banner_two_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('page_title')->nullable();
             $table->string('page_slug')->nullable();
             $table->string('hero_banner_title');
-            $table->string('hero_banner_background_image');
+            $table->string('hero_banner_background_image')->nullable();
             $table->text('rooms_info_banner_content');
             $table->text('page_description')->nullable();
             $table->text('page_keywords')->nullable();
