@@ -36,8 +36,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.policy-pages.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.policy-pages.update', $policyPage->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>

@@ -15,7 +15,6 @@
             </li>
             <li><a href="{{ route('admin.bar-restaurant.edit', ['bar_restaurant' => 1]) }}">The Bar & Restaurant</a></li>
             <li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>
-            <li><a href="">Contact Us</a></li>
         </ul>
     </li>
     <li><a href="">Bookings</a></li>
