@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             MenuCategorySeeder::class,
             HomepageContentSeeder::class,
             AboutPageContentSeeder::class,
+            BarRestaurantContentSeeder::class,
+            RoomsPageContentSeeder::class,
         ]);
     }
 }

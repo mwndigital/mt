@@ -100,6 +100,9 @@ class AdminHomepageController extends Controller
         $oldHeroBannerBackgroundImagePath = $hpcontent->hero_banner_background_image;
         $oldBannerOneImagePath = $hpcontent->banner_one_image;
         $oldSpendNightBannerBackgroundImagePath = $hpcontent->spend_night_banner_background_image;
+        $heroBannerBackgroundImagePath = NULL;
+        $bannerOneImagePath = NULL;
+        $spendNightBannerImagePath = NULL;
 
         if($request->hasFile('hero_banner_background_image')){
             $heroBannerBackgroundImage = $request->file('hero_banner_background_image');

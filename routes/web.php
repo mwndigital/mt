@@ -31,7 +31,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Auth::routes();
 
 //Admin Routes
@@ -87,7 +86,6 @@ Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('custome
     Route::get('dashboard', [\App\Http\Controllers\Customer\CustomerIndexController::class, 'index'])->name('dashboard');
 });
 
-
 //Frontend routes
 Route::get('/', [HomepageController::class, 'index']);
 Route::get('/about-us', [AboutUsPageController::class, 'index'])->name('about-us');
@@ -103,8 +101,8 @@ Route::prefix('book-a-room')->group(function(){
     Route::get('step-4', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
-Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
-    ->where('slug', '[A-Za-z0-9\-]+')
-    ->name('policy-page.show');
+Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])->name('policy-page.show');
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
