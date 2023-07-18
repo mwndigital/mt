@@ -31,10 +31,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="pageSecTitle">Hero Banner</h4>
                     <form action="{{ route('admin.homepage.update', ['homepage' => $hpcontent->id]) }}" method="post" enctype="multipart/form-data">
-                    @csrf
+                        @csrf
                         @method('PUT')
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="pageSecTitle my-4">Hero Banner</h4>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>
@@ -76,6 +80,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="pageSecTitle my-4">Banner One</h4>
