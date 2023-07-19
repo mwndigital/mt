@@ -51,8 +51,11 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="formWrap">
+                        <h4 class="stepTitle">Start a booking</h4>
                         <div class="stepBanner">
-                            <div></div>
+                            <div class="innerWrap">
+                                <span>Step 1</span>
+                            </div>
                         </div>
                         <form method="post" action="{{ route('book-a-room-step-1-store') }}">
                             @csrf

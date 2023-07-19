@@ -2,6 +2,13 @@
 @push('page-title')
     Book a room - Step 3 | Aberlour Moray Scotland
 @endpush
+@push('page-styles')
+    <style>
+        .bookingPageMain .formWrap .stepBanner .innerWrap span {
+            width: 60%;
+        }
+    </style>
+@endpush
 @section('content')
     <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
@@ -18,8 +25,11 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="formWrap">
+                        <h4 class="stepTitle">Your Details</h4>
                         <div class="stepBanner">
-                            <div></div>
+                            <div class="innerWrap">
+                                <span>Step 3</span>
+                            </div>
                         </div>
                         <form method="post" action="{{ route('book-a-room-step-3-store') }}">
                             @csrf
@@ -101,7 +111,7 @@
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
                                     {{--<button type="submit">Next <i class="fas fa-chevron-right"></i></button>--}}
-                                    <a href="{{ route('book-a-room-payment-step') }}" class="nextBtn">Continue To Payment <i class="fas fa-chevron-right"></i></a>
+                                    <a href="{{ route('book-a-room-step-4') }}" class="nextBtn">Continue To Payment <i class="fas fa-chevron-right"></i></a>
                                 </div>
                             </div>
                         </form>

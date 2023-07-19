@@ -68,9 +68,15 @@ class BookingController extends Controller
     public function stepThreeStore(Request $request) {
 
     }
+    public function stepFourShow(Request $request) {
+
+        return view('frontend.pages.booking.step-4');
+    }
+
+
 
     public function paymentStep(){
-        return view('frontend.pages.booking.step-4-payment');
+        return view('frontend.pages.booking.step-payment');
     }
 
 
