@@ -13,6 +13,16 @@
         </div>
     </section>
 
+    @if($errors->any())
+        <div class="flex flex-row alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">
@@ -21,14 +31,14 @@
                         <div class="stepBanner">
                             <div></div>
                         </div>
-                        <form method="post" action="">
+                        <form method="post" action="{{ route('book-a-room-step-1-store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Choose a room</label>
                                     <select name="room" id="room" required>
                                         @foreach($rooms as $room)
-                                            <option value="{{ $room->id }}">
+                                            <option value="{{ $room->id }}" @if($booking && $booking->room == $room->id) selected @endif>
                                                 <div class="roomSelectInner">
                                                     <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                     <span>{{ $room->name }}</span>
@@ -41,21 +51,21 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Check in date</label>
-                                    <input type="date" name="checkin_date" id="checkin_date">
+                                    <input type="date" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Check out date</label>
-                                    <input type="date" name="checkout_date" id="checkout_date">
+                                    <input type="date" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Arrival Time</label>
-                                    <input type="time" name="arrival_time" id="arrival_time">
+                                    <input type="time" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
                                 </div>
                             </div>
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-end">
-                                    {{--<button type="submit">Next <i class="fas fa-chevron-right"></i></button>--}}
-                                    <a href="{{ route('book-a-room-step-2') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>
+                                    <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+                                    {{--<a href="{{ route('book-a-room-step-2') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>--}}
                                 </div>
                             </div>
                         </form>

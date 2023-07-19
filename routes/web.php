@@ -95,12 +95,15 @@ Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contac
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
 Route::prefix('book-a-room')->group(function(){
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
+    Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
 
     Route::get('step-3', [BookingController::class, 'stepThreeShow'])->name('book-a-room-step-3');
+    Route::post('step-three-store', [BookingController::class, 'stepThreeStore'])->name('book-a-room-step-3-store');
 
     Route::get('step-4', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
+Route::post('/book-room-step-one-store', [BookingController::class, 'stepOneStore'])->name('book-a-room-step-1-store');
 Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
     ->where('slug', '[A-Za-z0-9\-]+')
     ->name('policy-page.show');

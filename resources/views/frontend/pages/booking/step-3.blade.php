@@ -21,7 +21,7 @@
                         <div class="stepBanner">
                             <div></div>
                         </div>
-                        <form method="post" action="">
+                        <form method="post" action="{{ route('book-a-room-step-3-store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-12">

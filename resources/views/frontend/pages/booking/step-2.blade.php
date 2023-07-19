@@ -22,24 +22,24 @@
                             <div></div>
 
                         </div>
-                        <form method="post" action="">
+                        <form method="post" action="{{ route('book-a-room-step-2-store') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults">
+                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Number of children</label>
-                                    <input type="number" name="no_of_children" id="no_of_children">
+                                    <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Number of Infants</label>
-                                    <input type="number" name="no_of_infants" id="no_of_infants">
+                                    <input type="number" name="no_of_infants" id="no_of_infants" value="{{ $booking ? $booking->no_of_infants : '' }}">
                                 </div>
                             </div>
 
@@ -48,8 +48,8 @@
                                     <a href="{{ route('book-a-room-index') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    {{--<button type="submit">Next <i class="fas fa-chevron-right"></i></button>--}}
-                                    <a href="{{ route('book-a-room-step-3') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>
+                                    <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+                                    {{--<a href="{{ route('book-a-room-step-3') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>--}}
                                 </div>
                             </div>
                         </form>

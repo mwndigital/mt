@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\booking;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 use Monarobase\CountryList\CountryListFacade;
@@ -12,24 +13,67 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $rooms = Rooms::all();
-        return view('frontend.pages.booking.index', compact('rooms'));
+        $booking = $request->session()->get('booking');
+        return view('frontend.pages.booking.index', compact('rooms', 'booking'));
     }
 
-    public function stepTwoShow() {
-        return view('frontend.pages.booking.step-2');
+    public function stepOneStore(Request $request) {
+        $validated = $request->validate([
+            'room' => ['required', 'string'],
+            'checkin_date' => ['required', 'date'],
+            'checkout_date' => ['required', 'date'],
+            'arrival_time' => ['required'],
+        ]);
+
+        if(empty($request->session()->get('booking'))){
+            $booking = new Booking();
+            $booking->fill($validated);
+            $request->session()->put('booking', $booking);
+        }
+        else {
+            $booking = $request->session()->get('booking');
+            $booking->fill($validated);
+            $request->session()->put('booking', $booking);
+        }
+        return to_route('book-a-room-step-2');
+
     }
 
-    public function stepThreeShow() {
+    public function stepTwoShow(Request $request) {
+        $booking = $request->session()->get('booking');
+        return view('frontend.pages.booking.step-2', compact('booking'));
+    }
+
+    public function stepTwoStore(Request $request) {
+        $validated = $request->validate([
+            'no_of_adults' => ['required', 'integer'],
+            'no_of_children' => ['required', 'integer'],
+            'no_of_infants' => ['required', 'integer'],
+        ]);
+        $booking = $request->session()->get('booking');
+        $booking->fill($validated);
+        $request->session()->put('booking', $booking);
+
+        return to_route('book-a-room-step-3');
+    }
+
+    public function stepThreeShow(Request $request) {
         $countries = CountryListFacade::getList('en');
         return view('frontend.pages.booking.step-3', compact('countries'));
+    }
+
+    public function stepThreeStore(Request $request) {
+
     }
 
     public function paymentStep(){
         return view('frontend.pages.booking.step-4-payment');
     }
+
+
 
     /**
      * Show the form for creating a new resource.
