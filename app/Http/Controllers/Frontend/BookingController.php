@@ -22,11 +22,7 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request) {
         $validated = $request->validate([
-            'checkin_date' => ['required'],
-            'checkout_date' => ['required'],
-            'arrival_time' => ['required'],
-            'no_of_adults' => ['required', 'integer'],
-            'no_of_children' => ['required', 'integer']
+            'room' => ['required', 'integer']
         ]);
 
         if(empty($request->session()->get('booking'))){
@@ -39,20 +35,25 @@ class BookingController extends Controller
             $booking->fill($validated);
             $request->session()->put('booking', $booking);
         }
+
         return to_route('book-a-room-step-2');
 
     }
 
     public function stepTwoShow(Request $request) {
         $booking = $request->session()->get('booking');
-        $rooms = Rooms::all();
-        return view('frontend.pages.booking.step-2', compact('booking', 'rooms'));
+        return view('frontend.pages.booking.step-2', compact('booking', ));
     }
 
     public function stepTwoStore(Request $request) {
         $validated = $request->validate([
-            'room' => ['required', 'integer']
+            'checkin_date' => ['required'],
+            'checkout_date' => ['required'],
+            'arrival_time' => ['required'],
+            'no_of_adults' => ['required', 'integer'],
+            'no_of_children' => ['required', 'integer']
         ]);
+
         $booking = $request->session()->get('booking');
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
