@@ -2,6 +2,24 @@
 @push('page-title')
     Book a room - Step 2 | Aberlour Moray Scotland
 @endpush
+@push('page-scripts')
+    <script>
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+        radioButtons.forEach((radio) => {
+            radio.addEventListener('change', () => {
+                if (radio.checked) {
+                    radioButtons.forEach((otherRadio) => {
+                        if (otherRadio !== radio) {
+                            otherRadio.parentElement.classList.remove('checked');
+                        }
+                    });
+                    radio.parentElement.classList.add('checked');
+                }
+            });
+        });
+    </script>
+@endpush
 @section('content')
     <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
@@ -26,20 +44,20 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="">Number of children</label>
-                                    <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="">Number of Infants</label>
-                                    <input type="number" name="no_of_infants" id="no_of_infants" value="{{ $booking ? $booking->no_of_infants : '' }}">
+                                    <label for="">Choose a room</label>
+                                    <div class="row innerRow">
+                                        @foreach($rooms as $room)
+                                            <div class="col-md-6">
+                                                <label class="checkItem">
+                                                    <input type="radio" name="selected_room" id="room_{{ $room->id }}">
+                                                    <label for="room_{{ $room->id }}">
+                                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                                        <h4>{{ $room->name }}</h4>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
 

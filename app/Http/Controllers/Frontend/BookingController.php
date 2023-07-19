@@ -22,10 +22,11 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request) {
         $validated = $request->validate([
-            'room' => ['required', 'string'],
-            'checkin_date' => ['required', 'date'],
-            'checkout_date' => ['required', 'date'],
+            'checkin_date' => ['required'],
+            'checkout_date' => ['required'],
             'arrival_time' => ['required'],
+            'no_of_adults' => ['required', 'integer'],
+            'no_of_children' => ['required', 'integer']
         ]);
 
         if(empty($request->session()->get('booking'))){
@@ -44,14 +45,13 @@ class BookingController extends Controller
 
     public function stepTwoShow(Request $request) {
         $booking = $request->session()->get('booking');
-        return view('frontend.pages.booking.step-2', compact('booking'));
+        $rooms = Rooms::all();
+        return view('frontend.pages.booking.step-2', compact('booking', 'rooms'));
     }
 
     public function stepTwoStore(Request $request) {
         $validated = $request->validate([
-            'no_of_adults' => ['required', 'integer'],
-            'no_of_children' => ['required', 'integer'],
-            'no_of_infants' => ['required', 'integer'],
+            'room' => ['required', 'integer']
         ]);
         $booking = $request->session()->get('booking');
         $booking->fill($validated);
