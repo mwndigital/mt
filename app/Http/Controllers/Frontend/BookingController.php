@@ -22,7 +22,7 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request) {
         $validated = $request->validate([
-            'room' => ['required', 'integer']
+            'room_id' => ['required', 'integer']
         ]);
 
         if(empty($request->session()->get('booking'))){
@@ -62,16 +62,48 @@ class BookingController extends Controller
     }
 
     public function stepThreeShow(Request $request) {
+        $booking = $request->session()->get('booking');
         $countries = CountryListFacade::getList('en');
-        return view('frontend.pages.booking.step-3', compact('countries'));
+        return view('frontend.pages.booking.step-3', compact('booking', 'countries'));
     }
 
     public function stepThreeStore(Request $request) {
+        $validated = $request->validate([
+            'user_title' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address_line_one' => ['required', 'string', 'max:255'],
+            'address_line_two' => ['nullable', 'string', 'max:255'],
+            'postcode' => ['required', 'string', 'max:100'],
+            'city' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'max:13'],
+            'email_address' => ['required', 'email']
+        ]);
 
+        $booking = $request->session()->get('booking');
+        $booking->fill($validated);
+        $request->session()->put('booking', $booking);
+
+        return to_route('book-a-room-step-4');
     }
     public function stepFourShow(Request $request) {
+        $booking = $request->session()->get('booking');
 
-        return view('frontend.pages.booking.step-4');
+        $roomName = $booking['room_name'];
+        return view('frontend.pages.booking.step-4', compact('booking', 'roomName'));
+    }
+
+    public function stepFourStore(Request $request) {
+        $validated = $request->validate([
+            'cancellationPolicyAgree' => ['required'],
+        ]);
+
+        $booking = $request->session()->get('booking');
+        $booking->fill($validated);
+        $request->session()->put('booking', $booking);
+
+        return to_route('book-a-room-step-4');
     }
 
 

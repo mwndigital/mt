@@ -48,35 +48,35 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">First name * </label>
-                                    <input type="text" name="first_name" id="first_name" required>
+                                    <input type="text" name="first_name" id="first_name" value="{{ $booking ? $booking->first_name : '' }}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Last name *</label>
-                                    <input type="text" name="last_name" id="last_name" required>
+                                    <input type="text" name="last_name" id="last_name" value="{{ $booking ? $booking->last_name : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Address line one *</label>
-                                    <input type="text" name="address_line_one" id="address_line_one" required>
+                                    <input type="text" name="address_line_one" id="address_line_one" value="{{ $booking ? $booking->address_line_one : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Address line two</label>
-                                    <input type="text" name="address_line_two" id="address_line_two">
+                                    <input type="text" name="address_line_two" id="address_line_two" value="{{ $booking ? $booking->address_line_two : '' }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Postcode *</label>
-                                    <input type="text" name="postcode" id="postcode" required>
+                                    <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">City *</label>
-                                    <input type="text" name="city" id="city" required>
+                                    <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -93,13 +93,13 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Phone number *</label>
-                                    <input type="tel" name="phone_number" id="phone_number" required>
+                                    <input type="tel" name="phone_number" id="phone_number" value="{{ $booking ? $booking->phone_number : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Email address *</label>
-                                    <input type="email" name="email_address" id="email_address" required>
+                                    <input type="email" name="email_address" id="email_address" value="{{ $booking ? $booking->email_address : '' }}" required>
                                 </div>
                             </div>
 
@@ -110,8 +110,7 @@
                                     <a href="{{ route('book-a-room-step-2') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    {{--<button type="submit">Next <i class="fas fa-chevron-right"></i></button>--}}
-                                    <a href="{{ route('book-a-room-step-4') }}" class="nextBtn">Continue To Payment <i class="fas fa-chevron-right"></i></a>
+                                    <button type="submit" class='nextBtn'>Next <i class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </form>

@@ -132,6 +132,16 @@
                 padding: .5rem ;
                 @include transition(all .4s ease-in-out);
                 width: 100%;
+
+                &:focus {
+                    background-color: $w;
+                    border: 0;
+                    border-bottom: 1px solid $darkGold;
+                    box-shadow: none;
+
+                    outline: none;
+                    text-decoration: none;
+                }
             }
 
             .innerRow {

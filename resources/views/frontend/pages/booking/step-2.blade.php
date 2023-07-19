@@ -40,6 +40,16 @@
         </div>
     </section>
 
+    @if($errors->any())
+        <div class="flex flex-row alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">

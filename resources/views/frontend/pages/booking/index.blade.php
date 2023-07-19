@@ -3,7 +3,7 @@
     Book a room - Step 1 | Aberlour Moray Scotland
 @endpush
 @push('page-styles')
-    
+
 @endpush
 @push('page-scripts')
 
@@ -78,7 +78,7 @@
                                         @foreach($rooms as $room)
                                             <div class="col-md-6">
                                                 <label class="checkItem">
-                                                    <input type="radio" name="room" id="room_{{ $room->id }}" value="{{ $room->id }}">
+                                                    <input type="radio" name="room_id" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                         <h4>{{ $room->name }}</h4>

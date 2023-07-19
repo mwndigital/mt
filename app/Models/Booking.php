@@ -28,4 +28,8 @@ class booking extends Model
         'phone_number',
         'email_address',
     ];
+
+    public function room(){
+        return $this->belongsTo(Rooms::class, 'id');
+    }
 }
