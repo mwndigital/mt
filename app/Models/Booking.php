@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class booking extends Model
@@ -22,6 +23,7 @@ class booking extends Model
         'checkin_date',
         'checkout_date',
         'arrival_time',
+        'duration_of_stay',
         'no_of_adults',
         'no_of_children',
         'no_of_infants',
@@ -45,6 +47,12 @@ class booking extends Model
             if (!$booking->booking_ref) {
                 $booking->booking_ref = 'mt-' . strtoupper(Str::random(8));
             }
+
+            $checkin = Carbon::createFromFormat('d-m-Y', $booking->checkin_date);
+            $checkout = Carbon::createFromFormat('d-m-Y', $booking->checkout_date);
+            $duration = $checkout->diffInDays($checkin);
+
+            $booking->duration_of_stay = $duration;
         });
     }
 

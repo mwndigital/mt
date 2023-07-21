@@ -67,10 +67,6 @@
                                         <td>{{ $booking->arrival_time }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Total number of nights</strong></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <td><strong>Number of Adults</strong></td>
                                         <td>{{ $booking->no_of_adults }}</td>
                                     </tr>

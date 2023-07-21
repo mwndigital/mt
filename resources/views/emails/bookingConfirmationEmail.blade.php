@@ -21,13 +21,16 @@
         </p>
         <ul style="list-style: none; padding: 0; margin-bottom: 20px;">
             <li>
-                <strong>Booking Reference:</strong>
+                <strong>Booking Reference:</strong> {{ $booking->booking_ref }}
             </li>
             <li>
                 <strong>Arrival Date & Time</strong> {{ date('d/m/Y', strtotime($booking->checkin_date)) }} {{ $booking->arrival_time }}
             </li>
             <li>
                 <strong>Checkout Date:</strong> {{ $booking->checkout_date }}
+            </li>
+            <li>
+                <strong>Duration of stay:</strong> {{ $booking->duration_of_stay }} nights
             </li>
             <li>
                 <strong>Your Room:</strong> {{ $booking->room->name }}
