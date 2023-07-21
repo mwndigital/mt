@@ -104,6 +104,8 @@ Route::prefix('book-a-room')->group(function(){
     Route::post('step-four-store', [BookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
 
     Route::get('payment-step', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
+
+    Route::get('thank-you', [BookingController::class, 'thankYou'])->name('book-a-room-thank-you');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
 Route::post('/book-room-step-one-store', [BookingController::class, 'stepOneStore'])->name('book-a-room-step-1-store');

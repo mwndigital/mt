@@ -56,6 +56,22 @@
         }
     }
 }
+ul.ui-timepicker-viewport {
+    li {
+        margin-bottom: 10px !important;
+        a {
+            color: $w !important;
+            font-family: $libReg;
+            font-size: 1rem;
+            text-align :center;
+            &#ui-active-item {
+                background: transparent !important;
+                border: 0 !important;
+                color: $darkGold !important;
+            }
+        }
+    }
+}
 
 .bookingPageMain {
     background-color: $w;
@@ -255,4 +271,23 @@
         }
     }
 
+}
+
+.bookingThankYouPageMain {
+    background-color: $w;
+    padding: 80px 0;
+    text-align: center;
+
+    h1 {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
+    p {
+        color: $darkBlue;
+        font-family: $libReg;
+        font-size: 1rem;
+        font-style: italic;;
+    }
 }

@@ -4,13 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class booking extends Model
 {
     use HasFactory;
 
+    protected $table = 'bookings';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     protected $fillable = [
-        'room',
+        'room_id',
+        'booking_ref',
         'checkin_date',
         'checkout_date',
         'arrival_time',
@@ -29,7 +37,20 @@ class booking extends Model
         'email_address',
     ];
 
-    public function room(){
-        return $this->belongsTo(Rooms::class, 'id');
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($booking) {
+            if (!$booking->booking_ref) {
+                $booking->booking_ref = 'mt-' . strtoupper(Str::random(8));
+            }
+        });
     }
+
+    public function room()
+    {
+        return $this->belongsTo(Rooms::class);
+    }
+
 }

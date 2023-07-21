@@ -23,6 +23,16 @@
         </div>
     </section>
 
+    @if($errors->any())
+        <div class="flex flex-row alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">
@@ -40,7 +50,9 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Room:</strong></td>
-                                        <td>{{ $roomName }}</td>
+                                        <td>
+                                            {{ $booking->room->name }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Check in Date</strong></td>
@@ -106,7 +118,7 @@
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
-                                    <a href="{{ route('book-a-room-step-2') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
+                                    <a href="{{ route('book-a-room-step-3') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
                                     <button type="submit" class='nextBtn'>Continue to Payment <i class="fas fa-chevron-right"></i></button>

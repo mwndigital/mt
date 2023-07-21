@@ -9,7 +9,7 @@
     </head>
     <div>
         <div style="background-color: #fff; padding: 10px 0;">
-            <img class="mainLogo" src="{{ asset('logos/main-logo.webp') }}" alt="Mash Tun Logo" style="display: block; height: 100px; margin: 20px auto; width: auto;">
+            <img class="mainLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}" alt="Mash Tun Logo" style="display: block; height: 100px; margin: 20px auto; width: auto;">
         </div>
         <div style="display: block; margin: 0 auto; width: 75%;">
             <h1 style="text-align: center; margin-bottom: 30px; color:#002C50;">There's a new contact form submission</h1>

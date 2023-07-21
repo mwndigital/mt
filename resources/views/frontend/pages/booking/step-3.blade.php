@@ -20,6 +20,16 @@
         </div>
     </section>
 
+    @if($errors->any())
+        <div class="flex flex-row alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">
@@ -83,9 +93,8 @@
                                 <div class="col-12">
                                     <label for="">Country *</label>
                                     <select name="country" id="country" required>
-                                        <option selected disabled>Select a country</option>
                                         @foreach($countries as $country)
-                                            <option value="{{ $country }}">{{ $country }}</option>
+                                            <option value="{{ $country }}" @if($country === 'United Kingdom') selected @endif>{{ $country }}</option>
                                         @endforeach
                                     </select>
                                 </div>
