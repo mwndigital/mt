@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\BookingConfirmationMail;
-use App\Models\Booking;
+use App\Models\booking;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;

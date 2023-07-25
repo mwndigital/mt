@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
-class Booking extends Model
+class booking extends Model
 {
     use HasFactory;
 
