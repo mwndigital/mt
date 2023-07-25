@@ -75,25 +75,25 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Check in date</label>
-                                    <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
+                                    <input type="text" name="checkin_date" id="checkin_date" value="">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Check out date</label>
-                                    <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
+                                    <input type="text" name="checkout_date" id="checkout_date" value="">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Arrival Time</label>
-                                    <input type="text" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
+                                    <input type="text" name="arrival_time" id="arrival_time" value="">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
+                                    <input type="number" name="no_of_adults" id="no_of_adults" value="">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Number of children</label>
-                                    <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
+                                    <input type="number" name="no_of_children" id="no_of_children" value="">
                                 </div>
                             </div>
 
