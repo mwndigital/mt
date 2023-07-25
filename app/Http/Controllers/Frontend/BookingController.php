@@ -191,9 +191,7 @@ class BookingController extends Controller
 
     public function processPayment(Request $request){
         $booking = $request->session()->get('booking');
-
-        dd($booking);
-
+        
         $gateway = $this->getSagePayGateway();
 
         //Generate unique vendorTxCode
