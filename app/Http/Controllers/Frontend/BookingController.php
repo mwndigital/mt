@@ -23,7 +23,7 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
 
-        return view('frontend.pages.booking.index', compact( 'booking', ));
+        return view('frontend.pages.booking.index', ['booking' => $booking]);
     }
 
     public function stepOneStore(Request $request) {

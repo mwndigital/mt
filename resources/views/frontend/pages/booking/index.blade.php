@@ -56,6 +56,11 @@
             </ul>
         </div>
     @endif
+    @if(session('booking_conflict'))
+        <div class="alert alert-danger" role="alert">
+            The selected dates are already booked. Please choose different dates.
+        </div>
+    @endif
 
 
     <section class="bookingPageMain">
@@ -75,25 +80,25 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Check in date</label>
-                                    <input type="text" name="checkin_date" id="checkin_date" value="">
+                                    <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Check out date</label>
-                                    <input type="text" name="checkout_date" id="checkout_date" value="">
+                                    <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Arrival Time</label>
-                                    <input type="text" name="arrival_time" id="arrival_time" value="">
+                                    <input type="text" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults" value="">
+                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Number of children</label>
-                                    <input type="number" name="no_of_children" id="no_of_children" value="">
+                                    <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
                                 </div>
                             </div>
 
