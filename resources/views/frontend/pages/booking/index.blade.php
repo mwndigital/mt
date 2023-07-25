@@ -22,12 +22,12 @@
                 minDate: 0
             });
             $('#arrival_time').timepicker({
-                timeFormat: 'h:mm',
+                timeFormat: 'h:mm p',
                 interval: 30,
-                minTime: '1:00pm',
-                maxTime: '6:00pm',
-                defaultTime: '1:00pm',
-                startTime: '1:00',
+                minTime: '14:00',
+                maxTime: '21:00',
+                defaultTime: '14:00',
+                startTime: '14:00',
                 dynamic: false,
                 dropdown: true,
                 scrollbar: true
