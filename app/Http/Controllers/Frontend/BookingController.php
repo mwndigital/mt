@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
+use Omnipay\Omnipay;
 
 class BookingController extends Controller
 {
@@ -115,9 +117,28 @@ class BookingController extends Controller
             'email_address' => ['required', 'email']
         ]);
 
+        // Create an instance of CountryList
+        $countryList = new CountryList();
+
+        // Get the country code based on the provided country name
+        $countries = $countryList->getList('en'); // 'en' for English locale
+
+        // Search for the country code based on the provided country name
+        $countryCode = array_search($validated['country'], $countries);
+
+        // If the country name is invalid or not found, handle the error accordingly
+        if (!$countryCode) {
+            // Handle the error (e.g., redirect back with an error message)
+            return back()->withErrors(['country' => 'Invalid country name.']);
+        }
+
+        // Update the 'country' field with the country code
+        $validated['country'] = $countryCode;
+
         $booking = $request->session()->get('booking');
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
+
 
         return to_route('book-a-room-step-4');
     }
@@ -129,7 +150,7 @@ class BookingController extends Controller
     }
 
     public function stepFourStore(Request $request) {
-        /*$validated = $request->validate([
+        $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
 
@@ -137,9 +158,9 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-step-4');*/
+        return to_route('book-a-room-payment-step');
 
-        $validated = $request->validate([
+        /*$validated = $request->validate([
            'cancellationPolicyAgree' => ['required']
 
         ]);
@@ -150,14 +171,102 @@ class BookingController extends Controller
 
         Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
 
-        return redirect('book-a-room/thank-you');
+        return redirect('book-a-room/thank-you');*/
 
     }
 
 
+    protected function getSagePayGateway() {
+        $gateway = OmniPay::create('SagePay\Server');
+
+        $gateway->setVendor('cgarsltd1');
+        $gateway->setTestMode(true);
+
+        return $gateway;
+    }
 
     public function paymentStep(){
         return view('frontend.pages.booking.step-payment');
+    }
+
+    public function processPayment(Request $request){
+        $booking = $request->session()->get('booking');
+
+        dd($booking);
+
+        $gateway = $this->getSagePayGateway();
+
+        //Generate unique vendorTxCode
+        $vendorTxCode = uniqid();
+
+        //define the payment data to be sent
+        $data = [
+            'amount' => '50.00',
+            'currency' => 'GBP',
+            'transactionID' => $vendorTxCode,
+            'card' => $request->input('card'),
+            'description' => 'The Mash Tun room booking deposit',
+            'BillingFirstNames' => $booking->first_name,
+            'BillingSurname' => $booking->last_name,
+            'BillingAddress1' => $booking->address_line_one,
+            'BillingCity' => $booking->city,
+            'BillingPostCode' => str_replace(' ', '', $booking->postcode),
+            'BillingCountry' => $booking->country,
+            'BillingState' => '',
+            'DeliveryFirstnames' => $booking->first_name,
+            'DeliverySurname' => $booking->last_name,
+            'DeliveryAddress1' => $booking->address_line_one,
+            'DeliveryCity' => $booking->city,
+            'DeliveryPostCode' => str_replace(' ', '', $booking->postcode),
+            'DeliveryCountry' => $booking->country,
+            'DeliveryState' => '',
+            'notifyUrl' => route('sagepay.notify'),
+        ];
+
+        //dd($data);
+
+        //send the request to SP
+        $response = $gateway->purchase($data)->send();
+
+
+        //Check response and redirect appropriately
+        if($response->isSuccessful()){
+            //Successful
+            return view('frontend.pages.booking.thank-you', compact('booking'));
+        }
+        elseif($response->isRedirect()){
+            $response->rediret();
+        }
+        else {
+            //Failed
+            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $response);
+        }
+    }
+
+    public function sagepayNotify(Request $request) {
+        $gateway = $this->getSagePayGateway();
+
+        $notificationData = $request->all();
+
+        $response = $gateway->completePurchase($notificationData)->send();
+
+        if($response->isSuccessful()){
+            // Payment successful
+            // Update the status of the booking or order in your application
+            // For example, retrieve the booking using the transaction ID received from SagePay
+            // $transactionId = $notificationData['VendorTxCode'];
+            // $booking = Booking::where('transaction_id', $transactionId)->first();
+            // $booking->update(['status' => 'paid']);
+
+            // Return a success response to SagePay
+            return response('OK');
+        }
+        else {
+            // Payment failed or invalid notification
+            // Log the error or take appropriate action
+            // Return a failure response to SagePay
+            return response('ERROR');
+        }
     }
 
     public function thankYou() {

@@ -273,7 +273,8 @@ ul.ui-timepicker-viewport {
 
 }
 
-.bookingThankYouPageMain {
+.bookingThankYouPageMain,
+.bookingPaymentErrorPageMain{
     background-color: $w;
     padding: 80px 0;
     text-align: center;

@@ -33,11 +33,69 @@
                                 <span>Step 4</span>
                             </div>
                         </div>
-                        <form method="post" action="">
+                        <form method="post" action="{{ route('book-a-room-process-payment') }}">
                             @csrf
 
-                            <h4>Booking overview</h4>
-
+                            <h4 class="stepTitle">Payment</h4>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Card Number *</label>
+                                    <input type="text" name="card[number]" id="card_number" placeholder="Card Number" required>
+                                    @error('card_number')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <input type="text" name="card[state]" hidden>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Expiry Month</label>
+                                    <select name="card[expiry_month]" id="card_expiry_month" required>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    @error('card_expiry_month')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Expiry Year</label>
+                                    <select name="card[expiry_year]" id="card_expiry_year" required>
+                                        @php
+                                            $currentYear = date('Y');
+                                            $futureYear = $currentYear + 10; // Replace 10 with the number of years you want to display in the future
+                                        @endphp
+                                        @for ($year = $currentYear; $year <= $futureYear; $year++)
+                                            <option value="{{ $year }}">{{ $year }}</option>
+                                        @endfor
+                                    </select>
+                                    @error('card_expiry_year')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">CVV</label>
+                                    <input type="text" name="card[cvv]" id="card_cvv" placeholder="CVV" required>
+                                </div>
+                            </div>
 
 
 
@@ -46,9 +104,9 @@
                                 <div class="col-md-6">
                                     <a href="{{ route('book-a-room-step-2') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
-                                <div class="col-md-6">
-                                    {{--<button type="submit">Next <i class="fas fa-chevron-right"></i></button>--}}
-                                    <a href="{{ route('book-a-room-payment-step') }}" class="nextBtn">Continue To Payment <i class="fas fa-chevron-right"></i></a>
+                                <div class="col-md-6 d-flex justify-content-end">
+                                    <button type="submit" class='nextBtn'>Next <i class="fas fa-chevron-right"></i></button>
+                                    {{--<a href="{{ route('book-a-room-payment-step') }}" class="nextBtn">Continue To Payment <i class="fas fa-chevron-right"></i></a>--}}
                                 </div>
                             </div>
                         </form>
