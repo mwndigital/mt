@@ -162,8 +162,7 @@ class BookingController extends Controller
         return to_route('book-a-room-payment-step');*/
 
         $validated = $request->validate([
-           'cancellationPolicyAgree' => ['required']
-
+            'cancellationPolicyAgree' => ['required'],
         ]);
         $booking = $request->session()->get('booking');
         $booking->fill($validated);
