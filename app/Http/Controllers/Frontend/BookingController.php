@@ -163,10 +163,10 @@ class BookingController extends Controller
 
 
         $booking = $request->session()->get('booking');
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
-        ]);
-        $booking->fill($validated);
+        ]);*/
+        /*$booking->fill($validated);*/
         $booking->save();
         $request->session()->forget('booking');
 
