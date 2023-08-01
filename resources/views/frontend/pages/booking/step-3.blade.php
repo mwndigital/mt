@@ -78,15 +78,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
-                                    <label for="">Postcode *</label>
-                                    <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="">City *</label>
                                     <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Postcode *</label>
+                                    <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -100,19 +98,15 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="">Phone number *</label>
                                     <input type="tel" name="phone_number" id="phone_number" value="{{ $booking ? $booking->phone_number : '' }}" required>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="">Email address *</label>
                                     <input type="email" name="email_address" id="email_address" value="{{ $booking ? $booking->email_address : '' }}" required>
                                 </div>
                             </div>
-
-
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
