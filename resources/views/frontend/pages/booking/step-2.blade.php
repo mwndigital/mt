@@ -71,7 +71,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row innerRow">
-                                        @foreach($rooms as $room)
+                                        @foreach($filteredRooms as $room)
                                             <div class="col-md-6">
                                                 <label class="checkItem">
                                                     <input type="radio" name="room_id" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>

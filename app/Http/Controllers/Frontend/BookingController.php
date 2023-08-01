@@ -22,8 +22,6 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         $booking = $request->session()->get('booking');
-
-
         return view('frontend.pages.booking.index', compact('booking', ));
     }
 
@@ -52,14 +50,36 @@ class BookingController extends Controller
         return to_route('book-a-room-step-2');
     }
 
-    public function stepTwoShow(Request $request) {
+    public function stepTwoShow(Request $request)
+    {
         $booking = $request->session()->get('booking');
-        //Check the number of Adults and Kids from prev step and display only the applicable rooms
-        $rooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
+
+        // Fetch available rooms based on the number of adults and children
+        $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
             ->where('child_cap', '>=', $booking->no_of_children)
             ->get();
 
-        return view('frontend.pages.booking.step-2', compact('booking', 'rooms'));
+        // Get the check-in and check-out dates in the "d-m-Y" format
+        $checkinDate = Carbon::createFromFormat('d-m-Y', $booking->checkin_date)->format('d-m-Y');
+        $checkoutDate = Carbon::createFromFormat('d-m-Y', $booking->checkout_date)->format('d-m-Y');
+
+        // Filter out the rooms that have conflicts with existing bookings for the selected time period
+        $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
+            $conflictingBooking = Booking::where('room_id', $room->id)
+                ->where(function ($query) use ($checkinDate, $checkoutDate) {
+                    $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
+                        ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
+                        ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
+                            $query->where('checkin_date', '<=', $checkinDate)
+                                ->where('checkout_date', '>=', $checkoutDate);
+                        });
+                })
+                ->exists();
+
+            return !$conflictingBooking;
+        });
+
+        return view('frontend.pages.booking.step-2', compact('booking', 'filteredRooms'));
     }
 
     public function stepTwoStore(Request $request)
