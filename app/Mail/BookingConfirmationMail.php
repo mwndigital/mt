@@ -31,7 +31,7 @@ class BookingConfirmationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('reservations@mashtun-aberlour.com', 'Mash Tun Arberlour'),
+            from: new Address('test@mydev-ne.co.uk', 'Mash Tun Arberlour'),
             subject: 'Your Mash Tun booking confirmation',
         );
     }
