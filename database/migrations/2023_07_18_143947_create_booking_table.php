@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('room_id');
             $table->string('checkin_date');
             $table->string('checkout_date');
-            $table->time('arrival_time');
-            $table->string('duration_of_stay');
+            $table->string('arrival_time');
+            $table->string('duration_of_stay')->nullable();
             $table->integer('no_of_adults');
             $table->integer('no_of_children');
             $table->integer('no_of_infants')->nullable();

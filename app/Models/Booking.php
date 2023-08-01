@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
-class Booking extends Model
+class Booking extends Model implements \Serializable
 {
     use HasFactory;
 
@@ -61,4 +63,14 @@ class Booking extends Model
         return $this->belongsTo(Rooms::class);
     }
 
+    public function serialize()
+    {
+        return serialize($this->getAttributes());
+    }
+
+    public function unserialize($data)
+    {
+        $attributes = unserialize($data);
+        $this->setRawAttributes($attributes);
+    }
 }

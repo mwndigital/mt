@@ -23,7 +23,8 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
 
-        return view('frontend.pages.booking.index', compact('booking'));
+
+        return view('frontend.pages.booking.index', compact('booking', ));
     }
 
     public function stepOneStore(Request $request) {
@@ -150,7 +151,7 @@ class BookingController extends Controller
     }
 
     public function stepFourStore(Request $request) {
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
 
@@ -158,9 +159,9 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-payment-step');
+        return to_route('book-a-room-payment-step');*/
 
-        /*$validated = $request->validate([
+        $validated = $request->validate([
            'cancellationPolicyAgree' => ['required']
 
         ]);
@@ -171,7 +172,7 @@ class BookingController extends Controller
 
         Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
 
-        return redirect('book-a-room/thank-you');*/
+        return redirect('book-a-room/thank-you');
 
     }
 
@@ -185,13 +186,15 @@ class BookingController extends Controller
         return $gateway;
     }
 
-    public function paymentStep(){
-        return view('frontend.pages.booking.step-payment');
+    public function paymentStep(Request $request){
+        $booking = $request->session()->get('booking');
+        //dd($booking);
+        return view('frontend.pages.booking.step-payment', compact('booking'));
     }
 
     public function processPayment(Request $request){
         $booking = $request->session()->get('booking');
-        
+
         $gateway = $this->getSagePayGateway();
 
         //Generate unique vendorTxCode
@@ -199,6 +202,7 @@ class BookingController extends Controller
 
         //define the payment data to be sent
         $data = [
+            'Apply3DSecure' => '0',
             'amount' => '50.00',
             'currency' => 'GBP',
             'transactionID' => $vendorTxCode,
@@ -218,22 +222,23 @@ class BookingController extends Controller
             'DeliveryPostCode' => str_replace(' ', '', $booking->postcode),
             'DeliveryCountry' => $booking->country,
             'DeliveryState' => '',
+
             'notifyUrl' => route('sagepay.notify'),
         ];
-
-        //dd($data);
 
         //send the request to SP
         $response = $gateway->purchase($data)->send();
 
 
+
         //Check response and redirect appropriately
         if($response->isSuccessful()){
             //Successful
+
             return view('frontend.pages.booking.thank-you', compact('booking'));
         }
         elseif($response->isRedirect()){
-            $response->rediret();
+            $response->redirect();
         }
         else {
             //Failed

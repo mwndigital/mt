@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('price_per_night_double', 9, 2)->nullable();
             $table->decimal('price_per_night_single', 9, 2)->nullable();
             $table->string('featured_image');
+
             $table->timestamps();
         });
     }
