@@ -14,81 +14,19 @@ class PolicyPagesSeeder extends Seeder
     public function run(): void
     {
         $tcsMainContent = <<<EOT
-<p>These terms and conditions outline the rules and regulations for the use of MashTun's Website, located at https://www.mashtun-aberlour.com/.</p>
-<p>By accessing this website we assume you accept these terms and conditions. Do not continue to use mash tun-aberlour if you do not agree to take all of the terms and conditions stated on this page.</p>
-<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice, and all Agreements: "Client", "You" and "You're" refers to you, the person who logs on to this website and is compliant with the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of the provision of the Company's stated services, in accordance with and subject to, prevailing law of the United Kingdom. Any use of the above terminology or other words in the singular, plural, capitalization, and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
-<h3><strong>Cookies</strong></h3>
-<p>We employ the use of cookies. By accessing mashtun-aberlour, you agreed to use cookies in agreement with MashTun's Privacy Policy.</p>
-<p>Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
-<h3><strong>License</strong></h3>
-<p>Unless otherwise stated, MashTun and/or its licensors own the intellectual property rights for all material on Mashtun-aberlour. All intellectual property rights are reserved. You may access this from mashtun-aberlour for your own personal use subject to restrictions set in these terms and conditions.</p>
-<p>You must not:</p>
-<ul>
-<li>Republish material from Mash tun-Aberlour</li>
-<li>Sell, rent, or sub-license material from mash tun-Aberlour</li>
-<li>Reproduce, duplicate, or copy material from Mashtun-Aberlour</li>
-<li>Redistribute content from mash tun-Aberlour</li>
-</ul>
-<p>This Agreement shall begin on the date hereof.</p>
-<p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. MashTun does not filter, edit, publish, or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of MashTun, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, MashTun shall not be liable for the Comments or for any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p>
-<p>MashTun reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive, or causes a breach of these Terms and Conditions.</p>
-<p>You warrant and represent that:</p>
-<ul>
-<li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
-<li>The Comments do not invade any intellectual property right, including without limitation copyright, patent, or trademark of any third party;</li>
-<li>The Comments do not contain any defamatory, libelous, offensive, indecent, or otherwise unlawful material which is an invasion of privacy</li>
-<li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
-</ul>
-<p>You hereby grant MashTun a non-exclusive license to use, reproduce, edit, and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats, or media.</p>
-<h3><strong>Hyperlinking to our Content</strong></h3>
-<p>The following organizations may link to our Website without prior written approval:</p>
-<ul>
-<li>Government agencies;</li>
-<li>Search engines;</li>
-<li>News organizations;</li>
-<li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
-<li>System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
-</ul>
-<p>These organizations may link to our home page, to publications, or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.</p>
-<p>We may consider and approve other link requests from the following types of organizations:</p>
-<ul>
-<li>commonly-known consumer and/or business information sources;</li>
-<li>dot.com community sites;</li>
-<li>associations or other groups representing charities;</li>
-<li>online directory distributors;</li>
-<li>internet portals;</li>
-<li>accounting, law, and consulting firms; and</li>
-<li>educational institutions and trade associations.</li>
-</ul>
-<p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of MashTun; and (d) the link is in the context of general resource information.</p>
-<p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.</p>
-<p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to MashTun. Please include your name, your organization name, and contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
-<p>Approved organizations may hyperlink to our Website as follows:</p>
-<ul>
-<li>By use of our corporate name; or</li>
-<li>By use of the uniform resource locator being linked to; or</li>
-<li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</li>
-</ul>
-<p>No use of MashTun's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
-<h3><strong>iFrames</strong></h3>
-<p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
-<h3><strong>Content Liability</strong></h3>
-<p>We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
-<h3><strong>Reservation of Rights</strong></h3>
-<p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
-<h3><strong>Removal of links from our website</strong></h3>
-<p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
-<p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
-<h3><strong>Disclaimer</strong></h3>
-<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
-<ul>
-<li>limit or exclude our or your liability for death or personal injury;</li>
-<li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-<li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-<li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-</ul>
-<p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort, and for breach of statutory duty.</p>
-<p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+<p>The following terms and conditions apply to all bookings made at this property whether via our online website reservation system, by email, by phone or by any other means.&nbsp; By proceeding with a booking, you are choosing to accept the terms and conditions of that booking which are as follows:</p>
+<ol>
+<li>All bookings made at this property are accepted as a contract between ourselves (The Mash Tun) and the booking party, whether the individual themselves or the person that has booked accommodation on behalf of an individual.&nbsp; As such, once the hotel has confirmed, in writing, the details of the reservation this should be accepted as legally binding up until the contract is broken by agreement of both parties.</li>
+<li>At the point of reservation, regardless of which booking means is used, we will ask for credit card details (long number, expiry, CVC) which should remain valid through until the point of departure.&nbsp; These details will be held in a secure file on our premises in order to operate a 72-hour cancellation policy.&nbsp; If a room(s) is canceled within the 72-hour period prior to arrival, the first night's accommodation will be charged to these card details.&nbsp; No deposit will be taken at the point of reservation nor will pre-payment be processed unless expressly requested by the guest(s) themselves.&nbsp; In circumstances of a no-show, the total value of the booking will be charged.&nbsp; No charge will be incurred for cancellations made prior to the 72-hour period.</li>
+<li>We operate dynamic pricing which means our room pricing may change on demand.&nbsp; When a reservation request is made, the pricing provided for the total stay is true at the point of booking and will remain true through until your departure.&nbsp; Pricing quoted at the point of reservation is per room, per night and is inclusive of breakfast and VAT (the current rate at the time of writing is 20%).&nbsp; Any changes to the VAT will be taken into account in your final total unless you have paid your accommodation in full prior to your arrival.&nbsp; Any other meals are not included in quoted prices and are dealt with separately at both the point of reserving your room and at the point of payment.</li>
+<li>We offer rates both for single occupancy and double occupancy in our Deluxe, Club, Executive Club, and Junior Suite rooms.&nbsp; Occupancy will therefore be determined by the rate that is chosen at the point of reservation.&nbsp; If this is exceeded at the point of arrival, the full rate will be charged as applicable at the time of check-in.&nbsp; We have one extra bed that can be placed in some of our rooms, space dependent, which is charged at &pound;35 for children under 12 per night and at &pound;40 for adults over 12 per night.&nbsp; A cot for those under 3 can also be provided at the cost of &pound;15 per night.&nbsp; These extras must be organised at the point of reservation and are only guaranteed if organised at that time.</li>
+<li>Check-in (officially) starts at 2 pm on the day of arrival.&nbsp; Earlier access is sometimes possible however, this can only be allowed by the hotel and will not be guaranteed under any circumstances.&nbsp; Our last (official) check-in time is 9pm therefore if your arrival time will be after this point, it is essential that you inform the hotel in order for us to provide you with a self-check-in procedure.&nbsp; This includes a 4-digit code which is only able to be provided by the hotel.&nbsp; Check-out time is 11 am on the day of departure.&nbsp; Late check-outs are not available although luggage may be kept in our locked cloakroom until your departure from the area.</li>
+<li>We are a strictly no-smoking hotel in accordance with the law in Scotland.&nbsp; If this law is not adhered to during your stay and we have sufficient evidence to suggest that smoking has taken place in any of our rooms or public areas, the hotel reserves the right to charge a fine of &pound;250.&nbsp; We have a specially built 'Smoking Bothy' which offers the only smoking zone on hotel grounds.</li>
+<li>We have a no pets policy within the hotel's public areas and rooms, with the exception of assistance dogs.&nbsp; Pets can have access to the Glenfiddich Terrace and the rest of the grounds as long as owners remain respectful of our other guests.&nbsp; It is the responsibility of the pet owners to pick up after them - refuse bags are available on request.</li>
+<li>We have an accessibility toilet as part of our larger toilet suite; however, we do not guarantee any further disabled access within the hotel's public areas or rooms (all rooms are at least one set of stairs above the main reception area).&nbsp; Any accessibility issues must be dictated to the hotel at the point of reservation, however, due to the age and layout of the hotel we are unable to deal with any severe mobility issues.</li>
+<li>Any damage to or loss of hotel property that is caused by you or members of your party, including to our other guests and their belongings, will incur a charge required to make good or remedy such damage or loss.</li>
+<li>The Mash Tun Staff have the right to work in a safe and healthy environment whereby they are not threatened with or on the receiving end of verbal or physical abuse from guests.&nbsp; In circumstances where this is violated, we reserve the right to immediately eject you and other members of your party from the premises.&nbsp; All charges incurred up until the point of ejection will be taken from the card provided at the point of reservation.</li>
+</ol>
 
 EOT;
 

@@ -83,11 +83,13 @@
                                         border: 0;
                                         border-radius: 0;
                                         color: $darkBlue;
+                                        display: block;
                                         font-family: $libReg;
                                         font-size: 1rem;
                                         outline: none;
                                         text-decoration: none;
                                         @include transition(all .4s ease-in-out);
+                                        width: 100%;
 
                                         &:hover,
                                         &:focus,

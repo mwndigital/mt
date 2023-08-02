@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-
+    Admin All Bookings
 @endpush
 @push('page-scripts')
 
@@ -21,6 +21,60 @@
                             Add Booking <i class="fas fa-plus"></i>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pageMain">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hovered">
+                        <thead>
+                            <tr>
+                                <th>Checkin Date</th>
+                                <th>Checkout Date</th>
+                                <th>Name</th>
+                                <th>Room</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($bookings as $booking)
+                                <tr>
+                                    <td>{{ $booking->checkin_date }}</td>
+                                    <td>{{ $booking->checkout_date }}</td>
+                                    <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                    <td>{{ $booking->room->name }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ route('admin.bookings.show', $booking->id) }}">View</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <form action="" method="POST">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

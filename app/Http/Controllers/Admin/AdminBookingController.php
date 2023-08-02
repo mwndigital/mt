@@ -38,7 +38,8 @@ class AdminBookingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        return view('admin.pages.bookings.show', compact('booking'));
     }
 
     /**
@@ -46,7 +47,9 @@ class AdminBookingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+
+        return view('admin.pages.bookings.edit', compact('booking'));
     }
 
     /**
