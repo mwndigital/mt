@@ -3,30 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\AdminContactFormSubmissionMail;
 use App\Models\Booking;
-use App\Models\ContactFormSubmissions;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
-class AdminIndexController extends Controller
+class AdminBookingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $bookings =  Booking::all();
-        return view('admin.pages.dashboard', compact('bookings'));
-    }
-
-    public function formSubmissionTestEmail(){
-        $user = Auth::user();
-        $contactFormSubmissions = new ContactFormSubmissions();
-        Mail::to($user->email)->send(new AdminContactFormSubmissionMail($contactFormSubmissions));
-
-        return redirect()->back()->with('success', 'test email sent successfully');
+        $bookings = Booking::all();
+        return view('admin.pages.bookings.index', compact('bookings'));
     }
 
     /**

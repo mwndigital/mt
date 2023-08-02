@@ -94,6 +94,7 @@
                                 <div class="col-12">
                                     <label for="">CVV</label>
                                     <input type="text" name="card[cvv]" id="card_cvv" placeholder="CVV" required>
+                                    <input type="text" name="card[state]" id="card_state" value=" " style="display: none;">
                                 </div>
                             </div>
 

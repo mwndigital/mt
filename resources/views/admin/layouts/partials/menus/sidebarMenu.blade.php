@@ -1,6 +1,6 @@
 <ul class="sidebarMenu list-unstyled">
     <li>
-        <a href="">Dashboard</a>
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -17,7 +17,7 @@
             <li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>
         </ul>
     </li>
-    <li><a href="">Bookings</a></li>
+    <li><a href="{{ route('admin.bookings.index') }}">Bookings</a></li>
     <li><a href="{{ route('admin.rooms.index') }}">Rooms</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>

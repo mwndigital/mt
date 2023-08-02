@@ -44,6 +44,17 @@ class BookingController extends Controller
         $booking->checkin_date = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
         $booking->checkout_date = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
 
+        // Convert date strings to Y-m-d format using Carbon
+        $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
+        $checkoutDate = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
+
+        $booking->checkin_date = $checkinDate;
+        $booking->checkout_date = $checkoutDate;
+
+        // Calculate the duration of the stay in days
+        $duration = Carbon::parse($checkinDate)->diffInDays(Carbon::parse($checkoutDate));
+
+        $booking->duration_of_stay = $duration;
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
@@ -171,7 +182,7 @@ class BookingController extends Controller
     }
 
     public function stepFourStore(Request $request) {
-        /*$validated = $request->validate([
+        $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
 
@@ -179,20 +190,20 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-payment-step');*/
+        return to_route('book-a-room-payment-step');
 
 
-        $booking = $request->session()->get('booking');
-        /*$validated = $request->validate([
+        /*$booking = $request->session()->get('booking');
+        $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
-        ]);*/
-        /*$booking->fill($validated);*/
+        ]);
+        $booking->fill($validated);
         $booking->save();
         $request->session()->forget('booking');
 
         Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
 
-        return redirect('book-a-room/thank-you');
+        return redirect('book-a-room/thank-you');*/
 
     }
 
@@ -217,37 +228,44 @@ class BookingController extends Controller
 
         $gateway = $this->getSagePayGateway();
 
+
         //Generate unique vendorTxCode
         $vendorTxCode = uniqid();
 
+        $transactionId = uniqid();
+
         //define the payment data to be sent
         $data = [
+            'VendorTxCode' => $vendorTxCode,
+            'VendorName' => 'cgarsltd1',
             'Apply3DSecure' => '0',
             'amount' => '50.00',
             'currency' => 'GBP',
-            'transactionID' => $vendorTxCode,
             'card' => $request->input('card'),
             'description' => 'The Mash Tun room booking deposit',
-            'BillingFirstNames' => $booking->first_name,
-            'BillingSurname' => $booking->last_name,
+            'transactionID' => $transactionId,
+            'BillingFirstName' => $booking->first_name,
+            'BillingLastName' => $booking->last_name,
             'BillingAddress1' => $booking->address_line_one,
             'BillingCity' => $booking->city,
             'BillingPostCode' => str_replace(' ', '', $booking->postcode),
             'BillingCountry' => $booking->country,
-            'BillingState' => '',
-            'DeliveryFirstnames' => $booking->first_name,
-            'DeliverySurname' => $booking->last_name,
-            'DeliveryAddress1' => $booking->address_line_one,
-            'DeliveryCity' => $booking->city,
-            'DeliveryPostCode' => str_replace(' ', '', $booking->postcode),
-            'DeliveryCountry' => $booking->country,
-            'DeliveryState' => '',
+            'BillingState' => ' ',
+            'ShippingFirstname' => $booking->first_name,
+            'ShippingLastName' => $booking->last_name,
+            'ShippingAddress1' => $booking->address_line_one,
+            'ShippingCity' => $booking->city,
+            'ShippingPostCode' => str_replace(' ', '', $booking->postcode),
+            'ShippingCountry' => $booking->country,
+            'ShippingState' => ' ',
 
             'notifyUrl' => route('sagepay.notify'),
         ];
 
         //send the request to SP
         $response = $gateway->purchase($data)->send();
+
+        //dd($data);
 
 
 

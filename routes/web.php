@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBookingController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
@@ -58,6 +59,9 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
 
     //Whisky
     Route::resource('whisky', WhiskyController::class);
+
+    //Bookings
+    Route::resource('bookings', AdminBookingController::class);
 
     //Pages
     Route::prefix('pages')->group(function(){
