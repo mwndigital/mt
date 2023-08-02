@@ -182,7 +182,7 @@ class BookingController extends Controller
     }
 
     public function stepFourStore(Request $request) {
-        $validated = $request->validate([
+        /*$validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
 
@@ -190,10 +190,10 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-payment-step');
+        return to_route('book-a-room-payment-step');*/
 
 
-        /*$booking = $request->session()->get('booking');
+        $booking = $request->session()->get('booking');
         $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
@@ -203,7 +203,7 @@ class BookingController extends Controller
 
         Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
 
-        return redirect('book-a-room/thank-you');*/
+        return redirect('book-a-room/thank-you');
 
     }
 
