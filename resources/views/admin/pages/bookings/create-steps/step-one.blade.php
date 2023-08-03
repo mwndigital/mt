@@ -1,14 +1,9 @@
-@extends('layouts.frontend')
+@extends('layouts.admin')
 @push('page-title')
-    Book a room - Step 1 | Aberlour Moray Scotland
-@endpush
-@push('page-styles')
-    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    Admin - Create booking step one
 @endpush
 @push('page-scripts')
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
         $(document).ready(function(){
             $('#checkin_date').datepicker({
@@ -33,19 +28,32 @@
                 scrollbar: true,
                 use24Hours: true,
             });
-
             document.getElementById('no_of_adults').defaultValue = '0';
             document.getElementById('no_of_children').defaultValue = '0';
+
         });
     </script>
-
+@endpush
+@push('page-styles')
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 @endpush
 @section('content')
-    <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
+    <section class="pageHero">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h1>Book a stay with us</h1>
+                <div class="col-md-8">
+                    <h1>
+                        Create booking - step one
+                    </h1>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ route('admin.bookings.index') }}" class="blueBtn">
+                            <i class="fas fa-chevron-left"></i> Back to Bookings
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,21 +74,19 @@
         </div>
     @endif
 
-
-    <section class="bookingPageMain">
+    <section class="pageMain">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="formWrap">
+                    <div class="bookingFormWrap">
                         <h4 class="stepTitle">Booking Details</h4>
                         <div class="stepBanner">
                             <div class="innerWrap">
                                 <span>Step 1</span>
                             </div>
                         </div>
-                        <form method="post" action="{{ route('book-a-room-step-1-store') }}">
+                        <form method="post" action="{{ route('admin.book-a-room-step-one-store') }}">
                             @csrf
-
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Check in date</label>
@@ -118,5 +124,4 @@
             </div>
         </div>
     </section>
-
 @endsection

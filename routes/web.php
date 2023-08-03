@@ -61,6 +61,15 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     Route::resource('whisky', WhiskyController::class);
 
     //Bookings
+    Route::prefix('bookings')->group(function(){
+        Route::post('stepOneStore', [AdminBookingController::class, 'stepOneStore'])->name('book-a-room-step-one-store');
+        Route::get('stepTwo', [AdminBookingController::class, 'stepTwoShow'])->name('book-a-room-step-two');
+        Route::post('stepTwoStore', [AdminBookingController::class, 'stepTwoStore'])->name('book-a-room-step-two-store');
+        Route::get('stepThree', [AdminBookingController::class, 'stepThreeShow'])->name('book-a-room-step-three');
+        Route::post('stepThreeStore', [AdminBookingController::class, 'stepThreeStore'])->name('book-a-room-step-three-store');
+        Route::get('stepFour', [AdminBookingController::class, 'stepFourShow'])->name('book-a-room-step-four');
+        Route::post('stepFourStore', [AdminBookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
+    });
     Route::resource('bookings', AdminBookingController::class);
 
     //Pages

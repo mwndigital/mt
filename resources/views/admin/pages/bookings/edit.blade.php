@@ -3,6 +3,7 @@
     Admin - Edit Booking {{ $booking->booking_ref }}
 @endpush
 @push('page-scripts')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
         $(document).ready(function(){
             $('#checkin_date').datepicker({
@@ -27,7 +28,8 @@
                 scrollbar: true,
                 use24Hours: true,
             });
-
+            document.getElementById('no_of_adults').defaultValue = '0';
+            document.getElementById('no_of_children').defaultValue = '0';
 
         });
     </script>
@@ -64,26 +66,97 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="">Check in date</label>
+                                <label for="">Check in date *</label>
                                 <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
                             </div>
                             <div class="col-md-4">
-                                <label for="">Check out date</label>
+                                <label for="">Check out date *</label>
                                 <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
                             </div>
                             <div class="col-md-4">
-                                <label for="">Arrival Time</label>
+                                <label for="">Arrival Time *</label>
                                 <input type="text" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="">Number of adults</label>
+                                <label for="">Number of adults *</label>
                                 <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
                             </div>
                             <div class="col-md-6">
-                                <label for="">Number of children</label>
+                                <label for="">Number of children *</label>
                                 <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="pageSecTitle">
+                                    Customer Details
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Title *</label>
+                                <select name="user_title" id="user_title">
+                                    <option value="mr">Mr</option>
+                                    <option value="mrs">Mrs</option>
+                                    <option value="miss">Miss</option>
+                                    <option value="ms">Ms</option>
+                                    <option value="dr">Dr</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">First Name *</label>
+                                <input type="text" name="first_name" id="first_name" value="{{ $booking ? $booking->first_name : '' }}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Surname *</label>
+                                <input type="text" name="last_name" id="last_name" value="{{ $booking ? $booking->last_name : '' }}" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Address line one *</label>
+                                <input type="text" name="address_line_one" id="address_line_one" value="{{ $booking ? $booking->address_line_one : '' }}" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Address line two</label>
+                                <input type="text" name="address_line_two" id="address_line_two" value="{{ $booking ? $booking->address_line_two : '' }}">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">City *</label>
+                                <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">Postcode *</label>
+                                <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Country *</label>
+                                <select name="country" id="country" required>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country }}" @if($country === 'United Kingdom') selected @endif>{{ $country }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">Phone number *</label>
+                                <input type="tel" name="phone_number" id="phone_number" value="{{ $booking ? $booking->phone_number : '' }}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Email address *</label>
+                                <input type="email" name="email_address" id="email_address" value="{{ $booking ? $booking->email_address : '' }}" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="submit" class='blueBtn'>Save</button>
                             </div>
                         </div>
                     </form>
