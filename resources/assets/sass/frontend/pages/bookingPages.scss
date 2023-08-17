@@ -167,7 +167,7 @@ ul.ui-timepicker-viewport {
 
                     label {
                         border: 2px solid transparent;
-                        text-align: center;
+                        text-align: left;
                         @include transition(all .4s ease-in-out);
                         img {
                             display: block;
@@ -177,10 +177,26 @@ ul.ui-timepicker-viewport {
                             width: 100%;
                         }
 
-                        h4 {
-                            color: $darkBlue;
-                            font-family: $libBold;
-                            font-size: 1rem;
+                        .content {
+                            padding: 1rem .75rem;
+                            h4 {
+                                color: $darkBlue;
+                                font-family: $libBold;
+                                font-size: 1.25rem;
+                                margin-bottom: 20px;
+                            }
+
+                            h6.price {
+                                color: $darkGold;
+                                font-family:$libReg;
+                                font-size: 1rem;
+                                margin-bottom: 20px;
+                            }
+                            p {
+                                color: $b;
+                                font-family: $libReg;
+                                font-size: 1rem;
+                            }
                         }
                     }
                     input[type='radio'] {
@@ -270,7 +286,66 @@ ul.ui-timepicker-viewport {
             }
         }
     }
+    .resSummary {
+        border: 1px solid $lightGrey;
+        border-radius: 5px;
+        padding: 1rem;
+        h2 {
+            color: $darkBlue;
+            font-family: $libBold;
+            font-size: 2rem;
+            margin-bottom: 30px;
 
+            &:after {
+                background-color: $darkBlue;
+                content: '';
+                display: block;
+                height: 1px;
+                margin: 10px 0;
+                width: 100%;
+            }
+        }
+        ul.resDates {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+            li {
+                color: $b;
+                font-size: 1rem;
+                width: 32%;
+                strong {
+                    color: $darkBlue;
+                    font-size: 1.15rem;
+
+                }
+                i {
+                    color:$darkGold;
+                    font-size: 1.5rem;
+                }
+
+                &:nth-of-type(2) {
+                    text-align: center;
+                }
+            }
+        }
+        ul.adultChildCap {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+            li {
+                color: $b;
+                font-size: 1rem;
+                width: 49%;
+
+                strong {
+                    color: $darkBlue;
+                    font-size: 1.15rem;
+                }
+            }
+        }
+    }
 }
 
 .bookingThankYouPageMain,

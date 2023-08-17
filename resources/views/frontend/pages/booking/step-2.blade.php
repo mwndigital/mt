@@ -58,7 +58,7 @@
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8">
                     <div class="formWrap">
                         <h4 class="stepTitle">Choose a room</h4>
                         <div class="stepBanner">
@@ -77,7 +77,13 @@
                                                     <input type="radio" name="room_id" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
-                                                        <h4>{{ $room->name }}</h4>
+                                                        <div class="content">
+                                                            <h4>{{ $room->name }}</h4>
+                                                            <h6 class="price">
+                                                                Price from: £{{ $room->price_per_night_single }}
+                                                            </h6>
+                                                            {!! $room->short_description !!}
+                                                        </div>
                                                     </label>
                                                 </label>
                                             </div>
@@ -97,6 +103,36 @@
                             </div>
                         </form>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <aside class="resSummary">
+                        <h2>Reservation Summary</h2>
+                        <ul class="list-inline resDates">
+                            <li class="list-inline-item">
+                                <strong>From</strong><br>
+                                {{ date('d/m/Y', strtotime($booking->checkin_date)) }}
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <strong>To</strong><br>
+                                {{ date('d/m/Y', strtotime($booking->checkout_date )) }}
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="list-inline adultChildCap">
+                            <li class="list-inline-item">
+                                <strong>No of adults</strong><br>
+                                {{ $booking->no_of_adults }}
+                            </li>
+                            <li class="list-inline-item">
+                                <strong>No of children</strong><br>
+                                {{ $booking->no_of_children }}
+                            </li>
+                        </ul>
+                        <hr>
+                    </aside>
                 </div>
             </div>
         </div>

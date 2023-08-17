@@ -51,7 +51,7 @@
     <section class="pageMain">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8">
                     <div class="bookingFormWrap">
                         <h4 class="stepTitle">Your Details</h4>
                         <div class="stepBanner">
