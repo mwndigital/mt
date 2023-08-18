@@ -115,7 +115,7 @@
                             <li class="list-inline-item">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </li>
-                            <li class="list-inline-item">
+                            <li class="list-inline-item" style="text-align: right;">
                                 <strong>To</strong><br>
                                 {{ date('d/m/Y', strtotime($booking->checkout_date )) }}
                             </li>
@@ -126,7 +126,7 @@
                                 <strong>No of adults</strong><br>
                                 {{ $booking->no_of_adults }}
                             </li>
-                            <li class="list-inline-item">
+                            <li class="list-inline-item" style="text-align: right;">
                                 <strong>No of children</strong><br>
                                 {{ $booking->no_of_children }}
                             </li>

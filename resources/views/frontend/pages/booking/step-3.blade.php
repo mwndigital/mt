@@ -33,7 +33,7 @@
     <section class="bookingPageMain">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8">
                     <div class="formWrap">
                         <h4 class="stepTitle">Your Details</h4>
                         <div class="stepBanner">
@@ -66,13 +66,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="">Address line one *</label>
                                     <input type="text" name="address_line_one" id="address_line_one" value="{{ $booking ? $booking->address_line_one : '' }}" required>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <label for="">Address line two</label>
                                     <input type="text" name="address_line_two" id="address_line_two" value="{{ $booking ? $booking->address_line_two : '' }}">
                                 </div>
@@ -118,6 +116,75 @@
                             </div>
                         </form>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <aside class="resSummary">
+                        <h2>Reservation Summary</h2>
+                        <ul class="list-inline resDates">
+                            <li class="list-inline-item">
+                                <strong>From</strong><br>
+                                {{ date('d/m/Y', strtotime($booking->checkin_date)) }}
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </li>
+                            <li class="list-inline-item" style="text-align: right;">
+                                <strong>To</strong><br>
+                                {{ date('d/m/Y', strtotime($booking->checkout_date )) }}
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="list-inline adultChildCap">
+                            <li class="list-inline-item">
+                                <strong>No of adults</strong><br>
+                                {{ $booking->no_of_adults }}
+                            </li>
+                            <li class="list-inline-item" style="text-align: right;">
+                                <strong>No of children</strong><br>
+                                {{ $booking->no_of_children }}
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="list-inline roomList">
+                            <li class="list-inline-item" style="width: 100%;">
+                                <strong style="color: #002C50;">Room</strong><br>
+                                {{ $booking->room->name }} - @if($booking->no_of_adults >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0) £{{ $booking->room->price_per_night_double }} @else £{{ $booking->room->price_per_night_single }} @endif per night
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" style="width: 48%; color: #002C50;">
+                                <strong>Room(s)</strong>
+                            </li>
+                            <li class="list-inline-item" style="width: 48%; text-align: right;">
+                                @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
+                                    £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
+                                @else
+                                    £{{ $booking->room->price_per_night_single * $booking->duration_of_stay }}
+                                @endif
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="totalWrapper">
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
+                                <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
+                                    @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
+                                        £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
+                                    @else
+                                        £{{ $booking->room->price_per_night_single * $booking->duration_of_stay }}
+                                    @endif
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                    <strong>Prepayment</strong>
+                                </li>
+                                <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£0.00</li>
+                            </ul>
+
+                        </div>
+                    </aside>
                 </div>
             </div>
         </div>
