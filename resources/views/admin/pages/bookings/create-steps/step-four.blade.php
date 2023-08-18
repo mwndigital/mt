@@ -7,7 +7,7 @@
 @endpush
 @push('page-styles')
     <style>
-        .pageMain .bookingFormWrap .stepBanner .innerWrap span {
+        .bookingPageMain .formWrap .stepBanner .innerWrap span {
             width: 100%;
         }
     </style>

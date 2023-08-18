@@ -24,7 +24,7 @@
 
     <style>
         .bookingPageMain .formWrap .stepBanner .innerWrap span {
-            width: 40%;
+            width: 50%;
         }
     </style>
 @endpush

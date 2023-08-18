@@ -5,7 +5,7 @@
 @push('page-styles')
     <style>
         .bookingPageMain .formWrap .stepBanner .innerWrap span {
-            width: 60%;
+            width: 75%;
         }
     </style>
 @endpush
@@ -44,7 +44,7 @@
                         <form method="post" action="{{ route('book-a-room-step-3-store') }}">
                             @csrf
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-4">
                                     <label for="">Title</label>
                                     <select name="user_title" id="user_title">
                                         <option value="mr">Mr</option>
@@ -54,13 +54,11 @@
                                         <option value="dr">Dr</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="">First name * </label>
                                     <input type="text" name="first_name" id="first_name" value="{{ $booking ? $booking->first_name : '' }}" required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="">Last name *</label>
                                     <input type="text" name="last_name" id="last_name" value="{{ $booking ? $booking->last_name : '' }}" required>
                                 </div>
@@ -134,6 +132,15 @@
                             </li>
                         </ul>
                         <hr>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" style="color: #002C50; font-size: 1.15rem; width: 60%;">
+                                <strong>Total number of nights</strong>
+                            </li>
+                            <li class="list-inline-item" style="text-align: right; width: 35%; color: #000000; font-size: 1rem;">
+                                {{ $booking->duration_of_stay }}
+                            </li>
+                        </ul>
+                        <hr>
                         <ul class="list-inline adultChildCap">
                             <li class="list-inline-item">
                                 <strong>No of adults</strong><br>
@@ -153,10 +160,10 @@
                         </ul>
                         <hr>
                         <ul class="list-inline">
-                            <li class="list-inline-item" style="width: 48%; color: #002C50;">
+                            <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
                                 <strong>Room(s)</strong>
                             </li>
-                            <li class="list-inline-item" style="width: 48%; text-align: right;">
+                            <li class="list-inline-item" style="width: 48%; text-align: right; font-size: 1rem;">
                                 @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
                                     £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
                                 @else

@@ -8,7 +8,7 @@
 @push('page-styles')
     <style>
         .bookingPageMain .formWrap .stepBanner .innerWrap span {
-            width: 80%;
+            width: 100%;
         }
     </style>
 @endpush
@@ -49,42 +49,42 @@
                             <table class="table table-responsive w-100">
                                 <tbody>
                                     <tr>
-                                        <td><strong>Room:</strong></td>
-                                        <td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Room:</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">
                                             {{ $booking->room->name }}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Check in Date</strong></td>
-                                        <td>{{ $booking->checkin_date }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check in Date</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->checkin_date }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Check out date</strong></td>
-                                        <td>{{ $booking->checkout_date }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check out date</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->checkout_date }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Arrival Time:</strong></td>
-                                        <td>{{ $booking->arrival_time }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Arrival Time:</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->arrival_time }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Number of Adults</strong></td>
-                                        <td>{{ $booking->no_of_adults }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of Adults</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_adults }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Number of children</strong></td>
-                                        <td>{{ $booking->no_of_children }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of children</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_children }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Title</strong></td>
-                                        <td>{{ $booking->user_title }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Title</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->user_title }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Name</strong></td>
-                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Name</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Address</strong></td>
-                                        <td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Address</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">
                                             {{ $booking->address_line_one }} <br>
                                             @if($booking->address_line_two)
                                                 {{ $booking->address_line_two }}<br>
@@ -95,19 +95,19 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Phone Number</strong></td>
-                                        <td>{{ $booking->phone_number }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Phone Number</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->phone_number }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Email Address</strong></td>
-                                        <td>{{ $booking->email_address }}</td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Email Address</strong></td>
+                                        <td style="color: #000; font-size: 1rem;">{{ $booking->email_address }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">
-                                        <input type="checkbox" name="cancellationPolicyAgree" id="cancellationPolicyAgree" value="I have read and agree to The Mash Tun's Deposit and Cancellation Policy" required> By submitting your booking you agree to The Mash Tun's <a href="/deposit-cancellations-policy" target="_blank">Deposit & Cancellation Policy</a>.
+                                        {{--<input type="checkbox" name="cancellationPolicyAgree" id="cancellationPolicyAgree" value="I have read and agree to The Mash Tun's Deposit and Cancellation Policy" required>--}} By submitting your booking you agree to The Mash Tun's <a href="/deposit-cancellations-policy" target="_blank">Deposit & Cancellation Policy</a>.
                                     </label>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                                     <a href="{{ route('book-a-room-step-3') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class='nextBtn'>Continue to Payment <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class='nextBtn'>Book Now <i class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </form>
