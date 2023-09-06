@@ -58,12 +58,12 @@
     "src": "resources/assets/js/app.js"
   },
   "resources/assets/js/frontend.js": {
-    "file": "assets/frontend-f5127e30.js",
+    "file": "assets/frontend-2581121c.js",
     "isEntry": true,
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-4bcee46a.css",
+    "file": "assets/admin-b3639c00.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },
@@ -73,7 +73,7 @@
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-24730635.css",
+    "file": "assets/frontend-a3271829.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   }
