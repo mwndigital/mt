@@ -1,7 +1,10 @@
 footer {
-    border-top: 1px solid $darkBlue;
+    background-color: $darkBlue;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-top: 2px solid $darkGold;
+    overflow: hidden;
     .footerMain {
-        background-color: $lightGrey;
         padding: 50px 0;
         img.footerLogo {
             display: block;
@@ -9,17 +12,86 @@ footer {
             margin: 0 0 30px 0;
             width: auto;
         }
+        h5.footerTitle {
+            color: $darkGold;
+            font-family: $libBold;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        ul.quickLinksMenu {
+            li {
+                margin-bottom: 5px;
+                a {
+                    color: $w;
+                    font-family: $libReg;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    @include transition(all .4s ease-in-out);
+
+                    &:hover {
+                        box-shadow: none;
+                        color: $lightGold;
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        ul.contactDetails {
+            margin-bottom: 20px;
+            li {
+                color: $w;
+                font-family: $libBold;
+                font-size: 1rem;
+                margin-bottom: 5px;
+
+                a {
+                    color: $w;
+                    font-family: $libReg;
+                    text-decoration: none;
+                    @include transition(all .4s ease-in-out);
+
+                    &:hover {
+                        box-shadow: none;
+                        color: $lightGold;
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        ul.footerAddress {
+            li {
+                color: $w;
+                font-family: $libReg;
+                font-size: 1rem;
+            }
+        }
+    }
+    .footerBottom {
+        background-color: $darkBlue;
+        padding: 1rem 0;
+
+        p {
+            color: $w;
+            font-family: $libReg;
+            font-size: 1rem;
+            margin-bottom: 0;
+            padding: 0;
+            text-align: left;
+        }
+
         ul.socialLinks {
             align-items: center;
             display: flex;
             flex-direction: row;
             gap: 10px;
-            justify-content: flex-start;
+            justify-content: flex-end;
             margin-bottom: 0;
             li {
                 a {
                     align-items: center;
-                    background-color: $darkBlue;
+                    background-color: $darkGold;
                     border: 0;
                     border-radius: 100%;
                     color: $w;
@@ -46,72 +118,6 @@ footer {
                     }
                 }
             }
-        }
-        h5.footerTitle {
-            color: $darkGold;
-            font-family: $libBold;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-        ul.quickLinksMenu {
-            li {
-                margin-bottom: 5px;
-                a {
-                    color: $darkBlue;
-                    font-family: $libReg;
-                    font-size: 1rem;
-                    text-decoration: none;
-                    @include transition(all .4s ease-in-out);
-
-                    &:hover {
-                        box-shadow: none;
-                        color: $lightGold;
-                        outline: none;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-        ul.contactDetails {
-            margin-bottom: 20px;
-            li {
-                font-family: $libBold;
-                font-size: 1rem;
-                margin-bottom: 5px;
-
-                a {
-                    color: $darkBlue;
-                    font-family: $libReg;
-                    text-decoration: none;
-                    @include transition(all .4s ease-in-out);
-
-                    &:hover {
-                        box-shadow: none;
-                        color: $lightGold;
-                        outline: none;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-        ul.footerAddress {
-            li {
-                font-family: $libReg;
-                font-size: 1rem;
-            }
-        }
-    }
-    .footerBottom {
-        background-color: $darkBlue;
-        padding: .5rem 0;
-        text-align: center;
-
-        p {
-            color: $w;
-            font-family: $libReg;
-            font-size: 1rem;
-            margin-bottom: 0;
-            padding: 0;
         }
     }
 }

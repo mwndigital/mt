@@ -7,13 +7,31 @@
             <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="frontendMainNavbar">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li><a href="{{ route('about-us') }}">About Us</a></li>
                 <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
-                <li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>
+                {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+
+            </ul>
+            <ul class="navbar-nav ms-auto rightMenu">
+                <li class="ms-auto">
+                    <div class="dropdown">
+                        <button class="goldOutlineBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Now <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a href="">Book a stay</a>
+                            </li>
+                            <li>
+                                <a href="">Book a table</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

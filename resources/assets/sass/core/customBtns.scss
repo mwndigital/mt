@@ -31,6 +31,32 @@ input.darkGoldBtn {
         }
     }
 }
+a.goldOutlineBtn,
+button.goldOutlineBtn,
+input.goldOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $darkGold;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $darkGold;
+    font-family: $libReg;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show{
+        background-color: $darkGold;
+        border: 1px solid $darkGold;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
+    }
+}
 a.blueBtn,
 button.blueBtn,
 input.blueBtn {

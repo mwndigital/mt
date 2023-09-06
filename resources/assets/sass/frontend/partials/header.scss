@@ -1,5 +1,16 @@
 header {
-    background-color: $w;
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1080;
     .topBar {
         padding: .5rem 0;
         ul.contactDetails {
@@ -10,7 +21,7 @@ header {
             margin-bottom: 0;
             li {
                 a {
-                    color: $darkBlue;
+                    color: $w;
                     font-family: $libReg;
                     font-size: 0.95rem;
                     text-decoration: none;
@@ -69,7 +80,7 @@ header {
             img {
                 display: block;
                 height: 150px;
-                margin: 0 0 -60px 0;
+                margin: 0 2rem -60px 0;
                 position: relative;
                 width: auto;
                 z-index: 1080;
@@ -79,6 +90,7 @@ header {
             border: 0;
             border-radius: 0;
             font-size: 1.5rem;
+
 
             &:hover,
             &.active {
@@ -105,7 +117,7 @@ header {
             li {
                 margin-right: 25px;
                 a {
-                    color: $darkBlue;
+                    color: $w;
                     font-family: $libBold;
                     font-size: 1.25rem;
                     text-decoration: none;
@@ -126,6 +138,49 @@ header {
                 }
                 &:last-of-type {
                     margin-right: 0;
+                }
+            }
+        }
+        ul.rightMenu {
+
+            li {
+                .dropdown {
+                    button.goldOutlineBtn {
+                        font-size: 1rem;
+                        padding: .5rem 1rem;
+
+                        i {
+                            margin-left: 10px;
+                        }
+                    }
+                    .dropdown-menu {
+                        background-color: $darkGold;
+                        border: 0;
+                        border-radius: 5px;
+
+                        width: 200px;
+
+                        li {
+                            margin: 5px 0 5px 0;
+                            padding: .5rem 1rem;
+                            a {
+                                color: $w;
+                                font-family: $libReg;
+                                font-size: 1rem;
+                                text-decoration: none;
+                                @include transition(all .4s ease-in-out);
+
+                                &:hover {
+                                    background-color: transparent;
+                                    border: 0;
+                                    box-shadow: none;
+                                    color: $darkBlue;
+                                    outline: none;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

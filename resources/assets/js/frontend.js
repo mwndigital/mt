@@ -4,6 +4,18 @@ $(document).ready(function(){
        $(this).find('i').toggleClass('fa-bars fa-times');
     });
 
+    //$('button.goldOutlineBtn')
+    /*$('header .navbar ul.rightMenu .dropdown .dropdown-menu').each(function () {
+        if ($(this).hasClass('show')) {
+            $('header .navbar ul.rightMenu .dropdown button.goleOutlineBtn').toggleClass('fa-chevron-down fa-chevron-up');
+            /!*$(this).closest('.dropdown').find('button.goldOutlineBtn i').toggleClass('fa-chevron-down fa-chevron-up');*!/
+        }
+    });*/
+    $('ul.rightMenu li .goldOutlineBtn').click(function(){
+        $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+    });
+
+
     //Homepage home from home carousel
     $('.homeFromHomeSlider').owlCarousel({
         autoplay: true,

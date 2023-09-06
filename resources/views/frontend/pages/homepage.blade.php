@@ -17,9 +17,10 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-6 offset-lg-3">
                         <div class="inner wow slideInLeft" data-wow-duration="1.2s">
-                            <h1>{{ $hpcontent->hero_banner_title }}</h1>
+                            {{--<h1>{{ $hpcontent->hero_banner_title }}</h1>--}}
+                            <h1>Welcome to <span>The Mash Tun</span></h1>
                             <p>
                                 {{ $hpcontent->hero_banner_content }}
                             </p>
@@ -28,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <img class="img-fluid bottomWave" src="{{ asset('images/waves/blue-wave-top.svg') }}">
     </section>
     <section id="homepageWelcomeBanner">
         <div class="container">
@@ -87,5 +89,23 @@
             </div>
         </div>
     </section>
+    <section id="homepageFaqsBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4>FAQs</h4>
+                </div>
+            </div>
+        </div>
+    </section>
     @include('frontend.pages.partials.testimonialsBanner')
+    <section class="gettingHereBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4>Getting here</h4>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

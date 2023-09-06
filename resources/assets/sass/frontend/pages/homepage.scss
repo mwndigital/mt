@@ -1,5 +1,5 @@
 #homepageTop {
-    height: 60vh;
+    height: 800px;
     overflow: hidden;
     position: relative;
 
@@ -13,29 +13,32 @@
 
     .content {
         align-items: center;
+        background-color: rgba(0, 44, 80, .35);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         display: flex;
         flex-direction: column;;
         height: 100%;
         justify-content: center;
         position: absolute;
+        text-align: center;
         top: 0;
         width: 100%;
 
         .inner {
-            background-color: rgba(0, 44, 80, .75);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 20px;
-            -webkit-box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
-            -moz-box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
-            box-shadow: 5px 5px 15px -5px rgba(0,44,80,1);
-            padding: 2.5rem;
+            padding-top: 75px;
 
             h1 {
                 color: $w;
                 font-family: $libBold;
                 font-size: 3rem;
                 margin-bottom: 40px;
+                span {
+                    color: $darkGold;
+                    display: block;
+                    font-size: 5rem;
+                    width: 100%;
+                }
             }
             p {
                 color: $w;
@@ -44,11 +47,21 @@
             }
         }
     }
+    img.bottomWave {
+        bottom: -50px;
+        display: block;
+        height: 200px;
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+    }
 }
 #homepageWelcomeBanner {
-    background-color: $w;
+    background-color: $darkBlue;
+    padding: 2rem 0 4rem 0;
 
     img {
+        border-radius: 40px;
         display: block;
         height: auto;
         width: 100%;
@@ -61,7 +74,7 @@
         margin-bottom: 30px;
     }
     p {
-        color: $darkGrey;
+        color: $w;
         font-family: $libReg;
         font-size: 1rem;
         font-style: italic;
