@@ -1,3 +1,26 @@
+@font-face{
+    font-family: 'caveatbrush';
+    src: url('../fonts/CaveatBrush-Regular.ttf');
+}
+@font-face{
+    font-family: 'poppinsBold';
+    src: url('../fonts/Poppins-Bold.ttf');
+}
+@font-face{
+    font-family: 'poppinsMedium';
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+@font-face {
+    font-family: 'poppinsRegular';
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+$cav: 'caveatbrush', cursive;
+$popBold: 'poppinsBold', sans-serif;
+$popMed: 'poppinsMedium', sans-serif;
+$popReg: 'poppinsRegular', sans-serif;
+
+
 @font-face {
     font-family: 'libBold';
     src: url("../fonts/LibreBaskerville-Bold.ttf");

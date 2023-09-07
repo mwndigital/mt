@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-lg">
-    <div class="container">
+    <div class="container-fluid">
         <a href="/" class="navbar-brand">
             <img class="img-fluid" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
         </a>
@@ -7,9 +7,17 @@
             <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="frontendMainNavbar">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li><a href="/">Home</a></li>
-                <li><a href="{{ route('about-us') }}">About Us</a></li>
+                <li><a href="{{ route('about-us') }}">Our History</a></li>
+                <li>
+                    <a href="">Vounchers & Gifts</a>
+                </li>
+                <li>
+                    <a href="">
+                        Gallery
+                    </a>
+                </li>
                 <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
                 {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
@@ -19,8 +27,8 @@
             <ul class="navbar-nav ms-auto rightMenu">
                 <li class="ms-auto">
                     <div class="dropdown">
-                        <button class="goldOutlineBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Now <i class="fas fa-chevron-down"></i>
+                        <button class="whiteOutlineBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book <i class="fas fa-chevron-down"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>

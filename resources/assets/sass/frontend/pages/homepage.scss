@@ -1,5 +1,5 @@
 #homepageTop {
-    height: 800px;
+    height: 780px;
     overflow: hidden;
     position: relative;
 
@@ -30,24 +30,25 @@
 
             h1 {
                 color: $w;
-                font-family: $libBold;
+                font-family: $popBold;
                 font-size: 3rem;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 span {
                     color: $darkGold;
                     display: block;
-                    font-size: 5rem;
+                    font-family: $cav;
+                    font-size: 6rem;
                     width: 100%;
                 }
             }
             p {
                 color: $w;
-                font-family: $libReg;
+                font-family: $popMed;
                 font-size: 1.15rem;
             }
         }
     }
-    img.bottomWave {
+    svg {
         bottom: -50px;
         display: block;
         height: 200px;

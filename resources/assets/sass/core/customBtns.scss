@@ -91,3 +91,29 @@ input.blueBtn {
         }
     }
 }
+a.whiteOutlineBtn,
+button.whiteOutlineBtn,
+input.whiteOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $w;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $w;
+    font-family: $popMed;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show {
+        background-color: $w;
+        border: 1px solid $w;
+        box-shadow: none;
+        color: $darkBlue;
+        outline: none;
+        text-decoration: none;
+    }
+}

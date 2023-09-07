@@ -1,14 +1,8 @@
 header {
-    background: rgba(0, 44, 80, .75);
-    backdrop-filter: blur(8px);
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border-bottom: 2px solid $darkGold;
-    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
-    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
-    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    background-color: transparent;
     position: fixed;
     top: 0;
+    @include transition(all .4s ease-in-out);
     width: 100%;
     z-index: 1080;
     .topBar {
@@ -118,8 +112,8 @@ header {
                 margin-right: 25px;
                 a {
                     color: $w;
-                    font-family: $libBold;
-                    font-size: 1.25rem;
+                    font-family: $cav;
+                    font-size: 1.55rem;
                     text-decoration: none;
                     @include transition(all .4s ease-in-out);
                     &:hover {
@@ -145,7 +139,7 @@ header {
 
             li {
                 .dropdown {
-                    button.goldOutlineBtn {
+                    button.whiteOutlineBtn {
                         font-size: 1rem;
                         padding: .5rem 1rem;
 
@@ -154,7 +148,7 @@ header {
                         }
                     }
                     .dropdown-menu {
-                        background-color: $darkGold;
+                        background-color: $w;
                         border: 0;
                         border-radius: 5px;
 
@@ -164,8 +158,8 @@ header {
                             margin: 5px 0 5px 0;
                             padding: .5rem 1rem;
                             a {
-                                color: $w;
-                                font-family: $libReg;
+                                color: $darkBlue;
+                                font-family: $popMed;
                                 font-size: 1rem;
                                 text-decoration: none;
                                 @include transition(all .4s ease-in-out);
@@ -174,7 +168,7 @@ header {
                                     background-color: transparent;
                                     border: 0;
                                     box-shadow: none;
-                                    color: $darkBlue;
+                                    color: $darkGold;
                                     outline: none;
                                     text-decoration: none;
                                 }
@@ -185,4 +179,17 @@ header {
             }
         }
     }
+}
+
+header.scrolled {
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+
+    @include transition(all .4s ease-in-out);
 }

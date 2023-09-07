@@ -1,18 +1,20 @@
 $(document).ready(function(){
-
+    //Toggle the icon on navbar-toggler
     $('.navbar-toggler').click(function(){
        $(this).find('i').toggleClass('fa-bars fa-times');
     });
-
-    //$('button.goldOutlineBtn')
-    /*$('header .navbar ul.rightMenu .dropdown .dropdown-menu').each(function () {
-        if ($(this).hasClass('show')) {
-            $('header .navbar ul.rightMenu .dropdown button.goleOutlineBtn').toggleClass('fa-chevron-down fa-chevron-up');
-            /!*$(this).closest('.dropdown').find('button.goldOutlineBtn i').toggleClass('fa-chevron-down fa-chevron-up');*!/
-        }
-    });*/
+    //Toggle icon on the button on right menu
     $('ul.rightMenu li .goldOutlineBtn').click(function(){
         $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+    });
+    //Add class to header when scrolled
+    $(window).scroll(function(){
+        if($(window).scrollTop() > 0){
+            $('header').addClass('scrolled');
+        }
+        else{
+            $('header').removeClass('scrolled');
+        }
     });
 
 
