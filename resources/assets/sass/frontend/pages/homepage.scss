@@ -80,15 +80,14 @@
 
     h2 {
         color: $darkGold;
-        font-family: $libBold;
+        font-family: $cav;
         font-size: 3rem;
         margin-bottom: 30px;
     }
     p {
         color: $w;
-        font-family: $libReg;
+        font-family: $popReg;
         font-size: 1rem;
-        font-style: italic;
 
         &:last-of-type {
             margin-bottom: 50px;
@@ -101,21 +100,19 @@
 
     h5 {
         color: $mediumGrey;
-        font-family: $libItal;
+        font-family: $popMed;
         font-size: 1rem;
-        font-style: italic;
     }
     h2 {
         color: $darkGold;
-        font-family: $libBold;
+        font-family: $cav;
         font-size: 3rem;
         margin-bottom: 30px;
     }
     p {
         color: $mediumGrey;
-        font-family: $libReg;
+        font-family: $popReg;
         font-size: 1rem;
-        font-style: italic;
         &:last-of-type {
             margin-bottom: 50px;
         }
@@ -151,9 +148,8 @@
 
                     h3 {
                         color: $darkBlue;
-                        font-family: $libBold;
+                        font-family: $popBold;
                         font-size: 1.5rem;
-                        font-style: italic;
 
                     }
                 }
@@ -192,14 +188,14 @@
 
     h4 {
         color: $w;
-        font-family: $libBold;
+        font-family: $cav;
         font-size: 3rem;
         margin-bottom: 10px;
         text-transform: uppercase;
     }
     p {
         color: $w;
-        font-family: $libReg;
+        font-family: $popReg;
         font-size: 1rem;
         margin-bottom: 30px;
     }
