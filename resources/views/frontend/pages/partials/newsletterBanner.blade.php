@@ -10,26 +10,26 @@
                             <label for="">Full Name</label>
                             <input type="text" name="full_name" id="full_name">
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Email Address</label>
-                                <input type="email" name="email" id="email">
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="">Email Address</label>
+                            <input type="email" name="email" id="email">
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input type="checkbox" name="signup_accept_checkbox" id="signup_accept_checkbox" class="form-check-input">
-                                    <label class="form-check-label">
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input type="checkbox" name="signup_accept_checkbox" id="signup_accept_checkbox" class="form-check-input">
+                                <label class="form-check-label">
 
-                                    </label>
-                                </div>
+                                </label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="submit" class="blueBtn">Subscribe</button>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="blueBtn">Subscribe</button>
                         </div>
                     </div>
                 </form>

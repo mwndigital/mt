@@ -1,21 +1,54 @@
 .newsletterBanner {
-    background-color: $lightGold;
-    padding: 2rem 0;
+    background-color: $lightGrey;
+    padding: 4rem 0;
 
     h5 {
-
+        color: $darkBlue;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-align: center;
     }
     p {
-
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        text-align: center;
     }
     form {
 
         label {
-
+            color: $darkBlue;
+            display: block;
+            font-family: $popMed;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            width: 100%;
         }
         input[type='text'],
         input[type='email'] {
+            background-color: $w;
+            border: 1px solid $w;
+            border-radius: 10px;
+            display: block;
+            color: $darkBlue;
+            font-family: $popReg;
+            font-size: 1rem;
+            height: 50px;
+            margin-bottom: 20px;
+            padding: 0 .5rem;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
 
+            &:focus {
+                background-color: $w;
+                border: 1px solid $darkBlue;
+                box-shadow: none;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
         }
         .form-check {
             input[type='checkbox'] {
