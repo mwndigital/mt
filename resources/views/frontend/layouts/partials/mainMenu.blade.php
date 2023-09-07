@@ -11,15 +11,17 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="{{ route('about-us') }}">Our History</a></li>
                 <li>
-                    <a href="">Vounchers & Gifts</a>
-                </li>
-                <li>
                     <a href="">
                         Gallery
                     </a>
                 </li>
-                <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
-                <li><a href="{{ route('rooms') }}">The Rooms</a></li>
+                <li><a href="{{ route('bar-restaurant') }}">Bar</a></li>
+                <li>
+                    <a href="">
+                        Restaurant
+                    </a>
+                </li>
+                <li><a href="{{ route('rooms') }}">Rooms</a></li>
                 {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
