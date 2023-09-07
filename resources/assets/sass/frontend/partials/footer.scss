@@ -14,7 +14,7 @@ footer {
         }
         h5.footerTitle {
             color: $darkGold;
-            font-family: $libBold;
+            font-family: $cav;
             font-size: 2rem;
             margin-bottom: 30px;
         }
@@ -23,7 +23,7 @@ footer {
                 margin-bottom: 5px;
                 a {
                     color: $w;
-                    font-family: $libReg;
+                    font-family: $popMed;
                     font-size: 1rem;
                     text-decoration: none;
                     @include transition(all .4s ease-in-out);
@@ -41,13 +41,13 @@ footer {
             margin-bottom: 20px;
             li {
                 color: $w;
-                font-family: $libBold;
+                font-family: $popMed;
                 font-size: 1rem;
                 margin-bottom: 5px;
 
                 a {
                     color: $w;
-                    font-family: $libReg;
+                    font-family: $popMed;
                     text-decoration: none;
                     @include transition(all .4s ease-in-out);
 
@@ -63,7 +63,7 @@ footer {
         ul.footerAddress {
             li {
                 color: $w;
-                font-family: $libReg;
+                font-family: $popMed;
                 font-size: 1rem;
             }
         }
@@ -74,7 +74,7 @@ footer {
 
         p {
             color: $w;
-            font-family: $libReg;
+            font-family: $popReg;
             font-size: 1rem;
             margin-bottom: 0;
             padding: 0;
