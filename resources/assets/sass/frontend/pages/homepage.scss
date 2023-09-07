@@ -32,14 +32,24 @@
                 color: $w;
                 font-family: $popBold;
                 font-size: 3rem;
-                margin-bottom: 20px;
+                margin-bottom: 0;
                 span {
                     color: $darkGold;
                     display: block;
                     font-family: $cav;
                     font-size: 6rem;
+                    margin-top: -15px;
                     width: 100%;
                 }
+            }
+            h4 {
+                color: $w;
+                font-family: $cav;
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+                margin-top: -10px;
+                text-align: right;
+                transform: rotate(-5deg);
             }
             p {
                 color: $w;
