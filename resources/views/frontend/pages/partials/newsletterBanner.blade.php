@@ -18,7 +18,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <div class="form-check">
+                                    <input type="checkbox" name="signup_accept_checkbox" id="signup_accept_checkbox" class="form-check-input">
+                                    <label class="form-check-label">
 
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
