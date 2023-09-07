@@ -22,14 +22,14 @@
                             <div class="form-check">
                                 <input type="checkbox" name="signup_accept_checkbox" id="signup_accept_checkbox" class="form-check-input">
                                 <label class="form-check-label">
-
+                                    I would like to keep up to date on everything going on at The Mash Tun, including news, offers and upcoming events.
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="blueBtn">Subscribe</button>
+                            <button type="submit" class="blueOutlineBtn">Subscribe</button>
                         </div>
                     </div>
                 </form>

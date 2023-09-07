@@ -39,7 +39,7 @@ input.goldOutlineBtn {
     border-radius: 5px;
     box-shadow: none;
     color: $darkGold;
-    font-family: $libReg;
+    font-family: $popMed;
     font-size: 1.1rem;
     padding: 1rem 2rem;
     text-align: center;
@@ -89,6 +89,32 @@ input.blueBtn {
         .fa-chevron-right {
             margin-left: 20px;
         }
+    }
+}
+a.blueOutlineBtn,
+button.blueOutlineBtn,
+input.blueOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $darkBlue;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $darkBlue;
+    font-family: $popMed;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show{
+        background-color: $darkBlue;
+        border: 1px solid $darkBlue;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
     }
 }
 a.whiteOutlineBtn,

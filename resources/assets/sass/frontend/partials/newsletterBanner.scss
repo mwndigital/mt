@@ -51,6 +51,7 @@
             }
         }
         .form-check {
+            margin-bottom: 30px;
             input[type='checkbox'] {
 
             }
@@ -60,7 +61,8 @@
         }
 
         button {
-
+            display: block;
+            margin: 0 auto;
         }
     }
 }

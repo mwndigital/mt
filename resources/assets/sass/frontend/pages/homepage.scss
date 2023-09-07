@@ -94,6 +94,28 @@
         }
     }
 }
+.homepageBanner {
+    padding: 3rem 0;
+    img {
+        border-radius: 40px;
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+    p {
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1.1rem;
+
+        strong {
+            font-family: $popBold;
+        }
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}
 #homepageHomeFromHomeBanner {
     background-color: $w;
     padding: 60px 0;

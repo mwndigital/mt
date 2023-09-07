@@ -39,14 +39,47 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-5">
-                    <img class="img-fluid wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".4s" src="{{ Storage::url($hpcontent->banner_one_image) }}" alt="{{ $hpcontent->banner_one_title }} featured image">
+                    {{--<img class="img-fluid wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".4s" src="{{ Storage::url($hpcontent->banner_one_image) }}" alt="{{ $hpcontent->banner_one_title }} featured image">--}}
+                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-banner-one.jpeg') }}">
                 </div>
                 <div class="col-md-6 offset-md-1 wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
-                    <h2>{{ $hpcontent->banner_one_title }}</h2>
-                    {!! $hpcontent->banner_one_content !!}
+                    {{--<h2>{{ $hpcontent->banner_one_title }}</h2>--}}
+                    <h2>Nestled on the banks of the world acclaimed River Spey</h2>
+                    {{--{!! $hpcontent->banner_one_content !!}--}}
+                    <p>
+                        The Mash Tun offers the aspirational opportunity to experience Speyside in all its wonder.. from unparalleled fly fishing, hunting to horseback riding and hiking.
+                    </p>
                     <a href="{{ $hpcontent->banner_one_button_link }}" class="darkGoldBtn">
                         Find out more <i class="fa fa-chevron-right"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="homepageBannerTwo" class="homepageBanner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 wow slideInLeft">
+                    <p>
+                        However it is The Whisky that motivates a pilgrimage to this considered place, surrounded by the most famous of distilleries viewed as the ultimate trip for the lover of the Uisge Beatha (water of life)
+                    </p>
+                </div>
+                <div class="col-md-5 offset-md-1">
+                    <img class="img-fluid wow slideInRight" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/whisky-wall.png') }}">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="homepageBannerThree" class="homepageBanner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/whisky-wall.png') }}">
+                </div>
+                <div class="col-md-6 offset-md-1 wow slideInRight">
+                    <p>
+                        So step into our wee world where we can assist in all your plans at same time offering embracing Highland Hospitality, our super comfy some river view whisky themed rooms. It is here you will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing area of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
+                    </p>
                 </div>
             </div>
         </div>
