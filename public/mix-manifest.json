@@ -1,6 +1,10 @@
 {
+    "/fonts/CaveatBrush-Regular.ttf": "/fonts/CaveatBrush-Regular.ttf",
     "/fonts/LibreBaskerville-Bold.ttf": "/fonts/LibreBaskerville-Bold.ttf",
     "/fonts/LibreBaskerville-Italic.ttf": "/fonts/LibreBaskerville-Italic.ttf",
     "/fonts/LibreBaskerville-Regular.ttf": "/fonts/LibreBaskerville-Regular.ttf",
-    "/fonts/Montserrat-Regular.ttf": "/fonts/Montserrat-Regular.ttf"
+    "/fonts/Montserrat-Regular.ttf": "/fonts/Montserrat-Regular.ttf",
+    "/fonts/Poppins-Bold.ttf": "/fonts/Poppins-Bold.ttf",
+    "/fonts/Poppins-Medium.ttf": "/fonts/Poppins-Medium.ttf",
+    "/fonts/Poppins-Regular.ttf": "/fonts/Poppins-Regular.ttf"
 }

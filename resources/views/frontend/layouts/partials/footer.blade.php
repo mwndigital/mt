@@ -1,13 +1,5 @@
 
-            <section class="newsletterBanner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <h4>newsletter</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            @include('frontend.pages.partials.newsletterBanner')
             <section class="awardsBanner">
                 <div class="container">
                     <div class="row">
