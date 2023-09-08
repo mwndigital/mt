@@ -6,5 +6,11 @@
     "/fonts/Montserrat-Regular.ttf": "/fonts/Montserrat-Regular.ttf",
     "/fonts/Poppins-Bold.ttf": "/fonts/Poppins-Bold.ttf",
     "/fonts/Poppins-Medium.ttf": "/fonts/Poppins-Medium.ttf",
-    "/fonts/Poppins-Regular.ttf": "/fonts/Poppins-Regular.ttf"
+    "/fonts/Poppins-Regular.ttf": "/fonts/Poppins-Regular.ttf",
+    "/lightbox/css/lightbox.css": "/lightbox/css/lightbox.css",
+    "/lightbox/images/close.png": "/lightbox/images/close.png",
+    "/lightbox/images/loading.gif": "/lightbox/images/loading.gif",
+    "/lightbox/images/next.png": "/lightbox/images/next.png",
+    "/lightbox/images/prev.png": "/lightbox/images/prev.png",
+    "/lightbox/js/lightbox.js": "/lightbox/js/lightbox.js"
 }

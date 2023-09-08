@@ -1,0 +1,56 @@
+.galleryPageTop {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+
+    img.mainBgImage {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .35);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        h1 {
+            color: $w;
+            font-family: $cav;
+            font-size: 5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        p {
+            color: $w;
+            font-family: $popMed;
+            font-size: 1.15rem;
+            text-align :center;
+        }
+    }
+}
+
+.galleryPageMain {
+    padding: 3rem 0;
+
+    .card.galleryItem {
+        .card-header {
+
+        }
+        .card-body {
+
+        }
+        .imageWrapper {
+            display: none;
+        }
+    }
+}

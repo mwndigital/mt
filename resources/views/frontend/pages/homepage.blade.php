@@ -126,15 +126,7 @@
             </div>
         </div>
     </section>
-    <section id="homepageFaqsBanner">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h4>FAQs</h4>
-                </div>
-            </div>
-        </div>
-    </section>
+
     @include('frontend.pages.partials.testimonialsBanner')
     <section class="gettingHereBanner">
         <div class="container">

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBookingController;
+use App\Http\Controllers\Admin\AdminGalleryCategoryController;
+use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarRestaurantPageController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
+use App\Http\Controllers\Frontend\FrontendGalleryController;
 use App\Http\Controllers\Frontend\FrontendPolicyPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
@@ -56,6 +59,12 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
 
     //Menu
     Route::resource('menu', MenuController::class);
+
+    //Gallery
+    Route::prefix('gallery')->group(function(){
+       Route::resource('gallery-category', AdminGalleryCategoryController::class);
+    });
+    Route::resource('gallery', AdminGalleryController::class);
 
     //Whisky
     Route::resource('whisky', WhiskyController::class);
@@ -106,6 +115,7 @@ Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
 Route::get('/the-bar-restaurant', [BarRestaurantPageController::class, 'index'])->name('bar-restaurant');
 Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contact-us');
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
+Route::resource('/gallery', FrontendGalleryController::class);
 Route::prefix('book-a-room')->group(function(){
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
     Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
@@ -128,3 +138,4 @@ Route::post('/sagepay/notify', [BookingController::class, 'sagepayNotify'])->nam
 Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
     ->where('slug', '[A-Za-z0-9\-]+')
     ->name('policy-page.show');
+
