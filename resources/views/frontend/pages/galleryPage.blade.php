@@ -33,23 +33,25 @@
             <div class="row">
                 @foreach($galleryCat as $cat)
                     <div class="col-md-4">
-                        <div class="card galleryItem">
-                            <div class="card-header">
-                                <a data-lightbox="{{ $cat->name }}" href="{{ Storage::url($cat->featured_image) }}">
-                                    <img class="img-fluid" src="{{ Storage::url($cat->featured_image) }}" alt="{{ $cat->name }}">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <h4>{{ $cat->name }}</h4>
-                            </div>
-                            <div class="imageWrapper">
-                                @foreach($galleryItem as $item)
-                                    @if($item->category_id == $cat->id)
-                                        <a href="{{ Storage::url($item->image) }}" data-lightbox="{{ $cat->name }}" data-title="{{ $item->name }}">
-                                            <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}">
-                                        </a>
-                                    @endif
-                                @endforeach
+                        <div class="galleryItemWrap">
+                            <div class="card galleryItem">
+                                <div class="card-header">
+                                    <a data-lightbox="{{ $cat->name }}" href="{{ Storage::url($cat->featured_image) }}">
+                                        <img class="img-fluid" src="{{ Storage::url($cat->featured_image) }}" alt="{{ $cat->name }}">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h4>{{ $cat->name }}</h4>
+                                </div>
+                                <div class="imageWrapper">
+                                    @foreach($galleryItem as $item)
+                                        @if($item->category_id == $cat->id)
+                                            <a href="{{ Storage::url($item->image) }}" data-lightbox="{{ $cat->name }}" data-title="{{ $item->name }}">
+                                                <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}">
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
