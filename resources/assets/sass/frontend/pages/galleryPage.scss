@@ -84,6 +84,13 @@
                 height: 475px;
                 outline: none;
                 padding: 0;
+
+                img {
+                    display: block;
+                    height: 100%;
+                    object-fit: cover;
+                    width: 100%;
+                }
             }
             .card-body {
                 background-color: transparent;
