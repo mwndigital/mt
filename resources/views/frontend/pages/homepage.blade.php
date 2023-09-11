@@ -40,7 +40,7 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     {{--<img class="img-fluid wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".4s" src="{{ Storage::url($hpcontent->banner_one_image) }}" alt="{{ $hpcontent->banner_one_title }} featured image">--}}
-                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-banner-one.jpeg') }}">
+                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/home-banner-new-image.png') }}">
                 </div>
                 <div class="col-md-6 offset-md-1 wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
                     {{--<h2>{{ $hpcontent->banner_one_title }}</h2>--}}
@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="col-md-5 offset-md-1">
-                    <img class="img-fluid wow slideInRight" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/whisky-wall.png') }}">
+                    <img class="img-fluid wow slideInRight" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-bar-image.png') }}">
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-5">
-                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/whisky-wall.png') }}">
+                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-banner-3-seating.png') }}">
                 </div>
                 <div class="col-md-6 offset-md-1 wow slideInRight">
                     <p>
