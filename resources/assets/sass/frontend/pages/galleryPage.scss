@@ -43,6 +43,7 @@
     padding: 3rem 0;
 
     .galleryItemWrap {
+        margin-bottom: 30px;
         padding: 10px;
         position: relative;
         @include transition(all .4s ease-in-out);
