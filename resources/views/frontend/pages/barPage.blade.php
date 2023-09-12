@@ -30,9 +30,9 @@
                         </p>
                         <div class="btn-group">
 
-                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">View Wine List</button>
-                            <button type="button" class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">View Whisky</button>
-                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">View Cocktails List</button>
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine List</button>
+                            <button type="button" class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Flights Menu</button>
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails List</button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <p>
                         There is a wide range of whiskies available to suit all tastes and budgets with prices ranging from £3.50 to £1500 per 35ml dram.
                     </p>
-                    <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyModal">View Whiskys</button>
+                    <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Menu</button>
                 </div>
                 <div class="col-md-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
@@ -80,9 +80,7 @@
                     <p>
                         Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
                     </p>
-                    <a href="" class="blueBtn">
-                        Wine Menu
-                    </a>
+                    <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</button>
                 </div>
             </div>
         </div>
@@ -96,9 +94,7 @@
                     <p>
                         Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
                     </p>
-                    <a href="" class="blueBtn">
-                        Cocktails Menu
-                    </a>
+                    <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</button>
                 </div>
                 <div class="col-md-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
