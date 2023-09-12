@@ -33,7 +33,7 @@
                         <thead>
                             <tr>
                                 <th>Room Name</th>
-                                <th>Featured Image</th>
+                                <th>Room Type</th>
                                 <th>Capacity</th>
                                 <th>Actions</th>
                             </tr>
