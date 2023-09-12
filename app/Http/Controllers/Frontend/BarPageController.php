@@ -8,7 +8,7 @@ use App\Models\Menu;
 use App\Models\Whisky;
 use Illuminate\Http\Request;
 
-class BarRestaurantPageController extends Controller
+class BarPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class BarRestaurantPageController extends Controller
         $menuDesserts = Menu::where('category', 'desserts');
         $whiskies = Whisky::all();
         $brc = BarRestaurantContent::first();
-        return view('frontend.pages.barRestaurantPage', compact('menuStarters', 'menuMains', 'menuSides', 'menuDesserts', 'whiskies', 'brc'));
+        return view('frontend.pages.barPage', compact('menuStarters', 'menuMains', 'menuSides', 'menuDesserts', 'whiskies', 'brc'));
     }
 
     /**

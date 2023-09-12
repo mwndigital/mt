@@ -23,6 +23,15 @@
                 </li>
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>
                 {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="">Dinner Menu</a>
+                            <a href="">Wine Menu</a>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
             </ul>
@@ -34,7 +43,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a href="">Book a stay</a>
+                                <a href="{{ route('book-a-room-index') }}">Book a stay</a>
                             </li>
                             <li>
                                 <a href="">Book a table</a>
