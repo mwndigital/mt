@@ -18,7 +18,8 @@ class Rooms extends Model
         'description',
         'short_description',
         'slug',
-        'price_per_night',
+        'price_per_night_double',
+        'price_per_night_single',
         'featured_image',
     ];
 

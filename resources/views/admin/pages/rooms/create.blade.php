@@ -100,13 +100,24 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                                <label for="">Price Per Night *</label>
-                                <input type="number" name="price_per_night" id="price_per_night" step="any" value="{{ old('price_per_night') }}" reqiured>
-                                @error('price_per_night')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <label for="">Price per night double *</label>
+                                <input type="number" name="price_per_night_double" id="price_per_night_double" step="any" value="{{ $room->price_per_night_double }}" required>
+                                @error('price_per_night_double')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Price per night single *</label>
+                                <input type="number" name="price_per_night_single" id="price_per_night_single" value="{{ $room->price_per_night_single }}" step="any" required>
+                                @error('price_per_night_single')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>
