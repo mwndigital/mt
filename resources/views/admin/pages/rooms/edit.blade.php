@@ -77,10 +77,9 @@
                             <div class="col-md-6">
                                 <label for="">Room Type *</label>
                                 <select name="room_type" id="room_type" required>
-                                    <option disabled selected>Please make a selection</option>
-                                    <option value="single">Single</option>
-                                    <option value="double">Double</option>
-                                    <option value="family">Family</option>
+                                    <option value="single" @if($room->type == 'single') selected @endif>Single</option>
+                                    <option value="double" @if($room->type == 'double') selected @endif>Double</option>
+                                    <option value="family" @if($room->type == 'family') selected @endif>Family</option>
                                 </select>
                                 @error('room_type')
                                 <span class="invalid-feedback" role="alert">
@@ -110,14 +109,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <label for="">Bathroom Type *</label>
                                 <select name="bathroom_type" id="bathroom_type" required>
-                                    <option disabled selected>Please choose an option</option>
-                                    <option value="full_ensuite">Full Ensuite</option>
-                                    <option value="ensuite_shower">Ensuite Shower</option>
-                                    <option value="ensuite_bath">Ensuite Bath</option>
-                                    <option value="no_ensuite">No Ensuite</option>
+                                    <option value="full_ensuite" @if($room->bathroom_type == 'full_ensuite') selected @endif>Full Ensuite</option>
+                                    <option value="ensuite_shower" @if($room->bathroom_type == 'ensuite_shower') selected @endif>Ensuite Shower</option>
+                                    <option value="ensuite_bath" @if($room->bathroom_type == 'ensuite_bath') selected @endif>Ensuite Bath</option>
+                                    <option value="no_ensuite" @if($room->bathroom_type == 'no_ensuite') selected @endif>No Ensuite</option>
                                 </select>
                                 @error('bathroom_type')
                                 <span class="invalid-feedback" role="alert">
@@ -125,13 +123,24 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                                <label for="">Price Per Night *</label>
-                                <input type="number" name="price_per_night" id="price_per_night" step="any" value="{{ old('price_per_night', $room->price_per_night) }}" reqiured>
-                                @error('price_per_night')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <label for="">Price per night double *</label>
+                                <input type="number" name="price_per_night_double" id="price_per_night_double" step="any" value="{{ $room->price_per_night_double }}" required>
+                                @error('price_per_night_double')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Price per night single *</label>
+                                <input type="number" name="price_per_night_single" id="price_per_night_single" value="{{ $room->price_per_night_single }}" step="any" required>
+                                @error('price_per_night_single')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                         </div>

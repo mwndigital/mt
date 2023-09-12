@@ -76,14 +76,20 @@ class RoomController extends Controller
 
         $oldImagePath = $room->featured_image;
 
-        $image = $request->file('featured_image')->store('public/uploads/rooms');
+        if($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image')->store('public/uploads/rooms');
+        }
+        else {
+            $image = $room->featured_image;
+        }
 
         $room->name = $request->name;
         $room->room_type = $request->room_type;
         $room->adult_cap = $request->adult_cap;
         $room->child_cap = $request->child_cap;
         $room->bathroom_type = $request->bathroom_type;
-        $room->price_per_night = $request->price_per_night;
+        $room->price_per_night_double = $request->price_per_night_double;
+        $room->price_per_night_single = $request->price_per_night_single;
         $room->description = $request->description;
         $room->short_description = $request->short_description;
         $room->featured_image = $image;
