@@ -9,7 +9,7 @@
     text-align: center;
     h1 {
         color: $darkBlue;
-        font-family: $libBold;
+        font-family: $popBold;
         font-size: 3rem;
         margin-bottom: 40px;
     }
@@ -21,7 +21,7 @@
 
     p {
         color: $darkBlue;
-        font-family: $libReg;
+        font-family: $popReg;
         font-size: 1rem;
         text-align: center;
     }
@@ -52,13 +52,13 @@
             min-height: 230px;
             h4 {
                 color: $darkGold;
-                font-family: $libBold;
+                font-family: $popBold;
                 font-size: 1.75rem;
                 margin-bottom: 30px;
             }
             .content {
                 color: $darkGrey;
-                font-family: $libReg;
+                font-family: $popReg;
                 font-style: italic;
             }
         }
