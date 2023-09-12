@@ -12,12 +12,15 @@
     {{ Storage::url($rpc->page_image) }}
 @endpush
 @section('content')
-    <section id="roomsPageTop" style="background: url('{{ Storage::url($rpc->hero_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>{{ $rpc->hero_banner_title }}</h1>
+    <section id="roomsPageTop">
+        <img src="{{ Storage::url($rpc->hero_banner_background_image) }}" alt="" class="mainBgImage">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>{{ $rpc->hero_banner_title }}</h1>
 
+                    </div>
                 </div>
             </div>
         </div>

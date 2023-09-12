@@ -7,11 +7,42 @@
     overflow: hidden;
     position: relative;
     text-align: center;
-    h1 {
-        color: $darkBlue;
-        font-family: $popBold;
-        font-size: 3rem;
-        margin-bottom: 40px;
+
+    img.mainBgImage {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .45);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;;
+        height: 100%;
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+
+        h1 {
+            color: $w;
+            font-family: $popBold;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        p{
+            color: $w;
+            font-family: $popMed;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
     }
 }
 
