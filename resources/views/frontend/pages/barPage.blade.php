@@ -30,9 +30,9 @@
                         </p>
                         <div class="btn-group">
 
-                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewMenuModal">View Wine List</button>
-                            <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyModal">View Whiskys</button>
-                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewMenuModal">View Cocktails List</button>
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">View Wine List</button>
+                            <button type="button" class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">View Whisky</button>
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">View Cocktails List</button>
                         </div>
                     </div>
                 </div>
@@ -121,41 +121,4 @@
         </div>
     </section>
 
-    <div class="modal fade" id="viewMenuModal">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="viewWhiskyModal">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Our Whisky Selection</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="whiskyModalInner">
-                        <ul class="list-unstyled">
-                            @foreach($whiskies as $whisky)
-                                <li>
-                                    {{ $whisky->name }} - £{{ $whisky->price }}
-                                    <div class="content">
-                                        {!! $whisky->description !!}
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

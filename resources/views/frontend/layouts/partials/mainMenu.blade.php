@@ -27,18 +27,18 @@
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="">Dinner Menu</a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</a>
                         </li>
                         <li>
-                            <a href="">
-                                Whisky List
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">
+                                Whisky Menu
                             </a>
                         </li>
                         <li>
-                            <a href="">Wine List</a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</a>
                         </li>
                         <li>
-                            <a href="">Cocktails List</a>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</a>
                         </li>
                     </ul>
                 </li>
