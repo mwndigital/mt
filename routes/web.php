@@ -88,7 +88,7 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
        /* Route::resource('rooms-page', AdminRoomsPageController::class);*/
         Route::resource('contact-us', AdminContactUsPageController::class);
-        Route::resource('rooms', AdminRoomsPageController::class);
+
         Route::resource('policy-pages', AdminPolicyPagesController::class);
     });
 });
