@@ -16,7 +16,6 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarPageController;
-use App\Http\Controllers\Frontend\BarRestaurantPageController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
 use App\Http\Controllers\Frontend\FrontendGalleryController;

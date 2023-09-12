@@ -52,10 +52,10 @@
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul>
                                                     <li>
-                                                        <a href="{{ route('admin.rooms.show', $room->id) }}">View</a>
+                                                        <a href="/admin/rooms/{{ $room->id }}">View</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ route('admin.rooms.edit', $room->id) }}">Edit</a>
+                                                        <a href="/admin/rooms/{{ $room->id }}/edit">Edit</a>
                                                     </li>
                                                     <li>
                                                         <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="POST">

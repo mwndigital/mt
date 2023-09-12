@@ -18,7 +18,7 @@
         </ul>
     </li>
     <li><a href="{{ route('admin.bookings.index') }}">Bookings</a></li>
-    <li><a href="{{ route('admin.rooms.index') }}">Rooms</a></li>
+    <li><a href="/admin/rooms">Rooms</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gallery</a>
         <ul class="dropdown-menu">
