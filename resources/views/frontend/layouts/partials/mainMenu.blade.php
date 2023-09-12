@@ -28,7 +28,17 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="">Dinner Menu</a>
-                            <a href="">Wine Menu</a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Whisky List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">Wine List</a>
+                        </li>
+                        <li>
+                            <a href="">Cocktails List</a>
                         </li>
                     </ul>
                 </li>
@@ -48,6 +58,12 @@
                             <li>
                                 <a href="">Book a table</a>
                             </li>
+                        </ul>
+                        <ul class="list-inline ms-auto socialLinks">
+                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><img class="img-fluid tripAdvisorLogo" src="{{ asset('logos/trip-advisor.svg') }}" alt="TripAdvisor Logo"></a></li>
+                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </li>

@@ -21,7 +21,7 @@
             <div class="footerMain">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
                             <ul class="list-unstyled footerAddress">
                                 <li>
@@ -45,20 +45,41 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h5 class="footerTitle">Quick Links</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li>
                                     <a href="/">Home</a>
                                 </li>
-                                <li><a href="{{ route('about-us') }}">About Us</a></li>
-                                <li><a href="{{ route('bar-restaurant') }}">The Bar & Restaurant</a></li>
+                                <li><a href="{{ route('about-us') }}">Our History</a></li>
+                                <li><a href="{{ route('bar-restaurant') }}">Bar</a></li>
+                                <li><a href="">Restaurant</a></li>
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
+
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
                             </ul>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <h5 class="footerTitle">Menu</h5>
+                            <ul class="list-unstyled quickLinksMenu">
+                                <li>
+                                    <a href="">Dinner Menu</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        Whisky List
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">Wine List</a>
+                                </li>
+                                <li>
+                                    <a href="">Cocktails List</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
                             <h5 class="footerTitle">Legal</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li><a href="/deposit-cancellations-policy">Deposit & Cancellations Policy</a></li>

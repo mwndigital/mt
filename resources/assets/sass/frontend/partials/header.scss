@@ -123,7 +123,34 @@ header {
                     }
                 }
                 &.dropdown {
+                    .dropdown-toggle {
 
+                    }
+                    .dropdown-menu {
+                        background: rgba(0, 44, 80, .75);
+                        backdrop-filter: blur(8px);
+                        border-radius: 0 0 20px 20px;
+                        border: 0;
+                        border-bottom: 2px solid $darkGold;
+                        -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+                        -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+                        box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+                        padding: 1rem;
+                        width: 250px;
+                        li {
+                            margin: 0;
+                            padding: 0;
+                            a {
+                                color: $w;
+                                display: block;
+                                padding: .5rem 0;
+                                width: 100%;
+                                &:hover {
+
+                                }
+                            }
+                        }
+                    }
                 }
                 &.active {
                     a {
