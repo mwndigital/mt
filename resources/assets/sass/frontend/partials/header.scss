@@ -6,6 +6,7 @@ header {
     width: 100%;
     z-index: 1080;
     .topBar {
+        background-color: $darkGold;
         padding: .5rem 0;
         ul.contactDetails {
             align-items: center;
@@ -16,14 +17,14 @@ header {
             li {
                 a {
                     color: $w;
-                    font-family: $libReg;
+                    font-family: $popReg;
                     font-size: 0.95rem;
                     text-decoration: none;
                     @include transition(all .4s ease-in-out);
 
                     &:hover {
                         box-shadow: none;
-                        color: $darkGold;
+                        color: $darkBlue;
                         outline: none;
                         text-decoration: none;
                     }
@@ -40,7 +41,7 @@ header {
             li {
                 a {
                     align-items: center;
-                    background-color: $darkBlue;
+                    background-color: transparent;
                     border: 0;
                     border-radius: 100%;
                     color: $w;
@@ -60,8 +61,9 @@ header {
                     }
 
                     &:hover {
-                        background-color: $darkGold;
+                        background-color: $darkBlue;
                         box-shadow: none;
+                        color: $w;
                         outline: none;
                         text-decoration: none;
                     }

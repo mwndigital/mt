@@ -59,12 +59,7 @@
                                 <a href="">Book a table</a>
                             </li>
                         </ul>
-                        <ul class="list-inline ms-auto socialLinks">
-                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><img class="img-fluid tripAdvisorLogo" src="{{ asset('logos/trip-advisor.svg') }}" alt="TripAdvisor Logo"></a></li>
-                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                        </ul>
+
                     </div>
                 </li>
             </ul>

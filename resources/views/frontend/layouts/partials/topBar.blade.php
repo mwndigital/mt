@@ -1,5 +1,5 @@
 <div class="topBar">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-lg-6">
                 <ul class="list-inline contactDetails">
@@ -13,6 +13,7 @@
                     <li class="list-inline-item"><a href="https://www.facebook.com/themashtunaberlour/?locale=en_GB" rel="nofollow" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                     <li class="list-inline-item"><a href="https://twitter.com/MashTunAberlour" rel="nofollow" target="_blank"><img class="img-fluid" src="{{ asset('images/icon-x.png') }}" alt="Twitter Icon" style=""></a></li>
                     <li class="list-inline-item"><a href="https://www.instagram.com/therealmashtunaberlour/?hl=en" rel="nofollow" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="" rel="nofollow" target="_blank"><img class="img-fluid" src="{{ asset('images/restaurant-guru-logo-icon-only.svg') }}"></a></li>
                 </ul>
             </div>
         </div>
