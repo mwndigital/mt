@@ -24,7 +24,7 @@ class PolicyPageStoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255'],
-            'main_content' => ['required', 'max:20000'],
+            'main_content' => ['required', 'max:2000000'],
         ];
     }
 }
