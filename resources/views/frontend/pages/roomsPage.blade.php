@@ -17,15 +17,17 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-lg-8 offset-lg-2">
                         <h1>{{ $rpc->hero_banner_title }}</h1>
-
+                        <p>
+                            We have 5 chic en-suite bedrooms, named after local distilleries. A roll top bath enhances The Glenlivet Room, and most rooms enjoy glorious views over the River Spey. The Macallan Room, which follows the curve of the building, looks towards Easter Elchies House - the original home of The Macallan Malt Whisky.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="roomsPageInfoBanner">
+    {{--<section id="roomsPageInfoBanner">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
@@ -33,7 +35,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>--}}
 
     <section id="roomsPageRoomsBanner">
         <div class="container">
@@ -56,6 +58,12 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+                <div class="col-md-5"></div>
             </div>
         </div>
     </section>

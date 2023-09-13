@@ -14,6 +14,9 @@
                                 <a href="https://restaurantguru.com/Mash-Tun-Aberlour" rel="nofollow" target="_blank">
                                     <img class="img-fluid" src="{{ asset('logos/restaurant-guru.png') }}" alt="Resaurant Guru Image">
                                 </a>
+                                <a href="">
+                                    <img class="img-fluid" src="{{ asset('logos/food-hygiene-image.png') }}" alt="food hygiene image">
+                                </a>
                             </div>
                         </div>
                     </div>
