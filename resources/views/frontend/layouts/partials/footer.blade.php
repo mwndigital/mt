@@ -138,7 +138,7 @@
                             <h5 class="footerTitle">Legal</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li><a href="/deposit-cancellations-policy">Deposit & Cancellations Policy</a></li>
-                                <li><a href="">Privacy Policy</a></li>
+                                <li><a href="/privacy-policy">Privacy Policy</a></li>
                                 <li><a href="/terms-conditions">Terms & Conditions</a></li>
                             </ul>
                         </div>

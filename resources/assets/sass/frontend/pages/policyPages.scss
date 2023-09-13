@@ -1,9 +1,11 @@
 .policyPageTop {
     align-items: center;
-    background-color: $w;
+    background-color: rgba(0, 44, 80, .35);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
-    height: 40vh;
+    height: 600px;
     justify-content: center;
     overflow: hidden;
     position: relative;
