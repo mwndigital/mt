@@ -4,10 +4,12 @@
 @endpush
 @section('content')
     <section id="contactPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('images/contact-page-hero.jpg') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Contact Us</h1>
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Contact Us</h1>
+                    </div>
                 </div>
             </div>
         </div>
