@@ -53,8 +53,15 @@
             }
             p {
                 color: $w;
-                font-family: $popMed;
+                font-family: $popReg;
                 font-size: 1.15rem;
+
+                strong {
+                    font-family: $popMed;
+                }
+                &:first-of-type {
+                    margin-bottom: 5px;
+                }
             }
         }
     }

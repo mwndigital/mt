@@ -26,6 +26,9 @@
                                 {{ $hpcontent->hero_banner_content }}
                             </p>--}}
                             <p>
+                                <strong>Riverside Inn * Iconic Whisky Bar * Whisky-Cigar Shop</strong>
+                            </p>
+                            <p>
                                 Nestled within the banks of the River Spey, surrounded by the picturesque landscape of Aberlour.
                             </p>
                         </div>

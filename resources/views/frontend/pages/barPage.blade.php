@@ -108,7 +108,10 @@
             <div class="row">
                 <div class="col-12">
                     <h2>{{ $brc->book_stay_banner_title }}</h2>
-                    {!! $brc->book_stay_banner_content !!}
+                    {{--{!! $brc->book_stay_banner_content !!}--}}
+                    <p>
+                        When you book a room with us, you will be promised a warm welcome.
+                    </p>
                     <a href="" class="darkGoldBtn">
                         Book Now
                     </a>
