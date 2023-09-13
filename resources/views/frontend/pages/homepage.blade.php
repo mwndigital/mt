@@ -21,7 +21,7 @@
                         <div class="inner wow slideInLeft" data-wow-duration="1.2s">
                             {{--<h1>{{ $hpcontent->hero_banner_title }}</h1>--}}
                             <h1>Welcome to <span>The Mash Tun</span></h1>
-                            <h4 class="wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">in the heart of Arberlour</h4>
+                            <h4 class="wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">in the heart of Aberlour</h4>
                             {{--<p>
                                 {{ $hpcontent->hero_banner_content }}
                             </p>--}}
