@@ -59,11 +59,48 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </section>
+    <section id="roomsPageLodgeBanner">
+        <div class="container">
             <div class="row">
                 <div class="col-md-7">
-
+                    <h2>Our Lodge</h2>
+                    <p>
+                        Our 4 bedroom lodge with a luxury log cabin feel offers sumptuous relaxing options with sun deck, views of river to leathery embrace of gathering room. It is rented as a single rental and can accommodate 2-8 persons.
+                    </p>
+                    <a href="" class="darkGoldBtn">
+                        Find out more <i class="fa fa-chevron-right"></i>
+                    </a>
                 </div>
-                <div class="col-md-5"></div>
+                <div class="col-md-5">
+                    <div class="owl-carousel roomsPageLodgeSlider">
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1555.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1557.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/lodge_lounge.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1550.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1542.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1521.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1534.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/_DSC1529.jpg') }}" alt="" class="sliderImage">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

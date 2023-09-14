@@ -48,4 +48,19 @@ $(document).ready(function(){
         slideSpeed: 3500,
         items: 1
     });
+    //Rooms page lodge slider
+    $('.roomsPageLodgeSlider').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: false,
+        dots: true,
+        loop: true,
+        nav: false,
+        navText: [
+            '<i class="fas fa-chevron-left"></i>',
+            '<i class="fas fa-chevron-right"></i>'
+        ],
+        paginationSpeed: 3500,
+        slideSpeed: 3500,
+        items: 1
+    });
 });
