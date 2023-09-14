@@ -94,14 +94,7 @@
                                 <li>Scotland,</li>
                                 <li>AB38 9QP</li>
                             </ul>
-                            <ul class="list-unstyled contactDetails">
-                                <li>
-                                    Tel: <a href="tel:+441340881771">01340 881771</a>
-                                </li>
-                                <li>
-                                    Email: <a href="mailto:reservations@mashtun-aberlour.com">reservations@mashtun-aberlour.com</a>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="col-md-3">
                             <h5 class="footerTitle">Quick Links</h5>
@@ -119,7 +112,7 @@
 
                             </ul>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <h5 class="footerTitle">Menu</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li>
@@ -138,12 +131,23 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <h5 class="footerTitle">Legal</h5>
-                            <ul class="list-unstyled quickLinksMenu">
+                            <ul class="list-unstyled quickLinksMenu mb-4">
                                 <li><a href="/deposit-cancellations-policy">Deposit & Cancellations Policy</a></li>
                                 <li><a href="/privacy-policy">Privacy Policy</a></li>
                                 <li><a href="/terms-conditions">Terms & Conditions</a></li>
+                            </ul>
+                            <h5 class="footerTitle">
+                                Get in touch
+                            </h5>
+                            <ul class="list-inline contactDetails">
+                                <li class="list-inline-item ">
+                                    Tel: <a href="tel:+441340881771">01340 881771</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    Email: <a href="mailto:reservations@mashtun-aberlour.com">reservations@mashtun-aberlour.com</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -154,7 +158,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>
-                                &copy; Copyright @php date("Y"); @endphp {{ config('app.name') }}
+                                &copy; Copyright @php echo date("Y"); @endphp {{ config('app.name') }}
                             </p>
                         </div>
                         <div class="col-md-6">
