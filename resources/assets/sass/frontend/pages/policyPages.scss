@@ -1,20 +1,20 @@
 .policyPageTop {
     align-items: center;
-    background-color: rgba(0, 44, 80, .35);
+    background-color: $w;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 400px;
     justify-content: center;
     overflow: hidden;
     position: relative;
     text-align: center;
     h1 {
-        color: $w;
+        color: $darkBlue;
         font-family: $libBold;
         font-size: 3rem;
-        margin-bottom: 40px;
+        margin-bottom: -50px;
     }
 }
 .policyPageMain {
