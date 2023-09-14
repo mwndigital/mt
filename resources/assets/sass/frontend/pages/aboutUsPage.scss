@@ -38,24 +38,25 @@
 
 #aboutPageBannerOne {
     background-color: $w;
+    padding: 80px 0;
 
     h2 {
         color: $darkGold;
-        font-family: $libBold;
+        font-family: $popBold;
         font-size: 3rem;
         margin-bottom: 30px;
     }
     p {
-        color: $b;
-        font-family: $libReg;
+        color: $darkBlue;
+        font-family: $popReg;
         font-size: 1rem;
-        font-style: italic;
     }
     img.mainImg {
+        border-radius: 40px;
         display: block;
         height: auto;
         margin: 0 auto;
-        width: 90%;
+        width: 75%;
     }
 }
 #aboutPageBannerTwo,
@@ -65,17 +66,17 @@
     h2,
     h3{
         color: $darkGold;
-        font-family: $libBold;
+        font-family: $popBold;
         font-size: 3rem;
         margin-bottom: 30px;
     }
     p {
         color: $b;
-        font-family: $libReg;
+        font-family: $popReg;
         font-size: 1rem;
-        font-style: italic;
     }
     img.mainImg {
+        border-radius: 40px;
         display: block;
         height: auto;
         margin: 0 auto;

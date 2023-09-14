@@ -110,7 +110,7 @@ Auth::routes();
 
 //Frontend routes
 Route::get('/', [HomepageController::class, 'index']);
-Route::get('/about-us', [AboutUsPageController::class, 'index'])->name('about-us');
+Route::get('/our-history', [AboutUsPageController::class, 'index'])->name('about-us');
 Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
 Route::get('/the-bar-restaurant', [BarPageController::class, 'index'])->name('bar-restaurant');
 Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contact-us');
