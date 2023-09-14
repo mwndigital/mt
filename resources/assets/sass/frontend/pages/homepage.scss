@@ -103,6 +103,14 @@
 }
 .homepageBanner {
     padding: 3rem 0;
+
+    h2, h3, h4 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
     img {
         border-radius: 40px;
         display: block;
@@ -132,16 +140,21 @@
         font-family: $popMed;
         font-size: 1rem;
     }
-    h2 {
+    h3 {
         color: $darkGold;
         font-family: $cav;
         font-size: 3rem;
-        margin-bottom: 30px;
+        margin-bottom: 30px
     }
     p {
-        color: $mediumGrey;
+        color: $darkBlue;
         font-family: $popReg;
-        font-size: 1rem;
+        font-size: 1.1rem;
+
+        strong {
+            font-family: $popBold;
+        }
+
         &:last-of-type {
             margin-bottom: 50px;
         }

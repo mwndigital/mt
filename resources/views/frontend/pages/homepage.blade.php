@@ -63,6 +63,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 wow slideInLeft">
+                    <h2>Follow the whisky trail....</h2>
                     <p>
                         However it is The Whisky that motivates a pilgrimage to this considered place, surrounded by the most famous of distilleries viewed as the ultimate trip for the lover of the Uisge Beatha (water of life)
                     </p>
@@ -80,19 +81,22 @@
                     <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-banner-3-seating.png') }}">
                 </div>
                 <div class="col-md-6 offset-md-1 wow slideInRight">
+                    <h3>
+                        Enjoy our whisky themed rooms...
+                    </h3>
                     <p>
-                        So step into our wee world where we can assist in all your plans at same time offering embracing Highland Hospitality, our super comfy some river view whisky themed rooms. It is here you will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing area of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
+                        So step into our wee world... where we can assist in all your plans... offering the finest highland hospitality, in our super comfy, whisky themed rooms, some with a beautiful view of the river.  You will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing array of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    <section id="homepageHomeFromHomeBanner">
+    <section id="homepageHomeFromHomeBanner" >
         <div class="container">
             <div class="row">
                 <div class="col-md-6 wow slideInLeft" data-wow-duration="1.2s">
                     <h5>{{ $hpcontent->rooms_banner_sub_title }}</h5>
-                    <h2>{{ $hpcontent->rooms_banner_title }}</h2>
+                    <h3>{{ $hpcontent->rooms_banner_title }}</h3>
                     {!! $hpcontent->rooms_banner_content !!}
                     <a href="{{ $hpcontent->rooms_banner_button_link }}" class="darkGoldBtn">
                         Find out more <i class="fa fa-chevron-right"></i>
@@ -114,6 +118,26 @@
                         @endforeach
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="homepageBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 wow slideInLeft">
+                    <img class="img-fluid" src="{{ asset('images/lodge/lodge_lounge.jpg') }}">
+                </div>
+                <div class="col-md-6 offset-md-1 wow slideInRight">
+                    <h3>
+                        Peacefulness and tranquility...
+                    </h3>
+                    <p>
+                        Our 4 bedroom lodge with a luxury log cabin feel offers sumptuous relaxing options with sun deck, views of river to leathery embrace of gathering room.  It is rented as a single rental and can accommodate 2-8 persons
+                    </p>
+                    <a href="" class="darkGoldBtn">
+                        Find out more <i class="fa fa-chevron-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
