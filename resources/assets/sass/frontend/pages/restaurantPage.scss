@@ -1,0 +1,21 @@
+.bookMealBanner {
+    padding: 4rem 0;
+
+    text-align: center;
+
+    h3 {
+        color: $w;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $w;
+        font-family: $popReg;
+        font-size: 1rem;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}

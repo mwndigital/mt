@@ -15,9 +15,9 @@
                         Gallery
                     </a>
                 </li>
-                <li><a href="{{ route('bar-restaurant') }}">Bar</a></li>
+                <li><a href="{{ route('bar') }}">Bar</a></li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('restaurant.index') }}">
                         Restaurant
                     </a>
                 </li>

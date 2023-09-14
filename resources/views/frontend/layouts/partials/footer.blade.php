@@ -75,6 +75,7 @@
                 </div>
             </div>
 
+
         <footer>
             <div class="footerMain">
                 <div class="container">
@@ -104,8 +105,8 @@
                                 </li>
                                 <li><a href="{{ route('about-us') }}">Our History</a></li>
                                 <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
-                                <li><a href="{{ route('bar-restaurant') }}">Bar</a></li>
-                                <li><a href="">Restaurant</a></li>
+                                <li><a href="{{ route('bar') }}">Bar</a></li>
+                                <li><a href="{{ route('restaurant.index') }}">Restaurant</a></li>
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
 
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
