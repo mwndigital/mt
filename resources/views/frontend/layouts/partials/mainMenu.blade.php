@@ -22,6 +22,9 @@
                     </a>
                 </li>
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>
+                <li>
+                    <a href="">Lodge</a>
+                </li>
                 {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
                 <li class="dropdown">
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
