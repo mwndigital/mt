@@ -7,14 +7,15 @@
 @endpush
 @section('content')
     <style>
-        header .navbar ul li a {
-            color: #002C50;
-        }
-        header.scrolled .navbar ul li a {
-            color:#ffffff;
-        }
-        header .navbar ul li a:hover {
-            color: #BEA058;
+        header {
+            background: rgba(0, 44, 80, .75);
+            backdrop-filter: blur(8px);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            border-bottom: 2px solid #BEA058;
+            -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+            -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+            box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
         }
     </style>
     <section class="policyPageTop">
