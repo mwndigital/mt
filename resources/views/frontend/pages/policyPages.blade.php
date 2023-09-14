@@ -13,6 +13,9 @@
         header.scrolled .navbar ul li a {
             color:#ffffff;
         }
+        header .navbar ul li a:hover {
+            color: #BEA058;
+        }
     </style>
     <section class="policyPageTop">
         <div class="container">
