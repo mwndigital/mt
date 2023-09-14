@@ -198,7 +198,7 @@ header {
 
             li {
                 .dropdown {
-                    button.whiteOutlineBtn {
+                    button.darkGoldBtn {
                         text-transform: uppercase;
                         width: 200px;
 
@@ -207,7 +207,7 @@ header {
                         }
                     }
                     .dropdown-menu {
-                        background-color: $w;
+                        background-color: $darkGold;
                         border: 0;
                         border-radius: 5px;
 
@@ -217,7 +217,7 @@ header {
                             margin: 5px 0 5px 0;
                             padding: .5rem 1rem;
                             a {
-                                color: $darkBlue;
+                                color: $w;
                                 font-family: $popMed;
                                 font-size: 1rem;
                                 text-decoration: none;
@@ -227,7 +227,7 @@ header {
                                     background-color: transparent;
                                     border: 0;
                                     box-shadow: none;
-                                    color: $darkGold;
+                                    color: $darkBlue;
                                     outline: none;
                                     text-decoration: none;
                                 }

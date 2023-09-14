@@ -48,7 +48,7 @@
             <ul class="navbar-nav ms-auto rightMenu">
                 <li class="ms-auto">
                     <div class="dropdown">
-                        <button class="whiteOutlineBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="darkGoldBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book <i class="fas fa-chevron-down"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
