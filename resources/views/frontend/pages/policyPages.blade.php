@@ -6,6 +6,11 @@
     {{ Str::limit($policyPage->main_content, 280, "...") }}
 @endpush
 @section('content')
+    <style>
+        header .navbar ul li a {
+            color: #002C50;
+        }
+    </style>
     <section class="policyPageTop">
         <div class="container">
             <div class="row">
