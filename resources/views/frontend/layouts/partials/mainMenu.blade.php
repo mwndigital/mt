@@ -23,7 +23,7 @@
                 </li>
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>
                 <li>
-                    <a href="">Lodge</a>
+                    <a href="{{ route('lodge.index') }}">Lodge</a>
                 </li>
                 {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
                 <li class="dropdown">

@@ -108,7 +108,7 @@
                                 <li><a href="{{ route('bar') }}">Bar</a></li>
                                 <li><a href="{{ route('restaurant.index') }}">Restaurant</a></li>
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
-
+                                <li><a href="{{ route('lodge.index') }}">Lodge</a></li>
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
                             </ul>
