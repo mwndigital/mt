@@ -17,7 +17,26 @@
             {{--<li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>--}}
         </ul>
     </li>
-    <li><a href="{{ route('admin.bookings.index') }}">Bookings</a></li>
+    <li>
+        <a href="{{ route('admin.bookings.index') }}">Room Bookings</a>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurant Bookings</a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{{ route('admin.restaurant-bookings.index') }}">All Bookings</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.restaurant-bookings.create') }}">Create Booking</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.restaurant-tables.index') }}">All Tables</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.restaurant-tables.create') }}">Add Table</a>
+            </li>
+        </ul>
+    </li>
     <li><a href="/admin/rooms">Rooms</a></li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gallery</a>

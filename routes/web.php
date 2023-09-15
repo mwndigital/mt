@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminBookingController;
 use App\Http\Controllers\Admin\AdminGalleryCategoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\AdminRestaurantBookingController;
+use App\Http\Controllers\Admin\AdminRestaurantTableController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
@@ -82,6 +84,15 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::post('stepFourStore', [AdminBookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
     });
     Route::resource('bookings', AdminBookingController::class);
+
+    //Restaurant Booking controller
+    Route::prefix('restaurant-bookings')->group(function(){
+
+    });
+    Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);
+
+    //Restaurant Tables
+    Route::resource('restaurant-tables', AdminRestaurantTableController::class);
 
     //Pages
     Route::prefix('pages')->group(function(){

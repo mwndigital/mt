@@ -44,4 +44,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function userDetails(){
+        return $this->hasOne(UserDetails::class);
+    }
+    public function restaurantBooking(){
+        return $this->hasMany(RestaurantBooking::class);
+    }
 }
