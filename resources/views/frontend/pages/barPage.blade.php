@@ -26,7 +26,10 @@
                     <div class="col-md-8 offset-md-2">
                         <h1>The Bar</h1>
                         <p>
-                            Quisque ut dui malesuada, eleifend odio quis, efficitur nisl. Donec consequat blandit erat ac mollis. Vestibulum posuere ut nulla et efficitur. Praesent at sagittis justo.
+                            The Historic and Iconic  Mash Tun Whisky Bar is famous throughout the enthusiasts world for its astonishing whisky selection featuring at its heart one of only two known bars worldwide that house the entire range of Glenfarclas Family Cask . Patrons travel far and wide to celebrate their birth year with a dram , truly a bucket list aspiration we would love for you to experience.
+                        </p>
+                        <p>
+                            Steeped in History.... Seeped in Whisky
                         </p>
                         <div class="btn-group">
 
