@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @push('page-title')
-
+    Payment Error - {{ config('app.name') }}
 @endpush
 @section('content')
     <section class="bookingPaymentErrorPageMain">

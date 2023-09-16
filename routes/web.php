@@ -129,14 +129,15 @@ Route::prefix('book-a-room')->group(function(){
     Route::post('step-four-store', [BookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
 
     Route::get('payment-step', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
-
+});
+Route::prefix('payment')->group(function(){
     Route::post('process-payment', [BookingController::class, 'processPayment'])->name('book-a-room-process-payment');
-
-    Route::get('thank-you', [BookingController::class, 'thankYou'])->name('book-a-room-thank-you');
+    Route::post('thank-you', [BookingController::class, 'thankYou'])->name('book-a-room-thank-you');
+    Route::post('payment-failed', [BookingController::class, 'paymentFailed'])->name('book-a-room-failed');
+    // Route::post('/sagepay/notify', [BookingController::class, 'sagepayNotify'])->name('sagepay.notify');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
 Route::post('/book-room-step-one-store', [BookingController::class, 'stepOneStore'])->name('book-a-room-step-1-store');
-Route::post('/sagepay/notify', [BookingController::class, 'sagepayNotify'])->name('sagepay.notify');
 Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
     ->where('slug', '[A-Za-z0-9\-]+')
     ->name('policy-page.show');

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
-use Omnipay\Omnipay;
+use Omnipay\Common\CreditCard;
 
 class BookingController extends Controller
 {
@@ -182,7 +182,7 @@ class BookingController extends Controller
     }
 
     public function stepFourStore(Request $request) {
-        /*$validated = $request->validate([
+        $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
         ]);
 
@@ -190,92 +190,57 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-payment-step');*/
-
-
-        $booking = $request->session()->get('booking');
-        $validated = $request->validate([
-            'cancellationPolicyAgree' => ['required'],
-        ]);
-        $booking->fill($validated);
-        $booking->save();
-        $request->session()->forget('booking');
-
-        Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
-
-        return redirect('book-a-room/thank-you');
-
+        return to_route('book-a-room-payment-step');
     }
 
 
     protected function getSagePayGateway() {
-        $gateway = OmniPay::create('SagePay\Server');
-
-        $gateway->setVendor('cgarsltd1');
-        $gateway->setTestMode(true);
-
+        $gateway =  \Omnipay::gateway('opayo');
+        $gateway->setBillingForShipping(true);
         return $gateway;
     }
 
     public function paymentStep(Request $request){
         $booking = $request->session()->get('booking');
-        //dd($booking);
+        $request->session()->put('transactionId', uniqid());
         return view('frontend.pages.booking.step-payment', compact('booking'));
     }
 
     public function processPayment(Request $request){
         $booking = $request->session()->get('booking');
-
         $gateway = $this->getSagePayGateway();
+        $transactionId = $request->session()->get('transactionId');
 
-
-        //Generate unique vendorTxCode
-        $vendorTxCode = uniqid();
-
-        $transactionId = uniqid();
-
-        //define the payment data to be sent
-        $data = [
-            'VendorTxCode' => $vendorTxCode,
-            'VendorName' => 'cgarsltd1',
-            'Apply3DSecure' => '0',
-            'amount' => '50.00',
+       try{
+        $response = $gateway->purchase([
+            'amount' => '50.00', // Replace with the actual amount
             'currency' => 'GBP',
-            'card' => $request->input('card'),
-            'description' => 'The Mash Tun room booking deposit',
             'transactionID' => $transactionId,
-            'BillingFirstName' => $booking->first_name,
-            'BillingLastName' => $booking->last_name,
-            'BillingAddress1' => $booking->address_line_one,
-            'BillingCity' => $booking->city,
-            'BillingPostCode' => str_replace(' ', '', $booking->postcode),
-            'BillingCountry' => $booking->country,
-            'BillingState' => ' ',
-            'ShippingFirstname' => $booking->first_name,
-            'ShippingLastName' => $booking->last_name,
-            'ShippingAddress1' => $booking->address_line_one,
-            'ShippingCity' => $booking->city,
-            'ShippingPostCode' => str_replace(' ', '', $booking->postcode),
-            'ShippingCountry' => $booking->country,
-            'ShippingState' => ' ',
+            'VendorTxCode' => uniqid(),
+            'description' => 'The Mash Tun room booking deposit',
+            'clientIp' => '90.242.7.117',
+            'card' => $this->getCardDetails($booking, $request),
+            'returnUrl' => route('book-a-room-thank-you'),
+            'cancelUrl' => route('book-a-room-failed'),
+        ])->send();
+       } catch(\Exception $e){
+           return redirect()->back()->with('error', $e->getMessage())->withInput();
+         }
 
-            'notifyUrl' => route('sagepay.notify'),
-        ];
-
-        //send the request to SP
-        $response = $gateway->purchase($data)->send();
-
-        //dd($data);
-
-
-
-        //Check response and redirect appropriately
         if($response->isSuccessful()){
-            //Successful
-
+            $booking->save();
+            // Send email
+             try{
+                Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+             } catch(\Exception $e){ }
+             $this->cleanSession($request);
             return view('frontend.pages.booking.thank-you', compact('booking'));
         }
         elseif($response->isRedirect()){
+            $request->session()->put('transactionId', $transactionId);
+            $request->session()->put('transactionReference', $response->getTransactionReference());
+            $request->session()->put('transactionSecure', $response->getSecurityKey());
+            // Redirect
             $response->redirect();
         }
         else {
@@ -284,35 +249,56 @@ class BookingController extends Controller
         }
     }
 
-    public function sagepayNotify(Request $request) {
+    public function thankYou(Request $request) {
+        // dd($request->all());exit;
         $gateway = $this->getSagePayGateway();
-
-        $notificationData = $request->all();
-
-        $response = $gateway->completePurchase($notificationData)->send();
-
-        if($response->isSuccessful()){
-            // Payment successful
-            // Update the status of the booking or order in your application
-            // For example, retrieve the booking using the transaction ID received from SagePay
-            // $transactionId = $notificationData['VendorTxCode'];
-            // $booking = Booking::where('transaction_id', $transactionId)->first();
-            // $booking->update(['status' => 'paid']);
-
-            // Return a success response to SagePay
-            return response('OK');
+        $completeRequest = $gateway->completeAuthorize([
+            'transactionId' => $request->session()->get('transactionId'),
+        ]);
+        $completeResponse = $completeRequest->send();
+        if($completeResponse->isSuccessful()){
+            $booking = $request->session()->get('booking');
+            $booking->save();
+            try{
+                Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+             } catch(\Exception $e){ }
+            $this->cleanSession($request);
+            return view('frontend.pages.booking.thank-you', compact('booking'));
         }
         else {
-            // Payment failed or invalid notification
-            // Log the error or take appropriate action
-            // Return a failure response to SagePay
-            return response('ERROR');
+            //Failed
+            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $completeResponse);
+
         }
     }
 
-    public function thankYou() {
-        return view('frontend.pages.booking.thank-you');
+    public function paymentFailed() {
+        return view('frontend.pages.booking.payment-failed');
     }
 
+    private function getCardDetails($booking, $request){
+        return new CreditCard([
+            'number' => str_replace('-', '', $request->card_number),
+            'expiryMonth' => $request->expiry_month,
+            'expiryYear' => $request->expiry_year,
+            'cvv' => $request->cvv,
+            'firstName' => $request->name,
+            'lastName' => '',
+            'email' => $booking->email_address,
+            'BillingFirstName' => $booking->first_name,
+            'BillingLastName' => $booking->last_name,
+            'BillingAddress1' => $booking->address_line_one,
+            'BillingCity' => $booking->city,
+            'BillingPostCode' => str_replace(' ', '', $booking->postcode),
+            'BillingCountry' => $booking->country,
+            'BillingState' => '',
+        ]);
+    }
 
+    private function cleanSession(Request $request){
+        $request->session()->forget('booking');
+        $request->session()->forget('transactionId');
+        $request->session()->forget('transactionReference');
+        $request->session()->forget('transactionSecure');
+    }
 }
