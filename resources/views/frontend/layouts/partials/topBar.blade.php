@@ -12,6 +12,9 @@
                     <a href="https://www.tripadvisor.com/Hotel_Review-g658240-d672367-Reviews-The_Mash_Tun-Aberlour_Moray_Scotland.html" rel="nofollow" target="_blank">
                         <ul class="list-inline starRating">
                             <li class="list-inline-item">
+                                TripAdvisor:
+                            </li>
+                            <li class="list-inline-item">
                                 <i class="fa-solid fa-star"></i>
                             </li>
                             <li class="list-inline-item">

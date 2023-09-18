@@ -142,6 +142,55 @@
             </div>
         </div>
     </section>
+
+    <section class="ourRatingsBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4>Our Ratings</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="reviewItem">
+                        <a href="https://www.yelp.com/biz/mash-tun-aberlour" rel="nofollow" target="_blank">
+                            <h4>4.3</h4>
+                            <h6>Yelp</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="reviewItem">
+                        <a href="https://www.google.com/travel/search?q=Mash%20Tun%20aberlour&g2lb=2502548%2C2503771%2C2503781%2C4258168%2C4270442%2C4284970%2C4291517%2C4597339%2C4757164%2C4814050%2C4864715%2C4874190%2C4886480%2C4893075%2C4899571%2C4899573%2C4924070%2C4965990%2C4990494%2C72298667%2C72302247%2C72313834%2C72317059%2C72321071%2C72370226&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESABpGCigSJjIkMHg0ODg1YTQ2MzMxNmViMDk3OjB4ODg2Y2RlNzQ4NTVjOThhEhoSFAoHCOcPEAkYGBIHCOcPEAkYGRgBMgIQAA&qs=CAEyE0Nnb0lpcFBYd3ZTOHM4TUlFQUU4AkIJCYrJVUjnzYYIQgkJislVSOfNhgg&ap=ugEHcmV2aWV3cw&ictx=1&sa=X&ved=0CAAQ5JsGahcKEwjI_q3xtbSBAxUAAAAAHQAAAAAQBQ" rel="nofollow" target="_blank">
+                            <h4>
+                                4.5
+                            </h4>
+                            <h6>
+                                Google
+                            </h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="reviewItem">
+                        <a href="https://foursquare.com/v/the-mash-tun/4c6ab4dca3932c7a12ebfdf4" rel="nofollow" target="_blank">
+                            <h4>8.4/10</h4>
+                            <h6>FourSquare</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="reviewItem">
+                        <a href="https://www.facebook.com/themashtunaberlour/reviews" rel="nofollow" target="_blank">
+                            <h4>4.4</h4>
+                            <h6>Facebook</h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="homepageBookRoomBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ Storage::url($hpcontent->spend_night_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">

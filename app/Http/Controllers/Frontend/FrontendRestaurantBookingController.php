@@ -15,7 +15,7 @@ class FrontendRestaurantBookingController extends Controller
      */
     public function index(Request $request)
     {
-        $tbooking = $request->session()->get('RestaurantBooking');
+        $table_booking = $request->session()->get('table_booking');
 
         $tables = RestaurantTable::all();
 
@@ -27,18 +27,18 @@ class FrontendRestaurantBookingController extends Controller
         $max_date = Carbon::now()->addMonth(6);
         $today = Carbon::now()->format('l');
 
-        return view('frontend.pages.restaurant-bookings.index', compact('tables', 'today', 'min_date', 'max_date', 'tbooking'));
+        return view('frontend.pages.restaurant-bookings.index', compact('tables', 'today', 'min_date', 'max_date', 'table_booking'));
     }
 
     public function indexStore(Request $request) {
         $validated = $request->validate([
             'reservation_date' => ['required', 'date'],
             'reservation_time' => ['required', 'string'],
-            'guest_number' => ['required', 'integer'],
+            'no_of_guests' => ['required', 'integer'],
             'joining_for' => ['required', 'string', 'max:255'],
         ]);
 
-        if(empty($request->session()->get('RestaurantBooking'))){
+        if(empty($request->session()->get('table_booking'))){
             $table_booking = new RestaurantBooking();
             $table_booking->fill($validated);
             $request->session()->put('table_booking', $table_booking);
@@ -53,7 +53,9 @@ class FrontendRestaurantBookingController extends Controller
     }
 
     public function stepTwoShow(Request $request) {
+        $table_booking = $request->session()->get('table_booking');
 
+        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking'));
     }
     public function stepTwoStore(Request $request) {
 

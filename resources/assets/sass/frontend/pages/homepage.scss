@@ -243,6 +243,59 @@
     }
 }
 
+.ourRatingsBanner {
+    background-color: $lightGrey;
+    padding: 3rem 0;
+
+    h4 {
+        color: $darkGold;
+        font-family: $popBold;
+        font-size: 3rem;
+        margin-bottom: 50px;
+    }
+
+    .reviewItem {
+        align-items: center;
+        background-color: $darkBlue;
+        border: 0;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;;
+        height: 250px;
+        justify-content: center;
+        text-align :center;
+        @include transition(all .4s ease-in-out);
+
+        a {
+            align-items: center;
+            display: flex;
+            flex-direction: column;;
+            justify-content: center;
+            height: 100%;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        h4 {
+            color: $darkGold;
+            font-family: $popBold;
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+        h6 {
+            color: $w;
+            font-family: $popReg;
+            font-size: 1.5rem;
+        }
+
+        &:hover {
+            box-shadow: none;
+            outline: none;
+            transform: scale(1.1);
+        }
+    }
+}
+
 .gettingHereBanner {
     background-color: $lightGrey;
     padding: 3rem 0;
