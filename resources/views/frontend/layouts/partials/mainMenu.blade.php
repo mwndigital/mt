@@ -32,16 +32,17 @@
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</a>
                         </li>
-                        <li>
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">
-                                Whisky Menu
-                            </a>
-                        </li>
+
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</a>
                         </li>
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</a>
+                        </li>
+                        <li>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">
+                                Whisky Flights Menu
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -59,7 +60,7 @@
                                 <a href="{{ route('book-a-room-index') }}">Book a stay</a>
                             </li>
                             <li>
-                                <a href="">Book a table</a>
+                                <a href="{{ route('restaurant-booking.index') }}">Book a table</a>
                             </li>
                         </ul>
 
