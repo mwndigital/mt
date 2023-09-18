@@ -89,7 +89,7 @@
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-687ba6e9.css",
+    "file": "assets/frontend-fadf465f.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   }

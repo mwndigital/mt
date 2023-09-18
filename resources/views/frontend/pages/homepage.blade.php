@@ -203,7 +203,7 @@
         </div>
     </section>
 
-    <section id="homepageBookRoomBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ Storage::url($hpcontent->spend_night_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
+    <section id="homepageBookRoomBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{--{{ Storage::url($hpcontent->spend_night_banner_background_image) }}--}}{{ asset('images/rooms/_DSC1684.jpg') }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
