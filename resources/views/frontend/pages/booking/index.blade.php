@@ -37,7 +37,7 @@
             document.getElementById('no_of_adults').defaultValue = '1';
             document.getElementById('no_of_children').defaultValue = '0';
             // Check in date default value today
-            document.getElementById('checkin_date').defaultValue = '{{ now()->setTimezone('Europe/London')->format('d-m-y') }}';
+            document.getElementById('checkin_date').defaultValue = '{{ now()->setTimezone('Europe/London')->format('d-m-Y') }}';
 
         });
     </script>
