@@ -81,7 +81,7 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">It's not just whisky, we do wine too</h2>
                     <p>
-                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
+                        Our wine list... considered, balanced and perfectly suited for sipping or dining at The Mash
                     </p>
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</button>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">Did someone say Cocktails</h2>
                     <p>
-                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
+                        Cocktails why not? creatively created, locally influenced by our companies Master Mixologist, Sam McLlwham to enhance your relaxation.
                     </p>
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</button>
                 </div>
