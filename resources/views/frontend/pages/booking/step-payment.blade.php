@@ -3,6 +3,39 @@
     Book a room - Step 4 Payment | Aberlour Moray Scotland
 @endpush
 @push('page-scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // CVV number
+        const cvvInput = document.getElementById('cvv');
+
+        cvvInput.addEventListener('input', function(event) {
+            let value = event.target.value.replace(/\D/g, '');
+
+            if (value.length > 5) value = value.slice(0, 5);
+
+            event.target.value = value;
+        });
+
+        // Card number
+        const cardNumberInput = document.getElementById('card_number');
+
+        cardNumberInput.addEventListener('input', function(event) {
+            let value = event.target.value.replace(/\D/g, '');
+
+            if (value.length > 4) {
+                value = value.slice(0, 4) + '-' + value.slice(4);
+            }
+            if (value.length > 9) {
+                value = value.slice(0, 9) + '-' + value.slice(9);
+            }
+            if (value.length > 14) {
+                value = value.slice(0, 14) + '-' + value.slice(14);
+            }
+
+            event.target.value = value;
+        });
+    });
+    </script>
 
 @endpush
 @push('page-styles')
@@ -35,12 +68,17 @@
                         </div>
                         <form method="post" action="{{ route('book-a-room-process-payment') }}">
                             @csrf
-
                             <h4 class="stepTitle">Payment</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="cardName">Name on Card</label>
+                                    <input type="text" id="cardName" name="name" required>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">Card Number *</label>
-                                    <input type="text" name="card[number]" id="card_number" placeholder="Card Number" required>
+                                    <input type="text" name="card_number" id="card_number" placeholder="Card Number" required>
                                     @error('card_number')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -52,7 +90,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Expiry Month</label>
-                                    <select name="card[expiry_month]" id="card_expiry_month" required>
+                                    <select name="expiry_month" id="card_expiry_month" required>
                                         <option value="01">01</option>
                                         <option value="02">02</option>
                                         <option value="03">03</option>
@@ -74,7 +112,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Expiry Year</label>
-                                    <select name="card[expiry_year]" id="card_expiry_year" required>
+                                    <select name="expiry_year" id="card_expiry_year" required>
                                         @php
                                             $currentYear = date('Y');
                                             $futureYear = $currentYear + 10; // Replace 10 with the number of years you want to display in the future
@@ -93,8 +131,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">CVV</label>
-                                    <input type="text" name="card[cvv]" id="card_cvv" placeholder="CVV" required>
-                                    <input type="text" name="card[state]" id="card_state" value=" " style="display: none;">
+                                    <input type="text" name="cvv" id="cvv" placeholder="CVV" required>
+                                    {{-- <input type="text" name="card[state]" id="card_state" value=" " style="display: none;"> --}}
                                 </div>
                             </div>
 
