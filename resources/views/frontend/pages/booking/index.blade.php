@@ -21,21 +21,24 @@
                 defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
                 minDate: 0
             });
+
             $('#arrival_time').timepicker({
-                timeFormat: 'h:mm',
-                interval: 30,
-                minTime: '14:00',
-                maxTime: '21:00',
-                defaultTime: '14:00',
-                startTime: '14:00',
-                dynamic: false,
-                dropdown: true,
-                scrollbar: true,
-                use24Hours: true,
+            timeFormat: 'HH:mm',
+            minTime: '14:00',
+            maxTime: '21:00',
+            interval: 30,
+            defaultTime: '14:00',
+            startTime: '14:00',
+            dropdown: true,
+            scrollbar: false,
+            use24Hours: true
             });
 
-            document.getElementById('no_of_adults').defaultValue = '0';
+            document.getElementById('no_of_adults').defaultValue = '1';
             document.getElementById('no_of_children').defaultValue = '0';
+            // Check in date default value today
+            document.getElementById('checkin_date').defaultValue = '{{ now()->setTimezone('Europe/London')->format('d-m-y') }}';
+
         });
     </script>
 
@@ -98,7 +101,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : '' }}">
+                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : 1 }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Number of children</label>
