@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminRestaurantBookingController extends Controller
@@ -26,7 +27,17 @@ class AdminRestaurantBookingController extends Controller
     {
         $tables = RestaurantTable::all();
 
-        return view('admin.pages.restaurant.create', compact('tables'));
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $min_date = Carbon::now()->addDay(1);
+        $max_date = Carbon::now()->addMonth(6);
+        $today = Carbon::now()->format('l');
+
+
+
+        return view('admin.pages.restaurant.create', compact('tables', 'today', 'min_date', 'max_date', 'today'));
     }
 
     /**
