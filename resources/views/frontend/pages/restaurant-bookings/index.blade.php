@@ -77,9 +77,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
-                    {{ $table_booking->no_of_guests }}
-                    {{ $table_booking->reservation_date }}
-                    {{ $table_booking->reservation_time }}
                     <div class="formWrap">
                         <div class="stepBanner">
                             <div class="innerWrap"><span>Step 1</span></div>
@@ -99,7 +96,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Choose your date *</label>
-                                    <input type="date" name="reservation_date" id="reservation_date" min="{{ $min_date->format('Y-m-d') }}" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date'), $table_booking->reservation_date }}">
+                                    <input type="date" name="reservation_date" id="reservation_date" min="{{ $min_date->format('Y-m-d') }}" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date', $table_booking->reservation_date) }}">
                                     @error('reservation_date')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -109,7 +106,7 @@
                                 <div class="col-md-4">
                                     <label for="">Choose your time *</label>
                                     <select name="reservation_time" id="reservation_time" required>
-
+                                        <option value="{{ $table_booking->reservation_time }}" selected> {{ $table_booking->reservation_time }}</option>
                                     </select>
                                     <small>
                                         For bookings longer than 2 hours please contact us

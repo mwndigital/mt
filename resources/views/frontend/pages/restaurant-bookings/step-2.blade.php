@@ -42,7 +42,10 @@
                         </div>
                         <form action="" method="post">
                             @csrf
-
+                            <div class="row">
+                                <div class="col-md-8"></div>
+                                <div class="col-md-4"></div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <a href="{{ route('book-a-table-index') }}" class="">

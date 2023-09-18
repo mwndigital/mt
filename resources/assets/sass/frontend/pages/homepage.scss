@@ -263,6 +263,8 @@
         flex-direction: column;;
         height: 250px;
         justify-content: center;
+        overflow: hidden;
+        position: relative;
         text-align :center;
         @include transition(all .4s ease-in-out);
 
@@ -276,17 +278,40 @@
             width: 100%;
         }
 
-        h4 {
-            color: $darkGold;
-            font-family: $popBold;
-            font-size: 4rem;
-            margin-bottom: 10px;
+        img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            width: 100%;
         }
-        h6 {
-            color: $w;
-            font-family: $popReg;
-            font-size: 1.5rem;
+        .content {
+            align-items: center;
+            background-color: rgba(0, 44, 80, .35);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;;
+            height: 100%;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            h4 {
+                color: $w;
+                font-family: $popBold;
+                font-size: 4rem;
+                margin-bottom: 10px;
+            }
+            h6 {
+                color: $w;
+                font-family: $popReg;
+                font-size: 1.5rem;
+            }
         }
+
+
 
         &:hover {
             box-shadow: none;
