@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\ContactPageController;
 use App\Http\Controllers\Frontend\FrontendGalleryController;
 use App\Http\Controllers\Frontend\FrontendLodgeController;
 use App\Http\Controllers\Frontend\FrontendPolicyPageController;
+use App\Http\Controllers\Frontend\FrontendRestaurantBookingController;
 use App\Http\Controllers\Frontend\FrontendRestaurantPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
@@ -154,4 +155,11 @@ Route::post('/book-room-step-one-store', [BookingController::class, 'stepOneStor
 Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
     ->where('slug', '[A-Za-z0-9\-]+')
     ->name('policy-page.show');
+
+//Restaurant booking
+Route::prefix('book-a-table')->group(function(){
+    Route::get('step-one', [FrontendRestaurantBookingController::class, 'index'])->name('book-a-table-index');
+    Route::post('step-one-store', [FrontendRestaurantBookingController::class, 'indexStore'])->name('book-a-table-index-store');
+    Route::get('step-two', [FrontendRestaurantBookingController::class, 'stepTwoShow'])->name('book-a-table-step-two-show');
+});
 

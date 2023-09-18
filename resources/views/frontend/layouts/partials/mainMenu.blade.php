@@ -60,7 +60,7 @@
                                 <a href="{{ route('book-a-room-index') }}">Book a stay</a>
                             </li>
                             <li>
-                                <a href="">Book a table</a>
+                                <a href="{{ route('book-a-table-index') }}">Book a table</a>
                             </li>
                         </ul>
 

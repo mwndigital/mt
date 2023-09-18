@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 40vh;
+    height: 550px;
     justify-content: center;
     overflow: hidden;
     position: relative;
@@ -12,6 +12,7 @@
         font-family: $libBold;
         font-size: 3rem;
         margin-bottom: 40px;
+        padding-top: 100px;
     }
 }
 

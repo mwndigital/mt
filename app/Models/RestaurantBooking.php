@@ -10,7 +10,17 @@ class RestaurantBooking extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'first_name',
+        'last_name',
+        'email',
+        'reservation_date',
+        'reservation_time',
+        'reservation_end_time',
+        'no_of_guests',
+        'table_id',
+        'joining_for',
+        'additional_information',
+        'dietary_info',
     ];
 
     public function restaurantTable() {

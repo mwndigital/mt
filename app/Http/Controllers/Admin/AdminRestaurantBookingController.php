@@ -17,7 +17,7 @@ class AdminRestaurantBookingController extends Controller
     {
         $bookings = RestaurantBooking::all();
 
-        return view('admin.pages.restaurant.index', compact('bookings'));
+        return view('admin.pages.restaurant.index');
     }
 
     /**
