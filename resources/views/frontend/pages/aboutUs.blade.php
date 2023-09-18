@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <h1>Our History</h1>
-                        <p>Some content here</p>
+                        <p>We invite you to experience all we have to offer from a relaxing drinks and dine deck with river view... or nurturing a wood burning sauna under the trees... we are at your service .</p>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     {!! $apc->about_banner_content !!}
                 </div>
                 <div class="col-md-6 wow slideInRight" data-wow-duration="1s">
-                    <img class="img-fluid mainImg" src="{{ Storage::url($apc->about_banner_image) }}">
+                    <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->about_banner_image) }}--}}{{ asset('images/outside-image.jpg') }}">
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 wow slideInLeft" data-wow-duration="1s">
-                    <img class="img-fluid mainImg" src="{{ Storage::url($apc->banner_two_image) }}">
+                    <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->banner_two_image) }}--}}{{ asset('images/waterfalls-picture.webp') }}">
                 </div>
                 <div class="col-md-6 wow slideInRight" data-wow-duration="1s">
                     <h3>
