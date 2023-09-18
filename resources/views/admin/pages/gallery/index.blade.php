@@ -49,14 +49,12 @@
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul>
+
                                                     <li>
-                                                        <a href="">View</a>
+                                                        <a href="{{ route('admin.gallery.edit', $item->id) }}">Edit</a>
                                                     </li>
                                                     <li>
-                                                        <a href="">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="" method="POST">
+                                                        <form action="{{ route('admin.gallery.destroy', $item->id) }}" method="POST">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="confirm-delete-btn" type="submit">Delete</button>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryItemStoreRequest;
+use App\Http\Requests\GalleryItemUpdateRequest;
 use App\Models\Gallery;
 use App\Models\GalleryCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminGalleryController extends Controller
 {
@@ -65,15 +67,49 @@ class AdminGalleryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Gallery::findOrFail($id);
+        $category = GalleryCategory::all();
+        return view('admin.pages.gallery.edit', compact('item', 'category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(GalleryItemUpdateRequest $request, string $id)
     {
-        //
+        $item = Gallery::findOrFail($id);
+
+        $currentImage = $item->image;
+
+        $newImage = NULL;
+
+        if($request->hasFile('image')){
+            $newImage = $request->file('image');
+            $fileName = time().'_'.$newImage->getClientOriginalName();
+            $folder = 'public/gallery';
+
+            $newImagePath = $newImage->storeAs($folder, $fileName);
+
+            if($currentImage){
+                Storage::delete($currentImage);
+            }
+
+            $item->name = $request->name;
+            $item->image = $newImagePath;
+            $item->category_id = $request->category_id;
+            $item->save();
+
+            return redirect('admin/gallery')->with('success', 'Gallery item has been updated successfully');
+        }
+        else {
+
+            $item->name = $request->name;
+            $item->image = $currentImage;
+            $item->category_id = $request->category_id;
+            $item->save();
+
+            return redirect('admin/gallery')->with('success', 'Gallery item has been updated successfully');
+        }
     }
 
     /**
@@ -81,6 +117,11 @@ class AdminGalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Gallery::findOrFail($id);
+        $item->delete();
+        if($item->image) {
+            Storage::delete($item->image);
+        }
+        return redirect('admin/gallery')->with('success', 'Gallery item deleted successfully');
     }
 }
