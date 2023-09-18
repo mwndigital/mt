@@ -7,6 +7,16 @@
     overflow: hidden;
     position: relative;
     text-align: center;
+
+    img.mainBgImage {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
     .content {
         align-items: center;
         background-color: rgba(0, 44, 80, .45);

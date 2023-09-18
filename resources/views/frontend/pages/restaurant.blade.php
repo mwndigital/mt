@@ -19,7 +19,7 @@
 @endpush
 @section('content')
     <section class="brPageHeroBanner">
-        <img class="img-fluid mainBgImage" src="{{ asset('images/restaurant-page-main-new.jpeg') }}">
+        <img class="img-fluid mainBgImage" src="{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -49,7 +49,7 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/spaghetti.png') }}">
                 </div>
 
             </div>
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/fish.jpeg') }}">
                 </div>
                 <div class="col-md-6">
                     <h2 class="secTitle">Desserts, just better </h2>
@@ -80,7 +80,7 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/team.png') }}">
                 </div>
 
             </div>
