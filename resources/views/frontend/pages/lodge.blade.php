@@ -71,4 +71,22 @@
             </div>
         </div>
     </section>
+    <section class="lodgeBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="secTitle">
+                        The nature of outside, whilst being inside
+                    </h3>
+                    <p>
+                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
+                    </p>
+
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/lodge-image-3.png') }}">
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
