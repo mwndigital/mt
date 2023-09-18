@@ -37,6 +37,14 @@ header {
             flex-direction: row;
             text-align: center;
 
+            a {
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
             ul {
                 margin-bottom: 0;
                 padding-bottom: 0;

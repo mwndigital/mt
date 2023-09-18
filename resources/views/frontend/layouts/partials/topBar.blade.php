@@ -9,37 +9,39 @@
             </div>
             <div class="col-lg-5">
                 <div class="tripAdviserBanner">
-                    <ul class="list-inline starRating">
-                        <li class="list-inline-item">
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa-solid fa-star-half"></i>
-                        </li>
-                        <li class="list-inline-item">
+                    <a href="https://www.tripadvisor.com/Hotel_Review-g658240-d672367-Reviews-The_Mash_Tun-Aberlour_Moray_Scotland.html" rel="nofollow" target="_blank">
+                        <ul class="list-inline starRating">
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-star"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-star"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-star"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-star"></i>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa-solid fa-star-half"></i>
+                            </li>
+                            <li class="list-inline-item">
                             <span class="text">
                                 317 reviews
                             </span>
-                        </li>
-                        <li class="list-inline-item">
-                            <span class="sep"> | </span>
-                        </li>
-                        <li class="list-inline-item">
-                            <p>
-                                #2 of 2 hotels in Aberlour
-                            </p>
-                        </li>
+                            </li>
+                            <li class="list-inline-item">
+                                <span class="sep"> | </span>
+                            </li>
+                            <li class="list-inline-item">
+                                <p>
+                                    #2 of 2 hotels in Aberlour
+                                </p>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-3">
