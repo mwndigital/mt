@@ -173,23 +173,25 @@
                         </ul>
                         <hr>
                         <div class="totalWrapper">
+                         <ul class="list-inline">
+                                <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                    <strong>Deposit</strong>
+                                </li>
+                                <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£50.00 </li>
+                        </ul>
+                          <ul class="list-inline">
+                                <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                    <small>Payable 24 hours prior</small>
+                                </li>
+                                <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£{{$booking->getPayableAmount()}} </li>
+                        </ul>
+
                             <ul class="list-inline">
                                 <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
                                 <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
-                                    @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
-                                        £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
-                                    @else
-                                        £{{ $booking->room->price_per_night_single * $booking->duration_of_stay }}
-                                    @endif
+                                     £{{$booking->getTotalAmount()}}
                                 </li>
                             </ul>
-                            <ul class="list-inline">
-                                <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
-                                    <strong>Prepayment</strong>
-                                </li>
-                                <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£0.00</li>
-                            </ul>
-
                         </div>
                     </aside>
                 </div>

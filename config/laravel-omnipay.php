@@ -16,7 +16,7 @@ return [
             ]
         ],
         'opayo' => [
-            'driver'  => 'SagePay_Direct', // Use SagePay_Direct for server-to-server integration, or SagePay_Server for form integration
+            'driver'  => 'SagePay_Server', // Use SagePay_Direct for server-to-server integration, or SagePay_Server for form integration
             'options' => [
                 'vendor' => env('OPAYO_VENDOR_NAME'),
                 'testMode' => env('OPAYO_TEST_MODE', true),

@@ -30,23 +30,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <div class="table-responsive">
                     <table class="table table-hovered">
                         <thead>
                             <tr>
-                                <th>Checkin Date</th>
-                                <th>Checkout Date</th>
+                                <th>Date</th>
                                 <th>Name</th>
-                                <th>Room</th>
+                                {{-- <th>Room</th> --}}
+                                <th>Status</th>
+                                <th>Total</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($bookings as $booking)
                                 <tr>
-                                    <td>{{ $booking->checkin_date }}</td>
-                                    <td>{{ $booking->checkout_date }}</td>
+                                    <td>{{ $booking->checkin_date }}<br/> {{ $booking->checkout_date }}</td>
                                     <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                    <td>{{ $booking->room->name }}</td>
+                                    {{-- <td>{{ $booking->room->name }}</td> --}}
+                                    <td>{!! $booking->getStatus() !!}</td>
+                                    <td>£{{ $booking->total }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,6 +78,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

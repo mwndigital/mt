@@ -14,7 +14,7 @@
                         Sorry, there was an error processing your payment.  Please try again later.
                     </p>
                     <p>
-                        Error message: {{ $response->getMessage() }}
+                        Error message: {{ $error }}
                     </p>
                 </div>
             </div>

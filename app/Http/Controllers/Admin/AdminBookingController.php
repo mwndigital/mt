@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
+use App\Enums\BookingStatus;
 
 class AdminBookingController extends Controller
 {
@@ -20,7 +21,9 @@ class AdminBookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::where('status', '!=', BookingStatus::DRAFT)
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('admin.pages.bookings.index', compact('bookings'));
     }
 
@@ -33,7 +36,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.create-steps.step-one', compact('booking'));
     }
 
-    public function stepOneStore(Request $request) {
+    public function stepOneStore(Request $request)
+    {
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
             'checkout_date' => ['required', 'date_format:d-m-Y'],
@@ -42,7 +46,7 @@ class AdminBookingController extends Controller
             'no_of_children' => ['required', 'integer'],
         ]);
 
-        if (empty($request->session()->get('booking'))){
+        if (empty($request->session()->get('booking'))) {
             $booking = new Booking();
         } else {
             $booking = $request->session()->get('booking');
@@ -68,7 +72,8 @@ class AdminBookingController extends Controller
 
         return to_route('admin.book-a-room-step-two');
     }
-    public function stepTwoShow(Request $request){
+    public function stepTwoShow(Request $request)
+    {
         $booking = $request->session()->get('booking');
 
         // Fetch available rooms based on the number of adults and children
@@ -83,6 +88,7 @@ class AdminBookingController extends Controller
         // Filter out the rooms that have conflicts with existing bookings for the selected time period
         $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
             $conflictingBooking = Booking::where('room_id', $room->id)
+                ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING])
                 ->where(function ($query) use ($checkinDate, $checkoutDate) {
                     $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
                         ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
@@ -98,7 +104,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.create-steps.step-two', compact('booking', 'filteredRooms'));
     }
 
-    public function stepTwoStore(Request $request) {
+    public function stepTwoStore(Request $request)
+    {
         $validated = $request->validate([
             'room_id' => ['required', 'integer'],
         ]);
@@ -133,12 +140,14 @@ class AdminBookingController extends Controller
         return redirect()->route('admin.book-a-room-step-three');
     }
 
-    public function stepThreeShow(Request $request) {
+    public function stepThreeShow(Request $request)
+    {
         $booking = $request->session()->get('booking');
         $countries = CountryListFacade::getList('en');
         return view('admin.pages.bookings.create-steps.step-three', compact('booking', 'countries'));
     }
-    public function stepThreeStore(Request $request) {
+    public function stepThreeStore(Request $request)
+    {
         $validated = $request->validate([
             'user_title' => ['required', 'string', 'max:255'],
             'first_name' => ['required', 'string', 'max:255'],
@@ -177,14 +186,15 @@ class AdminBookingController extends Controller
 
         return to_route('admin.book-a-room-step-four');
     }
-    public function stepFourShow(Request $request) {
+    public function stepFourShow(Request $request)
+    {
         $booking = $request->session()->get('booking');
 
         $roomName = $booking['room_name'];
         return view('admin.pages.bookings.create-steps.step-four', compact('booking', 'roomName'));
-
     }
-    public function stepFourStore(Request $request) {
+    public function stepFourStore(Request $request)
+    {
         $booking = $request->session()->get('booking');
         $validated = $request->validate([
             'cancellationPolicyAgree' => ['nullable'],
@@ -241,5 +251,28 @@ class AdminBookingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function changeStatus(Request $request, string $id)
+    {
+        $request->validate([
+            'status' => ['required', 'string', 'max:15'],
+        ]);
+
+        $booking = Booking::findOrFail($id);
+
+        // Action
+        $response = match ($request->status) {
+            'confirmed' => [
+                'action' => $booking->confirm(),
+                'message' => 'Booking has been confirmed successfully',
+            ],
+            'cancelled' => [
+                'action' => $booking->cancel(),
+                'message' => 'Booking has been cancelled successfully',
+            ]
+        };
+
+        return redirect()->back()->with('success', $response['message']);
     }
 }
