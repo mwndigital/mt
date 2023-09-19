@@ -138,7 +138,7 @@
                             <div class="row">
                                 <div class="col-md-6"></div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="darkGoldBtn">Next Step <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class="nextBtn">Next Step <i class="fas fa-chevron-right"></i></button>
 
                                 </div>
                             </div>

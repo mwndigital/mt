@@ -145,14 +145,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <a href="{{ route('book-a-table-index') }}" class="">
+                                    <a href="{{ route('book-a-table-index') }}" class="backBtn">
                                         <i class="fas fa-chevron-left"></i> Back
                                     </a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="darkGoldBtn">Next Step <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class="nextBtn">Next Step <i class="fas fa-chevron-right"></i></button>
 
                                 </div>
                             </div>

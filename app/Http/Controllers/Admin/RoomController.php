@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomStoreRequest;
+use App\Models\RoomGalleries;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -102,6 +103,21 @@ class RoomController extends Controller
         }
         return redirect('admin/rooms')->with('success', 'Room has been updated successfully');
     }
+
+    /*public function galleryItemStore(Request $request, $roomId) {
+        $room = Rooms::find($roomId);
+
+        foreach($request->file('images') as $image) {
+            $imagePath = $image->store('gallery', 'public');
+
+            RoomGalleries::create([
+               'room_id' => $room->id,
+               'image' => $imagePath
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Gallery items added successfully');
+    }*/
 
     /**
      * Remove the specified resource from storage.

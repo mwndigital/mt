@@ -47,6 +47,7 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     Route::get('dashboard', [AdminIndexController::class, 'index'])->name('dashboard');
 
     //Rooms
+    /*Route::post('/rooms/{room}/gallery', [RoomController::class, 'galleryItemStore'])->name('rooms.gallery-store');*/
     Route::resource('rooms', RoomController::class);
 
     //Menu Category

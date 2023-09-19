@@ -185,8 +185,33 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
+            {{--<div class="row">
+                <div class="col-12">
+                    <h2 class="gallerySectionTitle">Image Gallery</h2>
+                    <form action="{{ route('admin.rooms.gallery-store', $room->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="">Upload images</label>
+                                <input type="file" name="images[]" id="images" multiple>
+                                @error('gallery_image')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="darkGoldBtn">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>--}}
         </div>
     </section>
 @endsection
