@@ -87,16 +87,16 @@
                                 <div class="col-12">
                                     <label for="">What are you joining us for? *</label>
                                     <select name="joining_for" id="joining_for" required>
-                                        <option @if($table_booking->joining_for) @else()selected disabled @endif> -- Select an option --</option>
-                                        <option value="lunch" @if($table_booking->joining_for == 'lunch') selected @endif>Lunch</option>
-                                        <option value="evening" @if($table_booking->joining_for == 'evening') selected @endif>Evening</option>
+                                        <option @if($table_booking)@if($table_booking->joining_for) @else()selected disabled @endif @endif> -- Select an option --</option>
+                                        <option value="lunch" @if($table_booking)@if($table_booking->joining_for == 'lunch') selected @endif @endif>Lunch</option>
+                                        <option value="evening" @if($table_booking)@if($table_booking->joining_for == 'evening') selected @endif @endif>Evening</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Choose your date *</label>
-                                    <input type="date" name="reservation_date" id="reservation_date" min="{{ $min_date->format('Y-m-d') }}" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date', $table_booking->reservation_date) }}">
+                                    <input type="date" name="reservation_date" id="reservation_date" min="{{ $min_date->format('Y-m-d') }}" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date', isset($table_booking) ? $table_booking->reservation_date : null) }}">
                                     @error('reservation_date')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -106,7 +106,7 @@
                                 <div class="col-md-4">
                                     <label for="">Choose your time *</label>
                                     <select name="reservation_time" id="reservation_time" required>
-                                        <option value="{{ $table_booking->reservation_time }}" selected> {{ $table_booking->reservation_time }}</option>
+                                        <option value="{{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}" selected> {{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}</option>
                                     </select>
                                     <small>
                                         For bookings longer than 2 hours please contact us
@@ -121,11 +121,12 @@
                                 <div class="col-md-4">
                                     <label for="">Number of guests</label>
                                     <select name="no_of_guests" id="no_of_guests" required>
-                                        <option @if($table_booking->no_of_guests) @else()selected disabled @endif>Select number of guests</option>
+                                        <option @if(!isset($table_booking) || !$table_booking->no_of_guests) selected disabled @endif>Select number of guests</option>
                                         @foreach(['1', '2', '3', '4', '5', '6'] as $g_number)
-                                            <option value="{{ $g_number }}" @if($g_number == $table_booking->no_of_guests) selected @endif>{{ ucfirst($g_number) }}</option>
+                                            <option value="{{ $g_number }}" @if(isset($table_booking) && $g_number == $table_booking->no_of_guests) selected @endif>{{ ucfirst($g_number) }}</option>
                                         @endforeach
                                     </select>
+
                                     <small>For more than 6 guests please contact us</small>
                                     @error('no_of_guests')
                                     <div class="text-danger">
