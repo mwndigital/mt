@@ -20,13 +20,16 @@
     <section id="contactPageInfoBanner">
         <div class="container">
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="col-md-6">
                     <p>
                         We offer free allocated parking for guests staying with us each room has a parking space under the room name.
                     </p>
                     <p>
                         Parking for guests dining with us is on the street just outside the door, there is also ample parking just a short stroll away from us.
                     </p>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid" src="{{ asset('images/contact-page-hero-banner-new.jpg') }}">
                 </div>
             </div>
         </div>
