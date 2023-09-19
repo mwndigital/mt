@@ -116,7 +116,7 @@ class BookingController extends Controller
         // Check if any booking conflicts exist for the selected room and dates
         $conflictingBooking = DB::table('bookings')
             ->where('room_id', $booking->room_id)
-            ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING])
+            ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
             ->where(function ($query) use ($checkin_date, $checkout_date) {
                 $query->whereBetween('checkin_date', [$checkin_date, $checkout_date])
                     ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date])

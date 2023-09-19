@@ -88,7 +88,7 @@ class AdminBookingController extends Controller
         // Filter out the rooms that have conflicts with existing bookings for the selected time period
         $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
             $conflictingBooking = Booking::where('room_id', $room->id)
-                ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING])
+                ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
                 ->where(function ($query) use ($checkinDate, $checkoutDate) {
                     $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
                         ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
