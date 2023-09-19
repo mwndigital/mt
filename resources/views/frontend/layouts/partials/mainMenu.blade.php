@@ -32,7 +32,9 @@
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</a>
                         </li>
-
+                        <li>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskySpiritsMenuModal">Whisky and Spirits Menu</a>
+                        </li>
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</a>
                         </li>

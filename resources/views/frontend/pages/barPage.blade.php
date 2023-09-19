@@ -36,6 +36,7 @@
                             <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine List</button>
                             <button type="button" class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Flights Menu</button>
                             <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails List</button>
+                            <button type="button" class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskySpiritsMenuModal">Whisky & Spirits Menu</button>
                         </div>
                     </div>
                 </div>
