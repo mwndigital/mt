@@ -1,4 +1,19 @@
+.restaurantPageSliderBanner {
+    background-color: $w;
+    padding: 2rem 0;
+    .owl-carousel {
 
+        .item {
+            img {
+                border-radius: 40px;
+                display: block;
+                height: auto;
+                margin: 0 auto;
+                width: 80%;
+            }
+        }
+    }
+}
 
 .bookMealBanner {
     padding: 4rem 0;

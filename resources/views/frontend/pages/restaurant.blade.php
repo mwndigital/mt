@@ -49,7 +49,7 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/spaghetti.png') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/team.png') }}">
                 </div>
 
             </div>
@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/fish.jpeg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}">
                 </div>
                 <div class="col-md-6">
                     <h2 class="secTitle">Desserts, just better </h2>
@@ -70,19 +70,23 @@
             </div>
         </div>
     </section>
-    <section class="brBanner brBannerOne">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h3 class="secTitle">Another witty line here, i ran out</h3>
-                    <p>
-                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/team.png') }}">
-                </div>
 
+    <section class="restaurantPageSliderBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="owl-carousel restaurantImageSlider">
+                        <div class="item">
+                            <img src="{{ asset('images/restaurant/steak-and-chips.jpeg') }}" class="img-fluid">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/restaurant/fish.jpeg') }}" class="img-fluid">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/restaurant/oysters.jpeg') }}" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

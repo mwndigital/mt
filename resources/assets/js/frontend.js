@@ -63,4 +63,30 @@ $(document).ready(function(){
         slideSpeed: 3500,
         items: 1
     });
+    //Restaurant page slider
+    $('.restaurantImageSlider').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: false,
+        dots: true,
+        loop: true,
+        margin: 20,
+        nav: false,
+        navText: [
+            '<i class="fas fa-chevron-left"></i>',
+            '<i class="fas fa-chevron-right"></i>'
+        ],
+        paginationSpeed: 3500,
+        slideSpeed: 3500,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
 });
