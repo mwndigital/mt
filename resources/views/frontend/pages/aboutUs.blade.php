@@ -30,7 +30,7 @@
             </div>
         </div>
     </section>
-    <section id="aboutPageBannerThree">
+    <section id="aboutPageBannerTwo">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 wow slideInLeft" data-wow-duration="1s">
@@ -55,6 +55,26 @@
                     <p>
                         Don't forget to take a walk around Aberlour as the streets are adorned with local cafes, bakeries, arts, crafts and gift shops.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="aboutPageBannerThree">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        The Mash Tun was bought in 2022 by Ron Morrison and Mitchell Orchant and is operated by their company C.Gars Ltd.
+                    </p>
+                    <p>
+                        The premises have been completey refurbished to the highest standards.  The restaurant menus have been revamped and we have a bigger and better whisky selection than ever!
+                    </p>
+                    <p>
+                        C.Gars Ltd owns and operates specialist whisky and cigar shops across the UK as well as Puffin Rooms in Edinburgh and Liverpool.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->banner_two_image) }}--}}{{ asset('images/mitchell-and-karyn-outside-mash-tun.png') }}">
                 </div>
             </div>
         </div>
