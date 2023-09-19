@@ -21,6 +21,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <h2>
+                        Riverside Inn * Iconic Whisky Bar * Whisky-Cigar Shop
+                    </h2>
+                    <p>
+                        Nestled within the banks of the River Spey, surrounded by the picturesque landscape of Aberlour.
+                    </p>
+                    <p>The historic Mash Tun Whisky Bar is famous for its astonishing selection of whisky.</p>
+                    <p>
+                        You can come and stay in one of our five whisky themed rooms or book our exclusive lodge with views overlooking the River Spey.
+                    </p>
+                    <p>
+                        Alternatively our restaurant is open to the public and you can come and dine with us for lunch or dinner 7 days a week.
+                    </p>
                     <p>
                         We offer free allocated parking for guests staying with us each room has a parking space under the room name.
                     </p>
