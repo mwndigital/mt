@@ -146,7 +146,12 @@ class Booking extends Model implements \Serializable
 
     public function confirm()
     {
-        $this->updateStatus(BookingStatus::CONFIRMED);
+        // If already confirmed before and cancelled and if balance is zero, then update status to paid
+        if ($this->isPaid()) {
+            $this->updateStatus(BookingStatus::PAID);
+        } else {
+            $this->updateStatus(BookingStatus::CONFIRMED);
+        }
     }
 
     public function cancel()
@@ -161,5 +166,10 @@ class Booking extends Model implements \Serializable
     {
         $this->status = $status;
         $this->save();
+    }
+
+    public function isPaid()
+    {
+        return $this->status != BookingStatus::CONFIRMED && $this->total == $this->getCapturedAmount();
     }
 }

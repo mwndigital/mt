@@ -47,6 +47,10 @@ class CaptureFullPayment extends Command
                     $booking->save();
                 }
 
+                if ($booking->isPaid()) {
+                    $booking->status = BookingStatus::PAID;
+                    $booking->save();
+                }
 
                 $this->info("Final payment processed for Booking ID: {$booking->id}");
             }
