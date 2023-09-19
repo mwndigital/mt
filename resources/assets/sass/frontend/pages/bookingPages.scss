@@ -160,6 +160,25 @@ ul.ui-timepicker-viewport {
                     text-decoration: none;
                 }
             }
+            textarea {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkBlue;
+                border-radius: 0;
+                display: block;
+                padding: .5rem;
+                @include transition(all .4s ease-in-out);
+                width: 100%;
+
+                &:focus {
+                    background-color: $w;
+                    border: 0;
+                    border-bottom: 1px solid $darkGold;
+                    box-shadow: none;
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
 
             .innerRow {
                 .checkItem {
@@ -344,6 +363,21 @@ ul.ui-timepicker-viewport {
                 strong {
                     color: $darkBlue;
                     font-size: 1.15rem;
+                }
+            }
+        }
+        ul.restaurantBookingOverview {
+            li {
+                color: $b;
+                font-size: 1rem;
+                width: 48%;
+                strong {
+                    color: $darkBlue;
+                    font-size: 1.15rem;
+                }
+
+                &:nth-of-type(even) {
+                    text-align: right;
                 }
             }
         }

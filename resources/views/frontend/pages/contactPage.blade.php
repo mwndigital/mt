@@ -3,13 +3,30 @@
     Contact us
 @endpush
 @section('content')
-    <section id="contactPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('images/contact-page-hero.jpg') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
+    <section id="contactPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('images/contact-page-hero-banner-new.jpg') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h1>Contact Us</h1>
+                        <p>
+                            The Mash Tun welcomes you to come and visit us any time of year, whether you want to spend a few evenings in our hotel or just come and enjoy lunch or evening meal on the River Spey, you are always assured a warm welcome.
+                        </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contactPageInfoBanner">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>
+                        We offer free allocated parking for guests staying with us each room has a parking space under the room name.
+                    </p>
+                    <p>
+                        Parking for guests dining with us is on the street just outside the door, there is also ample parking just a short stroll away from us.
+                    </p>
                 </div>
             </div>
         </div>
