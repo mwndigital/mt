@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             BarRestaurantContentSeeder::class,
             RoomsPageContentSeeder::class,
             PolicyPagesSeeder::class,
+            RestaurantTableSeeder::class,
         ]);
     }
 }

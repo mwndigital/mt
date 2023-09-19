@@ -54,8 +54,15 @@ class FrontendRestaurantBookingController extends Controller
 
     public function stepTwoShow(Request $request) {
         $table_booking = $request->session()->get('table_booking');
+        $res_tables_ids = RestaurantBooking::orderBy('reservation_date')->get()
+            ->filter(function($value) use ($table_booking){
+                return $value->reservation_date == $table_booking->reservation_date;
+            })->pluck('table_id');
+        $tables = RestaurantTable::where('status', 'available')
+            ->where('no_of_seats', $table_booking->no_of_seats)
+            ->whereNotIn('id', $res_tables_ids)->get();
 
-        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking'));
+        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
     }
     public function stepTwoStore(Request $request) {
 

@@ -99,6 +99,17 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="">Table</label>
+                                            <input type="text" name="table_id" id="table_id" value="">
+                                            <select name="table_id" id="table_id">
+                                                @foreach($tables as $table)
+                                                    <option value="{{ $table->id }}">{{ $table->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="resSummary">

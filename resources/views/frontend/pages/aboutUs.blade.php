@@ -63,11 +63,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                    <h3>Under new ownership 2022</h3>
                     <p>
                         The Mash Tun was bought in 2022 by Ron Morrison and Mitchell Orchant and is operated by their company C.Gars Ltd.
                     </p>
                     <p>
-                        The premises have been completey refurbished to the highest standards.  The restaurant menus have been revamped and we have a bigger and better whisky selection than ever!
+                        The premises have been completely refurbished to the highest standards.  The restaurant menus have been revamped and we have a bigger and better whisky selection than ever!
                     </p>
                     <p>
                         C.Gars Ltd owns and operates specialist whisky and cigar shops across the UK as well as Puffin Rooms in Edinburgh and Liverpool.
