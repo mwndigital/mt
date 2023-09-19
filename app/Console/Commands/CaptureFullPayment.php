@@ -39,10 +39,14 @@ class CaptureFullPayment extends Command
             $now = now();
 
             if ($now->greaterThanOrEqualTo($paymentDueDate)) {
-                $booking->status = BookingStatus::PAID;
                 $transaction = $booking->transactions->first();
-                $transaction->captureRemaining();
-                $booking->save();
+                $status = $transaction->captureRemaining();
+                // Only update if operation successful
+                if ($status) {
+                    $booking->status = BookingStatus::PAID;
+                    $booking->save();
+                }
+
 
                 $this->info("Final payment processed for Booking ID: {$booking->id}");
             }

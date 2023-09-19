@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('booking:capture-full-payment')->everyMinute();
+        $schedule->command('booking:capture-full-payment')->hourlyAt(01);
     }
 
     /**

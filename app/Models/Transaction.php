@@ -71,12 +71,14 @@ class Transaction extends Model
             if ($response->isSuccessful()) {
                 $captureReference = $response->getTransactionReference();
                 $this->createNewTransaction($ref, $response, $captureReference);
+                return true;
             } else {
                 $errorMessage = $response->getMessage();
             }
         } catch (\Exception $e) {
             // Handle the exception (if needed)
         }
+        return false;
     }
 
     /**
