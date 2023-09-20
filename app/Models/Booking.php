@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
+use App\Enums\TransactionType;
 
 class Booking extends Model implements \Serializable
 {
@@ -170,6 +171,8 @@ class Booking extends Model implements \Serializable
 
     public function isPaid()
     {
-        return $this->status != BookingStatus::CONFIRMED && $this->total == $this->getCapturedAmount();
+        $transaction = $this->transactions->last();
+        if (!$transaction) return false;
+        return $transaction->type == TransactionType::FULL->value;
     }
 }
