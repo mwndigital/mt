@@ -208,7 +208,8 @@
             <div class="row">
                 <div class="col-12">
                     <h4>{{ $hpcontent->spend_night_banner_title }}</h4>
-                    {!! $hpcontent->spend_night_banner_content !!}
+                    <p>When you book a room with us you can be assured of a restful stay....</p>
+                    {{--{!! $hpcontent->spend_night_banner_content !!}--}}
                     <a href="{{ $hpcontent->spend_night_banner_button_link }}" class="blueBtn">Book a room <i class="fa fa-chevron-right"></i></a>
                 </div>
             </div>
