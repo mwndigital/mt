@@ -50,7 +50,7 @@
                         Around the local area you will find the world renowned Walkers Shortbread bakery, as well as the Aberlour Distillery, both well worth a visit.  Many of the local distilleries have visitors centres and shops and offer tours where you can sample some of Scotlands finest whisky.  For the more adventurous among you, there is plenty of sport to be had, such as Clay Pigeon Shooting, horse back riding and canoeing, as well as skiing and snowboarding on the cairngorms.
                     </p>
                     <p>
-                        For those looking to take a more gentle meander, there is plenty of sight seeing to be had, visit the Craigllachie Bridge, constructed in 1814 or take a visit to Knockando Woolmill. No visit to Scotland would be complete wihtout a stop off at a castle, and there are plenty around to visit, Ballindalloch Castle from the sixteenth century is certainly a sight to behold.
+                        For those looking to take a more gentle meander, there is plenty of sight seeing to be had, visit the Craigllachie Bridge, constructed in 1814 or take a visit to Knockando Woolmill. No visit to Scotland would be complete without a stop off at a castle, and there are plenty around to visit, Ballindalloch Castle from the sixteenth century is certainly a sight to behold.
                     </p>
                     <p>
                         Don't forget to take a walk around Aberlour as the streets are adorned with local cafes, bakeries, arts, crafts and gift shops.
