@@ -25,7 +25,6 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        // $request->session()->forget('booking');
         $booking = $request->session()->get('booking');
         return view('frontend.pages.booking.index', compact('booking',));
     }
@@ -227,11 +226,9 @@ class BookingController extends Controller
                 'transactionID' => $transactionId,
                 'VendorTxCode' => $transactionId,
                 'description' => 'The Mash Tun room booking deposit',
-                'clientIp' => '90.242.7.117',
+                'clientIp' => $request->ip(),
                 'card' => $this->getCardDetails($booking, $request),
-                // "notifyUrl" => "https://webhook.site/3edc93d8-b81c-4a8e-9a94-6a677b989136",
-
-                'notifyUrl' => "https://20bf-90-242-7-117.ngrok-free.app/payment/sagepay/notify", //route('sagepay-notify'),
+                'notifyUrl' => route('sagepay-notify'),
             ])->send();
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage())->withInput();
