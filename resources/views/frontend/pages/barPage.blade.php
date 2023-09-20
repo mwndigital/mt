@@ -77,7 +77,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/wine-glass-and-bottles.png') }}">
                 </div>
                 <div class="col-md-6">
                     <h2 class="secTitle">It's not just whisky, we do wine too</h2>
