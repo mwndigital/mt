@@ -18,7 +18,7 @@
                 <li><a href="{{ route('bar') }}">Bar</a></li>
                 <li>
                     <a href="{{ route('restaurant.index') }}">
-                        Restaurant
+                        Dining
                     </a>
                 </li>
                 <li><a href="{{ route('rooms') }}">Rooms</a></li>

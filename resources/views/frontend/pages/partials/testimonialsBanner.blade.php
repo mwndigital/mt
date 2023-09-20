@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
+                <h4>Here is what our guests think</h4>
                 <div class="owl-carousel testimonialMainCarousel">
 
                     <div class="item">

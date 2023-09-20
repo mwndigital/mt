@@ -2,6 +2,14 @@
     background-color: $w;
     padding: 50px 0;
 
+    h4 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
     .owl-carousel {
 
         .item {
@@ -13,7 +21,7 @@
 
             h5 {
                 color: $w;
-                font-family: $libBold;
+                font-family: $popBold;
                 font-size: 2rem;
                 margin-bottom: 30px;
                 text-align: center;
@@ -29,15 +37,14 @@
             }
             p {
                 color: $w;
-                font-family: $libReg;
+                font-family: $popReg;
                 font-size: 1rem;
-                font-style: italic;
                 margin-bottom: 20px;
                 text-align: center;
             }
             h6 {
                 color: $darkGold;
-                font-family: $libReg;
+                font-family: $popReg;
                 font-size: 1rem;
                 text-align: center;
             }

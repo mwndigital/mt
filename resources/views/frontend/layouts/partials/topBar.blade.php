@@ -34,14 +34,14 @@
                                 317 reviews
                             </span>
                             </li>
-                            <li class="list-inline-item">
+                            {{--<li class="list-inline-item">
                                 <span class="sep"> | </span>
                             </li>
                             <li class="list-inline-item">
                                 <p>
                                     #2 of 2 hotels in Aberlour
                                 </p>
-                            </li>
+                            </li>--}}
 
                         </ul>
                     </a>
