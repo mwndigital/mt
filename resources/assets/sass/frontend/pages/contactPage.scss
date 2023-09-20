@@ -39,6 +39,13 @@
     background-color: $w;
     padding: 2rem 0 0 0;
 
+    h2 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
     p {
         color: $darkBlue;
         font-family: $popMed;
