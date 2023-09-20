@@ -50,6 +50,10 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     /*Route::post('/rooms/{room}/gallery', [RoomController::class, 'galleryItemStore'])->name('rooms.gallery-store');*/
     Route::resource('rooms', RoomController::class);
 
+    // Booking status
+    Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
+
+
     //Menu Category
     Route::prefix('menu')->group(function(){
         Route::resource('category', MenuCategoryController::class)->names([
@@ -133,7 +137,7 @@ Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contac
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
 Route::resource('/gallery', FrontendGalleryController::class);
 Route::get('/dining', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
-Route::prefix('book-a-room')->group(function(){
+Route::prefix('book-a-room')->group(function () {
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
     Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
 
@@ -142,14 +146,12 @@ Route::prefix('book-a-room')->group(function(){
 
     Route::get('step-4', [BookingController::class, 'stepFourShow'])->name('book-a-room-step-4');
     Route::post('step-four-store', [BookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
-
-    Route::get('payment-step', [BookingController::class, 'paymentStep'])->name('book-a-room-payment-step');
 });
-Route::prefix('payment')->group(function(){
-    Route::post('process-payment', [BookingController::class, 'processPayment'])->name('book-a-room-process-payment');
-    Route::post('thank-you', [BookingController::class, 'thankYou'])->name('book-a-room-thank-you');
-    Route::post('payment-failed', [BookingController::class, 'paymentFailed'])->name('book-a-room-failed');
-    // Route::post('/sagepay/notify', [BookingController::class, 'sagepayNotify'])->name('sagepay.notify');
+Route::prefix('payment')->group(function () {
+    Route::get('process-payment', [BookingController::class, 'processPayment'])->name('process-payment');
+    Route::get('thank-you', [BookingController::class, 'thankYou'])->name('booking-thank-you');
+    Route::get('payment-failed', [BookingController::class, 'paymentFailed'])->name('booking-payment-failed');
+    Route::post('/sagepay/notify', [BookingController::class, 'sagepayNotify'])->name('sagepay-notify');
 });
 Route::get('/book-a-room', [BookingController::class, 'index'])->name('book-a-room-index');
 Route::post('/book-room-step-one-store', [BookingController::class, 'stepOneStore'])->name('book-a-room-step-1-store');
