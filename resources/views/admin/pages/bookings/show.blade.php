@@ -49,7 +49,7 @@ const confirmBooking = (event) => {
                         @if($booking->status != 'confirmed' && $booking->status != 'paid')
                             <a href="{{ route('admin.booking-status', $booking->id) }}?status=confirmed" class="btn btn-success" onclick="confirmBooking(event)">Confirm</a>
                         @endif
-                        <a href="{{ route('admin.booking-status', $booking->id) }}?status=cancelled" class="btn btn-warning confirm-booking-btn" onclick="cancelBooking(event)">Cancel</a>
+                        <a href="{{ route('admin.booking-status', $booking->id) }}?status=cancelled" class="btn btn-warning" onclick="cancelBooking(event)">Cancel</a>
                         <a href="{{ route('admin.bookings.edit', $booking->id) }}" class="btn editBtn">Edit</a>
                         <form action="" method="POST" class="">
                             @csrf
