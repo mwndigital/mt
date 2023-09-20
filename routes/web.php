@@ -132,7 +132,7 @@ Route::get('/bar', [BarPageController::class, 'index'])->name('bar');
 Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contact-us');
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
 Route::resource('/gallery', FrontendGalleryController::class);
-Route::get('restaurant', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
+Route::get('/dining', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
 Route::prefix('book-a-room')->group(function(){
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
     Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
@@ -162,5 +162,6 @@ Route::prefix('book-a-table')->group(function(){
     Route::get('step-one', [FrontendRestaurantBookingController::class, 'index'])->name('book-a-table-index');
     Route::post('step-one-store', [FrontendRestaurantBookingController::class, 'indexStore'])->name('book-a-table-index-store');
     Route::get('step-two', [FrontendRestaurantBookingController::class, 'stepTwoShow'])->name('book-a-table-step-two-show');
+    Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thank-you'])->name('book-a-table-thank-you');
 });
 
