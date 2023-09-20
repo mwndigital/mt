@@ -25,10 +25,10 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <h1>
-                            The Restaurant
+                            Dining
                         </h1>
                         <p>
-                            Quisque ut dui malesuada, eleifend odio quis, efficitur nisl. Donec consequat blandit erat ac mollis. Vestibulum posuere ut nulla et efficitur. Praesent at sagittis justo.
+                            Dine at The Mash Tun whilst looking out over the River Spey
                         </p>
                         <div class="btn-group">
 
@@ -45,28 +45,13 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">This isn't just another meal, this is a Mash Tun meal</h2>
                     <p>
-                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
+                        Dining at The Mash Tun can be a casual bite  at the bar or a cozy corner in our historic leather clad room to formal pre arranged meals in Lodge, even dine Alfesco on the deck overlooking the River Spey.  Wherever you dine you can be assured of the freshest local produce prepared daily by out talented chef and his team… don't forget to check our daily specials.
                     </p>
                 </div>
                 <div class="col-md-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/team.png') }}">
                 </div>
 
-            </div>
-        </div>
-    </section>
-    <section class="brBanner brBannerOne">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}">
-                </div>
-                <div class="col-md-6">
-                    <h2 class="secTitle">Desserts, just better </h2>
-                    <p>
-                        Nunc a hendrerit nisi, eu eleifend ligula. In quis mattis nisi. Donec aliquam tempor imperdiet. Ut sodales tincidunt tortor, vel commodo risus finibus vitae. Phasellus placerat leo id metus semper pharetra. Curabitur vehicula est eu erat lobortis, eget eleifend purus fringilla. Nullam feugiat tellus et efficitur vestibulum. Quisque quam nulla, imperdiet in feugiat vel, gravida vitae turpis. Quisque porttitor laoreet diam. Donec ut neque dignissim massa mollis imperdiet sed sit amet sapien. Vestibulum consequat ex cursus est maximus gravida. Nam id bibendum elit.
-                    </p>
-                </div>
             </div>
         </div>
     </section>

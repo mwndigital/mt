@@ -49,6 +49,8 @@ class FrontendRestaurantBookingController extends Controller
             $request->session()->put('table_booking', $table_booking);
         }
 
+        //dd($table_booking);
+
         return to_route('book-a-table-step-two-show');
     }
 
@@ -58,8 +60,7 @@ class FrontendRestaurantBookingController extends Controller
             ->filter(function($value) use ($table_booking){
                 return $value->reservation_date == $table_booking->reservation_date;
             })->pluck('table_id');
-        $tables = RestaurantTable::where('status', 'available')
-            ->where('no_of_seats', $table_booking->no_of_seats)
+        $tables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
             ->whereNotIn('id', $res_tables_ids)->get();
 
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
