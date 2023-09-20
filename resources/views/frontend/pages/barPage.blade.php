@@ -67,7 +67,7 @@
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Menu</button>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/history/ron-mitchell-2.png') }}">
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</button>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/whiskys.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/cocktail-image.png') }}">
                 </div>
             </div>
         </div>
