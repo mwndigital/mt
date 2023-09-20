@@ -75,7 +75,17 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->banner_two_image) }}--}}{{ asset('images/mitchell-and-karyn-outside-mash-tun.png') }}">
+                    <div class="owl-carousel historypageBannerSlider">
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/history/ron-mitchell-1.png') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/history/ron-mitchell-2.png') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/mitchell-and-karyn-outside-mash-tun.png') }}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
