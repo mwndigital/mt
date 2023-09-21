@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Image *</label>
-                                <input type="file" name="featured_image" id="featured_image" required>
+                                <input type="file" name="featured_image" id="featured_image">
                                 @error('featured_image')
                                 <div class="text-danger">
                                     {{ $message }}
