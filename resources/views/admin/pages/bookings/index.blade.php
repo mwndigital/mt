@@ -26,7 +26,7 @@
         </div>
     </section>
 
-    <section class="pageMain">
+    <section class="" style="background: #f0f0f4;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
