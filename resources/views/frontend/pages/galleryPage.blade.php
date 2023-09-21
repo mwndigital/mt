@@ -14,7 +14,7 @@
 @section('content')
     <section class="galleryPageTop">
         {{--<img class="img-fluid mainBgImage" src="{{ Storage::url($hpcontent->hero_banner_background_image) }}" alt="Mash Tun outside image">--}}
-        <img class="img-fluid mainBgImage" src="{{ asset('images/gallery-page-hero.jpeg') }}">
+        <img class="img-fluid mainBgImage" src="{{ asset('images/rooms-hero-image-new.png') }}">
         <div class="content">
             <div class="container">
                 <div class="row">
