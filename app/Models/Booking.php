@@ -8,10 +8,12 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Booking extends Model implements \Serializable
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'bookings';
 

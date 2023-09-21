@@ -250,7 +250,9 @@ class AdminBookingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+        return redirect()->route('admin.bookings.index')->with('success', 'Booking has been deleted successfully');
     }
 
     public function changeStatus(Request $request, string $id)

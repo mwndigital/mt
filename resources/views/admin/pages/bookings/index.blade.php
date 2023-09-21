@@ -65,7 +65,7 @@
                                                         <a href="{{ route('admin.bookings.edit', $booking->id) }}">Edit</a>
                                                     </li>
                                                     <li>
-                                                        <form action="" method="POST">
+                                                        <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="post">
                                                             @csrf
                                                             @method('delete')
                                                             <button class="confirm-delete-btn" type="submit">Delete</button>
