@@ -4,7 +4,9 @@
     display: block;
     min-height: 400px;
     padding: 4rem  2rem;
-
+    .table-responsive {
+        height: 100%;
+    }
     table {
 
         thead {
