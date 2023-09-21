@@ -62,7 +62,7 @@
                                                         <a href="{{ route('admin.bookings.show', $booking->id) }}">View</a>
                                                     </li>
                                                     <li>
-                                                        <a href="">Edit</a>
+                                                        <a href="{{ route('admin.bookings.edit', $booking->id) }}">Edit</a>
                                                     </li>
                                                     <li>
                                                         <form action="" method="POST">
