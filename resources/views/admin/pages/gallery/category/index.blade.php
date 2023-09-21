@@ -48,10 +48,7 @@
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <ul>
                                                 <li>
-                                                    <a href="">View</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Edit</a>
+                                                    <a href="{{ route('admin.gallery-category.edit', $cat->id) }}">Edit</a>
                                                 </li>
                                                 <li>
                                                     <form action="" method="POST">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\GalleryCategoryStoreRequest;
 use App\Models\GalleryCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminGalleryCategoryController extends Controller
 {
@@ -63,7 +64,9 @@ class AdminGalleryCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = GalleryCategory::findOrFail($id);
+
+        return view('admin.pages.gallery.category.edit', compact('category'));
     }
 
     /**
@@ -71,7 +74,36 @@ class AdminGalleryCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = GalleryCategory::findOrFail($id);
+
+        $currentImage = $category->featured_image;
+
+        $newImage = NULL;
+
+        if($request->hasFile('featured_image')) {
+            $newImage = $request->file('featured_image');
+            $fileName = time().'_'.$newImage->getClientOriginalName();
+            $folder = 'public/gallery/categories';
+
+            $newImagePath = $newImage->storeAs($folder, $fileName);
+
+            if($currentImage) {
+                Storage::delete($currentImage);
+            }
+
+            $category->name = $request->input('name');
+            $category->featured_image = $newImagePath;
+            $category->save();
+
+            return redirect('admin/gallery/gallery-category')->with('success', 'Gallery Category has been updated successfully');
+        }
+        else {
+            $category->name = $request->input('category_name');
+            $category->featured_image = $category->featured_image;
+            $category->save();
+
+            return redirect('admin/gallery/gallery-category')->with('success', 'Gallery category has been updated successfully');
+        }
     }
 
     /**
@@ -79,6 +111,13 @@ class AdminGalleryCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = GalleryCategory::findOrFail($id);
+
+        $category->delete();
+        if($category->featured_image) {
+            Storage::delete($category->featured_image);
+        }
+
+        return redirect('admin/gallery/gallery-category')->with('success', 'Category deleted successfully');
     }
 }
