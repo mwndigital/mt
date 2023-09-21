@@ -98,7 +98,7 @@ class AdminGalleryCategoryController extends Controller
             return redirect('admin/gallery/gallery-category')->with('success', 'Gallery Category has been updated successfully');
         }
         else {
-            $category->name = $request->input('category_name');
+            $category->name = $request->input('name');
             $category->featured_image = $category->featured_image;
             $category->save();
 
