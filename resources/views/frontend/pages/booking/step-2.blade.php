@@ -86,6 +86,7 @@
                                                             <h6 class="price">
                                                                 Price from: £{{ $room->price_per_night_single }}
                                                             </h6>
+                                                            <button style="width: 100%" type="button" class="btn btn-outline-dark mb-3">Select</button>
                                                             {!! $room->short_description !!}
                                                         </div>
                                                     </label>
