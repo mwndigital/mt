@@ -18,17 +18,81 @@
                 }
             });
         });
+
+        const selectRoom = (room) => {
+            // display next button
+            const nextElement = document.getElementById('next');
+            const roomWarningElement = document.getElementById('roomWarning');
+
+            if (nextElement && roomWarningElement) {
+                nextElement.classList.remove('d-none');
+                roomWarningElement.classList.add('d-none');
+            }
+
+
+            const summary = document.getElementById('sub-list');
+            const phpSummary = document.getElementById('php-list');
+            phpSummary.innerHTML = '';
+            // Add room name to reservation summary and price
+            summary.innerHTML = `
+                <ul class="list-inline roomList">
+                    <li class="list-inline-item" style="width: 100%;">
+                        <strong style="color: #002C50;">Room</strong><br>
+                        ${room.name} - ${room.price_per_night_single} per night
+                    </li>
+                </ul>
+                <hr>
+                <ul class="list-inline">
+                    <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
+                        <strong>Room(s)</strong>
+                    </li>
+                    <li class="list-inline-item" style="width: 48%; text-align: right; font-size: 1rem;">
+                        £${room.price_per_night_single * {{ $booking->duration_of_stay }}}
+                    </li>
+                </ul>
+                <hr>
+                <div class="totalWrapper" id="total">
+                    <ul class="list-inline">
+                           <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                               <strong>Deposit</strong>
+                           </li>
+                           <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£50.00 </li>
+                   </ul>
+                     <ul class="list-inline">
+                           <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                               <small>Payable 24 hours prior</small>
+                           </li>
+                           <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£${room.price_per_night_single * {{ $booking->duration_of_stay }} - 50} </li>
+                   </ul>
+
+                       <ul class="list-inline">
+                           <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
+                           <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
+                                £${room.price_per_night_single * {{ $booking->duration_of_stay }}}
+                            </li>
+                          </ul>
+                          </div>
+                <hr>
+            `;
+
+        }
+
+        const onSubmit = () => {
+            const form = document.getElementById('formRoom');
+            form.submit();
+        }
+
     </script>
+
 @endpush
 @push('page-styles')
-
     <style>
         .bookingPageMain .formWrap .stepBanner .innerWrap span {
             width: 50%;
         }
         .checkItem:hover {
             background-color: #f0f0f0;
-            cursor: pointer;
+            cursor: pointer !important;
         }
     </style>
 @endpush
@@ -70,13 +134,13 @@
                                 <span>Step 2</span>
                             </div>
                         </div>
-                        <form method="post" action="{{ route('book-a-room-step-2-store') }}">
+                        <form method="post" action="{{ route('book-a-room-step-2-store') }}" id="formRoom">
                             @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row innerRow">
                                         @foreach($filteredRooms as $room)
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" onclick="selectRoom({{$room}});">
                                                 <label class="checkItem">
                                                     <input type="radio" name="room_id" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>
                                                     <label for="room_{{ $room->id }}">
@@ -86,7 +150,7 @@
                                                             <h6 class="price">
                                                                 Price from: £{{ $room->price_per_night_single }}
                                                             </h6>
-                                                            <button style="width: 100%" type="button" class="btn btn-outline-dark mb-3">Select</button>
+                                                            <button style="width: 100%;background:#bea058;" type="button" class="btn mb-3 text-white">Select</button>
                                                             {!! $room->short_description !!}
                                                         </div>
                                                     </label>
@@ -94,16 +158,6 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center mt-4">
-                                <div class="col-md-6">
-                                    <a href="{{ route('book-a-room-index') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
-                                </div>
-                                <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
-                                    {{--<a href="{{ route('book-a-room-step-3') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>--}}
                                 </div>
                             </div>
                         </form>
@@ -126,6 +180,15 @@
                             </li>
                         </ul>
                         <hr>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" style="color: #002C50; font-size: 1.15rem; width: 60%;">
+                                <strong>Total number of nights</strong>
+                            </li>
+                            <li class="list-inline-item" style="text-align: right; width: 35%; color: #000000; font-size: 1rem;">
+                                {{ $booking->duration_of_stay }}
+                            </li>
+                        </ul>
+                        <hr>
                         <ul class="list-inline adultChildCap">
                             <li class="list-inline-item">
                                 <strong>No of adults</strong><br>
@@ -137,7 +200,74 @@
                             </li>
                         </ul>
                         <hr>
-                    </aside>
+                        <div id="sub-list"></div>
+                        <div id="php-list">
+                        @if ($booking->room)
+                        <ul class="list-inline roomList">
+                            <li class="list-inline-item" style="width: 100%;">
+                                <strong style="color: #002C50;">Room</strong><br>
+                                {{ $booking->room->name }} - @if($booking->no_of_adults >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0) £{{ $booking->room->price_per_night_double }} @else £{{ $booking->room->price_per_night_single }} @endif per night
+                            </li>
+                        </ul>
+                        <hr>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
+                                <strong>Room(s)</strong>
+                            </li>
+                            <li class="list-inline-item" style="width: 48%; text-align: right; font-size: 1rem;">
+                                @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
+                                    £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
+                                @else
+                                    £{{ $booking->room->price_per_night_single * $booking->duration_of_stay }}
+                                @endif
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="totalWrapper" id="total">
+                            <ul class="list-inline">
+                                   <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                       <strong>Deposit</strong>
+                                   </li>
+                                   <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£50.00 </li>
+                           </ul>
+                             <ul class="list-inline">
+                                   <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                       <small>Payable 24 hours prior</small>
+                                   </li>
+                                   <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£{{$booking->getPayableAmount()}} </li>
+                           </ul>
+
+                               <ul class="list-inline">
+                                   <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
+                                   <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
+                                        £{{$booking->getTotalAmount()}}
+                                   </li>
+                               </ul>
+                           </div>
+
+                        <hr>
+                        @else
+                        <div class="row" id="roomWarning">
+                            <div class="col-12 text-center alert alert-info">
+                               Please select a room to continue
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                        <!-- next button -->
+                        <div class="row @if (!$booking->room) d-none @endif" id="next">
+                            <div class="col-12">
+                                <button  type="button" style="width: 100%;background-color:#bea058;color:#fff;" class="btn" onclick="onSubmit()"><h3>Next <i class="fas fa-chevron-right"></i></h3></button>
+                            </div>
+
+                            <div class="col-12 mt-2">
+                                <a href="{{ route('book-a-room-index') }}" style="width: 100%;" class="btn"><i class='fas fa-chevron-left'></i> Back</a>
+                            </div>
+                        </div>
+
+
+
+                 </aside>
                 </div>
             </div>
         </div>
