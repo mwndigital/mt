@@ -85,7 +85,7 @@
                         Enjoy our whisky themed rooms...
                     </h3>
                     <p>
-                        So step into our wee world... where we can assist in all of your plans... offering the finest highland hospitality, in our super comfy, whisky themed rooms, some with a beautiful view of the river.  You will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing array of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
+                        So step into our wee world... where we can assist with all of your plans... offering the finest highland hospitality, in our super comfy, whisky themed rooms, some with a beautiful view of the river. You will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing array of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
                     </p>
                 </div>
             </div>
