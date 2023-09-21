@@ -50,7 +50,7 @@
                                     <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     {{-- <td>{{ $booking->room->name }}</td> --}}
                                     <td>{!! $booking->getStatus() !!}</td>
-                                    <td>£{{ $booking->total }}</td>
+                                    <td>£{{ $booking->total }} - <span class="badge text-bg-success">£{{$booking->getCapturedAmount()}} Paid</span></td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
