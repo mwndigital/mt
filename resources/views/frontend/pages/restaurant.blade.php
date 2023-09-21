@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">This isn't just another meal, this is a Mash Tun meal</h2>
                     <p>
-                        Dining at The Mash Tun can be a casual bite  at the bar or a cozy corner in our historic leather clad room to formal pre arranged meals in Lodge, even dine Alfesco on the deck overlooking the River Spey.  Wherever you dine you can be assured of the freshest local produce prepared daily by out talented chef and his team… don't forget to check our daily specials.
+                        Dining at The Mash Tun can be a casual bite at the bar or a cozy corner in our historic leather clad room to formal pre arranged meals in Lodge, even dine Al Fresco on the deck overlooking the River Spey. Wherever you dine you can be assured of the freshest local produce prepared daily by out talented chef and his team… don't forget to check our daily specials.
                     </p>
                 </div>
                 <div class="col-md-6">
