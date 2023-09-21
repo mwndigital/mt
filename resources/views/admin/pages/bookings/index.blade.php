@@ -26,7 +26,7 @@
         </div>
     </section>
 
-    <section class="pageMain">
+    <section class="">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -34,7 +34,8 @@
                     <table class="table table-hovered">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Check-In</th>
+                                <th>Check-Out</th>
                                 <th>Name</th>
                                 {{-- <th>Room</th> --}}
                                 <th>Status</th>
@@ -45,7 +46,8 @@
                         <tbody>
                             @foreach($bookings as $booking)
                                 <tr>
-                                    <td>{{ $booking->checkin_date }}<br/> {{ $booking->checkout_date }}</td>
+                                    <td>{{ $booking->checkin_date }}</td>
+                                    <td>{{ $booking->checkout_date }}</td>
                                     <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     {{-- <td>{{ $booking->room->name }}</td> --}}
                                     <td>{!! $booking->getStatus() !!}</td>
