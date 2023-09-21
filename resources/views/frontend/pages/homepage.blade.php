@@ -43,7 +43,7 @@
             <div class="row align-items-center">
                 <div class="col-md-5">
                     {{--<img class="img-fluid wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".4s" src="{{ Storage::url($hpcontent->banner_one_image) }}" alt="{{ $hpcontent->banner_one_title }} featured image">--}}
-                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/home-banner-new-image.png') }}">
+                    <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-image-one.png') }}">
                 </div>
                 <div class="col-md-6 offset-md-1 wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
                     {{--<h2>{{ $hpcontent->banner_one_title }}</h2>--}}
@@ -65,7 +65,7 @@
                 <div class="col-md-6 wow slideInLeft">
                     <h2>Follow the whisky trail....</h2>
                     <p>
-                        However it is The Whisky that motivates a pilgrimage to this considered place, surrounded by the most famous of distilleries viewed as the ultimate trip for the lover of the Uisge Beatha (water of life)
+                        However it is the whisky that motivates a pilgrimage to this considered place, surrounded by the most famous of distilleries viewed as the ultimate trip for the lover of the Uisge Beatha (water of life)
                     </p>
                 </div>
                 <div class="col-md-5 offset-md-1">
@@ -85,7 +85,7 @@
                         Enjoy our whisky themed rooms...
                     </h3>
                     <p>
-                        So step into our wee world... where we can assist in all your plans... offering the finest highland hospitality, in our super comfy, whisky themed rooms, some with a beautiful view of the river.  You will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing array of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
+                        So step into our wee world... where we can assist in all of your plans... offering the finest highland hospitality, in our super comfy, whisky themed rooms, some with a beautiful view of the river.  You will find a warm welcome, comfortable refurbished accommodation, freshly prepared food and an astonishing array of whiskies including what is thought to be the worlds only complete <strong>Glenfarclas Family Collection</strong>.
                     </p>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                         Peacefulness and tranquility...
                     </h3>
                     <p>
-                        Our 4 bedroom lodge with a luxury log cabin feel offers sumptuous relaxing options with sun deck, views of river to leathery embrace of gathering room.  It is rented as a single rental and can accommodate 2-8 persons
+                        Our 4 bedroom lodge has a luxury log cabin feel. It offers sumptuous and luxury accommodation, including an expansive first floor sun terrace with views of the river Spey. It is available as a self catering property and can accommodate 2-8 people.
                     </p>
                     <a href="" class="darkGoldBtn">
                         Find out more <i class="fa fa-chevron-right"></i>
