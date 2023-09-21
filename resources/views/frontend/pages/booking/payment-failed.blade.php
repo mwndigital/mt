@@ -6,7 +6,7 @@
     <section class="bookingPaymentErrorPageMain">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" id="message" style="margin-top: 300px;">
                     <h1>
                         Payment Error
                     </h1>
@@ -15,6 +15,10 @@
                     </p>
                     <p>
                         Error message: {{ $error }}
+                    </p>
+                    <p>
+                        <!-- Go Homepage -->
+                        <a href="/" class="btn btn-dark">Go Homepage</a>
                     </p>
                 </div>
             </div>
