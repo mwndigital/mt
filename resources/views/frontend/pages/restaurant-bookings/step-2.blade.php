@@ -110,6 +110,53 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="">Would you like to create an account?</label>
+                                            <select name="create_account" id="create_account">
+                                                <option value="yes" selected>Yes</option>
+                                                <option value="no">No</option>
+                                            </select>
+                                            @error('create_account')
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                            <script>
+                                                $(document).ready(function(){
+                                                    $('#create_account').change(function(){
+                                                        var selected = $(this).val();
+                                                        if(selected === 'yes') {
+                                                            $('#passwordAccountField').css('display', 'flex');
+                                                        }
+                                                        else if(selected === 'no') {
+                                                            $('#passwordAccountField').css('display', 'none');
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="passwordAccountField">
+                                        <div class="col-md-6">
+                                            <label for="">Password</label>
+                                            <input type="password" name="password" id="password">
+                                            @error('password')
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Confirm Password</label>
+                                            <input type="password" name="confirmation_password" id="confirmation_password">
+                                            @error('confirmation_password')
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="resSummary">

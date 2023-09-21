@@ -50,7 +50,36 @@
 
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/_DSC1547.jpg') }}">
+                    <div class="owl-carousel lodgePageImageSlider">
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1547.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/lodge_lounge.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1542.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1557.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1521.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1529.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1534.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/_DSC1555.jpg') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/lodge/lodge-image-3.png') }}">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -60,7 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/_DSC1511.jpg') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/group-photo.png') }}">
                 </div>
                 <div class="col-md-6">
                     <h2 class="secTitle">

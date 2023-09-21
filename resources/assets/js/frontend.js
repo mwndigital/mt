@@ -104,4 +104,19 @@ $(document).ready(function(){
         slideSpeed: 1500,
         items: 1
     });
+    //Lodge page image slider
+    $('.lodgePageImageSlider').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: false,
+        dots: true,
+        loop: true,
+        nav: false,
+        navText: [
+            '<i class="fas fa-chevron-left"></i>',
+            '<i class="fas fa-chevron-right"></i>'
+        ],
+        paginationSpeed: 1500,
+        slideSpeed: 1500,
+        items: 1
+    });
 });

@@ -67,4 +67,38 @@
         margin: 0;
         width: 90%;
     }
+    .lodgePageImageSlider {
+        .item {
+            img {
+                border-radius: 40px;
+                display: block;
+                height: 400px;
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+        .owl-dots {
+            margin-top: 25px;
+            text-align: center;
+            button.owl-dot {
+                margin-right: 20px;
+                span {
+                    background-color: transparent;
+                    border: 1px solid $darkGrey;
+                    border-radius: 100%;
+                    display: block;
+                    content: '';
+                    height: 10px;
+                    @include transition(all .4s ease-in-out);
+                    width: 10px;
+                }
+                &.active {
+                    span {
+                        background-color: $darkBlue;
+                        border: 1px solid $darkBlue;
+                    }
+                }
+            }
+        }
+    }
 }
