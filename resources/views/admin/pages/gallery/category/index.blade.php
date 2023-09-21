@@ -51,7 +51,7 @@
                                                     <a href="{{ route('admin.gallery-category.edit', $cat->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('admin.gallery-category.destroy', $cat->id) }}" method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="confirm-delete-btn" type="submit">Delete</button>
