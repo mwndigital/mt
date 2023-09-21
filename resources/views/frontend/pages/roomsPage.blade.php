@@ -13,7 +13,7 @@
 @endpush
 @section('content')
     <section id="roomsPageTop">
-        <img src="{{ Storage::url($rpc->hero_banner_background_image) }}" alt="" class="mainBgImage">
+        <img src="{{ asset('images/rooms-hero-image-new.png') }}" alt="" class="mainBgImage">
         <div class="content">
             <div class="container">
                 <div class="row">
