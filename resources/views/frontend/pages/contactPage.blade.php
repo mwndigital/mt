@@ -35,7 +35,7 @@
                         Alternatively our restaurant is open to the public and you can come and dine with us for lunch or dinner 7 days a week.
                     </p>
                     <p>
-                        We offer free allocated parking for guests staying with us each room has a parking space under the room name.
+                        We offer free allocated parking for guests staying with us, as each room has a parking space under the room name.
                     </p>
                     <p>
                         Parking for guests dining with us is on the street just outside the door, there is also ample parking just a short stroll away from us.
