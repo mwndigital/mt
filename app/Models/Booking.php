@@ -106,12 +106,12 @@ class Booking extends Model implements \Serializable
     public function getStatus()
     {
         return match ($this->status) {
-            'pending' => '<span class="badge text-bg-warning">Pending</span>',
-            'confirmed' => '<span class="badge text-bg-success">Confirmed</span>',
+            'pending' => '<span class="badge text-bg-warning">Deposit Paid</span>',
+            'confirmed' => '<span class="badge text-bg-success">Approved</span>',
             'cancelled' => '<span class="badge text-bg-danger">Cancelled</span>',
             'refunded' => '<span class="badge text-bg-danger">Refunded</span>',
             'draft' => '<span class="badge text-bg-warning">Draft</span>',
-            'paid' => '<span class="badge text-bg-success">Paid</span>',
+            'paid' => '<span class="badge text-bg-success">Paid In Full</span>',
             default => '<span class="badge text-bg-warning">Pending</span>',
         };
     }
