@@ -130,18 +130,21 @@
                             <h5 class="footerTitle">Menu</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li>
-                                    <a href="">Dinner Menu</a>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</a>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        Whisky List
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskySpiritsMenuModal">Whisky and Spirits Menu</a>
+                                </li>
+                                <li>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</a>
+                                </li>
+                                <li>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</a>
+                                </li>
+                                <li>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">
+                                        Whisky Flights Menu
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="">Wine List</a>
-                                </li>
-                                <li>
-                                    <a href="">Cocktails List</a>
                                 </li>
                             </ul>
                         </div>
