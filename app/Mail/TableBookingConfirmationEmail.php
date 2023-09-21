@@ -13,12 +13,14 @@ class TableBookingConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $booking;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($booking)
     {
-        //
+        $this->booking = $booking;
     }
 
     /**
@@ -27,6 +29,7 @@ class TableBookingConfirmationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address('test@mydev-ne.co.uk', 'Mash Tun Aberlour'),
             subject: 'Table Booking Confirmation Email',
         );
     }
@@ -37,7 +40,7 @@ class TableBookingConfirmationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.bookingConfirmationEmail',
         );
     }
 
