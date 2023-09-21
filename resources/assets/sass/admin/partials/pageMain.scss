@@ -2,10 +2,11 @@
     background-color: $lightGrey;
     border-radius: 0;
     display: block;
+    min-height: 400px;
     padding: 4rem  2rem;
 
     table {
-        min-height: 400px;
+
         thead {
             tr {
                 th {
