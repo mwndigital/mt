@@ -111,7 +111,7 @@ class Booking extends Model implements \Serializable
             'cancelled' => '<span class="badge text-bg-danger">Cancelled</span>',
             'refunded' => '<span class="badge text-bg-danger">Refunded</span>',
             'draft' => '<span class="badge text-bg-warning">Draft</span>',
-            'paid' => '<span class="badge text-bg-success">Paid</span>',
+            'paid' => '<span class="badge text-bg-success">Paid In Full</span>',
             default => '<span class="badge text-bg-warning">Pending</span>',
         };
     }
