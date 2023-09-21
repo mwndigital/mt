@@ -85,15 +85,15 @@
                             @csrf
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="">Check in date</label>
                                     <input type="text" autocomplete="off" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="">Check out date</label>
                                     <input type="text" autocomplete="off" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 d-none">
                                     <label for="">Arrival Time</label>
                                     <input type="text" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
                                 </div>
