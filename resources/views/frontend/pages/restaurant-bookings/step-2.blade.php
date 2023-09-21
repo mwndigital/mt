@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="formWrap">
-                        <form action="" method="post">
+                        <form action="{{ route('book-a-table-step-two-store') }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-8">

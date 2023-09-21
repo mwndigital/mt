@@ -164,6 +164,7 @@ Route::prefix('book-a-table')->group(function(){
     Route::get('step-one', [FrontendRestaurantBookingController::class, 'index'])->name('book-a-table-index');
     Route::post('step-one-store', [FrontendRestaurantBookingController::class, 'indexStore'])->name('book-a-table-index-store');
     Route::get('step-two', [FrontendRestaurantBookingController::class, 'stepTwoShow'])->name('book-a-table-step-two-show');
+    Route::post('step-two-store', [FrontendRestaurantBookingController::class,'stepTwoStore'])->name('book-a-table-step-two-store');
     Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thank-you'])->name('book-a-table-thank-you');
 });
 

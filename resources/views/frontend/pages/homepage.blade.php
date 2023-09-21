@@ -133,7 +133,7 @@
                         Peacefulness and tranquility...
                     </h3>
                     <p>
-                        Our 4 bedroom lodge has a luxury log cabin feel. It offers sumptuous and luxury accommodation, including an expansive first floor sun terrace with views of the river Spey. It is available as a self catering property and can accommodate 2-8 people.
+                        Our 4 bedroom lodge, 4 bathroom Stalla Dhu lodge has a luxury log cabin feel. It offers sumptuous and luxury accommodation, including an expansive first floor sun terrace with views of the river Spey. It is available as a self contained property and can accommodate 2-8 people
                     </p>
                     <a href="" class="darkGoldBtn">
                         Find out more <i class="fa fa-chevron-right"></i>

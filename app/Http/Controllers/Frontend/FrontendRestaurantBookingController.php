@@ -131,7 +131,19 @@ class FrontendRestaurantBookingController extends Controller
         }
         else {
             //Save the session
-            $table_booking->save();
+            $table_booking = RestaurantBooking::create([
+                'first_name' => $table_booking->first_name,
+                'last_name' => $table_booking->last_name,
+                'email' => $table_booking->email,
+                'reservation_date' => $table_booking->reservation_date,
+                'reservation_time' => $table_booking->reservation_time,
+                'reservation_end_time' => $reservation_time_end,
+                'no_of_guests' => $table_booking->no_of_guests,
+                'table_id' => $table_booking->table_id,
+                'joining_for' => $table_booking->joining_for,
+                'additional_information' => $table_booking->additional_information,
+                'dietary_info' => $table_booking->dietary_info,
+            ]);
 
             //forget session
             $request->session()->forget('table_booking');

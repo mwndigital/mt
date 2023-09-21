@@ -7,20 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 
 class TableBookingConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $booking;
+    public $table_booking;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($booking)
+    public function __construct($table_booking)
     {
-        $this->booking = $booking;
+        $this->table_booking = $table_booking;
     }
 
     /**
@@ -40,7 +41,7 @@ class TableBookingConfirmationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.bookingConfirmationEmail',
+            view: 'emails.restaurantBookingCustomerConfirmationEmail',
         );
     }
 
