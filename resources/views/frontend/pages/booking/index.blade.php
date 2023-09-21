@@ -14,7 +14,14 @@
             $('#checkin_date').datepicker({
                 dateFormat: "dd-mm-yy",
                 defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
-                minDate: 0
+                minDate: 0,
+                onSelect: function(selectedDate) {
+                    const date = $(this).datepicker('getDate');
+                    if (date) {
+                        date.setDate(date.getDate() + 1);
+                    }
+                    $('#checkout_date').datepicker('option', 'minDate', date || 1);
+        }
             });
             $('#checkout_date').datepicker({
                 dateFormat: "dd-mm-yy",
