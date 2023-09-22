@@ -26,7 +26,7 @@
                     <div class="col-md-8 offset-md-2">
                         <h1>The Bar</h1>
                         <p>
-                            The Historic and Iconic  Mash Tun Whisky Bar is famous throughout the enthusiasts world for its astonishing whisky selection featuring at its heart one of only two known bars worldwide that house the entire range of Glenfarclas Family Cask . Patrons travel far and wide to celebrate their birth year with a dram , truly a bucket list aspiration we would love for you to experience.
+                            The Historic and Iconic  Mash Tun Whisky Bar is famous throughout the enthusiasts world for its astonishing whisky selection featuring at its heart, one of only two known bars worldwide that house the entire range of Glenfarclas Family Cask . Patrons travel far and wide to celebrate their birth year with a dram , truly a bucket list aspiration we would love for you to experience.
                         </p>
                         <p>
                             Steeped in History.... Seeped in Whisky
@@ -50,13 +50,13 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">Discover our amazing range of Whiskys</h2>
                     <p>
-                        The Mash Tun is home to a wide and varied selection of whiskies, both single malts and blends, predominately from Speyside but also incorporating distilleries from the rest of Scotland. Included in this selection is the exclusive Glenfarclas Family Cash Collection.
+                        The Mash Tun is home to a wide and varied selection of whiskies, both single malts and blends, predominately from Speyside but also incorporating distilleries from the rest of Scotland. Included in this selection is the exclusive Glenfarclas Family Cask Collection.
                     </p>
                     <p>
                         The Family Casks are a unique collection of 52 single cask whiskies, with one for each consecutive year from 1952 to 2003. The collection is unique as there is no other known collection of rare and old whiskies that covers 52 consecutive years from the same distillery.
                     </p>
                     <p>
-                        The Mash Tun is home to the largest collection of the Glenfarclas Family Casks in the world that is on display and available to drink by the dram.
+                        The Mash Tun is home to the largest display collection in the world of the Genfarclas Family Casks and is available to drink by the dram.
                     </p>
                     <p>
                         Our small team of enthusiastic staff are here to assist and guide you through the collection of whiskies we currently have at the famous Mash Tun Whisky Bar.
@@ -96,7 +96,7 @@
                 <div class="col-md-6">
                     <h2 class="secTitle">Did someone say Cocktails</h2>
                     <p>
-                        Cocktails why not? creatively created, locally influenced by our companies Master Mixologist, Sam McLlwham to enhance your relaxation.
+                        Cocktails why not? Creatively created, locally influenced by our companies Master Mixologist, Sam McLlwham to enhance your relaxation.
                     </p>
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</button>
                 </div>
