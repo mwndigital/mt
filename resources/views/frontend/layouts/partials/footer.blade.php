@@ -119,9 +119,9 @@
                                 <li><a href="{{ route('about-us') }}">Our History</a></li>
                                 <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
                                 <li><a href="{{ route('bar') }}">Bar</a></li>
-                                <li><a href="{{ route('restaurant.index') }}">Restaurant</a></li>
+                                <li><a href="{{ route('restaurant.index') }}">Dining</a></li>
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
-                                <li><a href="{{ route('lodge.index') }}">Lodge</a></li>
+                                <li><a href="{{ route('lodge.index') }}">Stalla Dhu Lodge</a></li>
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
                             </ul>
@@ -133,7 +133,7 @@
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</a>
                                 </li>
                                 <li>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskySpiritsMenuModal">Whisky and Spirits Menu</a>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskySpiritsMenuModal">Whisky Menu</a>
                                 </li>
                                 <li>
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#viewWineMenuModal">Wine Menu</a>
