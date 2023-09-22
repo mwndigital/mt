@@ -53,31 +53,28 @@ class BookingController extends Controller
         $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
         $checkoutDate = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
 
-        $booking->checkin_date = $checkinDate;
-        $booking->checkout_date = $checkoutDate;
-
         // Calculate the duration of the stay in days
         $duration = Carbon::parse($checkinDate)->diffInDays(Carbon::parse($checkoutDate));
 
         $booking->duration_of_stay = $duration;
+        $validated['checkin_date'] = $checkinDate;
+        $validated['checkout_date'] = $checkoutDate;
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
-
         return to_route('book-a-room-step-2');
     }
 
     public function stepTwoShow(Request $request)
     {
         $booking = $request->session()->get('booking');
-
         // Fetch available rooms based on the number of adults and children
         $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
             ->where('child_cap', '>=', $booking->no_of_children)
             ->get();
 
         // Get the check-in and check-out dates in the "d-m-Y" format
-        $checkinDate = Carbon::createFromFormat('d-m-Y', $booking->checkin_date)->format('d-m-Y');
-        $checkoutDate = Carbon::createFromFormat('d-m-Y', $booking->checkout_date)->format('d-m-Y');
+        $checkinDate = $booking->checkin_date;
+        $checkoutDate = $booking->checkout_date;
 
         // Filter out the rooms that have conflicts with existing bookings for the selected time period
         $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
@@ -107,10 +104,9 @@ class BookingController extends Controller
         $booking = $request->session()->get('booking');
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
-
         // Convert date strings to Y-m-d format using Carbon
-        $checkin_date = Carbon::createFromFormat('d-m-Y', $booking->checkin_date)->format('Y-m-d');
-        $checkout_date = Carbon::createFromFormat('d-m-Y', $booking->checkout_date)->format('Y-m-d');
+        $checkin_date = $booking->checkin_date;
+        $checkout_date = $booking->checkout_date;
 
         // Check if any booking conflicts exist for the selected room and dates
         $conflictingBooking = DB::table('bookings')

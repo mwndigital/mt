@@ -55,12 +55,6 @@ class Booking extends Model implements \Serializable
             if (!$booking->booking_ref) {
                 $booking->booking_ref = 'mt-' . strtoupper(Str::random(8));
             }
-
-            $checkin = Carbon::createFromFormat('d-m-Y', $booking->checkin_date);
-            $checkout = Carbon::createFromFormat('d-m-Y', $booking->checkout_date);
-            $duration = $checkout->diffInDays($checkin);
-
-            $booking->duration_of_stay = $duration;
         });
     }
 
