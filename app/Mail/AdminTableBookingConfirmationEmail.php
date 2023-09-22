@@ -5,12 +5,12 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 
-class TableBookingConfirmationEmail extends Mailable
+class AdminTableBookingConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class TableBookingConfirmationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Table Booking Confirmation Email',
+            subject: 'You have a new booking for the restaurant',
         );
     }
 
@@ -40,7 +40,7 @@ class TableBookingConfirmationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.restaurantBookingCustomerConfirmationEmail',
+            view: 'emails.adminTableBookingConfirmationEmail',
         );
     }
 

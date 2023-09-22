@@ -42,7 +42,7 @@
                         Indulge in a little piece of heaven...
                     </h2>
                     <p>
-                        The Stalla Dhu Lodge at the Mash Tun presents an inspiring getaway in the heart of Speyside with four luxury bedrooms and bathroom, it can accomodate 2 to 8 persons.
+                        The Stalla Dhu Lodge at the Mash Tun presents an inspiring getaway in the heart of Speyside with four luxury bedrooms, four bathrooms and a private first floor terrace, it can accommodate 2 to 8 persons.
                     </p>
                     <p>
                         You would be forgiven if you felt you were in The Rocky Mountains as it’s cozy, warm wood finishes meander thru the property with room names like Outlook and Hideout enhancing the welcome you will no doubt feel.
@@ -114,13 +114,13 @@
                         Take a visit to our nurturing wood burning sauna....
                     </h3>
                     <p>
-                        We invite you to experience all we have to offer from a relaxing drinks and dine deck with river view... or nurturing a wood burning sauna under the trees... we are at your service
+                        We invite you to experience all we have to offer from a relaxing drink and dine deck with a river view... or nurturing a wood burning sauna under the trees... we are at your service.
                     </p>
                     <p>
-                        Stalla Dhu has a reserved parking spot and full use of the wood burning Sauna
+                        Stalla Dhu Lodge has a reserved parking spot and full use of the wood burning Sauna.
                     </p>
                     <p>
-                        Plan soon for adventure within an adventure...
+                        Plan soon for an adventure within an adventure...
                     </p>
 
                 </div>

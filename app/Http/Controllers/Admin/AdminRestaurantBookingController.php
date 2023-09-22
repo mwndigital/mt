@@ -15,9 +15,24 @@ class AdminRestaurantBookingController extends Controller
      */
     public function index()
     {
-        $bookings = RestaurantBooking::all();
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        return view('admin.pages.restaurant.index');
+        $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->orderBy('reservation_date', 'asc')
+            ->get();
+        $todaysBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<', $today->copy()->addDay())
+            ->orderBy('reservation_time', 'asc')
+            ->get();
+        $thisWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<=', $endOfWeek)
+            ->orderBy('reservation_date', 'asc')
+            ->get();
+
+
+        return view('admin.pages.restaurant.index', compact('todaysBookings', 'thisWeeksBookings', 'allBookings'));
     }
 
     /**

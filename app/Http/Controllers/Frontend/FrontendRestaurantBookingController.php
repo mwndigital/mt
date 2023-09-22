@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminTableBookingConfirmationEmail;
 use App\Mail\TableBookingConfirmationEmail;
 use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
@@ -123,6 +124,7 @@ class FrontendRestaurantBookingController extends Controller
             Mail::to($validated['email'])->send(new TableBookingConfirmationEmail($table_booking));
 
             //send confirmation email to MT
+            Mail::to('reservations@mashtun-aberlour.com')->send(new AdminTableBookingConfirmationEmail($table_booking));
 
             //Send notif
 
@@ -152,6 +154,7 @@ class FrontendRestaurantBookingController extends Controller
             Mail::to($validated['email'])->send(new TableBookingConfirmationEmail($table_booking));
 
             //Send email to MT
+            Mail::to('reservations@mashtun-aberlour.com')->send(new AdminTableBookingConfirmationEmail($table_booking));
 
             //Send notif
 
