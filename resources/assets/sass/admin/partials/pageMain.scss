@@ -456,6 +456,41 @@
         font-size: 2.5rem;
         margin: 20px 0;
     }
+
+    .tab-panels-wrap {
+        .list-group {
+            border-bottom: 1px solid $darkBlue;
+            display: flex;
+
+            flex-direction: row;
+
+            gap: 20px;
+
+            a {
+                border: 0;
+                border-radius: 0;
+                font-family: $popBold;
+                font-size: 1rem;
+
+
+                padding: .75rem 1.5rem;
+                @include transition(all .4s ease-in-out);
+
+                &.show,
+                &.active,
+                &:hover {
+                    background-color: $darkGold;
+                    box-shadow: none;
+                    color: $w;
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
+        }
+        .tab-content {
+
+        }
+    }
 }
 
 .ui-widget-header {
