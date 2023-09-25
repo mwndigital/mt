@@ -24,7 +24,7 @@
                 <strong>What you are joining us for:</strong> {{ $table_booking->joining_for }}
             </li>
             <li>
-                <strong>Date:</strong> {{ date('d/m/Y', strtotime($table_booking->reservation_date) }}
+                <strong>Date:</strong> {{ date('d/m/Y', strtotime($table_booking->reservation_date)) }}
             </li>
             <li>
                 <strong>Start time:</strong> {{ $table_booking->reservation_time }}

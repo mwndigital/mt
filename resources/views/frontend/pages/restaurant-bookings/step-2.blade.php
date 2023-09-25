@@ -210,7 +210,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="nextBtn">Next Step <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class="nextBtn">Complete Booking <i class="fas fa-chevron-right"></i></button>
 
                                 </div>
                             </div>

@@ -23,9 +23,7 @@
         @stack('page-scripts')
     </head>
     <body>
-    <header>
-        @include('admin.layouts.partials.mainMenu')
-    </header>
+    @include('admin.layouts.partials.menus.topbar')
     @include('sweetalert::alert')
     @include('admin.layouts.partials.sidebar')
     <main class="main">

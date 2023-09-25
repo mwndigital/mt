@@ -9,10 +9,12 @@ use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
 use App\Models\User;
 use App\Models\UserDetails;
+use App\Notifications\NewTableBookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Models\Role;
 
 class FrontendRestaurantBookingController extends Controller
 {
@@ -127,6 +129,11 @@ class FrontendRestaurantBookingController extends Controller
             Mail::to('reservations@mashtun-aberlour.com')->send(new AdminTableBookingConfirmationEmail($table_booking));
 
             //Send notif
+            $adminRoles = ['admin', 'super admin'];
+            $adminUsers = Role::whereIn('name', $adminRoles)->first()->users;
+            foreach($adminUsers as $adminUser) {
+                $adminUser->notify(new NewTableBookingNotification($table_booking));
+            }
 
             //Redirect to thank you
             return redirect()->route('book-a-table-thank-you', ['table_booking_id' => $table_booking->id]);
@@ -157,10 +164,18 @@ class FrontendRestaurantBookingController extends Controller
             Mail::to('reservations@mashtun-aberlour.com')->send(new AdminTableBookingConfirmationEmail($table_booking));
 
             //Send notif
+            $adminRoles = ['admin', 'super admin'];
+            $adminUsers = Role::whereIn('name', $adminRoles)->first()->users;
+            foreach($adminUsers as $adminUser){
+                $adminUser->notify(new NewTableBookingNotification($table_booking));
+            }
 
             //redirect to thank you
             return redirect()->route('book-a-table-thank-you', ['table_booking_id' => $table_booking->id]);
         }
+    }
+    public function thankYou() {
+        return view('frontend.pages.restaurant-bookings.thank-you');
     }
 
 
