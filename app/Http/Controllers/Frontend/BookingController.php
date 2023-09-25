@@ -199,11 +199,6 @@ class BookingController extends Controller
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        $adminUsers = Role::whereIn('name', ['admin', 'super admin'])->first()->users;
-        foreach($adminUsers as $adminUser) {
-            $adminUser->notify(new AdminNewRoomBookingNotification($booking));
-        }
-
         return to_route('process-payment');
     }
 
