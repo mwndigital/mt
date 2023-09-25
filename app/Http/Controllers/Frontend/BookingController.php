@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\BookingConfirmationMail;
 use App\Models\Booking;
 use App\Models\Rooms;
+use App\Notifications\AdminNewRoomBookingNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,7 @@ use Cache;
 use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
+use Spatie\Permission\Models\Role;
 
 class BookingController extends Controller
 {
@@ -251,6 +253,12 @@ class BookingController extends Controller
 
         try {
             Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+
+            $adminUsers = Role::whereIn('name', ['admin', 'super admin'])->first()->users;
+            foreach($adminUsers as $adminUser) {
+                $adminUser->notify(new AdminNewRoomBookingNotification($booking));
+            }
+
         } catch (\Exception $e) {
         }
 

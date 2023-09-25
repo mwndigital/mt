@@ -38,14 +38,71 @@ header {
             }
 
             &.dropdown {
+                .dropdown-toggle {
 
+                    &.notificationButton {
+                        position: relative;
+
+                        span.notifAmount {
+                            align-items: center;
+                            background-color: $darkGold;
+                            border: 0;
+                            border-radius: 50%;
+                            display: flex;
+                            flex-direction: column;;
+                            font-size: .9rem;
+                            justify-content: center;
+                            padding: 1px 8px;
+                            position: absolute;
+                            right: 8px;
+                            top: -15px;
+                        }
+                    }
+                }
                 .dropdown-menu {
                     background-color: $lightGrey;
-                    border: 0;
+                    border: 1px solid $darkGold;
                     border-radius: 0;
                     -webkit-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
                     -moz-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
                     box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+
+                    padding: 1rem;
+
+                    li.notificationItemInner {
+                        border-bottom: 1px solid $darkGold;
+
+                        h5 {
+                            color: $darkBlue;
+                            font-family: $popBold;
+                            font-size: 1.2rem;
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            color: $darkBlue;
+                            font-family: $popReg;
+                            font-size: .9rem;
+                        }
+
+                        button.mark-as-read {
+                            color: $darkBlue;
+                            font-family: $popReg;
+                            font-size: .7rem;
+                            position: absolute;
+                            right: 1rem;
+                            top: 1rem;
+                            @include transition(all .4s ease-in-out);
+
+                            &:hover {
+                                background-color: transparent;
+                                border: 0;
+                                box-shadow: none;
+                                color: $darkGold;
+                                outline: none;
+                                text-decoration: none;
+                            }
+                        }
+                    }
 
                     a {
                         color: $darkBlue;
