@@ -171,4 +171,8 @@ class Booking extends Model implements \Serializable
         if (!$transaction) return false;
         return $transaction->type == TransactionType::FULL->value;
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
