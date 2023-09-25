@@ -85,10 +85,48 @@
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="room-list-today" role="tabpanel">
-
+                                    <table class="table w-100">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Checkin Date & Checkout Date</th>
+                                            <th>Arrival Time</th>
+                                            <th>Room Number</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($roomToday as $today)
+                                            <tr>
+                                                <td>{{ $today->first_name }} {{ $today->last_name }}</td>
+                                                <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_time)) }}</td>
+                                                <td>{{ $today->arrival_time }}</td>
+                                                <td>{{ $today->room_id }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="tab-pane fade" id="room-list-this-week" role="tabpanel">
-
+                                    <table class="table w-100">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Checkin Date & Checkout Date</th>
+                                            <th>Arrival Time</th>
+                                            <th>Room Number</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($roomThisWeek as $today)
+                                                <tr>
+                                                    <td>{{ $today->first_name }} {{ $today->last_name }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_time)) }}</td>
+                                                    <td>{{ $today->arrival_time }}</td>
+                                                    <td>{{ $today->room_id }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

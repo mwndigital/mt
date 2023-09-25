@@ -31,16 +31,16 @@ class AdminIndexController extends Controller
             ->orderBy('reservation_date', 'asc')
             ->get();
 
-        /*$roomToday = Booking::where('reservation_date', '>=', $today)
-            ->where('reservation_date', '<', $today->copy()->addDay(), '>=', $today)
-            ->orderBy('reservation_time', 'asc')
+        $roomToday = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<', $today->copy()->addDay(), '>=', $today)
+            ->orderBy('arrival_time', 'asc')
             ->get();
-        $roomThisWeek = Booking::where('reservation_date', '>=', $today)
-            ->where('reservation_date', '<=', $endOfWeek)
-            ->orderBy('reservation_date', 'asc')
-            ->get();*/
+        $roomThisWeek = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<=', $endOfWeek)
+            ->orderBy('arrival_time', 'asc')
+            ->get();
 
-        return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek'));
+        return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek', 'roomToday', 'roomThisWeek'));
     }
 
     public function formSubmissionTestEmail(){
