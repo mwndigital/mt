@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/assets/sass/app.scss',
                 'resources/assets/sass/admin.scss',
                 'resources/assets/sass/frontend.scss',
+                'resources/assets/sass/customer.scss',
                 'resources/assets/js/app.js',
                 'resources/assets/js/admin.js',
                 'resources/assets/js/frontend.js',

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CustomerIndexController extends Controller
+class CustomerAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('customer.pages.dashboard');
+
     }
 
     /**
@@ -36,7 +38,9 @@ class CustomerIndexController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $profile = User::findOrFail($id);
+
+        return view('customer.pages.my-account.index', compact('profile'));
     }
 
     /**
@@ -44,7 +48,9 @@ class CustomerIndexController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profile = User::findOrFail($id);
+
+        return view('customer.pages.my-account.edit', compact('profile'));
     }
 
     /**

@@ -35,14 +35,20 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user"></i>
-                        </button>
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit">
+                                <a href="" class="dropdown-item">My Account</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

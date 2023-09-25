@@ -88,6 +88,11 @@
     "isEntry": true,
     "src": "resources/assets/sass/app.scss"
   },
+  "resources/assets/sass/customer.scss": {
+    "file": "assets/customer-4537a377.css",
+    "isEntry": true,
+    "src": "resources/assets/sass/customer.scss"
+  },
   "resources/assets/sass/frontend.scss": {
     "file": "assets/frontend-105dc343.css",
     "isEntry": true,

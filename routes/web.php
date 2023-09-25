@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
 use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
+use App\Http\Controllers\Customer\CustomerAccountController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarPageController;
 use App\Http\Controllers\Frontend\BookingController;
@@ -123,6 +124,12 @@ Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->grou
 Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('customer')->group(function(){
     //Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Customer\CustomerIndexController::class, 'index'])->name('dashboard');
+
+    Route::prefix('my-account')->group(function(){
+       Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
+       Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');
+       Route::put('/update/{id}', [CustomerAccountController::class, 'update'])->name('my-account.update');
+    });
 });
 
 Auth::routes();

@@ -1,0 +1,48 @@
+header {
+    background-color: $lightGrey;
+    padding: .5rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1080;
+
+    .navbar {
+        .navbar-brand {
+            img {
+                display: block;
+                height: 75px;
+                margin: 0 20px 0 0;
+                width: auto;
+            }
+        }
+        .navbar-toggler {
+
+        }
+        .navbar-nav {
+            li {
+                margin-right: 25px;
+                a {
+                    color: $darkBlue;
+                    font-family: $popMed;
+                    font-size: 1.25rem;
+
+                    text-decoration: none;
+                    @include transition(all .4s ease-in-out);
+
+                    &:hover {
+                        background-color: transparent;
+                        border: 0;
+                        box-shadow: none;
+                        color: $darkGold;
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
