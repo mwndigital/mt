@@ -76,7 +76,9 @@ class AdminRestaurantBookingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $booking = RestaurantBooking::findOrFail($id);
+
+        return view('admin.pages.restaurant.edit', compact('booking'));
     }
 
     /**

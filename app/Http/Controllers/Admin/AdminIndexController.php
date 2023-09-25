@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Mail\AdminContactFormSubmissionMail;
 use App\Models\Booking;
 use App\Models\ContactFormSubmissions;
+use App\Models\RestaurantBooking;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -17,8 +19,28 @@ class AdminIndexController extends Controller
      */
     public function index()
     {
-        $bookings =  Booking::all();
-        return view('admin.pages.dashboard', compact('bookings'));
+        $today = Carbon::today()->startOfDay();
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $restaurantToday = RestaurantBooking::where('reservation_date' , '>=', $today)
+            ->where('reservation_date', '<', $today->copy()->addDay())
+            ->orderBy('reservation_time', 'asc')
+            ->get();
+        $restaurantThisWeek = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<=', $endOfWeek)
+            ->orderBy('reservation_date', 'asc')
+            ->get();
+
+        /*$roomToday = Booking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<', $today->copy()->addDay(), '>=', $today)
+            ->orderBy('reservation_time', 'asc')
+            ->get();
+        $roomThisWeek = Booking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<=', $endOfWeek)
+            ->orderBy('reservation_date', 'asc')
+            ->get();*/
+
+        return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek'));
     }
 
     public function formSubmissionTestEmail(){

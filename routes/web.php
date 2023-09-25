@@ -168,3 +168,10 @@ Route::prefix('book-a-table')->group(function(){
     Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thank-you'])->name('book-a-table-thank-you');
 });
 
+//Sitemap generation URL do not touch
+Route::get('generate-sitemap', function () {
+    $baseUrl = config('app.url');
+    SitemapGenerator::create($baseUrl)
+        ->writeToFile(public_path('sitemap.xml'));
+});
+

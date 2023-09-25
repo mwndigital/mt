@@ -39,7 +39,7 @@
 
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="list-today" role="tabpanel">
-                                <table class="table table-responsive w-100">
+                                <table class="table w-100">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -63,7 +63,7 @@
                                                             <ul>
 
                                                                 <li>
-                                                                    <a href="">Edit</a>
+                                                                    <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                                 </li>
                                                                 <li>
                                                                     <form action="" method="POST">
@@ -82,7 +82,7 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="list-this-week" role="tabpanel">
-                                <table class="table table-responsive w-100">
+                                <table class="table  w-100">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -106,7 +106,7 @@
                                                         <ul>
 
                                                             <li>
-                                                                <a href="">Edit</a>
+                                                                <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <form action="" method="POST">
@@ -125,7 +125,7 @@
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="list-messages" role="tabpanel">
-                                <table class="table table-responsive w-100">
+                                <table class="table w-100">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -149,7 +149,7 @@
                                                         <ul>
 
                                                             <li>
-                                                                <a href="">Edit</a>
+                                                                <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
                                                             <li>
                                                                 <form action="" method="POST">
