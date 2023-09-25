@@ -98,7 +98,7 @@
                                         @foreach($roomToday as $today)
                                             <tr>
                                                 <td>{{ $today->first_name }} {{ $today->last_name }}</td>
-                                                <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_time)) }}</td>
+                                                <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date) }}</td>
                                                 <td>{{ $today->arrival_time }}</td>
                                                 <td>{{ $today->room_id }}</td>
                                             </tr>
@@ -120,7 +120,7 @@
                                             @foreach($roomThisWeek as $today)
                                                 <tr>
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
-                                                    <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_time)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date)) }}</td>
                                                     <td>{{ $today->arrival_time }}</td>
                                                     <td>{{ $today->room_id }}</td>
                                                 </tr>
