@@ -1,6 +1,6 @@
 @extends('layouts.customer')
 @push('page-title')
-
+    {{ $profile->first_name }} {{ $profile->last_name }} account
 @endpush
 @push('page-scripts')
 
@@ -22,7 +22,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-end">
-                    <a href="{{ route('customer.my-account.edit', $profile->id) }}" class="blueBtn">Update Details</a>
+                    <div class="btn-group">
+                        <a href="{{ route('customer.my-account.edit', $profile->id) }}" class="blueBtn">Update Details</a>
+                        <a href="{{ route('customer.my-account.change-password', $profile->id) }}" class="darkGoldBtn">Change Password</a>
+                    </div>
                 </div>
             </div>
         </div>

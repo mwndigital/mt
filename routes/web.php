@@ -129,6 +129,7 @@ Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('custome
        Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
        Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');
        Route::put('/update/{id}', [CustomerAccountController::class, 'update'])->name('my-account.update');
+       Route::get('/change-password/{id}', [CustomerAccountController::class, 'changePasswordView'])->name('my-account.change-password');
     });
 });
 
