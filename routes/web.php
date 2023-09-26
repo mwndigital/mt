@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBookingController;
+use App\Http\Controllers\Admin\AdminFaqCategoryController;
+use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminGalleryCategoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
@@ -54,6 +56,20 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     // Booking status
     Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
 
+    //FAQs
+    Route::resource('faqs', AdminFaqController::class);
+    Route::prefix('faqs')->group(function(){
+
+        Route::resource('categories', AdminFaqCategoryController::class)->names([
+            'index' => 'faq-category.index',
+            'create' => 'faq-category.create',
+            'store' => 'faq-category.store',
+            'show' => 'faq-category.show',
+            'edit' => 'faq-category.edit',
+            'update' => 'faq-category.update',
+            'destroy' => 'faq-category.destroy',
+        ]);
+    });
 
     //Menu Category
     Route::prefix('menu')->group(function(){

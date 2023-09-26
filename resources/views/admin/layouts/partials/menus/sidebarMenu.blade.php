@@ -86,6 +86,25 @@
         </ul>
     </li>
     <li class="dropdown">
+        <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="falase">
+            FAQs
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{{ route('admin.faqs.index') }}">All FAQs</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.faqs.create') }}">Add New FAQ</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.faq-category.index') }}">All FAQ Categories</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.faq-category.create') }}">Add new FAQ Category</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
         <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Policy Pages
         </a>
