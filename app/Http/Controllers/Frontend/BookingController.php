@@ -19,6 +19,9 @@ use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use App\Models\UserDetails;
+use App\Models\User;
 
 class BookingController extends Controller
 {
@@ -153,7 +156,9 @@ class BookingController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'max:13'],
-            'email_address' => ['required', 'email']
+            'email_address' => ['required', 'email'],
+            'create_account' => ['nullable', 'string'],
+            'password' => ['required_if:create_account,yes'],
         ]);
 
         // Create an instance of CountryList
@@ -175,6 +180,38 @@ class BookingController extends Controller
         $validated['country'] = $countryCode;
 
         $booking = $request->session()->get('booking');
+
+        $booking->fill($validated);
+        $request->session()->put('booking', $booking);
+
+        // If the user has chosen to create an account, create a new user
+        if ($request->create_account == 'yes' && empty($booking->user_id)) {
+            // if user email is exists in the database, then use that user id
+            $user = User::where('email', $validated['email_address'])->first();
+
+            if ($user) {
+                return back()->withErrors(['email_address' => 'Email address already exists.'])->withInput();
+            }
+
+            $user = User::create([
+                'first_name' => $validated['first_name'],
+                'last_name' => $validated['last_name'],
+                'email' => $validated['email_address'],
+                'password' => Hash::make($validated['password']),
+            ]);
+            $user->assignRole('customer');
+            $userDetails = UserDetails::create([
+                'user_id' => $user->id,
+                'phone_number' => $validated['phone_number'],
+                'address_line_one' => $validated['address_line_one'],
+                'address_line_two' => $validated['address_line_two'],
+                'town_city' => $validated['city'],
+                'postcode' => $validated['postcode'],
+                'country' => $validated['country'],
+            ]);
+            $booking->user_id = $user->id;
+        }
+
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
@@ -255,10 +292,9 @@ class BookingController extends Controller
             Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
 
             $adminUsers = Role::whereIn('name', ['admin', 'super admin'])->first()->users;
-            foreach($adminUsers as $adminUser) {
+            foreach ($adminUsers as $adminUser) {
                 $adminUser->notify(new AdminNewRoomBookingNotification($booking));
             }
-
         } catch (\Exception $e) {
         }
 
