@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarPageController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
+use App\Http\Controllers\Frontend\FrontendFaqController;
 use App\Http\Controllers\Frontend\FrontendGalleryController;
 use App\Http\Controllers\Frontend\FrontendLodgeController;
 use App\Http\Controllers\Frontend\FrontendPolicyPageController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\Frontend\FrontendRestaurantPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,9 +59,17 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
 
     //FAQs
-    Route::resource('faqs', AdminFaqController::class);
-    Route::prefix('faqs')->group(function(){
 
+    Route::prefix('faqs')->group(function(){
+        Route::resource('faq', AdminFaqController::class)->names([
+            'index' => 'faq.index',
+            'create' => 'faq.create',
+            'store' => 'faq.store',
+            'show' => 'faq.show',
+            'edit' => 'faq.edit',
+            'update' => 'faq.update',
+            'destroy' => 'faq.destroy'
+        ]);
         Route::resource('categories', AdminFaqCategoryController::class)->names([
             'index' => 'faq-category.index',
             'create' => 'faq-category.create',
@@ -161,6 +171,7 @@ Route::get('/contact-us', [ContactPageController::class, 'index'])->name('contac
 Route::post('/contact-us-submission-store', [ContactPageController::class, 'store'])->name('contact-us-submission-store');
 Route::resource('/gallery', FrontendGalleryController::class);
 Route::get('/dining', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
+Route::get('/faqs', [FrontendFaqController::class, 'index'])->name('faqs.index');
 Route::prefix('book-a-room')->group(function () {
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
     Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
@@ -191,6 +202,7 @@ Route::prefix('book-a-table')->group(function(){
     Route::post('step-two-store', [FrontendRestaurantBookingController::class,'stepTwoStore'])->name('book-a-table-step-two-store');
     Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thankYou'])->name('book-a-table-thank-you');
 });
+
 
 //Sitemap generation URL do not touch
 Route::get('generate-sitemap', function () {

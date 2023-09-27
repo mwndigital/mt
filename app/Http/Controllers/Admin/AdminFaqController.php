@@ -46,7 +46,7 @@ class AdminFaqController extends Controller
             'category_id' => $validated['category_id']
         ]);
 
-        return redirect()->route('admin.faqs.index')->with('success', 'New FAQ added successfully');
+        return redirect()->route('admin.faq.index')->with('success', 'New FAQ added successfully');
     }
 
     /**
@@ -88,7 +88,7 @@ class AdminFaqController extends Controller
             'category_id' => $validated['category_id']
         ]);
 
-        return redirect()->route('admin.faqs.index')->with('success', 'FAQ updated successfully');
+        return redirect()->route('admin.faq.index')->with('success', 'FAQ updated successfully');
     }
 
     /**
@@ -100,6 +100,6 @@ class AdminFaqController extends Controller
 
         $faq->delete();
 
-        return redirect()->route('admin.faqs.index')->with('success', 'FAQ has been deleted successfully');
+        return redirect()->route('admin.faq.index')->with('success', 'FAQ has been deleted successfully');
     }
 }

@@ -117,6 +117,7 @@
                                     <a href="/">Home</a>
                                 </li>
                                 <li><a href="{{ route('about-us') }}">Our History</a></li>
+                                <li><a href="{{ route('faqs.index') }}">FAQs</a></li>
                                 <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
                                 <li><a href="{{ route('bar') }}">Bar</a></li>
                                 <li><a href="{{ route('restaurant.index') }}">Dining</a></li>

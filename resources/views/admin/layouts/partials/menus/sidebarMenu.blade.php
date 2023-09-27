@@ -91,10 +91,10 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-                <a href="{{ route('admin.faqs.index') }}">All FAQs</a>
+                <a href="{{ route('admin.faq.index') }}">All FAQs</a>
             </li>
             <li>
-                <a href="{{ route('admin.faqs.create') }}">Add New FAQ</a>
+                <a href="{{ route('admin.faq.create') }}">Add New FAQ</a>
             </li>
             <li>
                 <a href="{{ route('admin.faq-category.index') }}">All FAQ Categories</a>

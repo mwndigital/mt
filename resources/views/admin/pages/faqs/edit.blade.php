@@ -16,7 +16,7 @@
                     <h1>Edit {{ $faq->name }} FAQ</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faqs.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All FAQs</a>
+                    <a href="{{ route('admin.faq.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All FAQs</a>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.faqs.update', $faq->id) }}" method="post">
+                    <form action="{{ route('admin.faq.update', $faq->id) }}" method="post">
                         @csrf
                         @method("put")
                         <div class="row">
