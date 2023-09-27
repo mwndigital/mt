@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @push('page-title')
-    Gallery
+    FAQs
 @endpush
 @push('page-description')
 
