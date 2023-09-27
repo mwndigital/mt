@@ -10,7 +10,8 @@ class FaqCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'order'
     ];
 
     public function faq() {

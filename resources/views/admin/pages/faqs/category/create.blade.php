@@ -28,10 +28,19 @@
                     <form action="{{ route('admin.faq-category.store') }}" method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <label for="">Name *</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" required>
                                 @error('name')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Order</label>
+                                <input type="number" name="order" id="order" value="{{ old('order') }}" required>
+                                @error('order')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>

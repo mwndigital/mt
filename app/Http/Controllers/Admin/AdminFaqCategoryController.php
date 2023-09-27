@@ -33,10 +33,12 @@ class AdminFaqCategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'order' => ['required', 'integer'],
         ]);
 
         FaqCategory::create([
-            'name' => $validated['name']
+            'name' => $validated['name'],
+            'order' => $validated['order'],
         ]);
 
         return redirect()->route('admin.faq-category.index')->with('success', 'New FAQ category added successfully');
@@ -66,11 +68,13 @@ class AdminFaqCategoryController extends Controller
     {
         $category = FaqCategory::findOrFail($id);
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255'],
+            'order' => ['required', 'integer']
         ]);
 
         $category->update([
-           'name' => $validated['name']
+           'name' => $validated['name'],
+            'order' => $validated['order']
         ]);
 
         return redirect()->route('admin.faq-category.index')->with('success', 'FAQ Category has been updated successfully');
