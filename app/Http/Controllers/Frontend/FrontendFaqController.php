@@ -13,7 +13,7 @@ class FrontendFaqController extends Controller
      */
     public function index()
     {
-        $categories = FaqCategory::orderBy('order', 'desc')->get();
+        $categories = FaqCategory::orderBy('order', 'ASC')->get();
 
         return view('frontend.pages.faqsPage', compact('categories'));
     }
