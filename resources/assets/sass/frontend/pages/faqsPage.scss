@@ -64,6 +64,7 @@
         }
 
         .accordion-item {
+            background-color: transparent;
             border-radius: 0;
             border: 0;
             border-bottom: 1px solid $darkBlue;
@@ -86,7 +87,18 @@
             }
 
             .accordion-collapse {
+                background-color: $w;
+                .accordion-body {
+                    background-color: $w;
+                    padding: 0;
 
+                    p {
+                        background-color: transparent;
+                        color: $darkBlue;
+                        font-family: $popReg;
+                        font-size: 1rem;
+                    }
+                }
                 &.collapse {
 
                 }
