@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\FaqCategory;
+use App\Models\FaqsPage;
 use Illuminate\Http\Request;
 
 class FrontendFaqController extends Controller
@@ -14,8 +15,9 @@ class FrontendFaqController extends Controller
     public function index()
     {
         $categories = FaqCategory::orderBy('order', 'ASC')->get();
+        $content = FaqsPage::first();
 
-        return view('frontend.pages.faqsPage', compact('categories'));
+        return view('frontend.pages.faqsPage', compact('categories', 'content'));
     }
 
     /**

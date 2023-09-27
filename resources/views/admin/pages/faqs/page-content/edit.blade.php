@@ -19,6 +19,7 @@
                 <div class="col-12">
                     <form action="{{ route('admin.faqs-page.update', ['faqs_page' => 1]) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Main Title *</label>

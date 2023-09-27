@@ -119,6 +119,7 @@ class AdminFaqsPageController extends Controller
             'seo_image' => $seoImagePath,
             'seo_keywords' => $validated['seo_keywords'],
         ]);
+        return redirect()->back()->with('success', 'FAQ page content updated successfully');
     }
 
     /**

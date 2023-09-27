@@ -1,15 +1,15 @@
 @extends('layouts.frontend')
 @push('page-title')
-    FAQs
+    {{ $content->seo_title }}
 @endpush
 @push('page-description')
-
+    {{ $content->seo_description }}
 @endpush
 @push('page-keywords')
-
+    {{ $content->seo_keywords }}
 @endpush
 @push('page-image')
-
+    {{ $content->seo_image }}
 @endpush
 @section('content')
     <section class="faqsPageTop">
@@ -18,10 +18,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1>FAQs</h1>
-                        <p>
-
-                        </p>
+                        <h1>{{ $content->main_title }}</h1>
+                        {!! $content->sub_title !!}
                     </div>
                 </div>
             </div>
