@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
 use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
+use App\Http\Controllers\Admin\Pages\AdminFaqsPageController;
 use App\Http\Controllers\Admin\Pages\AdminHomepageController;
 use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
 use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
@@ -59,7 +60,6 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
 
     //FAQs
-
     Route::prefix('faqs')->group(function(){
         Route::resource('faq', AdminFaqController::class)->names([
             'index' => 'faq.index',
@@ -134,8 +134,8 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
        /* Route::resource('rooms-page', AdminRoomsPageController::class);*/
         Route::resource('contact-us', AdminContactUsPageController::class);
-
         Route::resource('policy-pages', AdminPolicyPagesController::class);
+        Route::resource('faqs-page', AdminFaqsPageController::class);
     });
 });
 
