@@ -99,7 +99,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    {{--<div class="row">
+                                    <div class="row" style="display: none">
                                         <div class="col-12">
                                             <label for="">Table</label>
                                             <input type="text" name="table_id" id="table_id" value="">
@@ -109,7 +109,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>--}}
+                                    </div>
                                     <div class="row">
                                         <div class="col-12">
                                             <label for="">Would you like to create an account?</label>
