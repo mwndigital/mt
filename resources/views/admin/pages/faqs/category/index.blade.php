@@ -29,6 +29,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Order</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -36,6 +37,7 @@
                             @foreach($categories as $cat)
                                 <tr>
                                     <td>{{ $cat->name }}</td>
+                                    <td>{{ $cat->order }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
