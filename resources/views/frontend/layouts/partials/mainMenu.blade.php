@@ -25,7 +25,6 @@
                 <li>
                     <a href="{{ route('lodge.index') }}">Lodge</a>
                 </li>
-                {{--<li><a href="{{ route('book-a-room-index') }}">Book a room</a></li>--}}
                 <li class="dropdown">
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
                     <ul class="dropdown-menu">
@@ -47,6 +46,9 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{ route('faqs.index') }}">FAQs</a>
                 </li>
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
 
