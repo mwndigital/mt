@@ -1,4 +1,12 @@
 header {
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
     .topBar {
 
         ul.contactDetails {
@@ -20,10 +28,28 @@ header {
         ul {
             li {
                 margin-bottom: 5px;
+                a {
+                    font-size: 1rem;
+                }
+            }
+        }
+        ul.rightMenu {
+            margin-left: 0 !important;
+            margin-top: 20px;
+            li {
+                margin-left: 0 !important;
+                .dropdown {
+                    button.darkGoldBtn {
+                        display: block;
+                        width: 100%;
+                    }
+                }
             }
         }
     }
 }
+header .navbar
+
 
 #homepageTop {
     height: 900px;
@@ -88,7 +114,7 @@ header {
     }
 }
 #aboutUsPageTop,
-.galleryPageTop{
+.galleryPageTop {
     height: 800px;
 
     .content {
@@ -140,50 +166,131 @@ header {
         }
     }
 }
+.brPageHeroBanner {
+    height: 1100px;
+    .content {
+        padding-top: 150px;
 
-
-#barRestaurantPageTop {
-    height: 50vh;
-    h1 {
-        font-size: 2rem;
-    }
-    .btn-group {
-        flex-direction: column;
-
-        .darkGoldBtn {
-            font-size: 1rem;
-            padding: .5rem 2rem;
+        h1 {
+            font-size: 2rem;
         }
-        .blueBtn {
+        p {
             font-size: 1rem;
-            padding: .5rem 2rem;
+        }
+        .btn-group {
+            flex-direction: column;
         }
     }
 }
-#barRestaurantPageBannerOne {
-    img.secondryImage {
-        margin-bottom: 50px;
-    }
-    img.mainImage {
-        display: block;
-        height: auto;
-        width: 100%;
-    }
-}
-#barRestaurantImageBanner {
-    height: 200px;
-}
-#barRestaurantPageWhiskysBanner {
-    h2 {
+.brBanner {
+    padding: 2rem 0;
+    .secTitle {
         font-size: 2rem;
     }
-    img.mainImage {
-        display: block;
-        height: auto;
-        margin-top: 30px;
-        width: 100%;
+    img.featuredImage {
+        margin: 30px auto;
     }
 }
+
+.newsletterBanner {
+    h5 {
+        font-size: 2rem;
+    }
+}
+#diningPageTop{
+    height: 800px;
+
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+#roomsPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+        h1{
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+#roomsPageLodgeBanner {
+    .owl-carousel {
+        margin-top: 50px;
+    }
+}
+.lodgePageHero {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+.lodgeBanner {
+    .lodgePageImageSlider {
+        .item {
+            img {
+                height: 200px;
+            }
+        }
+    }
+}
+.faqsPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+.faqsPageMain {
+    .categoryItem {
+        .mainCIItemTitle {
+            font-size: 2rem;
+        }
+        .accordion-item {
+            .accordion-header {
+                .accordion-button {
+                    font-size: 1.15rem;
+                }
+            }
+        }
+    }
+}
+#contactPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+
+
+
 .makeBookingBanner {
     h2 {
         font-size: 2rem;
