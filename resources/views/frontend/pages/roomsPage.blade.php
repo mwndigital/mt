@@ -19,6 +19,7 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <h1>{{ $rpc->hero_banner_title }}</h1>
+
                         <p>
                             We have 5 chic en-suite bedrooms, named after local distilleries. A roll top bath enhances The Glenlivet Room, and most rooms enjoy glorious views over the River Spey. The Macallan Room, which follows the curve of the building, looks towards Easter Elchies House - the original home of The Macallan Malt Whisky.
                         </p>
@@ -53,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="" class="blueBtn">Book Now</a>
+                                <a href="/rooms" class="blueBtn">Book Now</a>
                             </div>
                         </div>
                     </div>

@@ -13,13 +13,13 @@ class RoomsPageContent extends Model
 
     protected $fillable = [
         'page_title',
-        'page_slug',
+        'slug',
         'hero_banner_title',
+        'hero_content',
         'hero_banner_background_image',
-        'rooms_info_banner_content',
-        'page_description',
-        'page_keywords',
-        'page_type',
-        'page_image',
+        'seo_title',
+        'seo_description',
+        'seo_image',
+        'seo_keywords'
     ];
 }

@@ -132,7 +132,7 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('homepage', AdminHomepageController::class);
         Route::resource('about-us', AdminAboutUsPageController::class);
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
-       /* Route::resource('rooms-page', AdminRoomsPageController::class);*/
+        Route::resource('rooms-page', AdminRoomsPageController::class);
         Route::resource('contact-us', AdminContactUsPageController::class);
         Route::resource('policy-pages', AdminPolicyPagesController::class);
         Route::resource('faqs-page', AdminFaqsPageController::class);
