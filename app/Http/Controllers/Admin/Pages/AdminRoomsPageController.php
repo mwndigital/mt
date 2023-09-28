@@ -137,18 +137,59 @@ class AdminRoomsPageController extends Controller
         }
 
         //dd($validated);
+        if($request->hasFile('hero_banner_background_image') && $request->hasFile('seo_image')){
+            $content->update([
+                "page_title" => $validated['page_title'],
+                "slug" => $content->slug,
+                "hero_banner_title" => $validated['hero_banner_title'],
+                "hero_content" => $validated['hero_content'],
+                "hero_banner_background_image" => $heroBannerBackgroundImagePath,
+                "seo_title" => $validated['seo_title'],
+                "seo_description" => $validated['seo_description'],
+                "seo_image" => $seoImagePath,
+                "seo_keywords" => $validated['seo_keywords'],
+            ]);
+        }
+        elseif($request->hasFile('hero_banner_background_image')){
+            $content->update([
+                "page_title" => $validated['page_title'],
+                "slug" => $content->slug,
+                "hero_banner_title" => $validated['hero_banner_title'],
+                "hero_content" => $validated['hero_content'],
+                "hero_banner_background_image" => $heroBannerBackgroundImagePath,
+                "seo_title" => $validated['seo_title'],
+                "seo_description" => $validated['seo_description'],
+                "seo_image" => $oldSeoImage,
+                "seo_keywords" => $validated['seo_keywords'],
+            ]);
+        }
+        elseif($request->hasFile('seo_image')) {
+            $content->update([
+                "page_title" => $validated['page_title'],
+                "slug" => $content->slug,
+                "hero_banner_title" => $validated['hero_banner_title'],
+                "hero_content" => $validated['hero_content'],
+                "hero_banner_background_image" => $oldHeroBannerBackgroundImage,
+                "seo_title" => $validated['seo_title'],
+                "seo_description" => $validated['seo_description'],
+                "seo_image" => $seoImagePath,
+                "seo_keywords" => $validated['seo_keywords'],
+            ]);
+        }
+        else {
+            $content->update([
+                "page_title" => $validated['page_title'],
+                "slug" => $content->slug,
+                "hero_banner_title" => $validated['hero_banner_title'],
+                "hero_content" => $validated['hero_content'],
+                "hero_banner_background_image" => $oldHeroBannerBackgroundImage,
+                "seo_title" => $validated['seo_title'],
+                "seo_description" => $validated['seo_description'],
+                "seo_image" => $oldSeoImage,
+                "seo_keywords" => $validated['seo_keywords'],
+            ]);
+        }
 
-        $content->update([
-            "page_title" => $validated['page_title'],
-            "slug" => $content->slug,
-            "hero_banner_title" => $validated['hero_banner_title'],
-            "hero_content" => $validated['hero_content'],
-            "hero_banner_background_image" => $heroBannerBackgroundImagePath,
-            "seo_title" => $validated['seo_title'],
-            "seo_description" => $validated['seo_description'],
-            "seo_image" => $seoImagePath,
-            "seo_keywords" => $validated['seo_keywords'],
-        ]);
 
         return redirect()->back()->with('success', 'Rooms page content updated successfully');
 
