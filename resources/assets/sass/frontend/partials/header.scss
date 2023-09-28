@@ -141,7 +141,7 @@ header {
             }
 
             .fa-bars {
-                color: $darkBlue;
+                color: $w;
             }
             .fa-times {
                 color: $darkGold;
@@ -259,4 +259,15 @@ header.scrolled {
     box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
 
     @include transition(all .4s ease-in-out);
+
+    .navbar {
+        .navbar-toggler {
+            .fa-bars {
+
+            }
+            .fa-times {
+
+            }
+        }
+    }
 }
