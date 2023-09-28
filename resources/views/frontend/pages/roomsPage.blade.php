@@ -1,42 +1,31 @@
 @extends('layouts.frontend')
 @push('page-title')
-    {{ $rpc->page_title }}
+    {{ $content->page_title }}
 @endpush
 @push('page-description')
-    {{ $rpc->page_description }}
+    {{ $content->seo_description }}
 @endpush
 @push('page-keywords')
-    {{ $rpc->page_keywords }}
+    {{ $content->seo_keywords }}
 @endpush
 @push('page-image')
-    {{ Storage::url($rpc->page_image) }}
+    {{ Storage::url($content->seo_image) }}
 @endpush
 @section('content')
     <section id="roomsPageTop">
-        <img src="{{ Storage::url($rpc->hero_banner_background_image) }}" alt="" class="mainBgImage">
+        <img src="{{ Storage::url($content->hero_banner_background_image) }}" alt="" class="mainBgImage">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h1>{{ $rpc->hero_banner_title }}</h1>
+                        <h1>{{ $content->hero_banner_title }}</h1>
 
-                        <p>
-                            We have 5 chic en-suite bedrooms, named after local distilleries. A roll top bath enhances The Glenlivet Room, and most rooms enjoy glorious views over the River Spey. The Macallan Room, which follows the curve of the building, looks towards Easter Elchies House - the original home of The Macallan Malt Whisky.
-                        </p>
+                        {!! $content->hero_content !!}
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    {{--<section id="roomsPageInfoBanner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    {!! $rpc->rooms_info_banner_content !!}
-                </div>
-            </div>
-        </div>
-    </section>--}}
 
     <section id="roomsPageRoomsBanner">
         <div class="container">

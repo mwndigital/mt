@@ -110,15 +110,29 @@ class AdminFaqsPageController extends Controller
                 Storage::delete($oldSeoImage);
             }
         }
-        $content->update([
-            'main_title' => $validated['main_title'],
-            'sub_title' => $validated['sub_title'],
-            'slug' => $content->slug,
-            'seo_title' => $validated['seo_title'],
-            'seo_description' => $validated['seo_description'],
-            'seo_image' => $seoImagePath,
-            'seo_keywords' => $validated['seo_keywords'],
-        ]);
+        if($request->hasFile('seo_image')) {
+            $content->update([
+                'main_title' => $validated['main_title'],
+                'sub_title' => $validated['sub_title'],
+                'slug' => $content->slug,
+                'seo_title' => $validated['seo_title'],
+                'seo_description' => $validated['seo_description'],
+                'seo_image' => $seoImagePath,
+                'seo_keywords' => $validated['seo_keywords'],
+            ]);
+        }
+        else {
+            $content->update([
+                'main_title' => $validated['main_title'],
+                'sub_title' => $validated['sub_title'],
+                'slug' => $content->slug,
+                'seo_title' => $validated['seo_title'],
+                'seo_description' => $validated['seo_description'],
+                'seo_image' => $oldSeoImage,
+                'seo_keywords' => $validated['seo_keywords'],
+            ]);
+        }
+
         return redirect()->back()->with('success', 'FAQ page content updated successfully');
     }
 

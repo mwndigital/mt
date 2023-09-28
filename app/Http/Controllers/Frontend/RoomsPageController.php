@@ -15,8 +15,8 @@ class RoomsPageController extends Controller
     public function index()
     {
         $rooms = Rooms::all();
-        $rpc = RoomsPageContent::first();
-        return view('frontend.pages.roomsPage', compact('rooms', 'rpc'));
+        $content = RoomsPageContent::first();
+        return view('frontend.pages.roomsPage', compact('rooms', 'content'));
     }
 
     /**
