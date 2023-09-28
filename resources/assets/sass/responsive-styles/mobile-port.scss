@@ -11,6 +11,9 @@ header {
         }
     }
     .navbar {
+        .navbar-toggler {
+            color: $w;
+        }
         #frontendMainNavbar {
             padding: 4rem .5rem 1rem .5rem;
         }
@@ -23,16 +26,25 @@ header {
 }
 
 #homepageTop {
-    height: 70vh;
+    height: 900px;
     .content {
         .inner {
             h1 {
                 font-size: 2rem;
+                span {
+                    font-size: 4rem;
+                }
+            }
+            h4 {
+                font-size: 1.75rem;
             }
             p {
                 font-size: 1rem;
             }
         }
+    }
+    svg {
+        bottom: -90px;
     }
 }
 #homepageWelcomeBanner {
@@ -59,6 +71,11 @@ header {
         width: 100%;
 
 
+    }
+}
+.ourRatingsBanner {
+    .reviewItem {
+        margin-bottom: 30px;
     }
 }
 #homepageBookRoomBanner {
