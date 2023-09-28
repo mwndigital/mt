@@ -97,7 +97,12 @@ class AdminRoomsPageController extends Controller
             'slug' => ['nullable', 'string', 'max:255'],
             'hero_banner_title' => ['required', 'string', 'max:255'],
             'hero_content' => ['required', 'max:15000'],
-            'hero_banner_background_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+            'hero_banner_background_image' => [
+                // Apply 'required' rule only if a file has been uploaded
+                $request->hasFile('hero_banner_background_image') ? 'required' : '',
+                'image',
+                'mimes:jpg,jpeg,png,svg,webp',
+            ],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string', 'max:500'],
             'seo_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
