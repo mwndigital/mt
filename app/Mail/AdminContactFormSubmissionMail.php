@@ -30,7 +30,6 @@ class AdminContactFormSubmissionMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('no-reply@mashtun-aberlour.com', 'Mash Tun Arberlour'),
             subject: 'Contact form submission',
         );
     }
