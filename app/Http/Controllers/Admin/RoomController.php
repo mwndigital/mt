@@ -33,9 +33,20 @@ class RoomController extends Controller
      */
     public function store(RoomStoreRequest $request)
     {
-        $image = $request->file('featured_image')->store('public/uploads/rooms');
+        // Handle featured image upload
+        $featuredImage = $request->file('featured_image');
+        $featuredImagePath = $featuredImage ? $featuredImage->store('public/uploads/rooms') : null;
 
-        Rooms::create([
+        // Handle gallery images upload
+        $galleryImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $galleryImages[] = $image->store('public/uploads/rooms');
+            }
+        }
+
+        // Create room
+        $room = Rooms::create([
             'name' => $request->name,
             'room_type' => $request->room_type,
             'adult_cap' => $request->adult_cap,
@@ -45,10 +56,17 @@ class RoomController extends Controller
             'price_per_night_single' => $request->price_per_night_single,
             'description' => $request->description,
             'short_description' => $request->short_description,
-            'featured_image' => $image,
+            'featured_image' => $featuredImagePath,
         ]);
+
+        // Attach gallery images to the room
+        foreach ($galleryImages as $imagePath) {
+            $room->images()->create(['image' => $imagePath]);
+        }
+
         return redirect('admin/rooms')->with('success', 'New Room has been created successfully');
     }
+
 
     /**
      * Display the specified resource.
@@ -78,10 +96,9 @@ class RoomController extends Controller
 
         $oldImagePath = $room->featured_image;
 
-        if($request->hasFile('featured_image')) {
+        if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image')->store('public/uploads/rooms');
-        }
-        else {
+        } else {
             $image = $room->featured_image;
         }
 
@@ -96,8 +113,8 @@ class RoomController extends Controller
         $room->short_description = $request->short_description;
         $room->featured_image = $image;
 
-        if($room->save()){
-            if($oldImagePath){
+        if ($room->save()) {
+            if ($oldImagePath) {
                 Storage::delete($oldImagePath);
             }
         }
@@ -127,13 +144,12 @@ class RoomController extends Controller
         $room = Rooms::findOrFail($id);
         $imagePath = $room->featured_image;
 
-        if($room->delete()) {
-            if($imagePath){
+        if ($room->delete()) {
+            if ($imagePath) {
                 Storage::delete($imagePath);
             }
             return redirect('admin/rooms')->with('success', 'Room has been deleted successfully');
-        }
-        else {
+        } else {
             return redirect('admin/rooms')->with('error', 'Failed to delete room');
         }
     }

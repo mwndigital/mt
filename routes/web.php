@@ -48,6 +48,10 @@ use Spatie\Sitemap\SitemapGenerator;
 
 //Admin Routes
 Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('admin')->group(function(){
+    // API will move to api.php
+    Route::delete('remove-image', [\App\Http\Controllers\Admin\ApiController::class, 'removeImage'])->name('remove-image');
+    Route::post('upload-image', [\App\Http\Controllers\Admin\ApiController::class, 'uploadImage'])->name('upload-image');
+
     //Dashboard
     Route::post('contact-form-submission-test-email', [AdminIndexController::class, 'formSubmissionTestEmail'])->name('contact-form-submission-test-email');
     Route::get('dashboard', [AdminIndexController::class, 'index'])->name('dashboard');
@@ -210,4 +214,3 @@ Route::get('generate-sitemap', function () {
     SitemapGenerator::create($baseUrl)
         ->writeToFile(public_path('sitemap.xml'));
 });
-
