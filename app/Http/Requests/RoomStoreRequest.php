@@ -30,8 +30,8 @@ class RoomStoreRequest extends FormRequest
             'description' => ['required'],
             'short_description' => ['required'],
             'featured_image' => ['required', 'image', 'mimes:jpg,jpeg,webp,png'],
-            'price_per_night_double' => ['required', 'decimal'],
-            'price_per_night_single' => ['required', 'decimal'],
+            'price_per_night_double' => ['required'],
+            'price_per_night_single' => ['required'],
         ];
     }
 }

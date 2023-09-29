@@ -23,7 +23,13 @@ class Rooms extends Model
         'featured_image',
     ];
 
-    public function booking(){
+    public function booking()
+    {
         return $this->hasMany(Booking::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(RoomGalleries::class, 'room_id');
     }
 }

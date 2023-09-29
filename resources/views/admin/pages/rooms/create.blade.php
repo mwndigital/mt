@@ -3,7 +3,13 @@
     Admin Create Room
 @endpush
 @push('page-scripts')
-
+<script>
+    $(document).ready(function() {
+        $('#addImageButton').click(function() {
+            $('#imageContainer').append('<input type="file" name="images[]" class="form-control mt-2" multiple>');
+        });
+    });
+</script>
 @endpush
 @push('page-styles')
 
@@ -51,7 +57,7 @@
                             <div class="col-md-6">
                                 <label for="">Room Type *</label>
                                 <select name="room_type" id="room_type" required>
-                                    <option disabled selected>Please make a selection</option>
+                                    <option value="">Please make a selection</option>
                                     <option value="single">Single</option>
                                     <option value="double">Double</option>
                                     <option value="family">Family</option>
@@ -88,7 +94,7 @@
                             <div class="col-md-6">
                                 <label for="">Bathroom Type *</label>
                                 <select name="bathroom_type" id="bathroom_type" required>
-                                    <option disabled selected>Please choose an option</option>
+                                    <option value="">Please choose an option</option>
                                     <option value="full_ensuite">Full Ensuite</option>
                                     <option value="ensuite_shower">Ensuite Shower</option>
                                     <option value="ensuite_bath">Ensuite Bath</option>
@@ -104,7 +110,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Price per night double *</label>
-                                <input type="number" name="price_per_night_double" id="price_per_night_double" step="any" value="{{ $room->price_per_night_double }}" required>
+                                <input type="number" name="price_per_night_double" id="price_per_night_double" step="any" value="" required>
                                 @error('price_per_night_double')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -113,7 +119,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Price per night single *</label>
-                                <input type="number" name="price_per_night_single" id="price_per_night_single" value="{{ $room->price_per_night_single }}" step="any" required>
+                                <input type="number" name="price_per_night_single" id="price_per_night_single" value="" step="any" required>
                                 @error('price_per_night_single')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -124,7 +130,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Description *</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor" required>{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor">{{ old('description') }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -133,7 +139,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Short Description</label>
-                                <textarea name="short_description" id="short_description" cols="30" rows="10" class="tinyEditor" readonly required>{{ old('short_description') }}</textarea>
+                                <textarea name="short_description" id="short_description" cols="30" rows="10" class="tinyEditor">{{ old('short_description') }}</textarea>
                                 @error('short_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -152,6 +158,26 @@
                                 @enderror
                             </div>
                         </div>
+
+
+                          <!-- Image Upload Section -->
+                          <div class="row mt-4">
+                            <div class="col-12">
+                                <h3>Upload Images</h3>
+                            </div>
+                            <div class="col-12" id="imageContainer">
+                                <!-- Initial file input field for images -->
+                                @if (old('images'))
+                                    @foreach (old('images') as $image)
+                                        <input type="file" name="images[]" class="form-control mt-2" multiple>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div class="col-12 mt-2">
+                                <button type="button" class="btn btn-success" id="addImageButton">+ Add New Image</button>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <button type="submit" class="darkGoldBtn">Save</button>

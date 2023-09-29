@@ -18,3 +18,7 @@ yarn-error.log
 /.idea
 /.vscode
 .htaccess
+
+storage/*.key
+storage/*.pem
+storage/app/public/*
