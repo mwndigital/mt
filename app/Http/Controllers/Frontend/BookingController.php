@@ -222,8 +222,10 @@ class BookingController extends Controller
         $booking = $request->session()->get('booking');
 
         $roomName = $booking['room_name'];
+        $countries = CountryListFacade::getList('en');
+        $currentCountry = $countries[$booking->country];
 
-        return view('frontend.pages.booking.step-4', compact('booking', 'roomName'));
+        return view('frontend.pages.booking.step-4', compact('booking', 'roomName', 'currentCountry'));
     }
 
     public function stepFourStore(Request $request)

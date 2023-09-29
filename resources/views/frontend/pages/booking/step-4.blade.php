@@ -76,7 +76,7 @@
                                     </tr>
                                     <tr>
                                         <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Title</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->user_title }}</td>
+                                        <td style="color: #000; font-size: 1rem;">{{ ucfirst($booking->user_title) }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Name</strong></td>
@@ -91,7 +91,7 @@
                                             @endif
                                             {{ $booking->postcode }} <br>
                                             {{ $booking->city }} <br>
-                                            {{ $booking->country }} <br>
+                                            {{ $currentCountry  }} <br>
                                         </td>
                                     </tr>
                                     <tr>
