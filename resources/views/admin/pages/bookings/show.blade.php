@@ -117,7 +117,7 @@ const confirmBooking = (event) => {
                                     @endif
                                     {{ $booking->city }} <br>
                                     {{ $booking->postcode }} <br>
-                                    {{ $booking->country }}
+                                    {{ $booking->country_name }}
                                 </td>
                             </tr>
                             <tr>
