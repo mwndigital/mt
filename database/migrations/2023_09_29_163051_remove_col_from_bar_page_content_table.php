@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('bar_page_content', function (Blueprint $table) {
-            $table->dropColumn('banner_one_content');
-            $table->text('banner_one_content')->after('banner_one_title');
+            $table->string('banner_one_content')->change();
         });
     }
 
