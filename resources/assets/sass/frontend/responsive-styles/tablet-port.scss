@@ -1,0 +1,76 @@
+header {
+    .topBar {
+
+        ul.contactDetails {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        ul.socialLinks {
+            display: none;
+        }
+    }
+    .navbar {
+        #frontendMainNavbar {
+            padding: 4rem .5rem 1rem .5rem;
+        }
+        ul {
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+#homepageTop {
+
+    svg {
+        bottom: -65px;
+    }
+}
+#homepageWelcomeBanner {
+
+    img {
+        display: block;
+        height: auto;
+        margin: 0 auto 30px auto;
+        width: 75%;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+}
+#homepageBannerTwo {
+    img {
+        display: block;
+        margin: auto;
+        width: 75%;
+    }
+}
+#homepageBannerThree {
+    img {
+        display: block;
+        margin: 0 auto 30px auto !important;
+        width: 75%;
+    }
+}
+#homepageHomeFromHomeBanner {
+    .owl-carousel {
+        margin-top: 50px;
+    }
+}
+#homepageBannerFour {
+    img {
+        display: block;
+        margin: 0 auto 30px auto !important;
+        width: 75%;
+    }
+}
+.ourRatingsBanner {
+    .reviewItem {
+        margin-bottom: 30px;
+    }
+}

@@ -321,11 +321,6 @@ header .navbar
     }
 }
 
-
-
-
-
-
 .awardsBanner {
     .awardsWrap {
         flex-direction: column;
@@ -333,8 +328,13 @@ header .navbar
 }
 
 footer {
-    .footerMain {
+    .footerBottom {
+        p {
+            margin-bottom: 20px;
+            text-align :center;
+        }
         ul.socialLinks {
+            justify-content: center;
             margin-bottom: 30px;
         }
     }
