@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Monarobase\CountryList\CountryListFacade;
 
 class Booking extends Model implements \Serializable
 {
@@ -45,6 +46,10 @@ class Booking extends Model implements \Serializable
         'email_address',
         'status',
         'total',
+    ];
+
+    protected $appends = [
+        'country_name',
     ];
 
     protected static function boot()
@@ -172,7 +177,13 @@ class Booking extends Model implements \Serializable
         return $transaction->type == TransactionType::FULL->value;
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function getCountryNameAttribute()
+    {
+        return CountryListFacade::getOne($this->country);
     }
 }

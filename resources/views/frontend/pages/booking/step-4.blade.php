@@ -91,7 +91,7 @@
                                             @endif
                                             {{ $booking->postcode }} <br>
                                             {{ $booking->city }} <br>
-                                            {{ $currentCountry  }} <br>
+                                            {{ $booking->country_name  }} <br>
                                         </td>
                                     </tr>
                                     <tr>
