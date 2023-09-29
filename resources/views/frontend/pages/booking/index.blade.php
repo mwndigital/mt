@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Check out date</label>
-                                    <input type="text" autocomplete="off" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
+                                    <input type="text" autocomplete="off" name="checkout_date" id="checkout_date" value="{{ $booking ? \Carbon\Carbon::parse($booking->checkout_date)->format('d-m-Y') : '' }}">
                                 </div>
                                 <div class="col-md-4 d-none">
                                     <label for="">Arrival Time</label>
