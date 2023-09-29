@@ -29,7 +29,7 @@
     <section class="faqsPageMain">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-lg-8 offset-lg-2">
                     @foreach($categories as $category)
                         <div class="categoryItem">
                             <h4 class="mainCIItemTitle">{{ $category->name }}</h4>

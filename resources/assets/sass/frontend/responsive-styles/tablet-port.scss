@@ -30,6 +30,12 @@ header {
                 margin-bottom: 5px;
             }
         }
+        ul.rightMenu {
+            li.ms-auto {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     }
 }
 
@@ -117,6 +123,46 @@ header {
     }
 }
 .galleryPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+    }
+}
+.galleryPageMain {
+    .galleryItemWrap {
+        .card.galleryItem {
+            transform: rotate(-1deg);
+            .card-body {
+                padding: 1.25rem 1rem;
+                h4 {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+.brPageHeroBanner {
+    height: 900px;
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 3rem
+        }
+    }
+}
+
+.brBannerOne {
+    img.featuredImage {
+        display: block;
+        height: auto;
+        margin: 30px auto 30px auto;
+        width: 75%;
+    }
+}
+#roomsPageTop,
+.lodgePageHero,
+.faqsPageTop,
+#contactPageTop{
     height: 800px;
     .content {
         padding-top: 150px;

@@ -20,7 +20,7 @@
     <section id="contactPageInfoBanner">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2>
                         Riverside Inn * Iconic Whisky Bar * Whisky-Cigar Shop
                     </h2>
@@ -41,7 +41,7 @@
                         Parking for guests dining with us is on the street just outside the door, there is also ample parking just a short stroll away from us.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid" src="{{ asset('images/contact-page-hero-banner-new.jpg') }}">
                 </div>
             </div>
@@ -50,7 +50,7 @@
     <section id="contactPageMain">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2>Find Us</h2>
                     <ul class="list-unstyled address">
                         <li>
@@ -81,7 +81,7 @@
                         <li class="list-inline-item"><a href="https://restaurantguru.com/Mash-Tun-Aberlour" rel="nofollow" target="_blank"><img class="img-fluid" src="{{ asset('images/restaurant-guru-logo-icon-only.svg') }}"></a></li>
                     </ul>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2>Send us a message</h2>
                     <div class="formWrap">
                         <form action="{{ route('contact-us-submission-store') }}" method="post">

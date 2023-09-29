@@ -37,7 +37,7 @@
     <section class="lodgeBanner">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2 class="secTitle">
                         Indulge in a little piece of heaven...
                     </h2>
@@ -49,7 +49,7 @@
                     </p>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="owl-carousel lodgePageImageSlider">
                         <div class="item">
                             <img class="img-fluid" src="{{ asset('images/lodge/_DSC1547.jpg') }}">
@@ -88,10 +88,10 @@
     <section class="lodgeBanner">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/lodge/group-photo.png') }}">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2 class="secTitle">
                         Relax after a day of adventure...
                     </h2>
@@ -109,7 +109,7 @@
     <section class="lodgeBanner">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h3 class="secTitle">
                         Take a visit to our nurturing wood burning sauna....
                     </h3>
@@ -124,7 +124,7 @@
                     </p>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/lodge/lodge-image-3.png') }}">
                 </div>
             </div>

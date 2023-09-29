@@ -23,7 +23,7 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
+                    <div class="col-lg-8 offset-lg-2">
                         <h1>The Bar</h1>
                         <p>
                             The Historic and Iconic  Mash Tun Whisky Bar is famous throughout the enthusiasts world for its astonishing whisky selection featuring at its heart, one of only two known bars worldwide that house the entire range of Glenfarclas Family Cask . Patrons travel far and wide to celebrate their birth year with a dram , truly a bucket list aspiration we would love for you to experience.
@@ -47,7 +47,7 @@
     <section class="brBanner brBannerOne">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2 class="secTitle">Discover our amazing range of Whiskys</h2>
                     <p>
                         The Mash Tun is home to a wide and varied selection of whiskies, both single malts and blends, predominately from Speyside but also incorporating distilleries from the rest of Scotland. Included in this selection is the exclusive Glenfarclas Family Cask Collection.
@@ -66,7 +66,7 @@
                     </p>
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Menu</button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/history/ron-mitchell-2.png') }}">
                 </div>
             </div>
@@ -76,10 +76,10 @@
     <section class="brBanner brBannerOne">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/wine-glass-and-bottles.png') }}">
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2 class="secTitle">It's not just whisky, we do wine too</h2>
                     <p>
                         Our wine list... considered, balanced and perfectly suited for sipping or dining at The Mash
@@ -93,14 +93,14 @@
     <section class="brBanner brBannerOne">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h2 class="secTitle">Did someone say Cocktails</h2>
                     <p>
                         Cocktails why not? Creatively created, locally influenced by our companies Master Mixologist, Sam McLlwham to enhance your relaxation.
                     </p>
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewCocktailsMenuModal">Cocktails Menu</button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <img class="img-fluid featuredImage" src="{{ asset('images/cocktail-image.png') }}">
                 </div>
             </div>

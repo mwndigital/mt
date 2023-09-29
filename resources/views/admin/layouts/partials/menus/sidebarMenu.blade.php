@@ -13,11 +13,13 @@
             <li>
                 <a href="{{ route('admin.about-us.edit', ['about_u' => 1]) }}">About us</a>
             </li>
-            <li><a href="{{ route('admin.bar-restaurant.edit', ['bar_restaurant' => 1]) }}">The Bar & Restaurant</a></li>
             <li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>
 
             <li>
                 <a href="{{ route('admin.faqs-page.edit', ['faqs_page' => 1]) }}">FAQs</a>
+            </li>
+            <li>
+                <a href="">Bar</a>
             </li>
         </ul>
     </li>
