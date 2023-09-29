@@ -1,13 +1,13 @@
 <div class="topBar">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-lg-4">
+            <div class="col-md-6 col-lg-4">
                 <ul class="list-inline contactDetails">
                     <li class="list-inline-item"><a href="tel:+441340881771">01340 881771</a></li>
                     <li class="list-inline-item"><a href="mailto:reservations@mashtun-aberlour.com">reservations@mashtun-aberlour.com</a></li>
                 </ul>
             </div>
-            <div class="col-lg-5">
+            <div class="col-md-6 col-lg-5">
                 <div class="tripAdviserBanner">
                     <a href="https://www.tripadvisor.com/Hotel_Review-g658240-d672367-Reviews-The_Mash_Tun-Aberlour_Moray_Scotland.html" rel="nofollow" target="_blank">
                         <ul class="list-inline starRating">

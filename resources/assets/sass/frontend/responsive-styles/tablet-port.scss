@@ -1,4 +1,12 @@
 header {
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
     .topBar {
 
         ul.contactDetails {
@@ -72,5 +80,45 @@ header {
 .ourRatingsBanner {
     .reviewItem {
         margin-bottom: 30px;
+    }
+}
+#aboutUsPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+    }
+}
+#aboutPageBannerOne {
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 30px auto 0 auto;
+        width: 75%;
+    }
+}
+#aboutPageBannerTwo {
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 0 auto 30px auto;
+        width: 75%;
+    }
+}
+.historypageBannerSlider {
+    .owl-carousel {
+        margin-top: 50px;
+    }
+    .item {
+        img {
+            display: block;
+            height: auto;
+            width: 75%;
+        }
+    }
+}
+.galleryPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
     }
 }

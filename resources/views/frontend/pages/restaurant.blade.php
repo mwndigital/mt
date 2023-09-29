@@ -18,7 +18,7 @@
 
 @endpush
 @section('content')
-    <section class="brPageHeroBanner">
+    <section class="brPageHeroBanner" id="diningPageTop">
         <img class="img-fluid mainBgImage" src="{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}">
         <div class="content">
             <div class="container">

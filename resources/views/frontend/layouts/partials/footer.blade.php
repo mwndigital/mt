@@ -93,7 +93,7 @@
             <div class="footerMain">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-md-6">
                             <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
                             <ul class="list-unstyled footerAddress">
                                 <li>
@@ -110,7 +110,7 @@
                             </ul>
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-md-6">
                             <h5 class="footerTitle">Quick Links</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li>
@@ -127,7 +127,7 @@
 
                             </ul>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-lg-2 col-md-6">
                             <h5 class="footerTitle">Menu</h5>
                             <ul class="list-unstyled quickLinksMenu">
                                 <li>
@@ -149,7 +149,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <h5 class="footerTitle">Legal</h5>
                             <ul class="list-unstyled quickLinksMenu mb-4">
                                 <li><a href="/deposit-cancellations-policy">Deposit & Cancellations Policy</a></li>

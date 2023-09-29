@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 @foreach($galleryCat as $cat)
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-6">
                         <div class="galleryItemWrap">
                             <div class="card galleryItem">
                                 <div class="card-header">

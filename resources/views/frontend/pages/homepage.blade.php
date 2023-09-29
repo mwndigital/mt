@@ -41,11 +41,11 @@
     <section id="homepageWelcomeBanner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-5">
+                <div class="col-lg-5">
                     {{--<img class="img-fluid wow slideInLeft" data-wow-duration="1.2s" data-wow-delay=".4s" src="{{ Storage::url($hpcontent->banner_one_image) }}" alt="{{ $hpcontent->banner_one_title }} featured image">--}}
                     <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-image-one.png') }}">
                 </div>
-                <div class="col-md-6 offset-md-1 wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
+                <div class="col-lg-6 offset-lg-1 wow slideInRight" data-wow-duration="1.2s" data-wow-delay=".4s">
                     {{--<h2>{{ $hpcontent->banner_one_title }}</h2>--}}
                     <h2>Nestled on the banks of the world acclaimed River Spey</h2>
                     {{--{!! $hpcontent->banner_one_content !!}--}}
@@ -62,13 +62,13 @@
     <section id="homepageBannerTwo" class="homepageBanner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 wow slideInLeft">
+                <div class="col-lg-6 wow slideInLeft">
                     <h2>Follow the whisky trail....</h2>
                     <p>
                         However it is the whisky that motivates a pilgrimage to this considered place, surrounded by the most famous of distilleries viewed as the ultimate trip for the lover of the Uisge Beatha (water of life)
                     </p>
                 </div>
-                <div class="col-md-5 offset-md-1">
+                <div class="col-lg-5 offset-lg-1">
                     <img class="img-fluid wow slideInRight" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-bar-image.png') }}">
                 </div>
             </div>
@@ -77,10 +77,10 @@
     <section id="homepageBannerThree" class="homepageBanner">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-5">
+                <div class="col-lg-5">
                     <img class="img-fluid wow slideInLeft" data-wow-duration="1s" data-wow-delay=".4s" src="{{ asset('images/homepage-banner-3-seating.png') }}">
                 </div>
-                <div class="col-md-6 offset-md-1 wow slideInRight">
+                <div class="col-lg-6 offset-lg-1 wow slideInRight">
                     <h3>
                         Enjoy our whisky themed rooms...
                     </h3>
@@ -94,7 +94,7 @@
     <section id="homepageHomeFromHomeBanner" >
         <div class="container">
             <div class="row">
-                <div class="col-md-6 wow slideInLeft" data-wow-duration="1.2s">
+                <div class="col-lg-6 wow slideInLeft" data-wow-duration="1.2s">
                     <h5>{{ $hpcontent->rooms_banner_sub_title }}</h5>
                     <h3>{{ $hpcontent->rooms_banner_title }}</h3>
                     {!! $hpcontent->rooms_banner_content !!}
@@ -102,7 +102,7 @@
                         Find out more <i class="fa fa-chevron-right"></i>
                     </a>
                 </div>
-                <div class="col-md-6 wow slideInRight" data-wow-duration="1.2s">
+                <div class="col-lg-6 wow slideInRight" data-wow-duration="1.2s">
                     <div class="owl-carousel homeFromHomeSlider">
                         @foreach($rooms as $room)
                             <div class="item">
@@ -122,13 +122,13 @@
             </div>
         </div>
     </section>
-    <section class="homepageBanner">
+    <section id="homepageBannerFour" class="homepageBanner">
         <div class="container">
             <div class="row">
-                <div class="col-md-5 wow slideInLeft">
+                <div class="col-lg-5 wow slideInLeft">
                     <img class="img-fluid" src="{{ asset('images/lodge/lodge_lounge.jpg') }}">
                 </div>
-                <div class="col-md-6 offset-md-1 wow slideInRight">
+                <div class="col-lg-6 offset-lg-1 wow slideInRight">
                     <h3>
                         Peacefulness and tranquility...
                     </h3>
@@ -151,7 +151,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="reviewItem">
                         <a href="https://www.yelp.com/biz/mash-tun-aberlour" rel="nofollow" target="_blank">
                             <img src="{{ asset('images/review-stats/yelp.png') }}" class="img-fluid">
@@ -162,7 +162,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="reviewItem">
                         <a href="https://www.google.com/travel/search?q=Mash%20Tun%20aberlour&g2lb=2502548%2C2503771%2C2503781%2C4258168%2C4270442%2C4284970%2C4291517%2C4597339%2C4757164%2C4814050%2C4864715%2C4874190%2C4886480%2C4893075%2C4899571%2C4899573%2C4924070%2C4965990%2C4990494%2C72298667%2C72302247%2C72313834%2C72317059%2C72321071%2C72370226&hl=en-GB&gl=uk&cs=1&ssta=1&ts=CAESABpGCigSJjIkMHg0ODg1YTQ2MzMxNmViMDk3OjB4ODg2Y2RlNzQ4NTVjOThhEhoSFAoHCOcPEAkYGBIHCOcPEAkYGRgBMgIQAA&qs=CAEyE0Nnb0lpcFBYd3ZTOHM4TUlFQUU4AkIJCYrJVUjnzYYIQgkJislVSOfNhgg&ap=ugEHcmV2aWV3cw&ictx=1&sa=X&ved=0CAAQ5JsGahcKEwjI_q3xtbSBAxUAAAAAHQAAAAAQBQ" rel="nofollow" target="_blank">
                             <img class="img-fluid" src="{{ asset('images/review-stats/google.png') }}">
@@ -177,7 +177,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="reviewItem">
                         <a href="https://foursquare.com/v/the-mash-tun/4c6ab4dca3932c7a12ebfdf4" rel="nofollow" target="_blank">
                             <img class="img-fluid" src="{{ asset('images/review-stats/foursquare.png') }}">
@@ -188,7 +188,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="reviewItem">
                         <a href="https://www.facebook.com/themashtunaberlour/reviews" rel="nofollow" target="_blank">
                             <img class="img-fluid" src="{{ asset('images/review-stats/facebook.png') }}">

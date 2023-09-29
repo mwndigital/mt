@@ -8,7 +8,7 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
+                    <div class="col-lg-8 offset-lg-2">
                         <h1>Our History</h1>
                         <p>We invite you to experience all we have to offer, including a deck perfect for drinking and dining with spectacular views of the river Spey…. or relaxing in our wood burning sauna under the trees.  We look forward to welcoming you……</p>
                     </div>
@@ -20,11 +20,11 @@
     <section id="aboutPageBannerOne">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 wow slideInLeft" data-wow-duration="1s">
+                <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s">
                     <h2>{{ $apc->about_banner_title }}</h2>
                     {!! $apc->about_banner_content !!}
                 </div>
-                <div class="col-md-6 wow slideInRight" data-wow-duration="1s">
+                <div class="col-lg-6 wow slideInRight" data-wow-duration="1s">
                     <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->about_banner_image) }}--}}{{ asset('images/outside-image.jpg') }}">
                 </div>
             </div>
@@ -33,10 +33,10 @@
     <section id="aboutPageBannerTwo">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 wow slideInLeft" data-wow-duration="1s">
+                <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s">
                     <img class="img-fluid mainImg" src="{{--{{ Storage::url($apc->banner_two_image) }}--}}{{ asset('images/waterfalls-picture.webp') }}">
                 </div>
-                <div class="col-md-6 wow slideInRight" data-wow-duration="1s">
+                <div class="col-lg-6 wow slideInRight" data-wow-duration="1s">
                     <h3>
                         {{ $apc->banner_two_title }}
                     </h3>
@@ -62,7 +62,7 @@
     <section id="aboutPageBannerThree">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <h3>Under new ownership 2022</h3>
                     <p>
                         The Mash Tun was bought in 2022 by Ron Morrison and Mitchell Orchant and is operated by their company C.Gars Ltd.
@@ -74,7 +74,7 @@
                         C.Gars Ltd owns and operates specialist whisky and cigar shops across the UK as well as Puffin Rooms in Edinburgh and Liverpool.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="owl-carousel historypageBannerSlider">
                         <div class="item">
                             <img class="img-fluid" src="{{ asset('images/history/ron-mitchell-1.png') }}">
