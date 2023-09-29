@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('hero_content');
             $table->string('hero_banner_background_image');
             $table->string('banner_one_title');
-            $table->string('banner_one_content');
+            $table->text('banner_one_content');
             $table->string('banner_one_image');
             $table->string('banner_two_title');
             $table->text('banner_two_content');
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('book_banner_title');
             $table->text('book_banner_content');
             $table->string('book_banner_background_image');
-            $table->string('book_banner_button_content');
+            $table->text('book_banner_button_content');
             $table->string('book_banner_button_link');
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
