@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\BarPageContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminBarPageController extends Controller
 {
@@ -30,11 +31,17 @@ class AdminBarPageController extends Controller
     public function store(Request $request)
     {
         $heroBannerBgImage = NULL;
+        $heroBannerBgImagePath = NULL;
         $bannerOneImage = NULL;
+        $bannerOneImagePath = NULL;
         $bannerTwoImage = NULL;
+        $bannerTwoImagePath = NULL;
         $bannerThreeImage = NULL;
+        $bannerThreeImagePath = NULL;
         $bookBannerImage = NULL;
+        $bookBannerImagePath = NULL;
         $seoImage = NULL;
+        $seoImagePath = NULL;
 
         $validated = $request->validate([
             'page_title' => ['required', 'string', 'max:255'],
@@ -42,16 +49,16 @@ class AdminBarPageController extends Controller
             'hero_content' => ['required', 'string', 'max:15000'],
             'hero_banner_background_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'banner_one_title' => ['required', 'string', 'max:255'],
-            'banner_one_content' => ['required', 'string', 'mx:50000'],
+            'banner_one_content' => ['required', 'string', 'max:50000'],
             'banner_one_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'banner_two_title' => ['required', 'string', 'max:255'],
-            'banner_two_content' => ['required', 'string', 'mx:50000'],
+            'banner_two_content' => ['required', 'string', 'max:50000'],
             'banner_two_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'banner_three_title' => ['required', 'string', 'max:255'],
-            'banner_three_content' => ['required', 'string', 'mx:50000'],
+            'banner_three_content' => ['required', 'string', 'max:50000'],
             'banner_three_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'book_banner_title' => ['required', 'string', 'max:255'],
-            'book_banner_content' => ['required', 'string', 'mx:50000'],
+            'book_banner_content' => ['required', 'string', 'max:50000'],
             'book_banner_background_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'book_banner_button_content' => ['required', 'string', 'max:255'],
             'book_banner_button_link' => ['required', 'string', 'max:255'],
@@ -106,6 +113,7 @@ class AdminBarPageController extends Controller
 
         BarPageContent::create([
             'page_title' => $validated['page_title'],
+            'slug' => Str::slug($validated['page_title']),
             'hero_title' => $validated['hero_title'],
             'hero_content' => $validated['hero_content'],
             'hero_banner_background_image' => $heroBannerBgImagePath,

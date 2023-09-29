@@ -9,11 +9,14 @@ class BarPageContent extends Model
 {
     use HasFactory;
 
+    protected $table = 'bar_page_content';
+
     protected $fillable = [
         'page_title',
         'slug',
         'hero_title',
         'hero_content',
+        'hero_banner_background_image',
         'banner_one_title',
         'banner_one_content',
         'banner_one_image',
