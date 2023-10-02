@@ -24,7 +24,7 @@
         <div class="flex flex-row alert alert-danger">
             <ul>
                 @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>{!! $error !!}</li>
                 @endforeach
             </ul>
         </div>
@@ -108,8 +108,8 @@
                                 <div class="col-12">
                                     <label for="">Would you like to create an account?</label>
                                     <select name="create_account" id="create_account">
-                                        <option value="yes" >Yes</option>
-                                        <option value="no">No</option>
+                                        <option value="yes" @if($current_option) selected @endif>Yes</option>
+                                        <option value="no" @if(!$current_option) selected @endif>No</option>
                                     </select>
                                     @error('create_account')
                                     <div class="text-danger">
@@ -118,6 +118,14 @@
                                     @enderror
                                     <script>
                                         $(document).ready(function(){
+                                            // Check current field state
+                                            var currentOption = $('#create_account').val();
+                                            if(currentOption === 'yes') {
+                                                $('#passwordAccountField').css('display', 'flex');
+                                            }
+                                            else{
+                                                $('#passwordAccountField').css('display', 'none');
+                                            }
                                             $('#create_account').change(function(){
                                                 var selected = $(this).val();
                                                 if(selected === 'yes') {

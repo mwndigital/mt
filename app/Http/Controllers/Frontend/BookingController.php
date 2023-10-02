@@ -140,8 +140,10 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
         $countries = CountryListFacade::getList('en');
+        $create_account = $request->session()->get('create_account');
+        $current_option = $create_account == 'yes' ?? 'no';
 
-        return view('frontend.pages.booking.step-3', compact('booking', 'countries'));
+        return view('frontend.pages.booking.step-3', compact('booking', 'countries', 'current_option'));
     }
 
     public function stepThreeStore(Request $request)
@@ -183,6 +185,7 @@ class BookingController extends Controller
 
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
+        $request->session()->put('create_account', $request->create_account);
 
         // If the user has chosen to create an account, create a new user
         if ($request->create_account == 'yes' && empty($booking->user_id)) {
@@ -190,7 +193,8 @@ class BookingController extends Controller
             $user = User::where('email', $validated['email_address'])->first();
 
             if ($user) {
-                return back()->withErrors(['email_address' => 'Email address already exists.'])->withInput();
+                $message = 'Email address already exists. <br/>Please login to your account or use a different email address. <a href="' . route('login', ['redirect' => '/book-a-room/step-3']) . '">Login</a>';
+                return back()->withErrors(['email_address' => $message])->withInput();
             }
 
             $user = User::create([
