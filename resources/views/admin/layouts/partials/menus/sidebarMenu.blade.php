@@ -19,7 +19,7 @@
                 <a href="{{ route('admin.faqs-page.edit', ['faqs_page' => 1]) }}">FAQs</a>
             </li>
             <li>
-                <a href="">Bar</a>
+                <a href="{{ route('admin.bar-page.edit', ['bar_page' => 1]) }}">Bar</a>
             </li>
         </ul>
     </li>
