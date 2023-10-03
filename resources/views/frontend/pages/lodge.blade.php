@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @push('page-title')
+    Lodge
     {{--{{ $brc->page_title }}--}}
 @endpush
 @push('page-description')
@@ -37,7 +38,7 @@
     <section class="lodgeBanner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 d-flex flex-column justify-content-center">
                     <h2 class="secTitle">
                         Indulge in a little piece of heaven...
                     </h2>
@@ -47,6 +48,7 @@
                     <p>
                         You would be forgiven if you felt you were in The Rocky Mountains as it’s cozy, warm wood finishes meander thru the property with room names like Outlook and Hideout enhancing the welcome you will no doubt feel.
                     </p>
+                    <a class="darkGoldBtn mb-2" href="{{ route('book-a-room-index',['type'=>'lodge']) }}">Book Now</a>
 
                 </div>
                 <div class="col-lg-6">
