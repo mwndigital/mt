@@ -127,7 +127,7 @@
 
                 </div>
                 <div class="col-lg-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/lodge-image-3.png') }}">
+                    <img class="img-fluid featuredImage" src="{{ asset('images/lodge/IMG_7103.jpeg') }}">
                 </div>
             </div>
         </div>
