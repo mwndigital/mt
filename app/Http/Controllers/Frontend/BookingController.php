@@ -22,6 +22,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UserDetails;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
@@ -288,19 +289,27 @@ class BookingController extends Controller
     public function thankYou(Request $request)
     {
         $transactionId = $request->session()->get('transactionId');
-        $this->cleanCache($transactionId);
 
         $booking = Booking::where('booking_ref', $transactionId)->first();
 
+        // Send email to customer
         try {
             Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
 
+        // Notify admins
+        try {
             $adminUsers = Role::whereIn('name', ['admin', 'super admin'])->first()->users;
             foreach ($adminUsers as $adminUser) {
                 $adminUser->notify(new AdminNewRoomBookingNotification($booking));
             }
         } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
+
+        $this->cleanCache($transactionId);
 
         return view('frontend.pages.booking.thank-you');
     }
