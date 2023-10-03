@@ -181,6 +181,8 @@
                                     <option value="single" @if($room->type == 'single') selected @endif>Single</option>
                                     <option value="double" @if($room->type == 'double') selected @endif>Double</option>
                                     <option value="family" @if($room->type == 'family') selected @endif>Family</option>
+                                    <option value="twin" @if($room->type == 'twin') selected @endif>Twin</option>
+                                    <option value="lodge" @if($room->type == 'lodge') selected @endif>Lodge</option>
                                 </select>
                                 @error('room_type')
                                 <span class="invalid-feedback" role="alert">
