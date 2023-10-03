@@ -62,6 +62,7 @@
                                     <option value="double">Double</option>
                                     <option value="family">Family</option>
                                     <option value="twin">Twin</option>
+                                    <option value="lodge">Lodge</option>
                                 </select>
                                 @error('room_type')
                                 <span class="invalid-feedback" role="alert">
