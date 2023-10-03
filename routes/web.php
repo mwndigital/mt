@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
 use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
+use App\Http\Controllers\Admin\Pages\AdminDiningPageContent;
 use App\Http\Controllers\Admin\Pages\AdminFaqsPageController;
 use App\Http\Controllers\Admin\Pages\AdminHomepageController;
 use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
@@ -142,6 +143,7 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('policy-pages', AdminPolicyPagesController::class);
         Route::resource('faqs-page', AdminFaqsPageController::class);
         Route::resource('bar-page', AdminBarPageController::class);
+        Route::resource('dining-page', AdminDiningPageContent::class);
     });
 });
 

@@ -124,6 +124,7 @@
                                 <li><a href="{{ route('rooms') }}">The Rooms</a></li>
                                 <li><a href="{{ route('lodge.index') }}">Stalla Dhu Lodge</a></li>
                                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+                                <li><a href="{{ route('login') }}">My Account</a></li>
 
                             </ul>
                         </div>

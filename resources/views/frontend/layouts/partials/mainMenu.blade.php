@@ -51,7 +51,7 @@
                     <a href="{{ route('faqs.index') }}">FAQs</a>
                 </li>
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
-
+                <li><a href="{{ route('login') }}" title="Login to your account"><i class="fas fa-user"></i></a></li>
             </ul>
             <ul class="navbar-nav ms-auto rightMenu">
                 <li class="ms-auto">

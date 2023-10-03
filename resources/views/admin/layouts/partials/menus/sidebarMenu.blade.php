@@ -21,6 +21,9 @@
             <li>
                 <a href="{{ route('admin.bar-page.edit', ['bar_page' => 1]) }}">Bar</a>
             </li>
+            <li>
+                <a href="{{ route('admin.dining-page.edit', ['dining_page' => 1]) }}">Dining</a>
+            </li>
         </ul>
     </li>
     <li>
