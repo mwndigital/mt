@@ -33,11 +33,11 @@ class ApiController extends Controller
 
         $imageName = time() . '.' . $request->image->extension();
 
-        $request->image->storeAs('/public/uploads/rooms', $imageName);
+        $imgUrl = $request->image->store('public/uploads/rooms');
 
         RoomGalleries::create([
             'room_id' => $request->id,
-            'image' => \Storage::url('uploads/rooms/' . $imageName),
+            'image' => $imgUrl,
         ]);
 
         return response()->json([
