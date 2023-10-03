@@ -78,11 +78,14 @@
                             <img class="img-fluid" src="{{ asset('images/lodge/_DSC1555.jpg') }}">
                         </div>
                         <div class="item">
-                            <img class="img-fluid" src="{{ asset('images/lodge/lodge-image-3.png') }}">
+                            <img src="{{ asset('images/lodge/new/2sh3twtw.png') }}" alt="" class="img-fluid">
                         </div>
-                        <div class="item"><img src="{{ asset('images/lodge/IMG_7067.jpeg') }}" alt="" class="img-fluid"></div>
-                        <div class="item"><img src="{{ asset('images/lodge/IMG_7105.jpeg') }}" alt="" class="img-fluid"></div>
-                        <div class="item"><img src="{{ asset('images/lodge/IMG_7103.jpeg') }}" alt="" class="img-fluid"></div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/new/3oendfd3.png') }}" alt="" class="img-fluid">
+                        </div>
+                        <div class="item">
+                            <img src="{{ asset('images/lodge/new/bdhr3rs1.png') }}" alt="" class="img-fluid">
+                        </div>
                     </div>
 
                 </div>
