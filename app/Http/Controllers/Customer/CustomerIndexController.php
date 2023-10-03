@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\RestaurantBooking;
 use Illuminate\Http\Request;
 
 class CustomerIndexController extends Controller
@@ -12,7 +14,10 @@ class CustomerIndexController extends Controller
      */
     public function index()
     {
-        return view('customer.pages.dashboard');
+        $customer = auth()->user();
+        $restaurantBookings = RestaurantBooking::where('user_id', $customer->id)->get();
+        $hotelBookings = Booking::where('user_id', $customer->id)->get();
+        return view('customer.pages.dashboard', compact('restaurantBookings', 'customer', 'hotelBookings'));
     }
 
     /**
