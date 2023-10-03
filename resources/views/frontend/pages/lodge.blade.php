@@ -80,6 +80,9 @@
                         <div class="item">
                             <img class="img-fluid" src="{{ asset('images/lodge/lodge-image-3.png') }}">
                         </div>
+                        <div class="item"><img src="{{ asset('images/lodge/IMG_7067.jpeg') }}" alt="" class="img-fluid"></div>
+                        <div class="item"><img src="{{ asset('images/lodge/IMG_7105.jpeg') }}" alt="" class="img-fluid"></div>
+                        <div class="item"><img src="{{ asset('images/lodge/IMG_7103.jpeg') }}" alt="" class="img-fluid"></div>
                     </div>
 
                 </div>
