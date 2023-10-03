@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
 use App\Http\Controllers\Customer\CustomerAccountController;
+use App\Http\Controllers\Customer\CustomerRestaurantController;
+use App\Http\Controllers\Customer\CustomerRoomBookingsController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarPageController;
 use App\Http\Controllers\Frontend\BookingController;
@@ -159,6 +161,17 @@ Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('custome
     //Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Customer\CustomerIndexController::class, 'index'])->name('dashboard');
 
+    //Restaurant Bookings
+    Route::prefix('dining-bookings')->group(function(){
+        Route::get('/', [CustomerRestaurantController::class, 'index'])->name('dining-bookings');
+    });
+
+    //Room Bookings
+    Route::prefix('room-bookings')->group(function(){
+       Route::get('/', [CustomerRoomBookingsController::class, 'index'])->name('room-bookings');
+    });
+
+    //Account
     Route::prefix('my-account')->group(function(){
        Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
        Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');

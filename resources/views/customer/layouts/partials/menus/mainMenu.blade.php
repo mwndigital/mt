@@ -15,12 +15,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="{{ route('customer.dining-bookings') }}">
                             My Dining Bookings
                         </a>
                     </li>
                     <li>
-                        <a href="">My Room Bookings</a>
+                        <a href="{{ route('customer.room-bookings') }}">My Room Bookings</a>
                     </li>
                     <li>
                         <a href="{{ route('customer.my-account', auth()->user()->id) }}">My Account</a>
