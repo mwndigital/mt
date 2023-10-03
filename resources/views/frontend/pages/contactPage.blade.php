@@ -42,7 +42,15 @@
                     </p>
                 </div>
                 <div class="col-lg-6">
-                    <img class="img-fluid" src="{{ asset('images/contact-page-hero-banner-new.jpg') }}">
+                    <div class="owl-carousel contactPageImageSlider">
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/contact-page/outside-image-one.png') }}">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="{{ asset('images/contact-page-hero-banner-new.jpg') }}">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

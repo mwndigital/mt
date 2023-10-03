@@ -119,4 +119,19 @@ $(document).ready(function(){
         slideSpeed: 1500,
         items: 1
     });
+    //Contact page
+    $('.contactPageImageSlider').owlCarousel({
+        autoplay: true,
+        autoplayHoverPause: false,
+        dots: true,
+        loop: true,
+        nav: false,
+        navText: [
+            '<i class="fas fa-chevron-left"></i>',
+            '<i class="fas fa-chevron-right"></i>'
+        ],
+        paginationSpeed: 3500,
+        slideSpeed: 3500,
+        items: 1
+    });
 });

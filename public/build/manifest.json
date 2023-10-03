@@ -74,7 +74,7 @@
     "src": "resources/assets/js/app.js"
   },
   "resources/assets/js/frontend.js": {
-    "file": "assets/frontend-0ed519e7.js",
+    "file": "assets/frontend-6ce812bb.js",
     "isEntry": true,
     "src": "resources/assets/js/frontend.js"
   },
@@ -89,12 +89,12 @@
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/customer.scss": {
-    "file": "assets/customer-52382eb3.css",
+    "file": "assets/customer-29bce500.css",
     "isEntry": true,
     "src": "resources/assets/sass/customer.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-f1c87245.css",
+    "file": "assets/frontend-72b94196.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   }
