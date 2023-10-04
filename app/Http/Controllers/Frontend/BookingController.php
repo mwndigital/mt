@@ -32,7 +32,8 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         $booking = $request->session()->get('booking');
-        return view('frontend.pages.booking.index', compact('booking',));
+        $type = $request->session()->get('type');
+        return view('frontend.pages.booking.index', compact('booking', 'type'));
     }
 
     public function stepOneStore(Request $request)
@@ -73,11 +74,17 @@ class BookingController extends Controller
     public function stepTwoShow(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $type = $request->session()->get('type');
         // Fetch available rooms based on the number of adults and children
-        $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
-            ->where('child_cap', '>=', $booking->no_of_children)
-            ->get();
-
+        if ($type) {
+            $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
+                ->where('child_cap', '>=', $booking->no_of_children)
+                ->where('room_type', '!=', 'lodge')
+                ->get();
+        } else {
+            $availableRooms = Rooms::where('room_type', 'lodge')
+                ->get();
+        }
         // Get the check-in and check-out dates in the "d-m-Y" format
         $checkinDate = $booking->checkin_date;
         $checkoutDate = $booking->checkout_date;
@@ -448,6 +455,9 @@ class BookingController extends Controller
         $booking = new Booking();
         $booking->room_id = $room->id;
         $booking->checkout_date = Carbon::now()->addDays(1)->format('Y-m-d');
+
+        $isRoom = $room->room_type != 'lodge';
+        $request->session()->put('type', $isRoom);
 
         $request->session()->put('booking', $booking);
 
