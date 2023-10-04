@@ -426,8 +426,10 @@ class BookingController extends Controller
     {
         $room = Rooms::find($id);
         if (!$room) return back()->withErrors(['room' => 'Invalid room.']);
-        $booking = $request->session()->get('booking');
+        $booking = new Booking();
         $booking->room_id = $room->id;
+        $booking->checkout_date = Carbon::now()->addDays(1)->format('Y-m-d');
+
         $request->session()->put('booking', $booking);
 
         return to_route('book-a-room-index');
