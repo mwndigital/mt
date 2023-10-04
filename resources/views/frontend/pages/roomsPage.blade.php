@@ -34,9 +34,16 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="roomItem card">
                             <div class="card-header">
-                                <a href="{{ Storage::url($room->featured_image) }}" data-lightbox="room-{{ $room->id }}">
-                                    <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
-                                </a>
+                                 <div class="owl-carousel lodgePageImageSlider">
+                                    <div class="item">
+                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                    </div>
+                                    @foreach($room->images as $image)
+                                        <div class="item">
+                                            <img class="img-fluid" src="{{ Storage::url($image->image) }}">
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="card-body">
                                 <h4>{{ $room->name }}</h4>
@@ -48,10 +55,6 @@
                                 <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now</a>
                             </div>
                         </div>
-
-                        @foreach($room->images as $image)
-                            <a href="{{ Storage::url($image->image) }}" data-lightbox="room-{{ $room->id }}" style="display:none;"></a>
-                        @endforeach
                     </div>
                 @endforeach
             </div>
