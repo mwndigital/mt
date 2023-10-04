@@ -157,8 +157,8 @@ class BookingController extends Controller
             $booking->city = $booking->city ?? $userDetails->town_city;
             $booking->postcode = $booking->postcode ?? $userDetails->postcode;
             $booking->country = $booking->country ?? $userDetails->country;
-            $booking->user_id = $booking->user_id ?? $user->id;
         }
+        $booking->user_id = $user ? $user->id : null;
 
         return view('frontend.pages.booking.step-3', compact('booking', 'countries', 'current_option'));
     }
