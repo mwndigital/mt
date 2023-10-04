@@ -421,4 +421,15 @@ class BookingController extends Controller
         Cache::put($transactionId . 'transactionReference', $response->getTransactionReference(), $minutes);
         Cache::put($transactionId . 'transactionSecure', $response->getSecurityKey(), $minutes);
     }
+
+    public function selectRoom(Request $request, $id)
+    {
+        $room = Rooms::find($id);
+        if (!$room) return back()->withErrors(['room' => 'Invalid room.']);
+        $booking = $request->session()->get('booking');
+        $booking->room_id = $room->id;
+        $request->session()->put('booking', $booking);
+
+        return to_route('book-a-room-index');
+    }
 }

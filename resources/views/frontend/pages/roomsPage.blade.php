@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="/rooms" class="blueBtn">Book Now</a>
+                                <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now</a>
                             </div>
                         </div>
 
