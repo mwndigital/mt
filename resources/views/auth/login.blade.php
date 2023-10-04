@@ -15,7 +15,7 @@
                             <div class="col-md-7">
                                 <div class="formWrap">
                                     <h1>Login</h1>
-                                    <form method="POST" action="{{ route('login') }}">
+                                    <form method="POST" action="{{ route('login', ['redirect' => $_GET['redirect']]) }}" class="loginForm">
                                         @csrf
                                         <div class="row">
                                             <div class="col-12">

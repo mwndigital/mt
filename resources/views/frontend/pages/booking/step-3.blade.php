@@ -116,6 +116,9 @@
                                         {{ $message }}
                                     </div>
                                     @enderror
+                                      <div>
+                                         <p>If you already have an account, you can <a href="{{ route('login',['redirect' => 'book-a-room-step-3']) }}">login here</a></p>
+                                    </div>
                                     <script>
                                         $(document).ready(function(){
                                             // Check current field state
