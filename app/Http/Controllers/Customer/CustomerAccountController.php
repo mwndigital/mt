@@ -66,7 +66,7 @@ class CustomerAccountController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'phone_number' => ['nullable', 'tel', 'max:14'],
+            'phone_number' => ['nullable', 'max:14'],
             'address_line_one' => ['nullable', 'string', 'max:255'],
             'address_line_two' => ['nullable', 'string', 'max:255'],
             'town_city' => ['nullable', 'string', 'max:255'],
