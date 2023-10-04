@@ -43,66 +43,6 @@
                         </div>
                         <form method="post" action="{{ route('book-a-room-step-3-store') }}">
                             @csrf
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="">Title</label>
-                                    <select name="user_title" id="user_title">
-                                        <option value="mr">Mr</option>
-                                        <option value="mrs">Mrs</option>
-                                        <option value="miss">Miss</option>
-                                        <option value="ms">Ms</option>
-                                        <option value="dr">Dr</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">First name * </label>
-                                    <input type="text" name="first_name" id="first_name" value="{{ $booking ? $booking->first_name : '' }}" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">Last name *</label>
-                                    <input type="text" name="last_name" id="last_name" value="{{ $booking ? $booking->last_name : '' }}" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Address line one *</label>
-                                    <input type="text" name="address_line_one" id="address_line_one" value="{{ $booking ? $booking->address_line_one : '' }}" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Address line two</label>
-                                    <input type="text" name="address_line_two" id="address_line_two" value="{{ $booking ? $booking->address_line_two : '' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">City *</label>
-                                    <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Postcode *</label>
-                                    <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="">Country *</label>
-                                    <select name="country" id="country" required>
-                                        @foreach($countries as $country)
-                                            <option value="{{ $country }}" @if($country === 'United Kingdom') selected @endif>{{ $country }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Phone number *</label>
-                                    <input type="tel" name="phone_number" id="phone_number" value="{{ $booking ? $booking->phone_number : '' }}" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Email address *</label>
-                                    <input type="email" name="email_address" id="email_address" value="{{ $booking ? $booking->email_address : '' }}" required>
-                                </div>
-                            </div>
                             @if (!$booking->user_id)
                             <div class="row">
                                 <div class="col-12">
@@ -163,6 +103,66 @@
                                 </div>
                             </div>
                             @endif
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Title</label>
+                                    <select name="user_title" id="user_title">
+                                        <option value="mr">Mr</option>
+                                        <option value="mrs">Mrs</option>
+                                        <option value="miss">Miss</option>
+                                        <option value="ms">Ms</option>
+                                        <option value="dr">Dr</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">First name * </label>
+                                    <input type="text" name="first_name" id="first_name" value="{{ $booking ? $booking->first_name : '' }}" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Last name *</label>
+                                    <input type="text" name="last_name" id="last_name" value="{{ $booking ? $booking->last_name : '' }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Address line one *</label>
+                                    <input type="text" name="address_line_one" id="address_line_one" value="{{ $booking ? $booking->address_line_one : '' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Address line two</label>
+                                    <input type="text" name="address_line_two" id="address_line_two" value="{{ $booking ? $booking->address_line_two : '' }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">City *</label>
+                                    <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Postcode *</label>
+                                    <input type="text" name="postcode" id="postcode" value="{{ $booking ? $booking->postcode : '' }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Country *</label>
+                                    <select name="country" id="country" required>
+                                        @foreach($countries as $country)
+                                            <option value="{{ $country }}" @if($country === 'United Kingdom') selected @endif>{{ $country }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Phone number *</label>
+                                    <input type="tel" name="phone_number" id="phone_number" value="{{ $booking ? $booking->phone_number : '' }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Email address *</label>
+                                    <input type="email" name="email_address" id="email_address" value="{{ $booking ? $booking->email_address : '' }}" required>
+                                </div>
+                            </div>
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
                                     <a href="{{ route('book-a-room-step-2') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
