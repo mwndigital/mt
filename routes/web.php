@@ -194,6 +194,7 @@ Route::resource('/gallery', FrontendGalleryController::class);
 Route::get('/dining', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
 Route::get('/faqs', [FrontendFaqController::class, 'index'])->name('faqs.index');
 Route::prefix('book-a-room')->group(function () {
+    Route::get('select-room/{id}', [BookingController::class, 'selectRoom'])->name('select-room');
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');
     Route::post('step-two-store', [BookingController::class, 'stepTwoStore'])->name('book-a-room-step-2-store');
 
