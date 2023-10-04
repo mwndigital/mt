@@ -1,15 +1,15 @@
 @extends('layouts.frontend')
 @push('page-title')
-    {{--{{ $brc->page_title }}--}}
+    {{ $content->page_title }}
 @endpush
 @push('page-description')
-    {{--{{ $brc->page_description }}--}}
+    {{ $content->seo_description }}
 @endpush
 @push('page-keywords')
-    {{--{{ $brc->page_keywords }}--}}
+    {{ $content->seo_keyworkds }}
 @endpush
 @push('page-image')
-    {{--{{ Storage::url($brc->page_image) }}--}}
+    {{ Storage::url($content->seo_image) }}
 @endpush
 @push('page-styles')
 
