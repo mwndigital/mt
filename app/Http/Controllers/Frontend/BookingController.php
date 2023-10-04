@@ -143,6 +143,23 @@ class BookingController extends Controller
         $countries = CountryListFacade::getList('en');
         $create_account = $request->session()->get('create_account');
         $current_option = $create_account == 'yes' ?? 'no';
+        // Get current user details
+        $user = auth()->user();
+        // if user is logged in, then use the user details
+        if ($user) {
+            $userDetails = $user->userDetails;
+            // if current booking data is empty get from user
+            $booking->first_name = $booking->first_name ?? $user->first_name;
+            $booking->last_name = $booking->last_name ?? $user->last_name;
+            $booking->email_address = $booking->email_address ?? $user->email;
+            $booking->phone_number = $booking->phone_number ?? $userDetails->phone_number;
+            $booking->address_line_one = $booking->address_line_one ?? $userDetails->address_line_one;
+            $booking->address_line_two = $booking->address_line_two ?? $userDetails->address_line_two;
+            $booking->city = $booking->city ?? $userDetails->town_city;
+            $booking->postcode = $booking->postcode ?? $userDetails->postcode;
+            $booking->country = $booking->country ?? $userDetails->country;
+            $booking->user_id = $booking->user_id ?? $user->id;
+        }
 
         return view('frontend.pages.booking.step-3', compact('booking', 'countries', 'current_option'));
     }
