@@ -19,17 +19,15 @@
 @endpush
 @section('content')
     <section class="brPageHeroBanner" id="diningPageTop">
-        <img class="img-fluid mainBgImage" src="{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}">
+        <img class="img-fluid mainBgImage" src="{{ Storage::url($content->hero_background_image) }}">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <h1>
-                            Dining
+                            {{ $content->hero_title }}
                         </h1>
-                        <p>
-                            Dine at The Mash Tun whilst looking out over the River Spey
-                        </p>
+                        {!! $content->hero_content !!}
                         <div class="btn-group">
 
                             <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</button>
@@ -43,16 +41,11 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h2 class="secTitle">This isn't just another meal, this is a Mash Tun meal</h2>
-                    <p>
-                        Dining at The Mash Tun can be from a casual bite at the bar to a cozy corner in our historic, leather clad room to formal, personalised, pre booked meals in our private Stalla Dhu Lodge.
-                    </p>
-                    <p>
-                        Alternatively dine al fresco on the deck overlooking the River Spey. Wherever you dine you can be assured of the freshest local produce prepared daily by out talented chef and his team… don't forget to check our daily specials.
-                    </p>
+                    <h2 class="secTitle">{{ $content->banner_one_title }}</h2>
+                    {!! $content->banner_one_content !!}
                 </div>
                 <div class="col-lg-6">
-                    <img class="img-fluid featuredImage" src="{{ asset('images/restaurant/team.png') }}">
+                    <img class="img-fluid featuredImage" src="{{ Storage::url($content->banner_one_image) }}">
                 </div>
 
             </div>
@@ -79,15 +72,13 @@
         </div>
     </section>
 
-    <section class="bookMealBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/_DSC1570.jpg') }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
+    <section class="bookMealBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ Storage::url($content->book_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h3 class="secTitle">Book a meal with us today</h3>
-                    <p>
-                        Come and join us for an amazing meal.
-                    </p>
-                    <button class="darkGoldBtn" href="">Book Now</button>
+                    <h3 class="secTitle">{{ $content->book_banner_title }}</h3>
+                    {!! $content->book_banner_content !!}
+                    <button class="darkGoldBtn" href="{{ $content->book_banner_button_link }}">{{ $content->book_banner_button_content }}</button>
                 </div>
             </div>
         </div>

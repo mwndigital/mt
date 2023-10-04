@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\DiningPageContent;
 use Illuminate\Http\Request;
 
 class FrontendRestaurantPageController extends Controller
@@ -12,7 +13,9 @@ class FrontendRestaurantPageController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.restaurant');
+        $content = DiningPageContent::first();
+
+        return view('frontend.pages.restaurant', compact('content'));
     }
 
     /**
