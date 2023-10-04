@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BarPageContent;
 use App\Models\BarRestaurantContent;
 use App\Models\Menu;
 use App\Models\Whisky;
@@ -20,8 +21,8 @@ class BarPageController extends Controller
         $menuSides = Menu::where('category', 'Sides');
         $menuDesserts = Menu::where('category', 'desserts');
         $whiskies = Whisky::all();
-        $brc = BarRestaurantContent::first();
-        return view('frontend.pages.barPage', compact('menuStarters', 'menuMains', 'menuSides', 'menuDesserts', 'whiskies', 'brc'));
+        $content = BarPageContent::first();
+        return view('frontend.pages.barPage', compact('menuStarters', 'menuMains', 'menuSides', 'menuDesserts', 'whiskies', 'content'));
     }
 
     /**
