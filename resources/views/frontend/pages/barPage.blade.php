@@ -43,7 +43,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h2 class="secTitle">{{ $content->banner_one_title }}</h2>
-                    {{ $content->banner_one_content }}
+                    {!! $content->banner_one_content !!}
                     <button type='button' class="blueBtn" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">Whisky Menu</button>
                 </div>
                 <div class="col-lg-6">
