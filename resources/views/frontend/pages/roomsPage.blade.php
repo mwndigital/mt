@@ -34,7 +34,9 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="roomItem card">
                             <div class="card-header">
-                                <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                <a href="{{ Storage::url($room->featured_image) }}" data-lightbox="room-{{ $room->id }}">
+                                    <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                </a>
                             </div>
                             <div class="card-body">
                                 <h4>{{ $room->name }}</h4>
@@ -46,9 +48,14 @@
                                 <a href="/rooms" class="blueBtn">Book Now</a>
                             </div>
                         </div>
+
+                        @foreach($room->images as $image)
+                            <a href="{{ Storage::url($image->image) }}" data-lightbox="room-{{ $room->id }}" style="display:none;"></a>
+                        @endforeach
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
+
 @endsection
