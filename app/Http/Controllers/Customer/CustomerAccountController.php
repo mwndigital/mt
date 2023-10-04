@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Monarobase\CountryList\CountryList;
 
 class CustomerAccountController extends Controller
@@ -39,7 +40,7 @@ class CustomerAccountController extends Controller
      */
     public function show(string $id)
     {
-        $profile = User::findOrFail($id);
+        $profile = Auth::user();
 
         return view('customer.pages.my-account.index', compact('profile'));
     }
@@ -49,7 +50,7 @@ class CustomerAccountController extends Controller
      */
     public function edit(string $id)
     {
-        $profile = User::findOrFail($id);
+        $profile = Auth::user();
         $countryList = new CountryList();
         $countries = $countryList->getList('en');
 
@@ -96,7 +97,7 @@ class CustomerAccountController extends Controller
     }
 
     public function changePasswordView(string $id) {
-        $profile = User::findOrFail($id);
+        $profile = Auth::user();
 
         return view('customer.pages.my-account.password-change', compact('profile'));
     }

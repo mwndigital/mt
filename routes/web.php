@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
 use App\Http\Controllers\Customer\CustomerAccountController;
+use App\Http\Controllers\Customer\CustomerIndexController;
 use App\Http\Controllers\Customer\CustomerRestaurantController;
 use App\Http\Controllers\Customer\CustomerRoomBookingsController;
 use App\Http\Controllers\Frontend\AboutUsPageController;
@@ -159,7 +160,7 @@ Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->grou
 //Customer Routes
 Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('customer')->group(function(){
     //Dashboard
-    Route::get('dashboard', [\App\Http\Controllers\Customer\CustomerIndexController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [CustomerIndexController::class, 'index'])->name('dashboard');
 
     //Restaurant Bookings
     Route::prefix('dining-bookings')->group(function(){
