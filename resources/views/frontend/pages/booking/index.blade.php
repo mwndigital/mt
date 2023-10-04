@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Type</label>
-                                    <select name="room_type" id="room_type">
+                                    <select name="type" id="type">
                                         <option value="room" {{ $booking && $type ? 'selected' : '' }}>Room</option>
                                         <option value="lodge" {{ $booking && !$type ? 'selected' : '' }}>Lodge</option>
                                     </select>

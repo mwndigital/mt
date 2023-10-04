@@ -31,8 +31,12 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->type) $request->session()->put('type', $request->type != 'lodge');
+
         $booking = $request->session()->get('booking');
         $type = $request->session()->get('type');
+
+
         return view('frontend.pages.booking.index', compact('booking', 'type'));
     }
 
@@ -68,6 +72,7 @@ class BookingController extends Controller
         $validated['checkout_date'] = $checkoutDate;
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
+        $request->session()->put('type', $request->type != 'lodge');
         return to_route('book-a-room-step-2');
     }
 
