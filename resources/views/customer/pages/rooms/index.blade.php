@@ -43,10 +43,11 @@
                                     <td>{{ $booking->booking_ref }}</td>
                                     <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                     <td>{{ $booking->arrival_time }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($booking->checkout_date) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                     <td>{{ $booking->no_of_adults }}</td>
                                     <td>{{ $booking->no_of_children }}</td>
                                     <td>
+                                        {{ $booking->getStatus() }}
                                         @if($booking->status == 'paid')
                                             <div class="alert alert-success" role="alert">
                                                 Paid
