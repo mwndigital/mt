@@ -145,9 +145,8 @@ class BookingController extends Controller
         $current_option = $create_account == 'yes' ?? 'no';
         // Get current user details
         $user = auth()->user();
-        // if user is logged in, then use the user details
-        if ($user) {
-            $userDetails = $user->userDetails;
+        $userDetails = $user->userDetails;
+        if ($user && $userDetails) {
             // if current booking data is empty get from user
             $booking->first_name = $booking->first_name ?? $user->first_name;
             $booking->last_name = $booking->last_name ?? $user->last_name;
