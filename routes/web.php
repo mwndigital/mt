@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminDiningPageContent;
 use App\Http\Controllers\Admin\Pages\AdminFaqsPageController;
 use App\Http\Controllers\Admin\Pages\AdminHomepageController;
+use App\Http\Controllers\Admin\Pages\AdminLodgePageController;
 use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
 use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
@@ -129,7 +130,8 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
 
     //Restaurant Booking controller
     Route::prefix('restaurant-bookings')->group(function(){
-
+        Route::get('upload', [AdminRestaurantBookingController::class, 'csvUpload'])->name('restaurant-bookings.csv-upload');
+        Route::post('csv-store', [AdminRestaurantBookingController::class, 'csvStore'])->name('restaurant-bookings.csv-store');
     });
     Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);
 
@@ -147,6 +149,7 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
         Route::resource('faqs-page', AdminFaqsPageController::class);
         Route::resource('bar-page', AdminBarPageController::class);
         Route::resource('dining-page', AdminDiningPageContent::class);
+        Route::resource('lodge-page', AdminLodgePageController::class);
     });
 });
 
@@ -185,6 +188,9 @@ Auth::routes();
 
 //Frontend routes
 Route::get('/', [HomepageController::class, 'index']);
+Route::get('/home', function () {
+    return redirect('/');
+});
 Route::get('/our-history', [AboutUsPageController::class, 'index'])->name('about-us');
 Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
 Route::get('lodge', [FrontendLodgeController::class, 'index'])->name('lodge.index');
