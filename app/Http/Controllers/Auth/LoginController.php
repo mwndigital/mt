@@ -31,11 +31,8 @@ class LoginController extends Controller
         $redirectParam = request()->query('redirect');
         if($redirectParam) return route($redirectParam);
 
-        if($this->guard()->user()->hasRole(['super admin', 'admin'])){
+        if($this->guard()->user()->hasRole(['super admin', 'admin', 'staff'])){
             return route('admin.dashboard');
-        }
-        elseif($this->guard()->user()->hasRole('staff')){
-            return route('staff.dashboard');
         }
         elseif($this->guard()->user()->hasRole('customer')){
             return route('customer.dashboard');
