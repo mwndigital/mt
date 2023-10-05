@@ -200,7 +200,7 @@
                             </li>
                         </ul>
                         <hr>
-                        @if(!$isRoom)
+                        @if($isRoom)
                         <ul class="list-inline adultChildCap">
                             <li class="list-inline-item">
                                 <strong>No of adults</strong><br>
