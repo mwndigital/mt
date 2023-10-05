@@ -111,7 +111,7 @@ class BookingController extends Controller
             return !$conflictingBooking;
         });
 
-        return view('frontend.pages.booking.step-2', compact('booking', 'filteredRooms'));
+        return view('frontend.pages.booking.step-2', compact('booking', 'filteredRooms', 'isRoom'));
     }
 
     public function stepTwoStore(Request $request)
@@ -153,6 +153,7 @@ class BookingController extends Controller
     public function stepThreeShow(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $isRoom = $request->session()->get('isRoom');
         $countries = CountryListFacade::getList('en');
         $create_account = $request->session()->get('create_account');
         $current_option = $create_account == 'yes' ?? 'no';
@@ -176,7 +177,7 @@ class BookingController extends Controller
         }
         $booking->user_id = $user ? $user->id : null;
 
-        return view('frontend.pages.booking.step-3', compact('booking', 'countries', 'current_option'));
+        return view('frontend.pages.booking.step-3', compact('booking', 'countries', 'current_option', 'isRoom'));
     }
 
     public function stepThreeStore(Request $request)

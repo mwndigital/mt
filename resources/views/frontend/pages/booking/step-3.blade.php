@@ -200,6 +200,7 @@
                             </li>
                         </ul>
                         <hr>
+                        @if(!$isRoom)
                         <ul class="list-inline adultChildCap">
                             <li class="list-inline-item">
                                 <strong>No of adults</strong><br>
@@ -211,6 +212,7 @@
                             </li>
                         </ul>
                         <hr>
+                        @endif
                         <ul class="list-inline roomList">
                             <li class="list-inline-item" style="width: 100%;">
                                 <strong style="color: #002C50;">Room</strong><br>

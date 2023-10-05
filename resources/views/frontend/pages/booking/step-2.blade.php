@@ -189,6 +189,7 @@
                             </li>
                         </ul>
                         <hr>
+                        @if(!$isRoom)
                         <ul class="list-inline adultChildCap">
                             <li class="list-inline-item">
                                 <strong>No of adults</strong><br>
@@ -200,6 +201,7 @@
                             </li>
                         </ul>
                         <hr>
+                        @endif
                         <div id="sub-list"></div>
                         <div id="php-list">
                         @if ($booking->room)
