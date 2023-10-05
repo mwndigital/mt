@@ -7,6 +7,8 @@ use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AdminRestaurantBookingController extends Controller
 {
@@ -69,6 +71,63 @@ class AdminRestaurantBookingController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function csvUpload(){
+        return view('admin.pages.restaurant.uploads');
+    }
+
+    public function csvStore(Request $request){
+        $validator = Validator::make($request->all(), [
+            'csv_file' => ['required', 'mimes:csv,txt'],
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->with('error', $validator->errors()->all());
+        }
+
+        //store the uploaded files
+        $file = $request->file('csv_file');
+        $file_path = $file->store('temp');
+
+        //Read the data from file
+        $data = [];
+        if(($handle = fopen(storage_path('app/' . $file_path), 'r')) !== false) {
+            $header = fgetcsv($handle, 1000, ",");
+            while(($row = fgetcsv($handle, 1000, ",")) !== false){
+                if (count($header) == count($row)) {
+                    $data[] = array_combine($header, $row);
+                }
+            }
+            fclose($handle);
+        }
+        //Add into the DB
+        foreach($data as $row) {
+            $reservationStartTime = Carbon::createFromFormat('H:i', $row['reservation_time']);
+
+            // Calculate reservation end time by adding 2 hours
+            $reservationEndTime = $reservationStartTime->copy()->addHours(2);
+
+            $tableNo = rand(1, 10);
+
+            $restaurantBooking = [
+                'first_name' => $row['first_name'],
+                'last_name' => $row['last_name'],
+                'email' => $row['email_address'],
+                'reservation_date' => Carbon::createFromFormat('d/m/Y', $row['reservation_date'])
+                    ->format('Y-m-d'),
+                'reservation_time' => $row['reservation_time'],
+                'reservation_end_time' => $reservationEndTime,
+                'no_of_guests' => $row['no_of_guests'],
+                'table_id' => $tableNo,
+                'joining_for' => $row['joining_for'],
+                'additional_information' => $row['additional_information'],
+                'dietary_info' => $row['dietary_information']
+            ];
+            DB::table('restaurant_bookings')->insert($restaurantBooking);
+
+
+        }
+        return redirect()->back()->with('success', 'Bookings have been imported successfully');
     }
 
     /**

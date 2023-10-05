@@ -130,6 +130,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Joining for</th>
+                                        <th>Date</th>
                                         <th>Time</th>
                                         <th>Actions</th>
                                     </tr>
@@ -139,6 +140,7 @@
                                         <tr>
                                             <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                             <td>{{ $booking->joining_for }}</td>
+                                            <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>
                                                 <div class="dropdown">
