@@ -32,14 +32,16 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->put('type', $request->type != 'lodge');
+        $request->session()->put('isRoom', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
-        $type = $request->session()->get('type');
-        return view('frontend.pages.booking.index', compact('booking', 'type'));
+        $isRoom = $request->session()->get('isRoom');
+        return view('frontend.pages.booking.index', compact('booking', 'isRoom'));
     }
 
     public function stepOneStore(Request $request)
     {
+        $isRoom = $request->session()->get('isRoom');
+
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
             'checkout_date' => ['required', 'date_format:d-m-Y'],
@@ -77,9 +79,9 @@ class BookingController extends Controller
     public function stepTwoShow(Request $request)
     {
         $booking = $request->session()->get('booking');
-        $type = $request->session()->get('type');
+        $isRoom = $request->session()->get('isRoom');
         // Fetch available rooms based on the number of adults and children
-        if ($type) {
+        if ($isRoom) {
             $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
                 ->where('child_cap', '>=', $booking->no_of_children)
                 ->where('room_type', '!=', 'lodge')

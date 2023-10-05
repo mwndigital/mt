@@ -46,6 +46,28 @@
             // Check in date default value today
             document.getElementById('checkin_date').defaultValue = '{{ now()->setTimezone('Europe/London')->format('d-m-Y') }}';
 
+            // Function to toggle visibility of adult and children inputs
+            function toggleGuestInputs() {
+                var selectedType = $('#type').val();
+                if (selectedType === 'room') {
+                    $('#no_of_adults').closest('.col-md-6').show();
+                    $('#no_of_children').closest('.col-md-6').show();
+                } else if (selectedType === 'lodge') {
+                    $('#no_of_adults').closest('.col-md-6').hide();
+                    $('#no_of_children').closest('.col-md-6').hide();
+                }
+            }
+
+            // Call the function when the page loads
+            toggleGuestInputs();
+
+            // Listen for changes in the #type field
+            $('#type').on('change', function() {
+                toggleGuestInputs();
+            });
+
+
+
         });
     </script>
 
@@ -103,8 +125,8 @@
                                 <div class="col-md-4">
                                     <label for="">Type</label>
                                     <select name="type" id="type">
-                                        <option value="room" {{ $type ? 'selected' : '' }}>Room</option>
-                                        <option value="lodge" {{ !$type ? 'selected' : '' }}>Lodge</option>
+                                        <option value="room" {{ $isRoom ? 'selected' : '' }}>Room</option>
+                                        <option value="lodge" {{ !$isRoom ? 'selected' : '' }}>Lodge</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 d-none">
