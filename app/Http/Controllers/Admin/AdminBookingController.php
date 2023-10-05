@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\BookingConfirmationMail;
 use App\Models\Booking;
+use App\Models\RestaurantTable;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
 use App\Enums\BookingStatus;
+use Illuminate\Support\Facades\Validator;
 
 class AdminBookingController extends Controller
 {
@@ -22,8 +24,9 @@ class AdminBookingController extends Controller
     public function index()
     {
         $bookings = Booking::where('status', '!=', BookingStatus::DRAFT)
-            ->orderBy('created_at', 'desc')
-            ->get();
+            ->where('checkin_date', '>=', Carbon::now())
+            ->orderBy('checkout_date', 'ASC')
+            ->paginate(20);
         return view('admin.pages.bookings.index', compact('bookings'));
     }
 
@@ -33,7 +36,8 @@ class AdminBookingController extends Controller
     public function create(Request $request)
     {
         $booking = $request->session()->get('booking');
-        return view('admin.pages.bookings.create-steps.step-one', compact('booking'));
+        $tables = RestaurantTable::all();
+        return view('admin.pages.bookings.create-steps.step-one', compact('booking', 'tables'));
     }
 
     public function stepOneStore(Request $request)
@@ -243,6 +247,72 @@ class AdminBookingController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    }
+
+    public function csvUpload(){
+        return view('admin.pages.bookings.uploads');
+    }
+    public function csvStore(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'csv_file' => ['required', 'mimes:csv,txt'],
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->with('error', $validator->errors()->all());
+        }
+
+        //Store the upload files
+        $file = $request->file('csv_file');
+        $file_path = $file->store('temp');
+
+        //Read the data from file
+        $data = [];
+        if(($handle = fopen(storage_path('app/' . $file_path), 'r')) !== false) {
+            $header = fgetcsv($handle, 1000, ',');
+            while(($row = fgetcsv($handle, 1000, ",")) !== false) {
+                if(count($header) == count($row)) {
+                    $data[] = array_combine($header, $row);
+                }
+            }
+            fclose($handle);
+        }
+        $roomMapping = [
+            'Aberlour' => 4,
+            'Glenlivet' => 1,
+            'MACALLAN' => 2,
+            'GLENFARCLAS' => 5,
+            'GLENFIDDICH' => 3,
+            'ALLFIVE ROOMS ' => 1, 2, 3, 4, 5,
+        ];
+        //Add into the DB
+        foreach($data as $row) {
+            if(isset($roomMapping[$row['room_booked']])) {
+                $roomId = $roomMapping[$row['room_booked']];
+            }
+            else {
+                $roomId = 10;
+            }
+            $booking = [
+                'checkin_date' => Carbon::createFromFormat('d/m/Y', $row['checkin_date'])->format('Y-m-d'),
+                'arrival_time' => $row['arrival_time'],
+                'checkout_date' => Carbon::createFromFormat('d/m/Y', $row['checkout_date'])->format('Y-m-d'),
+                'no_of_adults' => $row['no_of_adults'],
+                'no_of_children' => $row['no_of_children'],
+                'user_title' => $row['title'],
+                'first_name' => $row['first_name'],
+                'last_name' => $row['last_name'],
+                'address_line_one' => $row['address_line_one'],
+                'address_line_two' => $row['address_line_two'],
+                'city' => $row['city'],
+                'postcode' => $row['postcode'],
+                'country' => $row['country'],
+                'phone_number' => $row['phone_number'],
+                'email_address' => $row['email_address'],
+                'room_id' => $roomId,
+                'additional_information' => $row['additional_information'],
+            ];
+            DB::table('bookings')->insert($booking);
+        }
+        return redirect()->back()->with('success', 'Bookings have been imported successfully');
     }
 
     /**

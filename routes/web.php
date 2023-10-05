@@ -125,6 +125,9 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::post('stepThreeStore', [AdminBookingController::class, 'stepThreeStore'])->name('book-a-room-step-three-store');
         Route::get('stepFour', [AdminBookingController::class, 'stepFourShow'])->name('book-a-room-step-four');
         Route::post('stepFourStore', [AdminBookingController::class, 'stepFourStore'])->name('book-a-room-step-four-store');
+
+        Route::get('upload', [AdminBookingController::class, 'csvUpload'])->name('book-a-room.csv-upload');
+        Route::post('csv-store', [AdminBookingController::class, 'csvStore'])->name('book-a-room.csv-store');
     });
     Route::resource('bookings', AdminBookingController::class);
 
