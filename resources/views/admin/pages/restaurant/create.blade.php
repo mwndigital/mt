@@ -41,7 +41,7 @@
                     <form action="{{ route('admin.restaurant-bookings.store') }}" method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="">First Name *</label>
                                 <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" required>
                                 @error('first_name')
@@ -50,7 +50,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="">Last Name</label>
                                 <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
                                 @error('last_name')
@@ -59,10 +59,20 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="col-md-4">
+                                <label for="">Email Address</label>
+                                <input type="email" name="email" id="email" value="{{ old('email') }} example@example.com" required>
+                                <small>If you do not have the customers email address please leave leave the above in or input reservations@mashtun-aberlour.com as the email address is required</small>
+                                @error('email')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="">Joining for</label>
+                                <label for="">Joining for *</label>
                                 <select name="joining_for" id="joining_for" required>
                                     <option selected disabled> -- Select an option --</option>
                                     <option value="lunch">Lunch</option>
@@ -72,7 +82,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="">Date</label>
+                                <label for="">Date *</label>
                                 <input type="date" name="reservation_date" id="reservation_date"  max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date') }}">
                                 @error('reservation_date')
                                     <div class="text-danger">
@@ -81,7 +91,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Time</label>
+                                <label for="">Time *</label>
                                 <select name="reservation_time" id="reservation_time" required>
 
                                 </select>
@@ -92,7 +102,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Number of guests</label>
+                                <label for="">Number of guests *</label>
                                 <select name="no_of_guests" id="no_of_guests" required>
                                     <option selected disabled>Select number of guests</option>
                                     @foreach(['1', '2', '3', '4', '5', '6'] as $g_number)
@@ -104,6 +114,16 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="">Table *</label>
+                                <select name="table_id" id="table_id" required>
+                                    @foreach($tables as $table)
+                                        <option value="{{ $table->id }}">{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="row">
@@ -129,7 +149,6 @@
                         <div class="row">
                             <div class="col-12">
                                 <button type="submit" class="darkGoldBtn">Save</button>
-
                             </div>
                         </div>
                     </form>

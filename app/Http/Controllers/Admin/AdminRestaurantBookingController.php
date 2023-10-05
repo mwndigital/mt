@@ -62,7 +62,36 @@ class AdminRestaurantBookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email'],
+            'joining_for' => ['required', 'string', 'max:255'],
+            'reservation_date' => ['required', 'date'],
+            'reservation_time' => ['required'],
+            'no_of_guests' => ['required', 'integer'],
+            'dietary_information' => ['nullable', 'max:15000'],
+            'additional_information' => ['nullable', 'max: 15000'],
+            'table_id' => ['required', 'integer']
+        ]);
+        $reservation_time = Carbon::parse($validated['reservation_time']);
+        $reservation_time_end = $reservation_time->copy()->addHours(2);
+
+        RestaurantBooking::create([
+           'first_name' => $validated['first_name'],
+           'last_name' => $validated['last_name'],
+           'email' => $validated['email'],
+           'joining_for' => $validated['joining_for'],
+           'reservation_date' => $validated['reservation_date'],
+           'reservation_time' => $validated['reservation_time'],
+            'reservation_end_time' => $reservation_time_end,
+            'no_of_guests' => $validated['no_of_guests'],
+            'dietary_info' => $validated['dietary_information'],
+            'additional_information' => $validated['additional_information'],
+            'table_id' => $validated['table_id'],
+        ]);
+
+        return redirect('admin/restaurant-bookings')->with('success', 'New booking created successfully');
     }
 
     /**
