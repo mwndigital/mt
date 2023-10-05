@@ -31,8 +31,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->type) $request->session()->put('type', $request->type != 'lodge');
-
+        $request->session()->put('type', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
         $type = $request->session()->get('type');
 
