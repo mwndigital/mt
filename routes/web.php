@@ -53,7 +53,7 @@ use Spatie\Sitemap\SitemapGenerator;
 */
 
 //Admin Routes
-Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('admin')->group(function(){
+Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->prefix('admin')->group(function(){
     // API will move to api.php
     Route::delete('remove-image', [\App\Http\Controllers\Admin\ApiController::class, 'removeImage'])->name('remove-image');
     Route::post('upload-image', [\App\Http\Controllers\Admin\ApiController::class, 'uploadImage'])->name('upload-image');
