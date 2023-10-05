@@ -40,7 +40,7 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request)
     {
-        $isRoom = $request->session()->get('isRoom');
+        $request->session()->put('isRoom', $request->type != 'lodge');
 
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
@@ -80,6 +80,7 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
+
         // Fetch available rooms based on the number of adults and children
         if ($isRoom) {
             $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
