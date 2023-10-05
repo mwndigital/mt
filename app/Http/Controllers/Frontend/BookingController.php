@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\BookingConfirmationMail;
+use App\Mail\AdminBookingConfirmationMail;
 use App\Models\Booking;
 use App\Models\Rooms;
 use App\Notifications\AdminNewRoomBookingNotification;
@@ -34,8 +35,6 @@ class BookingController extends Controller
         $request->session()->put('type', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
         $type = $request->session()->get('type');
-
-
         return view('frontend.pages.booking.index', compact('booking', 'type'));
     }
 
@@ -325,6 +324,7 @@ class BookingController extends Controller
         // Send email to customer
         try {
             Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+            Mail::to('reservations@mashtun-aberlour.com')->send(new AdminBookingConfirmationMail($booking));
         } catch (\Exception $e) {
             Log::error($e->getMessage());
         }
