@@ -27,6 +27,10 @@ class LoginController extends Controller
      * @var string
      */
     protected function redirectTo(){
+        // Custom redirect after login
+        $redirectParam = request()->query('redirect');
+        if($redirectParam) return route($redirectParam);
+
         if($this->guard()->user()->hasRole(['super admin', 'admin'])){
             return route('admin.dashboard');
         }

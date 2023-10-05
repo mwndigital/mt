@@ -92,13 +92,20 @@
                             @csrf
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="">Check in date</label>
                                     <input type="text" autocomplete="off" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="">Check out date</label>
                                     <input type="text" autocomplete="off" name="checkout_date" id="checkout_date" value="{{ $booking ? \Carbon\Carbon::parse($booking->checkout_date)->format('d-m-Y') : '' }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Type</label>
+                                    <select name="type" id="type">
+                                        <option value="room" {{ $booking && $type ? 'selected' : '' }}>Room</option>
+                                        <option value="lodge" {{ $booking && !$type ? 'selected' : '' }}>Lodge</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4 d-none">
                                     <label for="">Arrival Time</label>
