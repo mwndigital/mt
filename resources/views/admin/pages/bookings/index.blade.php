@@ -45,8 +45,8 @@
                         <tbody>
                             @foreach($bookings as $booking)
                                 <tr>
-                                    <td>{{ $booking->checkin_date }}</td>
-                                    <td>{{ $booking->checkout_date }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                     <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     {{-- <td>{{ $booking->room->name }}</td> --}}
                                     <td>{!! $booking->getStatus() !!}</td>
