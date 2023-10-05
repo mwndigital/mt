@@ -178,11 +178,11 @@
                             <div class="col-md-6">
                                 <label for="">Room Type *</label>
                                 <select name="room_type" id="room_type" required>
-                                    <option value="single" @if($room->type == 'single') selected @endif>Single</option>
-                                    <option value="double" @if($room->type == 'double') selected @endif>Double</option>
-                                    <option value="family" @if($room->type == 'family') selected @endif>Family</option>
-                                    <option value="twin" @if($room->type == 'twin') selected @endif>Twin</option>
-                                    <option value="lodge" @if($room->type == 'lodge') selected @endif>Lodge</option>
+                                    <option value="single" @if($room->room_type == 'single') selected @endif>Single</option>
+                                    <option value="double" @if($room->room_type == 'double') selected @endif>Double</option>
+                                    <option value="family" @if($room->room_type == 'family') selected @endif>Family</option>
+                                    <option value="twin" @if($room->room_type == 'twin') selected @endif>Twin</option>
+                                    <option value="lodge" @if($room->room_type == 'lodge') selected @endif>Lodge</option>
                                 </select>
                                 @error('room_type')
                                 <span class="invalid-feedback" role="alert">
