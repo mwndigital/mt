@@ -185,6 +185,9 @@ Auth::routes();
 
 //Frontend routes
 Route::get('/', [HomepageController::class, 'index']);
+Route::get('/home', function () {
+    return redirect('/');
+});
 Route::get('/our-history', [AboutUsPageController::class, 'index'])->name('about-us');
 Route::get('/rooms', [RoomsPageController::class, 'index'])->name('rooms');
 Route::get('lodge', [FrontendLodgeController::class, 'index'])->name('lodge.index');
