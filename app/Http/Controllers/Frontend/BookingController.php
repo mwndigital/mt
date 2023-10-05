@@ -465,10 +465,11 @@ class BookingController extends Controller
         $booking->checkout_date = Carbon::now()->addDays(1)->format('Y-m-d');
 
         $isRoom = $room->room_type != 'lodge';
-        $request->session()->put('isRoom', $isRoom);
+        $params = [];
+        $params['type'] = $isRoom ? 'room' : 'lodge';
 
         $request->session()->put('booking', $booking);
 
-        return to_route('book-a-room-index');
+        return to_route('book-a-room-index', $params);
     }
 }
