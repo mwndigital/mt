@@ -96,17 +96,33 @@ class BookingController extends Controller
         $checkoutDate = $booking->checkout_date;
 
         // Filter out the rooms that have conflicts with existing bookings for the selected time period
-        $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
-            $conflictingBooking = Booking::where('room_id', $room->id)
-                ->where(function ($query) use ($checkinDate, $checkoutDate) {
-                    $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
-                        ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
-                        ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
-                            $query->where('checkin_date', '<=', $checkinDate)
-                                ->where('checkout_date', '>=', $checkoutDate);
-                        });
-                })
-                ->exists();
+        $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate, $isRoom) {
+            if (!$isRoom) {
+                // Lodge availability
+                $conflictingBooking = Booking::where('type', 'lodge')
+                    ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+                    ->where(function ($query) use ($checkinDate, $checkoutDate) {
+                        $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
+                            ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
+                            ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
+                                $query->where('checkin_date', '<=', $checkinDate)
+                                    ->where('checkout_date', '>=', $checkoutDate);
+                            });
+                    })
+                    ->exists();
+            } else {
+                $conflictingBooking = Booking::where('room_id', $room->id)
+                    ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+                    ->where(function ($query) use ($checkinDate, $checkoutDate) {
+                        $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
+                            ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
+                            ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
+                                $query->where('checkin_date', '<=', $checkinDate)
+                                    ->where('checkout_date', '>=', $checkoutDate);
+                            });
+                    })
+                    ->exists();
+            }
 
             return !$conflictingBooking;
         });
@@ -315,7 +331,7 @@ class BookingController extends Controller
             $response->redirect();
         } else {
             //Failed
-            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $response);
+            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $response)->with('error', $response->getMessage());
         }
     }
 

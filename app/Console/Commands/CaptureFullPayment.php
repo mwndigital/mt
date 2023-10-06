@@ -39,20 +39,24 @@ class CaptureFullPayment extends Command
             $now = now();
 
             if ($now->greaterThanOrEqualTo($paymentDueDate)) {
-                $transaction = $booking->transactions->first();
-                $status = $transaction->captureRemaining();
-                // Only update if operation successful
-                if ($status) {
-                    $booking->status = BookingStatus::PAID;
-                    $booking->save();
-                }
+                try {
+                    $transaction = $booking->transactions->first();
+                    $status = $transaction->captureRemaining();
+                    // Only update if operation successful
+                    if ($status) {
+                        $booking->status = BookingStatus::PAID;
+                        $booking->save();
+                    }
 
-                if ($booking->isPaid()) {
-                    $booking->status = BookingStatus::PAID;
-                    $booking->save();
+                    if ($booking->isPaid()) {
+                        $booking->status = BookingStatus::PAID;
+                        $booking->save();
+                    }
+                    $this->info("Final payment processed for Booking ID: {$booking->id}");
+                } catch (\Exception $e) {
+                    $this->error("Error processing final payment for Booking ID: {$booking->id}");
+                    $this->error($e->getMessage());
                 }
-
-                $this->info("Final payment processed for Booking ID: {$booking->id}");
             }
         }
         $this->info('All done!');
