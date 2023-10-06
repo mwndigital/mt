@@ -21,6 +21,7 @@ class RestaurantBooking extends Model
         'joining_for',
         'additional_information',
         'dietary_info',
+        'table_ids',
     ];
 
     public function restaurantTable() {

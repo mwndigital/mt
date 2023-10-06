@@ -161,7 +161,7 @@
     @endrole
     @role('super admin|admin')
         <li>
-            <a href="">Users</a>
+            <a href="{{ route('admin.users.index') }}">Users</a>
         </li>
     @endrole
 

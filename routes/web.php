@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\AdminRestaurantBookingController;
 use App\Http\Controllers\Admin\AdminRestaurantTableController;
+use App\Http\Controllers\Admin\AdminUserManagementController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
@@ -153,6 +154,11 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::resource('bar-page', AdminBarPageController::class);
         Route::resource('dining-page', AdminDiningPageContent::class);
         Route::resource('lodge-page', AdminLodgePageController::class);
+    });
+
+    //User management
+    Route::prefix('users')->group(function(){
+       Route::get('/', [AdminUserManagementController::class, 'index'])->name('users.index');
     });
 });
 

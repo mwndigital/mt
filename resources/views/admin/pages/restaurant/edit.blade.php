@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Date</label>
-                                <input type="date" name="reservation_date" id="reservation_date" min="{{ $min_date->format('Y-m-d') }}" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date', $booking->reservation_date) }}">
+                                <input type="date" name="reservation_date" id="reservation_date" max="{{ $max_date->addMonths(6)->format('Y-m-d') }}" value="{{ old('reservation_date', $booking->reservation_date) }}">
                                 @error('reservation_date')
                                 <div class="text-danger">
                                     {{ $message }}

@@ -72,10 +72,12 @@ class AdminRestaurantBookingController extends Controller
             'no_of_guests' => ['required', 'integer'],
             'dietary_information' => ['nullable', 'max:15000'],
             'additional_information' => ['nullable', 'max: 15000'],
-            'table_id' => ['required', 'integer']
+            'table_id' => ['nullable', 'integer']
         ]);
         $reservation_time = Carbon::parse($validated['reservation_time']);
         $reservation_time_end = $reservation_time->copy()->addHours(2);
+
+        $tableIds = $request->input('table_ids', []);
 
         RestaurantBooking::create([
            'first_name' => $validated['first_name'],
@@ -88,7 +90,8 @@ class AdminRestaurantBookingController extends Controller
             'no_of_guests' => $validated['no_of_guests'],
             'dietary_info' => $validated['dietary_information'],
             'additional_information' => $validated['additional_information'],
-            'table_id' => $validated['table_id'],
+            'table_id' => 1,
+            'table_ids' => json_encode($tableIds),
         ]);
 
         return redirect('admin/restaurant-bookings')->with('success', 'New booking created successfully');
