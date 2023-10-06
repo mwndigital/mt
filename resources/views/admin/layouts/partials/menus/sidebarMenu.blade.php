@@ -37,6 +37,13 @@
             <li>
                 <a href="{{ route('admin.bookings.create') }}">Create room booking</a>
             </li>
+            @role('super admin|admin')
+                <li>
+                    <a href="{{ route('admin.book-a-room.csv-upload') }}">
+                        Upload CSV
+                    </a>
+                </li>
+            @endrole
         </ul>
     </li>
     <li class="dropdown">
@@ -48,9 +55,11 @@
             <li>
                 <a href="{{ route('admin.restaurant-bookings.create') }}">Create Booking</a>
             </li>
-            <li>
-                <a href="{{ route('admin.restaurant-bookings.csv-upload') }}">Upload CSV for Bookings</a>
-            </li>
+            @role('super admin|admin')
+                <li>
+                    <a href="{{ route('admin.restaurant-bookings.csv-upload') }}">Upload CSV for Bookings</a>
+                </li>
+            @endrole
             <li>
                 <a href="{{ route('admin.restaurant-tables.index') }}">All Tables</a>
             </li>
@@ -149,6 +158,11 @@
     @endrole
     @role('super admin|admin')
         <li><a href="">Settings</a></li>
+    @endrole
+    @role('super admin|admin')
+        <li>
+            <a href="">Users</a>
+        </li>
     @endrole
 
 </ul>
