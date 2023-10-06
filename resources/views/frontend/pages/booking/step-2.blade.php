@@ -139,6 +139,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row innerRow">
+                                        <!-- if empty show no rooms available -->
+                                        @if($filteredRooms->isEmpty())
+                                            <div class="col-12 text-center alert alert-info">
+                                                No rooms available for the selected dates. Please go back and choose different dates.
+                                            </div>
+                                        @endif
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6" onclick="selectRoom({{$room}});">
                                                 <label class="checkItem">
