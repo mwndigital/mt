@@ -3,12 +3,14 @@
     border-radius: 0;
     display: block;
     min-height: 400px;
+    overflow-x: auto;
     padding: 4rem  2rem;
     .table-responsive {
         height: 100%;
     }
     table {
-
+        overflow-x: auto;
+        width: 100%;
         thead {
             tr {
                 th {

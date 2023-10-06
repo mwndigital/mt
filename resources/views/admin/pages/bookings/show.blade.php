@@ -137,8 +137,8 @@ const confirmBooking = (event) => {
                         </tbody>
                     </table>
 
-                    <h2>Transactions </h2>
-                    <table class="table table-responsive w-100">
+                    <h2 class="mt-5">Transactions </h2>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Transaction ID</th>

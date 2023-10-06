@@ -28,8 +28,16 @@
             </ul>
         </li>
     @endrole
-    <li>
-        <a href="{{ route('admin.bookings.index') }}">Room Bookings</a>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Room Bookings</a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="{{ route('admin.bookings.index') }}">All Room Bookings</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.bookings.create') }}">Create room booking</a>
+            </li>
+        </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Restaurant Bookings</a>

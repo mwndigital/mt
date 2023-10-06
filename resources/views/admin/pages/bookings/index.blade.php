@@ -26,18 +26,17 @@
         </div>
     </section>
 
-    <section class="pageMain" style="background-color: #fff;padding:0px !important;">
+    <section class="pageMain" style="">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-hovered">
+                    <table class="table table-hovered w-100">
                         <thead>
                             <tr>
+                                <th>Name</th>
                                 <th>Check-In</th>
                                 <th>Check-Out</th>
-                                <th>Name</th>
-                                {{-- <th>Room</th> --}}
-                                <th>Status</th>
+
                                 <th>Total</th>
                                 <th>Actions</th>
                             </tr>
@@ -45,13 +44,11 @@
                         <tbody>
                             @foreach($bookings as $booking)
                                 <tr>
+                                    <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
-                                    <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     {{-- <td>{{ $booking->room->name }}</td> --}}
                                     <td>{!! $booking->getStatus() !!}</td>
-                                    <td>
-                                        <span>£{{ $booking->total }}</span> <small class="badge text-bg-secondary">£{{$booking->getCapturedAmount()}} Paid</small></td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
