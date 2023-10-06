@@ -82,7 +82,13 @@ const confirmBooking = (event) => {
                             </tr>
                             <tr>
                                 <td><strong>Room Booked:</strong></td>
-                                <td>{{ $booking->room->name }}</td>
+                                <td>
+                                    @if($booking->room_id)
+                                        All Rooms
+                                    @else
+                                        {{ $booking->room->name }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Checkin Date:</strong></td>
@@ -117,7 +123,7 @@ const confirmBooking = (event) => {
                                     @endif
                                     {{ $booking->city }} <br>
                                     {{ $booking->postcode }} <br>
-                                    {{ $booking->country_name }}
+                                    {{--{{ $booking->country_name }}--}}
                                 </td>
                             </tr>
                             <tr>
