@@ -133,7 +133,7 @@ class Booking extends Model implements \Serializable
         // If no existing booking, create a new one
         $this->status = BookingStatus::DRAFT;
         $this->total = $this->getTotalAmount();
-        // $this->type = $this->room->room_type;
+        $this->type = $this->room->room_type;
         $this->save();
     }
 
