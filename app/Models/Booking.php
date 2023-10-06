@@ -46,6 +46,7 @@ class Booking extends Model implements \Serializable
         'email_address',
         'status',
         'total',
+        'additional_information',
         'type',
     ];
 

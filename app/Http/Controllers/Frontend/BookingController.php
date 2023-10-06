@@ -320,6 +320,8 @@ class BookingController extends Controller
                 'notifyUrl' => route('sagepay-notify'),
             ])->send();
         } catch (\Exception $e) {
+            // Log in laravel.log
+            Log::error($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
 
