@@ -159,6 +159,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     //User management
     Route::prefix('users')->group(function(){
        Route::get('/', [AdminUserManagementController::class, 'index'])->name('users.index');
+       Route::get('/create', [AdminUserManagementController::class, 'create'])->name('users.create');
+       Route::post('/store', [AdminUserManagementController::class, 'store'])->name('users.store');
     });
 });
 

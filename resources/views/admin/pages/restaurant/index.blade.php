@@ -99,6 +99,7 @@
                                         <th>Joining for</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>Table</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -109,6 +110,15 @@
                                             <td>{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
+                                            <td>
+                                                @if($booking->table_ids && $booking->table_id == 1)
+                                                    @foreach(json_decode($booking->table_ids) as $tableId)
+                                                        Table {{ $tableId }}
+                                                    @endforeach
+                                                @else
+                                                    Table {{ $booking->table_id }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -144,6 +154,7 @@
                                         <th>Joining for</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>Table</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -154,6 +165,15 @@
                                             <td>{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
+                                            <td>
+                                                @if($booking->table_ids && $booking->table_id == 1)
+                                                    @foreach(json_decode($booking->table_ids) as $tableId)
+                                                        Table {{ $tableId }}
+                                                    @endforeach
+                                                @else
+                                                    Table {{ $booking->table_id }}
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">

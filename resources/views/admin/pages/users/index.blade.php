@@ -13,11 +13,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Restaurant Bookings</h1>
+                    <h1>All Users</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.restaurant-bookings.create') }}" class="blueBtn">
+                        <a href="{{ route('admin.users.create') }}" class="blueBtn">
                             Add User <i class="fas fa-plus"></i>
                         </a>
                     </div>
@@ -29,6 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    <h2>Staff & Admins</h2>
                     <table class="table">
                         <thead>
                             <tr>
@@ -77,7 +78,8 @@
                         </tbody>
                     </table>
                     @role('super admin')
-                    <table class="table mt-5">
+                    <h2 class="mt-5">Super Admins</h2>
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>Name</th>
