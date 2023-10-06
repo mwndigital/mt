@@ -331,7 +331,7 @@ class BookingController extends Controller
             $response->redirect();
         } else {
             //Failed
-            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $response);
+            return view('frontend.pages.booking.payment-failed', compact('booking'))->with('response', $response)->with('error', $response->getMessage());
         }
     }
 
