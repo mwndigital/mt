@@ -10,6 +10,7 @@ use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Monarobase\CountryList\CountryListFacade;
+use Illuminate\Support\Facades\Log;
 
 class Booking extends Model implements \Serializable
 {
@@ -122,6 +123,7 @@ class Booking extends Model implements \Serializable
     public function createDraftBooking()
     {
         // Find an existing booking with the same booking_ref
+        Log::error('Booking Ref: ' . $this->booking_ref);
         $existingBooking = self::where('booking_ref', $this->booking_ref)->first();
 
         if ($existingBooking) {
@@ -135,6 +137,7 @@ class Booking extends Model implements \Serializable
         $this->total = $this->getTotalAmount();
         $this->type = $this->room->room_type;
         $this->save();
+        Log::error('Booking ID: ' . $this->id);
     }
 
     public function createTransaction($amount, $type, $data = null, $data2 = null)
