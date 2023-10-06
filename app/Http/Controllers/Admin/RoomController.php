@@ -125,7 +125,8 @@ class RoomController extends Controller
             $room->price_per_night_single = $request->price_per_night_single;
             $room->description = $request->description;
             $room->short_description = $request->short_description;
-            $room->featured_image = $oldImagePath
+            $room->featured_image = $oldImagePath;
+            $room->save();
         }
 
         /*$room->name = $request->name;
