@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-    Admin Restaurant Tables Create
+    Admin Edit Restaurant booking
 @endpush
 @push('page-scripts')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Create Restaurant Table</h1>
+                    <h1>Edit Restaurant booking</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -99,12 +99,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Number of guests</label>
-                                <select name="no_of_guests" id="no_of_guests" required>
-                                    <option selected disabled>Select number of guests</option>
-                                    @foreach(['1', '2', '3', '4', '5', '6'] as $g_number)
-                                        <option value="{{ $g_number }}" @if($g_number == (session('guest_number') || $g_number == $booking->no_of_guests)) selected @endif>{{ ucfirst($g_number) }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="no_of_guests" id="no_of_guests" value="{{ $booking->no_of_guests }}" required>
                                 @error('no_of_guests')
                                 <div class="text-danger">
                                     {{ $message }}
