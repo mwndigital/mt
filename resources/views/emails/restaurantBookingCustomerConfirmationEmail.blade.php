@@ -33,7 +33,7 @@
                 <strong>Number of guests:</strong> {{ $table_booking->no_of_guests }}
             </li>
             <li>
-                <strong>Your email address:</strong> {{ $table_booking->email_address }}
+                <strong>Your email address:</strong> {{ $table_booking->email }}
             </li>
         </ul>
         <p style="display: block; margin: 20px 0;">
