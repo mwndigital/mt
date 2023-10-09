@@ -26,17 +26,17 @@
         </div>
     </section>
 
-    <section class="pageMain" style="">
+    <section class="pageMain">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-hovered w-100">
+                    <table class="table table-hovered">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Check-In</th>
                                 <th>Check-Out</th>
-
+                                <th>Room</th>
                                 <th>Total</th>
                                 <th>Actions</th>
                             </tr>
@@ -47,7 +47,13 @@
                                     <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                     <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
-                                    {{-- <td>{{ $booking->room->name }}</td> --}}
+                                     <td>
+                                         @if($booking->room)
+                                             {{ $booking->room->name }}
+                                         @else
+
+                                         @endif
+                                     </td>
                                     <td>{!! $booking->getStatus() !!}</td>
                                     <td>
                                         <div class="dropdown">
