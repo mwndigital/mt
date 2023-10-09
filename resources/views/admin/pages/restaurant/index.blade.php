@@ -55,7 +55,7 @@
                                         @foreach($todaysBookings as $booking)
                                             <tr>
                                                 <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                                <td>{{ $booking->joining_for }}</td>
+                                                <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
                                                 <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                                 <td>{{ $booking->reservation_time }}</td>
                                                 <td>{{ $booking->no_of_guests }}</td>
@@ -75,17 +75,13 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <ul>
-
                                                                 <li>
-                                                                    <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
+                                                                    <a href="{{ route('admin.restaurant-bookings.show', $booking->id) }}">
+                                                                        View
+                                                                    </a>
                                                                 </li>
                                                                 <li>
-                                                                    <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
-                                                                    </form>
-
+                                                                    <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                                 </li>
                                                                 <li>
                                                                     <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
@@ -94,6 +90,13 @@
                                                                         <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
                                                                     </form>
 
+                                                                </li>
+                                                                <li>
+                                                                    <form action="" method="POST">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                    </form>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -121,7 +124,7 @@
                                     @foreach($thisWeeksBookings as $booking)
                                         <tr>
                                             <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                            <td>{{ $booking->joining_for }}</td>
+                                            <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>{{ $booking->no_of_guests }}</td>
@@ -141,7 +144,11 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul>
-
+                                                            <li>
+                                                                <a href="{{ route('admin.restaurant-bookings.show', $booking->id) }}">
+                                                                    View
+                                                                </a>
+                                                            </li>
                                                             <li>
                                                                 <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
@@ -186,7 +193,7 @@
                                     @foreach($allBookings as $booking)
                                         <tr>
                                             <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                            <td>{{ $booking->joining_for }}</td>
+                                            <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
                                             <td>{{ $booking->no_of_guests }}</td>
@@ -206,7 +213,11 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul>
-
+                                                            <li>
+                                                                <a href="{{ route('admin.restaurant-bookings.show', $booking->id) }}">
+                                                                    View
+                                                                </a>
+                                                            </li>
                                                             <li>
                                                                 <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
@@ -236,10 +247,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <table class="table table-hovered">
-
-                    </table>
                 </div>
             </div>
         </div>

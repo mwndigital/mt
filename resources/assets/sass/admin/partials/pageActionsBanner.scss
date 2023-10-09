@@ -55,5 +55,26 @@
                 text-decoration: none;
             }
         }
+        .cancelBookingBtn {
+            background-color: yellow;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            color: $b;
+            font-family: $libBold;
+            font-size: 1rem;
+            padding: .5rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+
+            &:hover {
+                background-color: darken(yellow, 10%);
+                box-shadow: none;
+                color: $b;
+                outline: none;
+                text-decoration: none;
+            }
+        }
     }
 }

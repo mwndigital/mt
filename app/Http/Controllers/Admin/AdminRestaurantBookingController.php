@@ -106,8 +106,9 @@ class AdminRestaurantBookingController extends Controller
     public function show(string $id)
     {
         $booking = RestaurantBooking::findOrFail($id);
+        $tableIds = json_decode($booking->table_ids);
 
-        return view('admin.pages.restaurant.show', compact('booking'));
+        return view('admin.pages.restaurant.show', compact('booking', 'tableIds'));
     }
 
     public function csvUpload(){
@@ -233,6 +234,10 @@ class AdminRestaurantBookingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $booking = RestaurantBooking::findOrFail($id);
+
+        $booking->delete();
+
+        return redirect('admin/restaurant-bookings')->with('success', 'Booking deleted successfully');
     }
 }

@@ -64,7 +64,7 @@
                                                 <tr>
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                     <td>{{ $today->reservation_time }}</td>
-                                                    <td>{{ $today->joining_for }}</td>
+                                                    <td style="text-transform: uppercase;">{{ $today->joining_for }}</td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
