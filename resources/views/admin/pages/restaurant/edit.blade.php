@@ -108,6 +108,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-12">
+                                <label for="">Table *</label>
+                                <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
+                                    @foreach($tables as $table)
+                                        <option value="{{ $table->id }}" @if($table->id == $booking->table_id) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <label for="">Dietary Information</label>
                                 <textarea name="dietary_information" id="dietary_information" cols="30" rows="10">{{ old('dietary_information', $booking->dietary_information) }}</textarea>
