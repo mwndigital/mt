@@ -177,7 +177,41 @@ class AdminRestaurantBookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $booking = RestaurantBooking::findOrFail($id);
+
+        $validated = $request->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['nullable', 'email'],
+            'joining_for' => ['required', 'string', 'max:255'],
+            'reservation_date' => ['required', 'date'],
+            'reservation_time' => ['required'],
+            'no_of_guests' => ['required', 'integer'],
+            'dietary_information' => ['nullable', 'max:15000'],
+            'additional_information' => ['nullable', 'max: 15000'],
+            'table_id' => ['nullable', 'integer']
+        ]);
+        $reservation_time = Carbon::parse($validated['reservation_time']);
+        $reservation_time_end = $reservation_time->copy()->addHours(2);
+
+        $tableIds = $request->input('table_ids', []);
+
+        $booking->update([
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
+            'email' => $validated['email'],
+            'joining_for' => $validated['joining_for'],
+            'reservation_date' => $validated['reservation_date'],
+            'reservation_time' => $validated['reservation_time'],
+            'reservation_end_time' => $reservation_time_end,
+            'no_of_guests' => $validated['no_of_guests'],
+            'dietary_info' => $validated['dietary_information'],
+            'additional_information' => $validated['additional_information'],
+            'table_id' => 1,
+            'table_ids' => json_encode($tableIds),
+        ]);
+
+        return redirect('admin/restaurant-bookings')->with('success', 'Booking successfully updated');
     }
 
     /**

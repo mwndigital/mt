@@ -63,9 +63,14 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                <label for="">Email address *</label>
+                                <input type="email" name="email" id="email" value="@if($booking->email == NULL)example@example.com @else {{ $booking->email }} @endif">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 <label for="">Joining for</label>
                                 <select name="joining_for" id="joining_for" required>
-                                    <option selected disabled> -- Select an option --</option>
                                     <option value="lunch" @if($booking->joining_for == 'lunch') selected @endif>Lunch</option>
                                     <option value="evening" @if($booking->joining_for == 'evening') selected @endif>Evening</option>
                                 </select>
