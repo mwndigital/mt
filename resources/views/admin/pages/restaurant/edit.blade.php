@@ -112,7 +112,7 @@
                                 <label for="">Table *</label>
                                 <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
                                     @foreach($tables as $table)
-                                        <option value="{{ $table->id }}" @if($table->id == $booking->table_id) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
+                                        <option value="{{ $table->id }}" @if($table->id == $booking->table_ids) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
                                     @endforeach
                                 </select>
                             </div>
