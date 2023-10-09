@@ -14,9 +14,9 @@ class AdminTableBookingCancelledNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct($table_booking)
+    public function __construct($booking)
     {
-        $this->table_booking = $table_booking;
+        $this->booking = $booking;
     }
 
     /**
@@ -36,7 +36,7 @@ class AdminTableBookingCancelledNotification extends Notification
     {
         return [
             'title' => 'A table booking has been cancelled',
-            'message' => $this->table_booking->first_name . ' ' . $this->table_booking->last_name . ' has made a booking for ' . $this->table_booking->joining_for . ' on ' . $this->table_booking->reservation_date . ' at ' . $this->table_booking->reservation_time
+            'message' => 'A booking for ' . $this->booking->first_name . ' ' . $this->booking->last_name . ' has been cancelled on ' . date('d/m/Y', strtotime($this->booking->reservation_date)) . ' at ' . $this->booking->reservation_time
         ];
     }
 
@@ -50,7 +50,7 @@ class AdminTableBookingCancelledNotification extends Notification
     {
         return [
             'title' => 'A table booking has been cancelled',
-            'message' => $this->table_booking->first_name . ' ' . $this->table_booking->last_name . ' has made a booking for ' . $this->table_booking->joining_for . ' on ' . date('d/m/Y', strtotime($this->table_booking->reservation_date)) . ' at ' . $this->table_booking->reservation_time
+            'message' => 'A booking for ' . $this->booking->first_name . ' ' . $this->booking->last_name . ' has been cancelled on ' . date('d/m/Y', strtotime($this->booking->reservation_date)) . ' at ' . $this->booking->reservation_time
         ];
     }
 }

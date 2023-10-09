@@ -32,9 +32,9 @@
             <li>
                 <strong>Number of guests:</strong> {{ $table_booking->no_of_guests }}
             </li>
-            <li>
+            {{--<li>
                 <strong>Your email address:</strong> {{ $table_booking->email }}
-            </li>
+            </li>--}}
         </ul>
         <p style="display: block; margin: 20px 0;">
             Thank you for your booking and we look forward to seeing you when you arrive.

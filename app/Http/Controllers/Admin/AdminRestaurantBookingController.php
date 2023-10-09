@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
+use App\Notifications\AdminTableBookingCancelledNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class AdminRestaurantBookingController extends Controller
 {
@@ -224,6 +226,17 @@ class AdminRestaurantBookingController extends Controller
         $booking = RestaurantBooking::findOrFail($id);
 
         $booking->update(['status' => 'cancelled']);
+
+        //Send email to Customer
+
+        //Send email to MT
+
+        //Send Admin Notif
+        $adminRoles = ['admin', 'super admin'];
+        $adminUsers = Role::whereIn('name', $adminRoles)->first()->users;
+        foreach($adminUsers as $adminUser) {
+            $adminUser->notify(new AdminTableBookingCancelledNotification($booking));
+        }
 
         return redirect()->back()->with('success', 'Booking has been cancelled successfully');
     }
