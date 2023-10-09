@@ -100,7 +100,7 @@
                                                 <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                 <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date)) }}</td>
                                                 <td>{{ $today->arrival_time }}</td>
-                                                <td>{{ $today->room_id }}</td>
+                                                <td style="text-align: right;">{{ $today->room_id }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -122,7 +122,7 @@
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date)) }}</td>
                                                     <td>{{ $today->arrival_time }}</td>
-                                                    <td>{{ $today->room_id }}</td>
+                                                    <td style="text-align: right;">{{ $today->room_id }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
