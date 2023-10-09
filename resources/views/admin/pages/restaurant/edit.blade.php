@@ -72,8 +72,8 @@
                                 <label for="">Joining for</label>
                                 {{ $booking->joining_for }}
                                 <select name="joining_for" id="joining_for" required>
-                                    <option value="lunch" @if($booking->joining_for == 'lunch') selected @endif>lunch</option>
-                                    <option value="evening" @if($booking->joining_for == 'evening') selected @endif>evening</option>
+                                    <option value="lunch" @if($booking->joining_for == 'lunch' || 'LUNCH') selected @endif>lunch</option>
+                                    <option value="evening" @if($booking->joining_for == 'evening' || "EVENING") selected @endif>evening</option>
                                 </select>
                             </div>
                         </div>
