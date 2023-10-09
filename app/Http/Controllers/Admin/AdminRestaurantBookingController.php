@@ -214,6 +214,15 @@ class AdminRestaurantBookingController extends Controller
         return redirect('admin/restaurant-bookings')->with('success', 'Booking successfully updated');
     }
 
+    public function cancelBooking($id) {
+        $booking = RestaurantBooking::findOrFail($id);
+
+        $booking->update(['status' => 'cancelled']);
+
+        return redirect()->back()->with('success', 'Booking has been cancelled successfully');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      */

@@ -46,6 +46,7 @@
                                             <th>Joining for</th>
                                             <th>Date</th>
                                             <th>Time</th>
+                                            <th>No of guests</th>
                                             <th>Table</th>
                                             <th>Actions</th>
                                         </tr>
@@ -57,6 +58,7 @@
                                                 <td>{{ $booking->joining_for }}</td>
                                                 <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                                 <td>{{ $booking->reservation_time }}</td>
+                                                <td>{{ $booking->no_of_guests }}</td>
                                                 <td>
                                                     @if($booking->table_ids && $booking->table_id == 1)
                                                         @foreach(json_decode($booking->table_ids) as $tableId)
@@ -76,6 +78,14 @@
 
                                                                 <li>
                                                                     <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
+                                                                </li>
+                                                                <li>
+                                                                    <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                    </form>
+
                                                                 </li>
                                                                 <li>
                                                                     <form action="" method="POST">
@@ -101,6 +111,7 @@
                                         <th>Joining for</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>No of guests</th>
                                         <th>Table</th>
                                         <th>Actions</th>
                                     </tr>
@@ -112,6 +123,7 @@
                                             <td>{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
+                                            <td>{{ $booking->no_of_guests }}</td>
                                             <td>
                                                 @if($booking->table_ids && $booking->table_id == 1)
                                                     @foreach(json_decode($booking->table_ids) as $tableId)
@@ -131,6 +143,14 @@
 
                                                             <li>
                                                                 <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                </form>
+
                                                             </li>
                                                             <li>
                                                                 <form action="" method="POST">
@@ -156,6 +176,7 @@
                                         <th>Joining for</th>
                                         <th>Date</th>
                                         <th>Time</th>
+                                        <th>No of guests</th>
                                         <th>Table</th>
                                         <th>Actions</th>
                                     </tr>
@@ -167,6 +188,7 @@
                                             <td>{{ $booking->joining_for }}</td>
                                             <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
                                             <td>{{ $booking->reservation_time }}</td>
+                                            <td>{{ $booking->no_of_guests }}</td>
                                             <td>
                                                 @if($booking->table_ids && $booking->table_id == 1)
                                                     @foreach(json_decode($booking->table_ids) as $tableId)
@@ -186,6 +208,14 @@
 
                                                             <li>
                                                                 <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
+                                                            </li>
+                                                            <li>
+                                                                <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                </form>
+
                                                             </li>
                                                             <li>
                                                                 <form action="" method="POST">
