@@ -22,14 +22,17 @@ class AdminRestaurantBookingController extends Controller
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
         $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('status', '=','confirmed')
             ->orderBy('reservation_date', 'asc')
             ->get();
         $todaysBookings = RestaurantBooking::where('reservation_date', '>=', $today)
             ->where('reservation_date', '<', $today->copy()->addDay())
+            ->where('status', '=', 'confirmed')
             ->orderBy('reservation_time', 'asc')
             ->get();
         $thisWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $today)
             ->where('reservation_date', '<=', $endOfWeek)
+            ->where('status', '=', 'confirmed')
             ->orderBy('reservation_date', 'asc')
             ->get();
 
@@ -102,7 +105,9 @@ class AdminRestaurantBookingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $booking = RestaurantBooking::findOrFail($id);
+
+        return view('admin.pages.restaurant.show', compact('booking'));
     }
 
     public function csvUpload(){

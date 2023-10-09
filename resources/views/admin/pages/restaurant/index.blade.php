@@ -88,11 +88,12 @@
 
                                                                 </li>
                                                                 <li>
-                                                                    <form action="" method="POST">
+                                                                    <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
                                                                         @csrf
-                                                                        @method('delete')
-                                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                        @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                        <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
                                                                     </form>
+
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -147,7 +148,7 @@
                                                             <li>
                                                                 <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
                                                                     @csrf
-                                                                    @method('PUT')
+                                                                    @method('PUT') <!-- Add this hidden field to override the method -->
                                                                     <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
                                                                 </form>
 
@@ -212,7 +213,7 @@
                                                             <li>
                                                                 <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
                                                                     @csrf
-                                                                    @method('PUT')
+                                                                    @method('PUT') <!-- Add this hidden field to override the method -->
                                                                     <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
                                                                 </form>
 
