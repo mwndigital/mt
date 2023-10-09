@@ -86,6 +86,7 @@ class BookingController extends Controller
             $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
                 ->where('child_cap', '>=', $booking->no_of_children)
                 ->where('room_type', '!=', 'lodge')
+                ->orderBy('price_per_night_single', 'asc')
                 ->get();
         } else {
             $availableRooms = Rooms::where('room_type', 'lodge')
