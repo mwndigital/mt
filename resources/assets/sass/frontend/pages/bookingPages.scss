@@ -213,6 +213,29 @@ ul.ui-timepicker-viewport {
                                 font-size: 1rem;
                                 margin-bottom: 20px;
                             }
+                            button {
+                                background-color: $darkGold;
+                                border: 0;
+                                border-radius: 0;
+                                display: block;
+                                color: $w;
+                                font-family: $popMed;
+                                font-size: 1rem;
+                                padding: .5rem;
+                                text-align: center;
+                                @include transition(all .4s ease-in-out);
+                                width: 100%;
+
+                                &:hover {
+                                    background-color: $darkBlue;
+                                    border: 0;
+                                    box-shadow: none;
+                                    color: $w;
+                                    cursor: default;
+                                    outline: none;
+                                    text-decoration: none;
+                                }
+                            }
                             p {
                                 color: $b;
                                 font-family: $libReg;
@@ -229,16 +252,22 @@ ul.ui-timepicker-viewport {
                         width: 100%;
                     }
                     input[type='radio']:checked~label {
+                        background-color: $lightGrey;
                         border: 2px solid $darkGold;
                         -webkit-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
                         -moz-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
                         box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
+
+                        .content {
+                            button {
+                                background-color: $darkBlue;
+                            }
+                        }
+
                     }
 
                 }
-                input[type="checkbox"]:checked + .checkItem {
-                    border-color: 2px solid $darkGold;
-                }
+
             }
 
 

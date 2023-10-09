@@ -139,7 +139,6 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row innerRow">
-                                        <!-- if empty show no rooms available -->
                                         @if($filteredRooms->isEmpty())
                                             <div class="col-12 text-center alert alert-info">
                                                 No rooms available for the selected dates. Please go back and choose different dates.
@@ -156,7 +155,7 @@
                                                             <h6 class="price">
                                                                 Price from: £{{ $room->price_per_night_single }}
                                                             </h6>
-                                                            <button style="width: 100%;background:#bea058;" type="button" class="btn mb-3 text-white">Select</button>
+                                                            <button type="button" class="btn mb-3">Select</button>
                                                             {!! $room->short_description !!}
                                                         </div>
                                                     </label>
