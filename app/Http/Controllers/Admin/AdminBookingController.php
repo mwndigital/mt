@@ -23,11 +23,24 @@ class AdminBookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::where('status', '!=', BookingStatus::DRAFT)
-            ->where('checkin_date', '>=', Carbon::now())
-            ->orderBy('checkout_date', 'ASC')
-            ->paginate(20);
-        return view('admin.pages.bookings.index', compact('bookings'));
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $allBookings = Booking::where('checkin_date', '>=', $today)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        $todaysBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<', $today->copy()->addDay())
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<=', $endOfWeek)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+        return view('admin.pages.bookings.index', compact('allBookings', 'todaysBookings', 'thisWeeksBookings'));
     }
 
     /**
