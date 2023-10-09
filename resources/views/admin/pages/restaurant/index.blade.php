@@ -44,6 +44,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Joining for</th>
+                                            <th>Date</th>
                                             <th>Time</th>
                                             <th>Table</th>
                                             <th>Actions</th>
@@ -54,6 +55,7 @@
                                             <tr>
                                                 <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                                 <td>{{ $booking->joining_for }}</td>
+                                                <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                                 <td>{{ $booking->reservation_time }}</td>
                                                 <td>
                                                     @if($booking->table_ids && $booking->table_id == 1)
