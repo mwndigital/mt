@@ -64,12 +64,27 @@ class FrontendRestaurantBookingController extends Controller
 
     public function stepTwoShow(Request $request) {
         $table_booking = $request->session()->get('table_booking');
-        $res_tables_ids = RestaurantBooking::orderBy('reservation_date')->get()
-            ->filter(function($value) use ($table_booking){
-                return $value->reservation_date == $table_booking->reservation_date;
-            })->pluck('table_id');
+
+        // Get the reservations matching the reservation date
+        $reservations = RestaurantBooking::orderBy('reservation_date')
+            ->where('reservation_date', $table_booking->reservation_date)
+            ->get();
+
+        $reservedTableIds = [];
+
+        // Iterate through reservations to extract table IDs
+        foreach ($reservations as $reservation) {
+            $tableIds = json_decode($reservation->table_ids);
+            $reservedTableIds = array_merge($reservedTableIds, $tableIds);
+        }
+
+        // Filter the unique table IDs
+        $reservedTableIds = array_unique($reservedTableIds);
+
+        // Get available tables that match the number of guests
         $tables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
-            ->whereNotIn('id', $res_tables_ids)->get();
+            ->whereNotIn('id', $reservedTableIds)
+            ->get();
 
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
     }
@@ -78,7 +93,7 @@ class FrontendRestaurantBookingController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'table_id' => ['integer', 'required' ],
+            'table_id' => ['required' ],
             'create_account' => ['nullable', 'string'],
             'password' => ['required_if:create_account,yes'],
             'dietary_information' => ['nullable', 'max: 2000', 'string'],
@@ -114,6 +129,7 @@ class FrontendRestaurantBookingController extends Controller
                 'reservation_end_time' => $reservation_time_end,
                 'no_of_guests' => $table_booking->no_of_guests,
                 'table_id' => $table_booking->table_id,
+                'table_ids' => $table_booking->table_id,
                 'joining_for' => $table_booking->joining_for,
                 'additional_information' => $table_booking->additional_information,
                 'dietary_info' => $table_booking->dietary_info,
