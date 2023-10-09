@@ -70,6 +70,11 @@ class Booking extends Model implements \Serializable
         return $this->belongsTo(Rooms::class);
     }
 
+    public function rooms()
+    {
+        return $this->belongsToMany(Rooms::class);
+    }
+
     public function serialize()
     {
         return serialize($this->getAttributes());
