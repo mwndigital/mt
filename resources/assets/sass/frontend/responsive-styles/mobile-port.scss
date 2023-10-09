@@ -23,6 +23,8 @@ header {
             color: $w;
         }
         #frontendMainNavbar {
+            height: 450px;
+            overflow-y: auto;
             padding: 4rem .5rem 1rem .5rem;
         }
         ul {
@@ -43,14 +45,14 @@ header {
                         display: block;
                         width: 100%;
                     }
+                    ul.dropdown-menu {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
 }
-header .navbar
-
-
 #homepageTop {
     height: 900px;
     .content {
