@@ -264,7 +264,7 @@
                         <!-- next button -->
                         <div class="row @if (!$booking->room) d-none @endif" id="next">
                             <div class="col-12">
-                                <button  type="button" style="width: 100%;background-color:#bea058;color:#fff;" class="btn" onclick="onSubmit()"><h3>Next <i class="fas fa-chevron-right"></i></h3></button>
+                                <button class="darkGoldBtn" type="button"  onclick="onSubmit()" style="font-size: 1.5rem;">Next <i class="fas fa-chevron-right"></i></button>
                             </div>
 
                             <div class="col-12 mt-2">
