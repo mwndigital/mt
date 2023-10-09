@@ -289,10 +289,6 @@ header {
         }
     }
 }
-
-
-
-
 .makeBookingBanner {
     h2 {
         font-size: 2rem;
@@ -322,6 +318,52 @@ header {
         margin-bottom: 50px;
     }
 }
+
+.bookingPageTop {
+    height: 500px;
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 2rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+.bookingPageMain {
+    .formWrap {
+        .stepTitle {
+            font-size: 1.75rem;
+        }
+        .stepBanner {
+            .innerWrap {
+                span {
+                    font-size: 1rem;
+                    padding: 1rem;
+                }
+            }
+        }
+
+        form {
+            .row {
+                margin-bottom: 0;
+            }
+            .col-md-4,
+            .col-md-6,
+            .col-12 {
+                margin-bottom: 30px;
+            }
+
+            a.backBtn,
+            button.nextBtn {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
 
 .awardsBanner {
     .awardsWrap {
