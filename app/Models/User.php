@@ -51,4 +51,9 @@ class User extends Authenticatable
     public function restaurantBooking(){
         return $this->hasMany(RestaurantBooking::class);
     }
+
+    public function isAdmin(){
+        return $this->hasRole('admin');
+    }
+
 }

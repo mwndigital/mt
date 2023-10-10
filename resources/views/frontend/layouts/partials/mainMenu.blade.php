@@ -51,8 +51,21 @@
                     <a href="{{ route('faqs.index') }}">FAQs</a>
                 </li>
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
-                <li><a href="@if(Auth::check()){{ route('customer.dashboard') }} @else {{ route('login') }} @endif " title="Login to your account"><i class="fas fa-user"></i></a></li>
-            </ul>
+                <li>
+                    <a href="@if(Auth::check())
+                                 @if(Auth::user()->isAdmin())
+                                    {{ route('admin.dashboard') }}
+                                 @else
+                                    {{ route('customer.dashboard') }}
+                                 @endif
+                              @else
+                                 {{ route('login') }}
+                              @endif"
+                       title="Login to your account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                            </ul>
             <ul class="navbar-nav ms-auto rightMenu">
                 <li class="ms-auto">
                     <div class="dropdown">
