@@ -1,0 +1,42 @@
+header {
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
+
+    .topBar {
+
+        ul.contactDetails {
+            flex-direction: row;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .tripAdviserBanner {
+            justify-content: center;
+            ul {
+                li {
+                    .fa-star,
+                    .fa-star-half {
+                        font-size: .9rem;
+                    }
+                }
+            }
+        }
+        ul.socialLinks {
+            display: none;
+        }
+    }
+    .navbar {
+        .navbar-brand {
+            img {
+                height: 100px;
+                margin: 0 2rem -50px 0;
+            }
+        }
+    }
+}

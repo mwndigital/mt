@@ -1,0 +1,145 @@
+a.darkGoldBtn,
+button.darkGoldBtn,
+input.darkGoldBtn {
+    background-color: $darkGold;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $w;
+    font-family: $popBold;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    .fa-chevron-right {
+        font-size: 1rem;
+        margin-left: 10px;
+        @include transition(all .4s ease-in-out);
+    }
+
+    &:hover {
+        background-color: $lightGold;
+        border: 0;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
+        .fa-chevron-right {
+            margin-left: 20px;
+        }
+    }
+}
+a.goldOutlineBtn,
+button.goldOutlineBtn,
+input.goldOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $darkGold;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $darkGold;
+    font-family: $popMed;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show{
+        background-color: $darkGold;
+        border: 1px solid $darkGold;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
+    }
+}
+a.blueBtn,
+button.blueBtn,
+input.blueBtn {
+    background-color: $darkBlue;
+    border: 0;
+    border-radius: 5px;
+    color: $w;
+    font-family: $popBold;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    .fa-chevron-right {
+        font-size: 1rem;
+        margin-left: 10px;
+        @include transition(all .4s ease-in-out);
+    }
+
+    &:hover {
+        background-color: lighten($darkBlue, 10%);
+        border: 0;
+        border-radius: 5px;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
+
+        .fa-chevron-right {
+            margin-left: 20px;
+        }
+    }
+}
+a.blueOutlineBtn,
+button.blueOutlineBtn,
+input.blueOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $darkBlue;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $darkBlue;
+    font-family: $popMed;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show{
+        background-color: $darkBlue;
+        border: 1px solid $darkBlue;
+        box-shadow: none;
+        color: $w;
+        outline: none;
+        text-decoration: none;
+    }
+}
+a.whiteOutlineBtn,
+button.whiteOutlineBtn,
+input.whiteOutlineBtn {
+    background-color: transparent;
+    border: 1px solid $w;
+    border-radius: 5px;
+    box-shadow: none;
+    color: $w;
+    font-family: $popMed;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    @include transition(all .4s ease-in-out);
+
+    &:hover,
+    &.active,
+    &.show {
+        background-color: $w;
+        border: 1px solid $w;
+        box-shadow: none;
+        color: $darkBlue;
+        outline: none;
+        text-decoration: none;
+    }
+}

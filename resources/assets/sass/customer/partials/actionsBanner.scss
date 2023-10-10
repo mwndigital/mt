@@ -1,0 +1,11 @@
+.actionsBanner {
+    background-color: $lightGrey;
+    border-radius: 0;
+    display: block;
+    margin-bottom: 1rem;
+    padding: 2rem  2rem;
+
+    .btn-group {
+        gap: 20px;
+    }
+}

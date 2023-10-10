@@ -1,0 +1,53 @@
+.testimonialBanner {
+    background-color: $w;
+    padding: 50px 0;
+
+    h4 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .owl-carousel {
+
+        .item {
+            background-color: rgba(0, 44, 80, .85);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 20px;
+            padding: 2.5rem;
+
+            h5 {
+                color: $w;
+                font-family: $popBold;
+                font-size: 2rem;
+                margin-bottom: 30px;
+                text-align: center;
+
+                &:after {
+                    background-color: $darkGold;
+                    content: '';
+                    display: block;
+                    height: 1px;
+                    margin: 10px auto 20px auto;
+                    width: 40%;
+                }
+            }
+            p {
+                color: $w;
+                font-family: $popReg;
+                font-size: 1rem;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            h6 {
+                color: $darkGold;
+                font-family: $popReg;
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+    }
+}

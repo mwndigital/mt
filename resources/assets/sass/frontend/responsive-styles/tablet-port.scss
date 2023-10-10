@@ -1,0 +1,170 @@
+header {
+    background: rgba(0, 44, 80, .75);
+    backdrop-filter: blur(8px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom: 2px solid $darkGold;
+    -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+    .topBar {
+
+        ul.contactDetails {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        ul.socialLinks {
+            display: none;
+        }
+    }
+    .navbar {
+        #frontendMainNavbar {
+            padding: 4rem .5rem 1rem .5rem;
+        }
+        ul {
+            li {
+                margin-bottom: 5px;
+            }
+        }
+        ul.rightMenu {
+            li.ms-auto {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+#homepageTop {
+
+    svg {
+        bottom: -65px;
+    }
+}
+#homepageWelcomeBanner {
+
+    img {
+        display: block;
+        height: auto;
+        margin: 0 auto 30px auto;
+        width: 75%;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+}
+#homepageBannerTwo {
+    img {
+        display: block;
+        margin: auto;
+        width: 75%;
+    }
+}
+#homepageBannerThree {
+    img {
+        display: block;
+        margin: 0 auto 30px auto !important;
+        width: 75%;
+    }
+}
+#homepageHomeFromHomeBanner {
+    .owl-carousel {
+        margin-top: 50px;
+    }
+}
+#homepageBannerFour {
+    img {
+        display: block;
+        margin: 0 auto 30px auto !important;
+        width: 75%;
+    }
+}
+.ourRatingsBanner {
+    .reviewItem {
+        margin-bottom: 30px;
+    }
+}
+#aboutUsPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+    }
+}
+#aboutPageBannerOne {
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 30px auto 0 auto;
+        width: 75%;
+    }
+}
+#aboutPageBannerTwo {
+    img.mainImg {
+        display: block;
+        height: auto;
+        margin: 0 auto 30px auto;
+        width: 75%;
+    }
+}
+.historypageBannerSlider {
+    .owl-carousel {
+        margin-top: 50px;
+    }
+    .item {
+        img {
+            display: block;
+            height: auto;
+            width: 75%;
+        }
+    }
+}
+.galleryPageTop {
+    height: 800px;
+    .content {
+        padding-top: 150px;
+    }
+}
+.galleryPageMain {
+    .galleryItemWrap {
+        .card.galleryItem {
+            transform: rotate(-1deg);
+            .card-body {
+                padding: 1.25rem 1rem;
+                h4 {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}
+.brPageHeroBanner {
+    height: 900px;
+    .content {
+        padding-top: 150px;
+        h1 {
+            font-size: 3rem
+        }
+    }
+}
+
+.brBannerOne {
+    img.featuredImage {
+        display: block;
+        height: auto;
+        margin: 30px auto 30px auto;
+        width: 75%;
+    }
+}
+#roomsPageTop,
+.lodgePageHero,
+.faqsPageTop,
+#contactPageTop{
+    height: 800px;
+    .content {
+        padding-top: 150px;
+    }
+}

@@ -1,0 +1,112 @@
+.lodgePageHero {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    img.mainBgImage {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .45);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;;
+        height: 100%;
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+
+        h1 {
+            color: $w;
+            font-family: $popBold;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        p{
+            color: $w;
+            font-family: $popMed;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            gap: 20px;
+        }
+    }
+}
+
+.lodgeBanner {
+    background-color: $w;
+    padding: 4rem 0;
+
+    .secTitle {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    p {
+        color: $b;
+        font-family: $popReg;
+        font-size: 1rem;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+    img.featuredImage {
+        border-radius: 40px;
+        display: block;
+        height: auto;
+        margin: 0;
+        width: 90%;
+    }
+    .lodgePageImageSlider {
+        .item {
+            img {
+                border-radius: 40px;
+                display: block;
+                height: 400px;
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+        .owl-dots {
+            margin-top: 25px;
+            text-align: center;
+            button.owl-dot {
+                margin-right: 20px;
+                span {
+                    background-color: transparent;
+                    border: 1px solid $darkGrey;
+                    border-radius: 100%;
+                    display: block;
+                    content: '';
+                    height: 10px;
+                    @include transition(all .4s ease-in-out);
+                    width: 10px;
+                }
+                &.active {
+                    span {
+                        background-color: $darkBlue;
+                        border: 1px solid $darkBlue;
+                    }
+                }
+            }
+        }
+    }
+}

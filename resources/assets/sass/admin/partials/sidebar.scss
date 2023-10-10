@@ -1,0 +1,55 @@
+.mainSidebar{
+    background-color: $lightGrey;
+    height: 100vh;
+    left: -200px;
+    overflow-y: auto;
+    padding: 1.5rem 1rem;
+    position: fixed;
+
+    width: 0;
+
+    ul {
+
+        li {
+            margin-bottom: 20px;
+            a {
+                color: $darkBlue;
+                font-family: $libReg;
+                font-size: 1.1rem;
+                text-decoration: none;
+                @include transition(all .4s ease-in-out);
+
+                &:hover {
+                    box-shadow: none;
+                    color: $darkGold;
+                }
+            }
+            &.dropdown {
+                a {
+
+                }
+                .dropdown-menu {
+                    background-color: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    margin-bottom: 0;
+                    padding: 1rem 0 0 1.5rem;
+                    position: relative !important;
+                    transform: translate(0px, 0px) !important;
+                    width: 100%;
+                    li {
+                        margin-bottom: 5px;
+                        a {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.show {
+        height: 100vh;
+        left: 0;
+        width: calc(100% - 80%);
+    }
+}

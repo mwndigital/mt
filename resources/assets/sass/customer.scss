@@ -1,0 +1,31 @@
+//Core
+@import "core/colours";
+@import "core/fonts";
+@import "core/mixins";
+@import "core/customBtns";
+
+//Partials
+@import "customer/partials/pageHero";
+@import "customer/partials/mainWrapper";
+@import "customer/partials/actionsBanner";
+@import "customer/partials/pageMain";
+
+//Header
+@import "customer/partials/header";
+
+//pages
+@import "customer/pages/dashboard";
+
+//responsive stuff
+@media screen and (min-width: 320px) and (max-width: 812px) and (orientation: portrait) {
+    @import "frontend/responsive-styles/mobile-port";
+}
+@media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
+    @import "responsive-styles/mobile-land";
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    @import "frontend/responsive-styles/tablet-port";
+}
+@media screen and (min-width: 1024px) and (max-width: 1112px) and (orientation: landscape) {
+    @import "responsive-styles/tablet-land";
+}

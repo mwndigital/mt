@@ -1,0 +1,14 @@
+.pageHero {
+    background-color: $lightGrey;
+    border-radius: 0;
+    display: block;
+    margin-bottom: 2rem;
+    padding: 4rem  2rem;
+
+    h1 {
+        color: $darkBlue;
+        font-family: $libBold;
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+}

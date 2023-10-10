@@ -1,0 +1,141 @@
+.galleryPageTop {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+
+    img.mainBgImage {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .35);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        h1 {
+            color: $w;
+            font-family: $cav;
+            font-size: 5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        p {
+            color: $w;
+            font-family: $popMed;
+            font-size: 1.15rem;
+            text-align :center;
+        }
+    }
+}
+
+.galleryPageMain {
+    padding: 3rem 0;
+
+    .galleryItemWrap {
+        margin-bottom: 30px;
+        padding: 10px;
+        position: relative;
+        @include transition(all .4s ease-in-out);
+
+        &:before {
+            background-color: $w;
+            border: 20px solid $darkGold;
+            border-radius: 10px;
+            content: ' ';
+            display: block;
+            height: 570px;
+            position: absolute;
+            top: 0;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+            z-index: -1;
+        }
+
+        .card.galleryItem {
+            background-color: $w;
+            border: 0;
+            border-radius: 10px;
+            -webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+            -moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+            box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.5);
+            left: 5px;
+            outline: none;
+            overflow: hidden;
+            position: relative;
+            top: -5px;
+            transform: rotate(-2deg);
+            @include transition(all .4s ease-in-out);
+            z-index: 10;
+            .card-header {
+                background-color: transparent;
+                border: 0;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                height: 475px;
+                outline: none;
+                padding: 0;
+
+                img {
+                    display: block;
+                    height: 100%;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+            .card-body {
+                background-color: transparent;
+                border: 0;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                h4 {
+                    color: $darkBlue;
+                    font-family: $cav;
+                    font-size: 2.5rem;
+                    margin-bottom: 0;
+                }
+            }
+            .imageWrapper {
+                display: none;
+            }
+
+        }
+
+
+    }
+    .galleryItemWrap:hover {
+        .card.galleryItem {
+            background-color: $w;
+            border: 0;
+            border-radius: 10px;
+            -webkit-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0);
+            -moz-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0);
+            box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0);
+            left: 10px;
+            outline: none;
+            overflow: hidden;
+            position: relative;
+            top: -5px;
+            transform: rotate(0deg);
+            @include transition(all .4s ease-in-out);
+            z-index: 10;
+        }
+    }
+}
+.lightbox .lb-image {
+    display: block;
+    height: 600px !important;
+    width: auto !important;
+}
+

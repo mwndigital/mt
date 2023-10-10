@@ -1,0 +1,76 @@
+.modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                border-bottom: 1px solid $darkGold;
+                .modal-title {
+                    color: $darkBlue;
+                    font-family: $libBold;
+                    font-size: 3rem;
+                }
+                button.btn-close {
+
+                }
+            }
+            .modal-body {
+                padding: 3rem 2rem;
+                .menuItem {
+                    margin-bottom: 40px;
+                    text-align :center;
+                    h5 {
+                        color: $darkGrey;
+                        font-family: $libBold;
+                        font-size: 2rem;
+                        margin-bottom: 25px;
+                        text-align: center;
+
+                        &:after {
+                            border-top: 1px solid $darkGold;
+                            content: '';
+                            display: block;
+                            margin: 5px auto 15px auto;
+                            width: 15%;
+                        }
+                    }
+                    ul {
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                        li {
+                            color: $darkGold;
+                            font-family: $libReg;
+                            font-size: 1.2rem;
+                            margin-bottom: 15px;
+                            .content {
+                                color: $mediumGrey;
+                                font-family: $libReg;
+                                font-size: 1rem;
+                                font-style: italic;;
+                            }
+                        }
+                    }
+                }
+                .whiskyModalInner {
+                    text-align: center;
+
+                    ul {
+                        margin: 0;
+                        padding:0;
+                        li {
+                            color: $darkGold;
+                            font-family: $libReg;
+                            font-size: 1.2rem;
+                            margin-bottom: 20px;
+                            .content {
+                                color: $mediumGrey;
+                                font-family: $libReg;
+                                font-size: 1rem;
+                                font-style: italic;;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+.restaurantPageSliderBanner {
+    background-color: $w;
+    padding: 2rem 0;
+    .owl-carousel {
+
+        .item {
+            img {
+                border-radius: 40px;
+                display: block;
+                height: auto;
+                margin: 0 auto;
+                width: 80%;
+            }
+        }
+    }
+}
+
+.bookMealBanner {
+    padding: 4rem 0;
+
+    text-align: center;
+
+    h3 {
+        color: $w;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $w;
+        font-family: $popReg;
+        font-size: 1rem;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}

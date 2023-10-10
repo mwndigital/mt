@@ -1,0 +1,335 @@
+#homepageTop {
+    height: 780px;
+    overflow: hidden;
+    position: relative;
+
+    img.mainBgImage {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .35);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;;
+        height: 100%;
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+
+        .inner {
+            padding-top: 75px;
+
+            h1 {
+                color: $w;
+                font-family: $popBold;
+                font-size: 3rem;
+                margin-bottom: 0;
+                span {
+                    color: $darkGold;
+                    display: block;
+                    font-family: $cav;
+                    font-size: 6rem;
+                    margin-top: -15px;
+                    width: 100%;
+                }
+            }
+            h4 {
+                color: $w;
+                font-family: $cav;
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+                margin-top: -10px;
+                text-align: right;
+                transform: rotate(-5deg);
+            }
+            p {
+                color: $w;
+                font-family: $popReg;
+                font-size: 1.15rem;
+
+                strong {
+                    font-family: $popMed;
+                }
+                &:first-of-type {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+    svg {
+        bottom: -50px;
+        display: block;
+        height: 200px;
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+    }
+}
+#homepageWelcomeBanner {
+    background-color: $darkBlue;
+    padding: 2rem 0 4rem 0;
+
+    img {
+        border-radius: 40px;
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    h2 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $w;
+        font-family: $popReg;
+        font-size: 1rem;
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}
+.homepageBanner {
+    padding: 3rem 0;
+
+    h2, h3, h4 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    img {
+        border-radius: 40px;
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+    p {
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1.1rem;
+
+        strong {
+            font-family: $popBold;
+        }
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+}
+#homepageHomeFromHomeBanner {
+    background-color: $w;
+    padding: 60px 0;
+
+    h5 {
+        color: $mediumGrey;
+        font-family: $popMed;
+        font-size: 1rem;
+    }
+    h3 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px
+    }
+    p {
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1.1rem;
+
+        strong {
+            font-family: $popBold;
+        }
+
+        &:last-of-type {
+            margin-bottom: 50px;
+        }
+    }
+    a.darkGoldBtn {}
+
+    .homeFromHomeSlider {
+        margin: auto;
+        width: 85%;
+        .item {
+            .card {
+                background-color: transparent;
+                border: 0;
+                border-radius: 0;
+                .card-header {
+                    background-color: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    padding: 0;
+
+                    img {
+                        height: auto;
+                        max-height: 300px;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+                .card-body {
+                    background-color: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    padding: 1rem 0;
+
+                    h3 {
+                        color: $darkBlue;
+                        font-family: $popBold;
+                        font-size: 1.5rem;
+
+                    }
+                }
+            }
+        }
+        .owl-dots {
+            button.owl-dot {
+                margin-right: 20px;
+                span {
+                    background-color: transparent;
+                    border: 1px solid $darkGrey;
+                    border-radius: 100%;
+                    display: block;
+                    content: '';
+                    height: 10px;
+                    @include transition(all .4s ease-in-out);
+                    width: 10px;
+                }
+                &.active {
+                    span {
+                        background-color: $darkBlue;
+                        border: 1px solid $darkBlue;
+                    }
+                }
+            }
+        }
+    }
+}
+#homepageBookRoomBanner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    text-align: center;
+
+    h4 {
+        color: $w;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+    p {
+        color: $w;
+        font-family: $popReg;
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+}
+
+.ourRatingsBanner {
+    background-color: $lightGrey;
+    padding: 3rem 0;
+
+    h4 {
+        color: $darkGold;
+        font-family: $popBold;
+        font-size: 3rem;
+        margin-bottom: 50px;
+    }
+
+    .reviewItem {
+        align-items: center;
+        background-color: $darkBlue;
+        border: 0;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;;
+        height: 250px;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        text-align :center;
+        @include transition(all .4s ease-in-out);
+
+        a {
+            align-items: center;
+            display: flex;
+            flex-direction: column;;
+            justify-content: center;
+            height: 100%;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        img {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .content {
+            align-items: center;
+            background-color: rgba(0, 44, 80, .35);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;;
+            height: 100%;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            h4 {
+                color: $w;
+                font-family: $popBold;
+                font-size: 4rem;
+                margin-bottom: 10px;
+            }
+            h6 {
+                color: $w;
+                font-family: $popReg;
+                font-size: 1.5rem;
+            }
+        }
+
+
+
+        &:hover {
+            box-shadow: none;
+            outline: none;
+            transform: scale(1.1);
+        }
+    }
+}
+
+.gettingHereBanner {
+    background-color: $lightGrey;
+    padding: 3rem 0;
+
+    h4 {
+        color: $darkGold;
+        font-family: $cav;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}

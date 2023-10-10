@@ -1,0 +1,41 @@
+.pageMain {
+    .dashboardItem {
+        background-color: $lightGrey;
+        height: 500px;
+        padding: 2rem  2rem;
+        overflow: auto;
+
+        h2 {
+            color: $darkBlue;
+            font-family: $popMed;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        .noBooking {
+            color: $darkGold;
+            font-family: $popMed;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        table {
+            display: block;
+            overflow: auto;
+            width: 100%;
+
+            thead {
+                tr {
+                    th {
+
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,576 @@
+.pageMain {
+    background-color: $lightGrey;
+    border-radius: 0;
+    display: block;
+    min-height: 400px;
+    overflow-x: auto;
+    padding: 4rem  2rem;
+    .table-responsive {
+        height: 100%;
+    }
+    table {
+        overflow-x: auto;
+        width: 100%;
+        thead {
+            tr {
+                th {
+                    color: $darkBlue;
+                    font-family: $libBold;
+                    font-size: 1.1rem;
+                    height: auto;
+                    min-width: 200px;
+                    width: auto;
+                    &:last-of-type {
+                        display: flex;
+                        justify-content: flex-end;
+
+                        min-width: 200px;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    //display: table-cell;
+                    font-family: $libReg;
+                    font-size: 1rem;
+                    //height: 100%;
+
+
+                    &:last-of-type {
+                        justify-content: flex-end;
+                    }
+                    .dropdown {
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                        .dropdown-toggle {
+                            background-color: transparent;
+                            border: 0;
+                            box-shadow: none;
+                            color: $darkBlue;
+                            display: block;
+                            font-size: 1.5rem;
+                            height: 100%;
+                            outline: none;
+                            text-align: right;
+                            @include transition(all .4s ease-in-out);
+                            width: 100%;
+
+                            &:after {
+                                display: none;
+                            }
+
+                            &:hover,
+                            &:focus {
+                                background-color: transparent;
+                                border: 0;
+                                border-radius: 0;
+                                color: $darkBlue;
+                                outline: none;
+                            }
+                        }
+                        div.dropdown-menu {
+                            border: 0;
+                            -webkit-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            -moz-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
+                            padding: 1rem;
+
+                            ul {
+                                list-style-type: none;
+                                margin: 0;
+                                padding: 0;
+                                li {
+                                    margin-bottom: 10px;
+                                    a {
+                                        background-color: transparent;
+                                        border: 0;
+                                        border-radius: 0;
+                                        color: $darkBlue;
+                                        display: block;
+                                        font-family: $libReg;
+                                        font-size: 1rem;
+                                        outline: none;
+                                        text-decoration: none;
+                                        @include transition(all .4s ease-in-out);
+                                        width: 100%;
+
+                                        &:hover,
+                                        &:focus,
+                                        &:active {
+                                            background-color: transparent;
+                                            border: 0;
+                                            box-shadow: none;
+                                            color: $darkGold;
+                                            outline: none;
+                                            text-decoration: none;
+                                        }
+                                    }
+                                    form {
+                                        margin: 0;
+                                        padding: 0;
+
+                                        button {
+                                            background-color: transparent;
+                                            border: 0;
+                                            border-radius: 0;
+                                            box-shadow: none;
+                                            color: $darkBlue;
+                                            font-family: $libReg;
+                                            font-size: 1rem;
+                                            margin: 0;
+                                            padding: 0;
+                                            text-align: left;
+
+                                            &:hover,
+                                            &:focus,
+                                            &:active {
+                                                background-color: transparent;
+                                                border: 0;
+                                                border-radius: 0;
+                                                color: $darkGold;
+                                                outline: none;
+                                                text-decoration: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    table.showTable {
+        tbody {
+            tr {
+                td {
+                    &:first-of-type {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+
+    form {
+        .row {
+            margin-bottom: 20px;
+        }
+        label {
+            color: $darkBlue;
+            display: block;
+            font-family: $libBold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        input[type='text'],
+        input[type='tel'],
+        input[type='number'],
+        input[type='email'],
+        input[type='url'],
+        input[type='password'],
+        input[type='date'],
+        input[type='time']{
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            height: 40px;
+
+            padding: .5rem;
+            text-align: left;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                box-shadow: none;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        select {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            height: 40px;
+            padding: .5rem;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        select[multiple] {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            height: 40px;
+            padding: .5rem;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        textarea {
+            background-color: $w;
+            border: 0;
+            border-bottom: 1px solid $w;
+            border-radius: 0;
+            color: $darkBlue;
+            display: block;
+            padding: .5rem;
+            text-decoration: none;
+            @include transition(all .4s ease-in-out);
+            width: 100%;
+
+            &:focus {
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkGold;
+                box-shadow: none;
+                color: $darkBlue;
+                outline: none;
+                text-decoration: none;
+            }
+        }
+        button {
+            margin-top: 20px;
+        }
+    }
+    h4.pageSecTitle {
+        color: $darkGold;
+        font-family: $libBold;
+        font-size: 1.75rem;
+        margin-bottom: 30px;
+
+    }
+
+    .bookingFormWrap {
+        .stepBanner {
+            display: block;
+            margin-bottom: 30px;
+            height: 50px;
+            width: 100%;
+            .innerWrap {
+                align-items: center;
+                background-color: $w;
+                border: 1px solid $lightGrey;
+                border-radius: 30px;
+                display: flex;
+                flex-direction: row;
+                height: 100%;
+
+                span {
+                    align-items: center;
+                    background-color: $darkBlue;
+                    border: 0;
+                    border-radius: 30px;
+                    color: $w;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-family: $libBold;
+                    font-size: 1.1rem;
+                    height: 100%;
+                    padding: 0 2rem;
+                    width: 25%;
+                }
+            }
+
+        }
+        .stepTitle {
+            color: $darkBlue;
+            font-family: $libBold;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        form {
+            .row {
+                margin-bottom: 30px;
+            }
+            label {
+                color: $darkBlue;
+                display: block;
+                font-family: $libBold;
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            input[type='text'],
+            input[type='email'],
+            input[type='tel'],
+            input[type='number'],
+            input[type='date'],
+            input[type='time'],
+            select{
+                background-color: $w;
+                border: 0;
+                border-bottom: 1px solid $darkBlue;
+                border-radius: 0;
+                display: block;
+
+                height: 40px;
+                padding: .5rem ;
+                @include transition(all .4s ease-in-out);
+                width: 100%;
+
+                &:focus {
+                    background-color: $w;
+                    border: 0;
+                    border-bottom: 1px solid $darkGold;
+                    box-shadow: none;
+
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
+
+            .innerRow {
+                .checkItem {
+                    margin-bottom: 30px;
+                    position: relative;
+
+                    label {
+                        border: 2px solid transparent;
+                        text-align: center;
+                        @include transition(all .4s ease-in-out);
+                        img {
+                            display: block;
+                            height: 200px;
+                            margin-bottom: 20px;
+                            object-fit: cover;
+                            width: 100%;
+                        }
+
+                        h4 {
+                            color: $darkBlue;
+                            font-family: $libBold;
+                            font-size: 1rem;
+                        }
+                    }
+                    input[type='radio'] {
+                        height: 100%;
+                        left: 0;
+                        opacity: 0;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
+                    input[type='radio']:checked~label {
+                        border: 2px solid $darkGold;
+                        -webkit-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
+                        -moz-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
+                        box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
+                    }
+
+                }
+                input[type="checkbox"]:checked + .checkItem {
+                    border-color: 2px solid $darkGold;
+                }
+            }
+
+
+            a.backBtn,
+            button.backBtn {
+                background-color: $darkGold;
+                border: 0;
+                border-radius: 0;
+                color: $w;
+                font-family: $libBold;
+                font-size: 1.1rem;
+                padding: .75rem 2rem;
+                text-align: center;
+                text-decoration: none;
+                @include transition(all .4s ease-in-out);
+
+                i {
+                    font-size: 1rem;
+                    margin-right: 5px;
+                    @include transition(all .4s ease-in-out);
+                }
+
+                &:hover {
+                    background-color: $darkBlue;
+                    box-shadow: none;
+                    color: $w;
+                    outline: none;
+                    text-decoration: none;
+
+                    i {
+                        margin-right: 10px
+                    }
+                }
+            }
+
+            a.nextBtn,
+            button.nextBtn{
+                background-color: $darkGold;
+                border: 0;
+                border-radius: 0;
+                color: $w;
+                font-family: $libBold;
+                font-size: 1.1rem;
+                padding: .75rem 2rem;
+                text-align: center;
+                text-decoration: none;
+                @include transition(all .4s ease-in-out);
+
+                i {
+                    font-size: 1rem;
+                    margin-left: 5px;
+                    @include transition(all .4s ease-in-out);
+                }
+
+                &:hover {
+                    background-color: $darkBlue;
+                    box-shadow: none;
+                    color: $w;
+                    outline: none;
+                    text-decoration: none;
+
+                    i {
+                        margin-left: 10px
+                    }
+                }
+            }
+        }
+    }
+    h2.gallerySectionTitle {
+        color: $darkBlue;
+        font-family: $popBold;
+        font-size: 2.5rem;
+        margin: 20px 0;
+    }
+
+    .tab-panels-wrap {
+        .list-group {
+            border-bottom: 1px solid $darkBlue;
+            display: flex;
+
+            flex-direction: row;
+
+            gap: 20px;
+
+            a {
+                border: 0;
+                border-radius: 0;
+                font-family: $popBold;
+                font-size: 1rem;
+
+
+                padding: .75rem 1.5rem;
+                @include transition(all .4s ease-in-out);
+
+                &.show,
+                &.active,
+                &:hover {
+                    background-color: $darkGold;
+                    box-shadow: none;
+                    color: $w;
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
+        }
+        .tab-content {
+
+        }
+    }
+}
+
+.ui-widget-header {
+    background: $darkBlue !important;
+    border: 0 !important;
+    outline: none;
+
+
+}
+.ui-widget.ui-widget-content {
+    background: $darkBlue !important;
+    border: 0 !important;
+    color: $w;
+}
+.ui-datepicker table {
+    tbody {
+        td {
+            a {
+                color: $darkBlue !important;
+                &.ui-state-hover {
+                    background: rgba(190, 160, 88, .5) !important;
+                    border: 1px solid rgba(190, 160, 88, .75) !important;
+                    color: $w !important;
+                }
+            }
+            &.ui-state-disabled {
+
+                span {
+                    background: $w !important;
+                    color: $darkBlue !important;
+                    opacity: .5;
+                }
+            }
+            &.ui-datepicker-today {
+                a {
+                    background: $darkGold !important;
+                    border: 1px solid $darkGold !important;
+                    color: $w !important;
+                }
+            }
+        }
+    }
+}
+ul.ui-timepicker-viewport {
+    li {
+        margin-bottom: 10px !important;
+        a {
+            color: $w !important;
+            font-family: $libReg;
+            font-size: 1rem;
+            text-align :center;
+            &#ui-active-item {
+                background: transparent !important;
+                border: 0 !important;
+                color: $darkGold !important;
+            }
+        }
+    }
+}
