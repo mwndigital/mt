@@ -53,11 +53,7 @@
                 <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
                 <li>
                     <a href="@if(Auth::check())
-                                 @if(Auth::user()->isAdmin())
-                                    {{ route('admin.dashboard') }}
-                                 @else
-                                    {{ route('customer.dashboard') }}
-                                 @endif
+                                 {{ route('customer.dashboard') }}
                               @else
                                  {{ route('login') }}
                               @endif"
