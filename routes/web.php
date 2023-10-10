@@ -174,7 +174,7 @@ Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->grou
 });
 
 //Customer Routes
-Route::middleware(['auth', 'role:customer'])->name('customer.')->prefix('customer')->group(function(){
+Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function(){
     //Dashboard
     Route::get('dashboard', [CustomerIndexController::class, 'index'])->name('dashboard');
 

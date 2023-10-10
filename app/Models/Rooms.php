@@ -32,4 +32,9 @@ class Rooms extends Model
     {
         return $this->hasMany(RoomGalleries::class, 'room_id');
     }
+
+    public function bookings()
+    {
+        return $this->belongsToMany(Booking::class);
+    }
 }

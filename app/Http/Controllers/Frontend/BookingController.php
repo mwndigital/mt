@@ -35,6 +35,7 @@ class BookingController extends Controller
         $request->session()->put('isRoom', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
+
         return view('frontend.pages.booking.index', compact('booking', 'isRoom'));
     }
 
@@ -127,6 +128,11 @@ class BookingController extends Controller
 
             return !$conflictingBooking;
         });
+
+        if ($filteredRooms->isEmpty()) {
+            return redirect()->back()
+                ->with('error', 'No rooms/lodge available for the selected dates.');
+        }
 
         return view('frontend.pages.booking.step-2', compact('booking', 'filteredRooms', 'isRoom'));
     }
