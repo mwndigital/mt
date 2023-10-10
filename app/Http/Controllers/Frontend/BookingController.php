@@ -128,6 +128,11 @@ class BookingController extends Controller
             return !$conflictingBooking;
         });
 
+        if ($filteredRooms->isEmpty()) {
+            return redirect()->back()
+                ->with('error', 'No rooms available for the selected dates.');
+        }
+
         return view('frontend.pages.booking.step-2', compact('booking', 'filteredRooms', 'isRoom'));
     }
 
