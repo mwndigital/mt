@@ -36,12 +36,6 @@ class BookingController extends Controller
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
 
-        if ($booking) {
-            $booking->room = null;
-            $request->session()->put('booking', $booking);
-        }
-
-
         return view('frontend.pages.booking.index', compact('booking', 'isRoom'));
     }
 
