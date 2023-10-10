@@ -355,9 +355,19 @@ class AdminBookingController extends Controller
             'cancelled' => [
                 'action' => $booking->cancel(),
                 'message' => 'Booking has been cancelled successfully',
+
+
             ]
         };
 
         return redirect()->back()->with('success', $response['message']);
+    }
+
+    public function markAsPaid(Request $request, string $id) {
+        $booking = Booking::findOrFail($id);
+
+        $booking->update(['status' => 'paid']);
+
+        return redirect()->back()->with('success', 'Booking marked as paid');
     }
 }

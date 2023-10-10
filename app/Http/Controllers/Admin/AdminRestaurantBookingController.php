@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminTableBookingCancellationEmail;
+use App\Mail\CustomerTableBookingCancellationEmail;
 use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
 use App\Notifications\AdminTableBookingCancelledNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
@@ -177,7 +180,9 @@ class AdminRestaurantBookingController extends Controller
     {
         $booking = RestaurantBooking::findOrFail($id);
         $tables = RestaurantTable::all();
-        return view('admin.pages.restaurant.edit', compact('booking', 'tables'));
+        $tableIds = json_decode($booking->table_ids);
+
+        return view('admin.pages.restaurant.edit', compact('booking', 'tables', 'tableIds'));
     }
 
     /**
@@ -228,8 +233,10 @@ class AdminRestaurantBookingController extends Controller
         $booking->update(['status' => 'cancelled']);
 
         //Send email to Customer
+        Mail::to($booking->email)->send(new CustomerTableBookingCancellationEmail($booking));
 
         //Send email to MT
+        Mail::to('reservations@mashtun-aberloud.com')->send(new AdminTableBookingCancellationEmail($booking));
 
         //Send Admin Notif
         $adminRoles = ['admin', 'super admin'];
@@ -245,12 +252,10 @@ class AdminRestaurantBookingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $booking = RestaurantBooking::findOrFail($id);
-
         $booking->delete();
-
         return redirect('admin/restaurant-bookings')->with('success', 'Booking deleted successfully');
     }
 }

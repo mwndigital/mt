@@ -70,11 +70,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Joining for</label>
-                                {{ $booking->joining_for }}
-                                <select name="joining_for" id="joining_for" required>
-                                    <option value="lunch" @if($booking->joining_for == 'lunch' || 'LUNCH') selected @endif>lunch</option>
-                                    <option value="evening" @if($booking->joining_for == 'evening' || "EVENING") selected @endif>evening</option>
-                                </select>
+                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}" readonly disabled>
                             </div>
                         </div>
                         <div class="row">
@@ -111,19 +107,20 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Table *</label>
-                                @if($booking->table_ids)
-                                    <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
-                                        @foreach($tables as $table)
-                                            <option value="{{ $table->id }}" @if($table->id == $booking->table_ids) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
-                                        @endforeach
-                                    </select>
+                                <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
+                                    @foreach($tables as $table)
+                                        <option value="{{ $table->id }}" @if($table->id == $tableIds) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
+                                    @endforeach
+                                </select>
+                                {{--@if($booking->table_ids)
+
                                 @else
                                     <select name="table_id" id="table_id" required>
                                         @foreach($tables as $table)
                                             <option value="{{ $table->id }}" @if($table->id == $booking->table_id) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
                                         @endforeach
                                     </select>
-                                @endif
+                                @endif--}}
                             </div>
                         </div>
                         <div class="row">

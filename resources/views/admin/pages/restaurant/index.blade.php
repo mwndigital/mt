@@ -92,10 +92,10 @@
 
                                                                 </li>
                                                                 <li>
-                                                                    <form action="" method="POST">
+                                                                    <form action="{{ route('admin.restaurant-bookings.destroy', $booking->id) }}" method="POST">
                                                                         @csrf
-                                                                        @method('delete')
-                                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                        @method('DELETE')
+                                                                        <button class="deleteBtn confirm-delete-btn" type="submit">Delete</button>
                                                                     </form>
                                                                 </li>
                                                             </ul>
@@ -161,10 +161,10 @@
 
                                                             </li>
                                                             <li>
-                                                                <form action="" method="POST">
+                                                                <form action="{{ route('admin.restaurant-bookings.destroy', $booking->id) }}" method="POST">
                                                                     @csrf
-                                                                    @method('delete')
-                                                                    <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                    @method('DELETE')
+                                                                    <button class="deleteBtn confirm-delete-btn" type="submit">Delete</button>
                                                                 </form>
                                                             </li>
                                                         </ul>
@@ -232,8 +232,8 @@
                                                             <li>
                                                                 <form action="{{ route('admin.restaurant-bookings.destroy', $booking->id) }}" method="POST">
                                                                     @csrf
-                                                                    @method('delete')
-                                                                    <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                    @method('DELETE')
+                                                                    <button class="deleteBtn confirm-delete-btn" type="submit">Delete</button>
                                                                 </form>
                                                             </li>
                                                         </ul>

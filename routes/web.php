@@ -130,6 +130,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('upload', [AdminBookingController::class, 'csvUpload'])->name('book-a-room.csv-upload');
         Route::post('csv-store', [AdminBookingController::class, 'csvStore'])->name('book-a-room.csv-store');
     });
+    Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::resource('bookings', AdminBookingController::class);
 
     //Restaurant Booking controller

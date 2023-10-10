@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-lg">
+<div class="navbar navbar-expand-xl">
     <div class="container-fluid">
         <a href="/" class="navbar-brand">
             <img class="img-fluid" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">

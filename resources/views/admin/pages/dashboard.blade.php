@@ -43,7 +43,40 @@
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                     <td>{{ $today->reservation_time }}</td>
                                                     <td>{{ $today->joining_for }}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="{{ route('admin.restaurant-bookings.show', $today->id) }}">
+                                                                            View
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="{{ route('admin.restaurant-bookings.edit', $today->id) }}">Edit</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <form action="{{ route('admin.restaurant-bookings.cancel-booking', $today->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                            <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                        </form>
+
+                                                                    </li>
+                                                                    <li>
+                                                                        <form action="{{ route('admin.restaurant-bookings.destroy', $today->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -65,7 +98,40 @@
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                     <td>{{ $today->reservation_time }}</td>
                                                     <td style="text-transform: uppercase;">{{ $today->joining_for }}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul>
+                                                                    <li>
+                                                                        <a href="{{ route('admin.restaurant-bookings.show', $today->id) }}">
+                                                                            View
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="{{ route('admin.restaurant-bookings.edit', $today->id) }}">Edit</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <form action="{{ route('admin.restaurant-bookings.cancel-booking', $today->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                            <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                        </form>
+
+                                                                    </li>
+                                                                    <li>
+                                                                        <form action="{{ route('admin.restaurant-bookings.destroy', $today->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                                        </form>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

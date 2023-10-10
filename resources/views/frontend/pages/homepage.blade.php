@@ -52,7 +52,7 @@
                     <p>
                         The Mash Tun offers the aspirational opportunity to experience Speyside in all its wonder.. from unparalleled fly fishing, hunting to horseback riding and hiking.
                     </p>
-                    <a href="{{ $hpcontent->banner_one_button_link }}" class="darkGoldBtn">
+                    <a href="/our-history" class="darkGoldBtn">
                         Find out more <i class="fa fa-chevron-right"></i>
                     </a>
                 </div>

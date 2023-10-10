@@ -82,7 +82,7 @@
                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <iframe src="{{ asset('images/menus/mash-tun-whisky-spirits-menu.pdf') }}" frameborder="0" width="100%" height="700px"></iframe>
+                            <iframe src="{{ asset('images/menus/the-mash-tub-aberlour-whisky-menu-new.pdf') }}" frameborder="0" width="100%" height="700px"></iframe>
                         </div>
                     </div>
                 </div>

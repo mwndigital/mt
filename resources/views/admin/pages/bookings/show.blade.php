@@ -51,6 +51,13 @@ const confirmBooking = (event) => {
                         @endif
                         <a href="{{ route('admin.booking-status', $booking->id) }}?status=cancelled" class="btn btn-warning" onclick="cancelBooking(event)">Cancel</a>
                         <a href="{{ route('admin.bookings.edit', $booking->id) }}" class="btn editBtn">Edit</a>
+                        @if($booking->status != 'paid')
+                            <form action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}" method="POST">
+                                @csrf
+                                @method('PUT') <!-- Add this hidden field to override the method -->
+                                <button type="submit" class="cancelBookingBtn">Mark As Paid</button>
+                            </form>
+                        @endif
                         <form action="" method="POST" class="">
                             @csrf
                             @method('delete')
