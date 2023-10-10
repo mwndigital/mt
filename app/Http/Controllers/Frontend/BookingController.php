@@ -150,6 +150,9 @@ class BookingController extends Controller
         ]);
 
         $booking = $request->session()->get('booking');
+        // add room related data
+        $room = Rooms::find($validated['room_id']);
+        $booking->room = $room;
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
         // Convert date strings to Y-m-d format using Carbon
