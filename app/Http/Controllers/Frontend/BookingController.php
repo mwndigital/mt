@@ -34,7 +34,7 @@ class BookingController extends Controller
     {
         $request->session()->put('isRoom', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
-        $booking->room_id = null;
+        if ($booking) $booking->room_id = null;
         $request->session()->put('booking', $booking);
 
         $isRoom = $request->session()->get('isRoom');
