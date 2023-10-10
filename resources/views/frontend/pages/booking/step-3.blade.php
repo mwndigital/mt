@@ -215,7 +215,6 @@
                         </ul>
                         <hr>
                         @endif
-                        @if($booking->room)
                         <ul class="list-inline roomList">
                             <li class="list-inline-item" style="width: 100%;">
                                 <strong style="color: #002C50;">Room</strong><br>
@@ -223,7 +222,6 @@
                             </li>
                         </ul>
                         <hr>
-                        @endif
                         <ul class="list-inline">
                             <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
                                 <strong>Room(s)</strong>
