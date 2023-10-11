@@ -149,7 +149,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Number of adults</label>
-                                    <input type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : 1 }}">
+                                    <input min="1" type="number" name="no_of_adults" id="no_of_adults" value="{{ $booking ? $booking->no_of_adults : 1 }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Number of children</label>
