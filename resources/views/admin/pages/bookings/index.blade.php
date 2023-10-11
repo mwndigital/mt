@@ -131,11 +131,9 @@
                                             <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                             <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                             <td>
-                                                @if($booking->room)
-                                                    {{ $booking->room->name }}
-                                                @else
-
-                                                @endif
+                                                @foreach ($booking->rooms as $room )
+                                                    {{ $room->name }}<br/>
+                                               @endforeach
                                             </td>
                                             <td>{!! $booking->getStatus() !!}</td>
                                             <td>
@@ -195,11 +193,9 @@
                                             <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                             <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                             <td>
-                                                @if($booking->room)
-                                                    {{ $booking->room->name }}
-                                                @else
-
-                                                @endif
+                                                @foreach ($booking->rooms as $room )
+                                                    {{ $room->name }}<br/>
+                                               @endforeach
                                             </td>
                                             <td>{!! $booking->getStatus() !!}</td>
                                             <td>

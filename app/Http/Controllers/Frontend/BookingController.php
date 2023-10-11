@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\UserDetails;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -43,7 +44,8 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request)
     {
-        $request->session()->put('isRoom', $request->type != 'lodge');
+        $isRoom = $request->type != 'lodge';
+        $request->session()->put('isRoom', $isRoom);
 
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
@@ -71,12 +73,21 @@ class BookingController extends Controller
         $duration = Carbon::parse($checkinDate)->diffInDays(Carbon::parse($checkoutDate));
 
         $booking->duration_of_stay = $duration;
+        // If duration only 1 night and if is not room then redirect back
+        if (!$isRoom && $duration == 1) {
+            return redirect()->back()
+                ->with('error', 'Minimum stay for lodge is 2 nights.');
+        }
+        if(!$duration){
+            return redirect()->back()
+                ->with('error', 'Check-in date and check-out date cannot be the same.');
+        }
         $validated['checkin_date'] = $checkinDate;
         $validated['checkout_date'] = $checkoutDate;
         $validated['booking_ref'] = 'mt-' . strtoupper(Str::random(8));
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
-        $request->session()->put('type', $request->type != 'lodge');
+        $request->session()->put('type', $isRoom);
         return to_route('book-a-room-step-2');
     }
 
