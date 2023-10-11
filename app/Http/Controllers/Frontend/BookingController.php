@@ -34,7 +34,6 @@ class BookingController extends Controller
     {
         $request->session()->put('isRoom', $request->type != 'lodge');
         $booking = $request->session()->get('booking');
-        if ($booking) $booking->room_id = null;
         $request->session()->put('booking', $booking);
 
         $isRoom = $request->session()->get('isRoom');
@@ -74,6 +73,7 @@ class BookingController extends Controller
         $booking->duration_of_stay = $duration;
         $validated['checkin_date'] = $checkinDate;
         $validated['checkout_date'] = $checkoutDate;
+        $validated['booking_ref'] = 'mt-' . strtoupper(Str::random(8));
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
         $request->session()->put('type', $request->type != 'lodge');
@@ -116,8 +116,11 @@ class BookingController extends Controller
                     })
                     ->exists();
             } else {
-                $conflictingBooking = Booking::where('room_id', $room->id)
-                    ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+                //where('room_id', $room->id)
+                $conflictingBooking = Booking::whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+                    ->whereHas('rooms', function ($query) use ($room) {
+                        $query->where('room_id', $room->id);
+                    })
                     ->where(function ($query) use ($checkinDate, $checkoutDate) {
                         $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
                             ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
@@ -143,11 +146,15 @@ class BookingController extends Controller
     public function stepTwoStore(Request $request)
     {
         $validated = $request->validate([
-            'room_id' => ['required', 'integer'],
+            'room_id' => ['required', 'array'],
         ]);
+        $roomIds = $validated['room_id'];
 
         $booking = $request->session()->get('booking');
-        $booking->fill($validated);
+        // roomIds should be related $booking->rooms() in the session
+        $rooms = Rooms::whereIn('id', $roomIds)->get();
+        $booking->rooms = $rooms;
+
         $request->session()->put('booking', $booking);
         // Convert date strings to Y-m-d format using Carbon
         $checkin_date = $booking->checkin_date;
@@ -155,7 +162,7 @@ class BookingController extends Controller
 
         // Check if any booking conflicts exist for the selected room and dates
         $conflictingBooking = DB::table('bookings')
-            ->where('room_id', $booking->room_id)
+            // ->whereIn('room_id', $validated['room_id'])
             ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
             ->where(function ($query) use ($checkin_date, $checkout_date) {
                 $query->whereBetween('checkin_date', [$checkin_date, $checkout_date])
@@ -167,11 +174,11 @@ class BookingController extends Controller
             })
             ->first();
 
-        if ($conflictingBooking) {
-            // Booking conflicts exist, redirect back with a notice
-            return redirect()->route('book-a-room-step-2')
-                ->with('room_conflict', true);
-        }
+        // if ($conflictingBooking) {
+        //     // Booking conflicts exist, redirect back with a notice
+        //     return redirect()->route('book-a-room-step-2')
+        //         ->with('room_conflict', true);
+        // }
 
         return redirect()->route('book-a-room-step-3');
     }
@@ -315,8 +322,8 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
         $gateway = $this->getSagePayGateway();
-        $booking->createDraftBooking();
-        $transactionId = $booking->booking_ref;
+        $b = $booking->createDraftBooking($request->session()->get('isRoom'));
+        $transactionId = $b->booking_ref;
 
         try {
             $response = $gateway->purchase([
@@ -487,7 +494,6 @@ class BookingController extends Controller
         $room = Rooms::find($id);
         if (!$room) return back()->withErrors(['room' => 'Invalid room.']);
         $booking = new Booking();
-        $booking->room_id = $room->id;
         $booking->checkout_date = Carbon::now()->addDays(1)->format('Y-m-d');
 
         $isRoom = $room->room_type != 'lodge';
