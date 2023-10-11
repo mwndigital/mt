@@ -78,6 +78,10 @@ class BookingController extends Controller
             return redirect()->back()
                 ->with('error', 'Minimum stay for lodge is 2 nights.');
         }
+        if($duration == 0){
+            return redirect()->back()
+                ->with('error', 'Check-in date and check-out date cannot be the same.');
+        }
         $validated['checkin_date'] = $checkinDate;
         $validated['checkout_date'] = $checkoutDate;
         $validated['booking_ref'] = 'mt-' . strtoupper(Str::random(8));
