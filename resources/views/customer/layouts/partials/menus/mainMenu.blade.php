@@ -14,6 +14,21 @@
                             Dashboard
                         </a>
                     </li>
+                    <li class="ms-auto">
+                            <div class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Book Now <i class="fas fa-chevron-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a href="{{ route('book-a-room-index') }}">Book a stay</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('book-a-table-index') }}">Book a table</a>
+                                    </li>
+                                </ul>
+                            </div>
+                    </li>
                     <li>
                         <a href="{{ route('customer.dining-bookings') }}">
                             My Dining Bookings
