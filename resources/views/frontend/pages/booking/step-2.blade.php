@@ -75,10 +75,8 @@
             `;
         } else {
             // If no rooms are selected, show a warning and hide total and next button
-            const roomWarningElement = document.getElementById('roomWarning');
-            if (roomWarningElement) {
-                roomWarningElement.classList.remove('d-none');
-            }
+            roomWarningElement.classList.remove('d-none');
+            nextElement.classList.add('d-none');
         }
     }
 
