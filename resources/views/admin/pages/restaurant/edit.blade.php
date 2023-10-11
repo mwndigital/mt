@@ -3,7 +3,14 @@
     Admin Edit Restaurant booking
 @endpush
 @push('page-scripts')
-
+    <script>
+        var $select = $('#table_ids');
+        $select.each(function() {
+            $(this).addClass($(this).children(':selected').val());
+        }).on('change', function(ev) {
+            $(this).attr('class', '').addClass($(this).children(':selected').val());
+        });
+    </script>
 @endpush
 @push('page-styles')
 
@@ -70,7 +77,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Joining for</label>
-                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}" readonly disabled>
+                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}" readonly>
                             </div>
                         </div>
                         <div class="row">
@@ -109,7 +116,9 @@
                                 <label for="">Table *</label>
                                 <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
                                     @foreach($tables as $table)
-                                        <option value="{{ $table->id }}" @if($table->id == $tableIds) selected @endif>{{ $table->name }} - {{ $table->no_of_seats }} seats</option>
+                                        <option value="{{ $table->id }}" @if(in_array($table->id, $tableIds)) selected @endif>
+                                            {{ $table->name }} - {{ $table->no_of_seats }} seats
+                                        </option>
                                     @endforeach
                                 </select>
                                 {{--@if($booking->table_ids)

@@ -137,6 +137,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::prefix('restaurant-bookings')->group(function(){
         Route::get('upload', [AdminRestaurantBookingController::class, 'csvUpload'])->name('restaurant-bookings.csv-upload');
         Route::post('csv-store', [AdminRestaurantBookingController::class, 'csvStore'])->name('restaurant-bookings.csv-store');
+        Route::get('print-today-bookings', [AdminRestaurantBookingController::class, 'printTodayBookings'])->name('restaurant-bookings.print-today-bookings');
     });
     Route::put('restaurant-bookings/{id}/cancel-booking', [AdminRestaurantBookingController::class, 'cancelBooking'])->name('restaurant-bookings.cancel-booking');
     Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);

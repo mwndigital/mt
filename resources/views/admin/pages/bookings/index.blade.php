@@ -140,6 +140,15 @@
                                                             <li>
                                                                 <a href="{{ route('admin.bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
+                                                            @if($booking->status != 'paid')
+                                                                <li>
+                                                                    <form action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                        <button type="submit" class="cancelBookingBtn">Mark As Paid</button>
+                                                                    </form>
+                                                                </li>
+                                                            @endif
                                                             <li>
                                                                 <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="post">
                                                                     @csrf
@@ -195,6 +204,15 @@
                                                             <li>
                                                                 <a href="{{ route('admin.bookings.edit', $booking->id) }}">Edit</a>
                                                             </li>
+                                                            @if($booking->status != 'paid')
+                                                                <li>
+                                                                    <form action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                        <button type="submit" class="cancelBookingBtn">Mark As Paid</button>
+                                                                    </form>
+                                                                </li>
+                                                            @endif
                                                             <li>
                                                                 <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="post">
                                                                     @csrf

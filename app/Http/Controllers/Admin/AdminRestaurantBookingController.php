@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use PDF;
 
 class AdminRestaurantBookingController extends Controller
 {
@@ -248,10 +249,10 @@ class AdminRestaurantBookingController extends Controller
         return redirect()->back()->with('success', 'Booking has been cancelled successfully');
     }
 
+    public function printTodayBookings(Request $request) {
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    }
+
     public function destroy($id)
     {
         $booking = RestaurantBooking::findOrFail($id);
