@@ -218,20 +218,9 @@
                         <ul class="list-inline roomList">
                             <li class="list-inline-item" style="width: 100%;">
                                 <strong style="color: #002C50;">Room</strong><br>
-                                {{ $booking->room->name }} - @if($booking->no_of_adults >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0) £{{ $booking->room->price_per_night_double }} @else £{{ $booking->room->price_per_night_single }} @endif per night
-                            </li>
-                        </ul>
-                        <hr>
-                        <ul class="list-inline">
-                            <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
-                                <strong>Room(s)</strong>
-                            </li>
-                            <li class="list-inline-item" style="width: 48%; text-align: right; font-size: 1rem;">
-                                @if($booking->no_of_children >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0)
-                                    £{{ $booking->room->price_per_night_double * $booking->duration_of_stay }}
-                                @else
-                                    £{{ $booking->room->price_per_night_single * $booking->duration_of_stay }}
-                                @endif
+                         @foreach ($booking->rooms as $room )
+                               {{ $room->name }} - @if($booking->no_of_adults >= 2 && $booking->no_of_children >= 1 || $booking->no_of_adults >= 2 && $booking->no_of_children == 0) £{{ $room->price_per_night_double }} @else £{{ $room->price_per_night_single }} @endif per night <br>
+                            @endforeach
                             </li>
                         </ul>
                         <hr>
