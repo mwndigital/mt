@@ -15,6 +15,7 @@ use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
 use App\Enums\BookingStatus;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class AdminBookingController extends Controller
 {
@@ -401,6 +402,33 @@ class AdminBookingController extends Controller
         };
 
         return redirect()->back()->with('success', $response['message']);
+    }
+
+    public function printTodayBooking(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $todaysBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<', $today->copy()->addDay())
+            ->whereIn('status', ['confirmed', 'pending', 'paid'])
+            ->orderBy('checkin_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.bookings.todayPdf', compact('todaysBookings'));
+        return $pdf->stream('today-room-bookings.pdf');
+
+    }
+
+    public function printThisWeeksBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+        $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<=', $endOfWeek)
+            ->whereIn('status',  ['confirmed', 'pending', 'paid'])
+            ->orderBy('checkin_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.bookings.thisWeekPdf', compact('today', 'startOfWeek', 'endOfWeek', 'thisWeeksBookings'));
+        return $pdf->stream('this-week-room-bookings.pdf');
     }
 
     public function markAsPaid(Request $request, string $id) {

@@ -17,12 +17,14 @@
         table thead tr th {
             color: #002C50;
             text-align: left;
+            width: 130px;
         }
         table tbody tr td {
             font-size: 14px;
             font-weight: 400;
-            padding: .5rem 0;
+            padding: .5rem;
             text-transform: uppercase;
+            width: 130px;
         }
     </style>
 </head>
@@ -30,10 +32,10 @@
     <table style="width: 100%; margin-bottom: 50px;">
         <tbody>
         <tr>
-            <td>
+            <td style="width: 40%;">
                 <img style="height: 75px; width: auto;" src="{{ asset('logos/main-logo.webp') }}">
             </td>
-            <td style="text-align: right; color: #002C50;">
+            <td style="text-align: right; color: #002C50; width: 60%;">
                 <h4>All Bookings</h4>
             </td>
         </tr>

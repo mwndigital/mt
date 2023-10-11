@@ -129,6 +129,9 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
 
         Route::get('upload', [AdminBookingController::class, 'csvUpload'])->name('book-a-room.csv-upload');
         Route::post('csv-store', [AdminBookingController::class, 'csvStore'])->name('book-a-room.csv-store');
+
+        Route::get('print-today-bookings', [AdminBookingController::class, 'printTodayBooking'])->name('book-a-room.print-today-booking');
+        Route::get('print-this-week-bookings', [AdminBookingController::class, 'printThisWeeksBookings'])->name('book-a-room.print-this-weeks-booking');
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::resource('bookings', AdminBookingController::class);

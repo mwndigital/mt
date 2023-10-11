@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Today Restaurant Bookings</title>
+
+    <style>
+        table {
+
+        }
+        table thead {
+            border-bottom: 1px solid #002C50;
+        }
+        table thead tr th {
+            color: #002C50;
+            text-align: left;
+            width: 130px;
+        }
+        table tbody tr td {
+            font-size: 14px;
+            font-weight: 400;
+            padding: .5rem;
+            text-transform: uppercase;
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+<table style="width: 100%; margin-bottom: 50px;">
+    <tbody>
+    <tr style="width: 40%;">
+        <td>
+            <img style="height: 75px; width: auto;" src="{{ asset('logos/main-logo.webp') }}">
+        </td>
+        <td style="text-align: right; color: #002C50; width: 60%;">
+            <h4>This weeks bookings - {{ date('d/m/Y', strtotime($startOfWeek)) }} - {{ date('d/m/Y', strtotime($endOfWeek)) }}</h4>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table style="width: 100%;">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Room(s)</th>
+        <th>Checkin Date</th>
+        <th>No of Guests</th>
+        <th>Additional Information</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($thisWeeksBookings as $booking)
+        <tr>
+            <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+            <td>
+                @foreach ($booking->rooms as $room )
+                    {{ $room->name }}<br/>
+                @endforeach
+            </td>
+            <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
+            <td>{{ $booking->no_of_guests }}</td>
+            <td>
+                {{ $booking->additional_information }}
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+<p style="display: block; font-weight: bold; font-size: 1rem; margin: 20px 0; text-align: center; width: 100%;">
+    Printed {{ now()->format('d/m/Y H:i') }}
+</p>
+</body>
+</html>
