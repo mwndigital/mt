@@ -47,32 +47,7 @@
                                     <td>{{ $booking->no_of_adults }}</td>
                                     <td>{{ $booking->no_of_children }}</td>
                                     <td>
-                                        {{ $booking->getStatus() }}
-                                        @if($booking->status == 'paid')
-                                            <div class="alert alert-success" role="alert">
-                                                Paid
-                                            </div>
-                                        @elseif($booking->status == 'confirmed')
-                                            <div class="alert alert-success" role="alert">
-                                                Confirmed
-                                            </div>
-                                        @elseif($booking->status == 'pending')
-                                            <div class="alert alert-warning" role="alert">
-                                                Pending
-                                            </div>
-                                        @elseif($booking->status == 'refunded')
-                                            <div class="alert alert-info" role="alert">
-                                                Refunded
-                                            </div>
-                                        @elseif($booking->status == 'draft')
-                                            <div class="alert alert-secondary" role="alert">
-                                                Draft
-                                            </div>
-                                        @else
-                                            <div class="alert alert-danger" role="alert">
-                                                Cancelled
-                                            </div>
-                                        @endif
+                                        {!! $booking->getStatus() !!}
                                     </td>
                                 </tr>
                             @endforeach
