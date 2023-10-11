@@ -51,9 +51,11 @@
                             <table class="table table-responsive w-100">
                                 <tbody>
                                     <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Room:</strong></td>
+                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Room(s):</strong></td>
                                         <td style="color: #000; font-size: 1rem;">
-                                            {{ $booking->room->name }}
+                                            @foreach ($booking->rooms as $room )
+                                                {{ $room->name }} <br>
+                                            @endforeach
                                         </td>
                                     </tr>
                                     <tr>
