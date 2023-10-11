@@ -250,8 +250,17 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         $countries = CountryListFacade::getList('en');
+        $roomType = $booking->type;
+        $selectedRoomIds = $booking->rooms->pluck('id')->toArray();
 
-        return view('admin.pages.bookings.edit', compact('booking', 'countries'));
+
+        if($roomType == 'lodge'){
+            $rooms = Rooms::where('room_type', $roomType)->get();
+        } else{
+            $rooms = Rooms::where('room_type', '!=', 'lodge')->get();
+        }
+
+        return view('admin.pages.bookings.edit', compact('booking', 'countries', 'rooms', 'selectedRoomIds'));
     }
 
     /**
@@ -259,7 +268,38 @@ class AdminBookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $booking = Booking::findOrFail($id);
+        // Update the booking
+        $validated = $request->validate([
+            'checkin_date' => ['required', 'date_format:d-m-Y'],
+            'checkout_date' => ['required', 'date_format:d-m-Y'],
+            'arrival_time' => ['required'],
+            'no_of_adults' => ['required', 'integer', 'min:1'],
+            'no_of_children' => ['required', 'integer'],
+            'user_title' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address_line_one' => ['required', 'string', 'max:255'],
+            'address_line_two' => ['nullable', 'string', 'max:255'],
+            'postcode' => ['required', 'string', 'max:100'],
+            'city' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'max:13'],
+            'email_address' => ['required', 'email']
+        ]);
+        $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
+        $checkoutDate = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
+        $validated['checkin_date'] = $checkinDate;
+        $validated['checkout_date'] = $checkoutDate;
+
+       // Update
+        $booking->update($validated);
+
+        // Update the rooms
+        $booking->rooms()->sync($request->selected_rooms);
+
+        return redirect()->route('admin.bookings.index')->with('success', 'Booking has been updated successfully');
+
     }
 
     public function csvUpload(){
