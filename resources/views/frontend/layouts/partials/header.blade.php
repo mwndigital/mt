@@ -40,7 +40,7 @@
         <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('js/wow.min.js') }}"></script>
         <script src="{{ asset('lightbox/js/lightbox.js') }}"></script>
-        @vite(['resources/assets/sass/app.scss', 'resources/assets/sass/frontend.scss', 'resources/assets/js/app.js', 'resources/assets/js/frontend.js', 'vendor/courier/build'])
+        @vite(['resources/assets/sass/app.scss', 'resources/assets/sass/frontend.scss', 'resources/assets/js/app.js', 'resources/assets/js/frontend.js'])
 
 
         @stack('page-styles')
