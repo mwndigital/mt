@@ -132,6 +132,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::resource('bookings', AdminBookingController::class);
+    Route::post('bookings/{id}/edit', [AdminBookingController::class, 'update'])->name('bookings.edit');
+
 
     //Restaurant Booking controller
     Route::prefix('restaurant-bookings')->group(function(){

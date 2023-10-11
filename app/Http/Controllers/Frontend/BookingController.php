@@ -49,7 +49,7 @@ class BookingController extends Controller
             'checkin_date' => ['required', 'date_format:d-m-Y'],
             'checkout_date' => ['required', 'date_format:d-m-Y'],
             'arrival_time' => ['required'],
-            'no_of_adults' => ['required', 'integer'],
+            'no_of_adults' => ['required', 'integer', 'min:1'],
             'no_of_children' => ['required', 'integer'],
         ]);
 
