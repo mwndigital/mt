@@ -3,56 +3,54 @@
     Book a room - Step 2 | Aberlour Moray Scotland
 @endpush
 @push('page-scripts')
-    <script>
-        const radioButtons = document.querySelectorAll('input[type="radio"]');
+<script>
+    const selectRoom = () => {
+        const selectedRooms = document.querySelectorAll('input[name="room_id[]"]:checked');
+        const summary = document.getElementById('sub-list');
+        const phpSummary = document.getElementById('php-list');
+        const totalElement = document.getElementById('total');
 
-        radioButtons.forEach((radio) => {
-            radio.addEventListener('change', () => {
-                if (radio.checked) {
-                    radioButtons.forEach((otherRadio) => {
-                        if (otherRadio !== radio) {
-                            otherRadio.parentElement.classList.remove('checked');
-                        }
-                    });
-                    radio.parentElement.classList.add('checked');
-                }
-            });
-        });
+        // Clear previous content
+        summary.innerHTML = '';
 
-        const selectRoom = (room) => {
-            // display next button
-            const nextElement = document.getElementById('next');
-            const roomWarningElement = document.getElementById('roomWarning');
+        // Display next button if at least one room is selected
+         const nextElement = document.getElementById('next');
+         const roomWarningElement = document.getElementById('roomWarning');
 
-            if (nextElement && roomWarningElement) {
-                nextElement.classList.remove('d-none');
-                roomWarningElement.classList.add('d-none');
-            }
+        if (selectedRooms.length > 0) {
+            // Generate summary for selected rooms
+            let totalCost = 0;
+            nextElement.classList.remove('d-none');
+            roomWarningElement.classList.add('d-none');
 
-
-            const summary = document.getElementById('sub-list');
-            const phpSummary = document.getElementById('php-list');
-            phpSummary.innerHTML = '';
-            // Add room name to reservation summary and price
             summary.innerHTML = `
-                <ul class="list-inline roomList">
-                    <li class="list-inline-item" style="width: 100%;">
-                        <strong style="color: #002C50;">Room</strong><br>
-                        ${room.name} - ${room.price_per_night_single} per night
-                    </li>
-                </ul>
-                <hr>
-                <ul class="list-inline">
-                    <li class="list-inline-item" style="width: 48%; color: #002C50; font-size: 1.15rem;">
-                        <strong>Room(s)</strong>
-                    </li>
-                    <li class="list-inline-item" style="width: 48%; text-align: right; font-size: 1rem;">
-                        £${room.price_per_night_single * {{ $booking->duration_of_stay }}}
-                    </li>
-                </ul>
-                <hr>
-                <div class="totalWrapper" id="total">
-                    <ul class="list-inline">
+            <ul class="list-inline roomList">
+                <li class="list-inline-item" style="width: 100%;">
+                    <strong style="color: #002C50;">Room(s)</strong><br>
+                </li>
+            `;
+
+            selectedRooms.forEach(room => {
+                const roomName = room.getAttribute('data-name');
+                const roomPrice = parseFloat(room.getAttribute('data-price'));
+                totalCost += roomPrice;
+
+                summary.innerHTML += `
+                        <li class="list-inline-item" style="width: 100%;">
+                            ${roomName} - ${roomPrice} per night
+                        </li>
+                `;
+            });
+
+            summary.innerHTML += `
+            </ul>
+            <hr>`
+
+            // Update total cost
+            summary.innerHTML += `
+            <div class="totalWrapper" id="total">
+
+            <ul class="list-inline">
                            <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
                                <strong>Deposit</strong>
                            </li>
@@ -62,27 +60,33 @@
                            <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
                                <small>Payable 24 hours prior</small>
                            </li>
-                           <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£${room.price_per_night_single * {{ $booking->duration_of_stay }} - 50} </li>
+                           <li class="list-inline-item" style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">£${parseFloat(totalCost - 50)} </li>
                    </ul>
 
-                       <ul class="list-inline">
-                           <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
-                           <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
-                                £${room.price_per_night_single * {{ $booking->duration_of_stay }}}
-                            </li>
-                          </ul>
-                          </div>
-                <hr>
+                <ul class="list-inline">
+                    <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
+                    <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
+                        £${totalCost}
+                    </li>
+                </ul>
+            </div>
+
+
             `;
-
+        } else {
+            // If no rooms are selected, show a warning and hide total and next button
+            const roomWarningElement = document.getElementById('roomWarning');
+            if (roomWarningElement) {
+                roomWarningElement.classList.remove('d-none');
+            }
         }
+    }
 
-        const onSubmit = () => {
-            const form = document.getElementById('formRoom');
-            form.submit();
-        }
-
-    </script>
+    const onSubmit = () => {
+        const form = document.getElementById('formRoom');
+        form.submit();
+    }
+</script>
 
 @endpush
 @push('page-styles')
@@ -144,7 +148,7 @@
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6" onclick="selectRoom({{$room}});">
                                                 <label class="checkItem">
-                                                    <input type="radio" name="room_id" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>
+                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                         <div class="content">
@@ -259,7 +263,7 @@
                         @endif
                     </div>
                         <!-- next button -->
-                        <div class="row @if (!$booking->room) d-none @endif" id="next">
+                        <div class="row d-none" id="next">
                             <div class="col-12">
                                 <button class="darkGoldBtn" type="button"  onclick="onSubmit()" style="font-size: 1.5rem;">Next <i class="fas fa-chevron-right"></i></button>
                             </div>

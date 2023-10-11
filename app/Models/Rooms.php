@@ -23,10 +23,6 @@ class Rooms extends Model
         'featured_image',
     ];
 
-    public function booking()
-    {
-        return $this->hasMany(Booking::class);
-    }
 
     public function images()
     {
@@ -36,5 +32,10 @@ class Rooms extends Model
     public function bookings()
     {
         return $this->belongsToMany(Booking::class);
+    }
+
+    public function getTotal($isDouble)
+    {
+        return $isDouble ? $this->price_per_night_double : $this->price_per_night_single;
     }
 }

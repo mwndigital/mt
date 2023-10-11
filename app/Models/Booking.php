@@ -18,14 +18,14 @@ class Booking extends Model implements \Serializable
 
     protected $table = 'bookings';
 
-    public $incrementing = false;
+    public $incrementing = true;
 
     protected $keyType = 'string';
 
     public $deposit = 50; // will be dynamic later
 
     protected $fillable = [
-        'room_id',
+        'id',
         'booking_ref',
         'checkin_date',
         'checkout_date',
@@ -65,14 +65,10 @@ class Booking extends Model implements \Serializable
         });
     }
 
-    public function room()
-    {
-        return $this->belongsTo(Rooms::class);
-    }
 
     public function rooms()
     {
-        return $this->belongsToMany(Rooms::class);
+        return $this->belongsToMany(Rooms::class, 'booking_room', 'booking_id', 'room_id');
     }
 
     public function serialize()
@@ -96,14 +92,18 @@ class Booking extends Model implements \Serializable
         return $this->transactions->sum('amount');
     }
 
+    public function isDouble()
+    {
+        return $this->no_of_children >= 2 && $this->no_of_children >= 1 || $this->no_of_adults >= 2 && $this->no_of_children == 0;
+    }
+
     public function getTotalAmount()
     {
-        if ($this->no_of_children >= 2 && $this->no_of_children >= 1 || $this->no_of_adults >= 2 && $this->no_of_children == 0) {
-            $roomPrice = $this->room->price_per_night_double * $this->duration_of_stay;
-        } else {
-            $roomPrice = $this->room->price_per_night_single * $this->duration_of_stay;
+        $total = 0;
+        foreach ($this->rooms as $room) {
+            $total += $room->getTotal($this->isDouble()) * $this->duration_of_stay;
         }
-        return $roomPrice;
+        return $total;
     }
 
     public function getPayableAmount()
@@ -124,22 +124,33 @@ class Booking extends Model implements \Serializable
         };
     }
 
-    public function createDraftBooking()
+    public function createDraftBooking($isRoom)
     {
         // Find an existing booking with the same booking_ref
         $existingBooking = self::where('booking_ref', $this->booking_ref)->first();
+        unset($this->room_id);
 
         if ($existingBooking) {
             // update all fields except booking_ref
+            $existingBooking->rooms()->detach();
+            $existingBooking->rooms()->sync($this->rooms);
             $existingBooking->update($this->toArray());
-            return;
+            return $existingBooking;
         }
 
-        // If no existing booking, create a new one
-        $this->status = BookingStatus::DRAFT;
-        $this->total = $this->getTotalAmount();
-        $this->type = $this->room->room_type;
-        $this->save();
+
+        $currentData = $this->toArray();
+
+        unset($currentData['rooms']);
+        $booking = self::create(array_merge($currentData, [
+            'status' => BookingStatus::DRAFT,
+            'total' =>  $this->getTotalAmount(),
+            'type' => $isRoom ? 'room' : 'lodge',
+        ]));
+
+        $booking->rooms()->sync($this->rooms);
+
+        return $booking;
     }
 
     public function createTransaction($amount, $type, $data = null, $data2 = null)
