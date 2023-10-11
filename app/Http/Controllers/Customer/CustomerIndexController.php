@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\RestaurantBooking;
 use Illuminate\Http\Request;
+use App\Enums\BookingStatus;
 
 class CustomerIndexController extends Controller
 {
@@ -16,7 +17,7 @@ class CustomerIndexController extends Controller
     {
         $customer = auth()->user();
         $restaurantBookings = RestaurantBooking::where('user_id', $customer->id)->get();
-        $hotelBookings = Booking::where('user_id', $customer->id)->get();
+        $hotelBookings = Booking::where('user_id', $customer->id)->where('status','!=', BookingStatus::DRAFT)->get();
         return view('customer.pages.dashboard', compact('restaurantBookings', 'customer', 'hotelBookings'));
     }
 
