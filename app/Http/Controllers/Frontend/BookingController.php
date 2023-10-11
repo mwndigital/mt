@@ -78,7 +78,7 @@ class BookingController extends Controller
             return redirect()->back()
                 ->with('error', 'Minimum stay for lodge is 2 nights.');
         }
-        if($duration == 0){
+        if(!$duration){
             return redirect()->back()
                 ->with('error', 'Check-in date and check-out date cannot be the same.');
         }
