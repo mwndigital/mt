@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\UserDetails;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
