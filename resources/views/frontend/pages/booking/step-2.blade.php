@@ -34,6 +34,9 @@
                 const roomName = room.getAttribute('data-name');
                 const roomPrice = parseFloat(room.getAttribute('data-price'));
                 totalCost += roomPrice;
+                // Update select button text to selected
+                const selectButton = document.getElementById('select-text' + room.value);
+                selectButton.innerHTML = 'Selected';
 
                 summary.innerHTML += `
                         <li class="list-inline-item" style="width: 100%;">
@@ -78,6 +81,12 @@
             roomWarningElement.classList.remove('d-none');
             nextElement.classList.add('d-none');
         }
+        // Update select button text if not checked to select
+        const unCheckedCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');
+        unCheckedCheckboxes.forEach(checkbox => {
+        const selectButton = document.getElementById('select-text' + checkbox.value);
+        selectButton.innerHTML = 'Select';
+        });
     }
 
     const onSubmit = () => {
@@ -144,7 +153,7 @@
                                 <div class="col-12">
                                     <div class="row innerRow">
                                         @foreach($filteredRooms as $room)
-                                            <div class="col-md-6" onclick="selectRoom({{$room}});">
+                                            <div class="col-md-6" onclick="selectRoom();">
                                                 <label class="checkItem">
                                                     <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
@@ -154,7 +163,7 @@
                                                             <h6 class="price">
                                                                 Price from: £{{ $room->price_per_night_single }}
                                                             </h6>
-                                                            <button type="button" class="btn mb-3">Select</button>
+                                                            <button type="button" class="btn mb-3" id="select-text{{ $room->id }}">Select</button>
                                                             {!! $room->short_description !!}
                                                         </div>
                                                     </label>
