@@ -60,18 +60,18 @@
                             <table class="table table-hovered">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Status</th>
                                     <th>Check-In</th>
                                     <th>Check-Out</th>
-                                    <th>Room</th>
-                                    <th>Status</th>
+                                    <th>Rooms</th>
+                                    <th>Name</th>
                                     <th>Total</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($hotelBookings as $booking)
                                     <tr>
-                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                        <td>{!! $booking->getStatus() !!}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                         <td>
@@ -79,7 +79,7 @@
                                                 {{ $room->name }}<br/>
                                            @endforeach
                                         </td>
-                                        <td>{!! $booking->getStatus() !!}</td>
+                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ $booking->total }}</td>
 
                                     </tr>
