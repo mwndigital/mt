@@ -16,13 +16,19 @@
                 defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
                 minDate: 0,
                 onSelect: function(selectedDate) {
+                    const type = $('#type').val();
                     const date = $(this).datepicker('getDate');
-                    if (date) {
+
+                    if(type === 'lodge'){
+                        date.setDate(date.getDate() + 2);
+                    } else {
                         date.setDate(date.getDate() + 1);
                     }
+
                     $('#checkout_date').datepicker('option', 'minDate', date || 1);
-        }
+                }
             });
+
             $('#checkout_date').datepicker({
                 dateFormat: "dd-mm-yy",
                 defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
@@ -52,9 +58,13 @@
                 if (selectedType === 'room') {
                     $('#no_of_adults').closest('.col-md-6').show();
                     $('#no_of_children').closest('.col-md-6').show();
+                    // reset restriction on date
+                    $('#checkout_date').datepicker('option', 'minDate', 1);
                 } else if (selectedType === 'lodge') {
                     $('#no_of_adults').closest('.col-md-6').hide();
                     $('#no_of_children').closest('.col-md-6').hide();
+                    $('#checkout_date').datepicker('option', 'minDate', 2);
+
                 }
             }
 
