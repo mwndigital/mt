@@ -48,6 +48,7 @@ class Booking extends Model implements \Serializable
         'total',
         'additional_information',
         'type',
+        'user_id',
     ];
 
     protected $appends = [
@@ -146,6 +147,7 @@ class Booking extends Model implements \Serializable
             'status' => BookingStatus::DRAFT,
             'total' =>  $this->getTotalAmount(),
             'type' => $isRoom ? 'room' : 'lodge',
+            'user_id' => auth()->user()->id ?? null,
         ]));
 
         $booking->rooms()->sync($this->rooms);
