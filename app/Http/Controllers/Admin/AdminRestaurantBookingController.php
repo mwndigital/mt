@@ -250,7 +250,40 @@ class AdminRestaurantBookingController extends Controller
     }
 
     public function printTodayBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $todaysBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<', $today->copy()->addDay())
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_time', 'asc')
+            ->get();
 
+        $pdf = PDF::loadView('admin.pages.restaurant.todayPdf', compact('todaysBookings'));
+        return $pdf->stream('today-restaurant-bookings.pdf');
+    }
+
+    public function printThisWeeksBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+        $thisWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<=', $endOfWeek)
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.restaurant.thisWeekPdf', compact('thisWeeksBookings', 'today', 'endOfWeek', 'startOfWeek'));
+        return $pdf->stream('this-week-restaurant-bookings.pdf');
+    }
+
+    public function printAllBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.restaurant.allPdf', compact('today', 'allBookings'));
+        return $pdf->stream('all-restaurant-bookings.pdf');
     }
 
     public function destroy($id)

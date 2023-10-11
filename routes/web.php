@@ -138,6 +138,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('upload', [AdminRestaurantBookingController::class, 'csvUpload'])->name('restaurant-bookings.csv-upload');
         Route::post('csv-store', [AdminRestaurantBookingController::class, 'csvStore'])->name('restaurant-bookings.csv-store');
         Route::get('print-today-bookings', [AdminRestaurantBookingController::class, 'printTodayBookings'])->name('restaurant-bookings.print-today-bookings');
+        Route::get('print-this-week-bookings', [AdminRestaurantBookingController::class, 'printThisWeeksBookings'])->name('restaurant-bookings.print-this-week-bookings');
+        Route::get('print-all-bookings', [AdminRestaurantBookingController::class, 'printAllBookings'])->name('restaurant-bookings.print-all-bookings');
     });
     Route::put('restaurant-bookings/{id}/cancel-booking', [AdminRestaurantBookingController::class, 'cancelBooking'])->name('restaurant-bookings.cancel-booking');
     Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);
