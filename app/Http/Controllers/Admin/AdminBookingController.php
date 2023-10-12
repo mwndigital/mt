@@ -64,6 +64,12 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.allBookings', compact('allBookings'));
     }
 
+    public function deletedIndex(){
+        $allBookings = Booking::onlyTrashed()->get();
+
+        return view('admin.pages.bookings.allBookings', compact('allBookings'));
+    }
+
 
 
     /**

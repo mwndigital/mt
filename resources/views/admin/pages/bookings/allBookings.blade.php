@@ -47,7 +47,8 @@
                         <div class="list-group" id="list-tab" role="tablist">
                             <a class="list-group-item list-group-item-action" id="list-home-list" href="{{ route('admin.bookings.index') }}">Todays Bookings</a>
                             <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{ route('admin.book-a-room.this-weeks-bookings-index') }}" >This Weeks Bookings</a>
-                            <a class="list-group-item list-group-item-action active" id="list-messages-list"  href="{{ route('admin.book-a-room.all-bookings-index') }}"  aria-controls="list-messages">All Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-messages-list"  href="{{ route('admin.book-a-room.all-bookings-index') }}"  aria-controls="list-messages">All Bookings</a>
+                            <a class="list-group-item list-group-item-action active" id="list-messages-list" href="{{ route('admin.book-a-room.deleted-bookings-index') }}" aria-controls="list-messages">Deleted</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
                             <table class="table table-hovered">
