@@ -69,7 +69,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
                     <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
-                        £${totalCost}
+                        £${totalCost * {{ $booking->duration_of_stay }}}
                     </li>
                 </ul>
             </div>
