@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>All Bookings</h1>
+                    <h1>Todays Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -45,8 +45,8 @@
                 <div class="col-12">
                     <div class="tab-panels-wrap">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-today" role="tab">Todays Bookings</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-this-week" role="tab">This Weeks Bookings</a>
+                            <a class="list-group-item list-group-item-action active" id="list-home-list" href="{{ route('admin.bookings.index') }}">Todays Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{ route('admin.book-a-room.this-weeks-bookings-index') }}" >This Weeks Bookings</a>
                             <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-all-bookings" role="tab" aria-controls="list-messages">All Bookings</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">

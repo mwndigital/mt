@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Restaurant Bookings</h1>
+                    <h1>This Weeks Restaurant Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
