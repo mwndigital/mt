@@ -45,6 +45,8 @@
 
         @stack('page-styles')
 
+        <!-- Fix for react.js -->
+        <script>var global = window; </script>
         @stack('page-scripts')
 
     </head>

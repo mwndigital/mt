@@ -205,6 +205,10 @@ class Booking extends Model implements \Serializable
 
     public function getCountryNameAttribute()
     {
-        return CountryListFacade::getOne($this->country);
+        try {
+            return CountryListFacade::getOne($this->country);
+        } catch (\Exception $e) {
+            return $this->country;
+        }
     }
 }
