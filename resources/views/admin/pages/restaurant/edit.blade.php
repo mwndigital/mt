@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Joining for</label>
-                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}" readonly>
+                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}">
                             </div>
                         </div>
                         <div class="row">
@@ -93,7 +93,7 @@
                             <div class="col-md-4">
                                 <label for="">Time</label>
                                 <select name="reservation_time" id="reservation_time" required>
-                                    <option value="{{ $booking->reservation_time }}">{{ $booking->reservation_time }}</option>
+                                    <option selected value="{{ $booking->reservation_time }}">{{ $booking->reservation_time }}</option>
                                 </select>
                                 @error('reservation_time')
                                 <div class="text-danger">

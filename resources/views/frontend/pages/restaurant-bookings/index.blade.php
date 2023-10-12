@@ -108,7 +108,12 @@
                                 <div class="col-md-4">
                                     <label for="">Choose your time *</label>
                                     <select name="reservation_time" id="reservation_time" required>
-                                        <option value="{{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}" selected> {{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}</option>
+                                        @if(isset($table_booking->reservation_time))
+                                            <option value="{{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}" selected> {{ isset($table_booking->reservation_time) ? $table_booking->reservation_time : null }}</option>
+                                        @endif
+                                            <option value="{{ old('reservation_time') }}">
+                                                {{ old('reservation_time') }}
+                                            </option>
                                     </select>
                                     <small>
                                         For bookings longer than 2 hours please contact us
