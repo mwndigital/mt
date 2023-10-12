@@ -33,7 +33,7 @@
                     <div class="btn-group">
                         <a href="{{ route('admin.restaurant-bookings.print-today-bookings') }}" target="_blank" class="btn btn-primary">Print Today's Bookings</a>
                         <a href="{{ route('admin.restaurant-bookings.print-this-week-bookings') }}" target="_blank" class="btn btn-primary">Print this weeks bookings </a>
-                        <a href="{{ route('admin.restaurant-bookings.print-all-bookings') }}" target="_blank" class="btn btn-primary">All Bookings</a>
+                        {{--<a href="{{ route('admin.restaurant-bookings.print-all-bookings') }}" target="_blank" class="btn btn-primary">All Bookings</a>--}}
                     </div>
                 </div>
             </div>

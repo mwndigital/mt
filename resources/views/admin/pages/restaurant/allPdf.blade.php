@@ -33,7 +33,20 @@
         <tbody>
         <tr>
             <td style="width: 40%;">
-                <img style="height: 75px; width: auto;" src="{{ asset('logos/main-logo.webp') }}">
+                <img style="height: 75px; margin-bottom: 20px; width: auto;" src="{{ asset('logos/mash-tun-new-logo-main.jpg') }}">
+                <ul style="list-style-type: none; margin-left: 0 ; padding-left: 0 !important;">
+                    <li style="">
+                        The Mash Tun,
+                    </li>
+                    <li>
+                        8 Broomfield Square,
+                    </li>
+                    <li>
+                        Arberlour, Speyside,
+                    </li>
+                    <li>Scotland,</li>
+                    <li>AB38 9QP</li>
+                </ul>
             </td>
             <td style="text-align: right; color: #002C50; width: 60%;">
                 <h4>All Bookings</h4>
