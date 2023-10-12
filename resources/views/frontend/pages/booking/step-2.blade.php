@@ -69,7 +69,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
                     <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
-                        £${totalCost}
+                        £${totalCost * {{ $booking->duration_of_stay }}}
                     </li>
                 </ul>
             </div>
@@ -155,7 +155,7 @@
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6" onclick="selectRoom();">
                                                 <label class="checkItem">
-                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
+                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $booking->no_of_adults > 1 ? $room->price_per_night_double : $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                         <div class="content">
