@@ -67,7 +67,7 @@ class AdminBookingController extends Controller
     public function deletedIndex(){
         $allBookings = Booking::onlyTrashed()->get();
 
-        return view('admin.pages.bookings.allBookings', compact('allBookings'));
+        return view('admin.pages.bookings.deletedBookings', compact('allBookings'));
     }
 
 
@@ -268,7 +268,7 @@ class AdminBookingController extends Controller
      */
     public function show(string $id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::withTrashed()->findOrFail($id);
         return view('admin.pages.bookings.show', compact('booking'));
     }
 
@@ -277,7 +277,7 @@ class AdminBookingController extends Controller
      */
     public function edit(string $id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::withTrashed()->findOrFail($id);
         $countries = CountryListFacade::getList('en');
         $roomType = $booking->type;
         $selectedRoomIds = $booking->rooms->pluck('id')->toArray();
@@ -297,7 +297,7 @@ class AdminBookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::withTrashed()->findOrFail($id);
         // Update the booking
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
