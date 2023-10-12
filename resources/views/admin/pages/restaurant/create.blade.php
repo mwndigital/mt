@@ -93,7 +93,9 @@
                             <div class="col-md-4">
                                 <label for="">Time *</label>
                                 <select name="reservation_time" id="reservation_time" required>
-
+                                    <option value="{{ old('reservation_time') }}">
+                                        {{ old('reservation_time') }}
+                                    </option>
                                 </select>
                                 @error('reservation_time')
                                     <div class="text-danger">

@@ -47,6 +47,20 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.index', compact('allBookings', 'todaysBookings', 'thisWeeksBookings'));
     }
 
+    public function thisWeeksBookingsIndex(){
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<=', $endOfWeek)
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        return view('admin.pages.bookings.thisWeeksBookings', compact('thisWeeksBookings'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

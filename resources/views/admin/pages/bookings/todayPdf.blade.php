@@ -33,7 +33,7 @@
     <tbody>
     <tr>
         <td style="width: 40%;">
-            <img style="height: 75px; margin-bottom: 20px; width: auto;" src="{{ asset('logos/mash-tun-new-logo-main.jpg') }}">
+            <img style="height: 75px; margin-bottom: 20px; width: auto;" src="logos/mash-tun-new-logo-main.jpg">
             <ul style="list-style-type: none; margin-left: 0 ; padding-left: 0 !important;">
                 <li style="">
                     The Mash Tun,
