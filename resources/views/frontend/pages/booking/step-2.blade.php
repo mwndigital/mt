@@ -155,7 +155,7 @@
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6" onclick="selectRoom();">
                                                 <label class="checkItem">
-                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
+                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $booking->no_of_adults > 1 ? $room->price_per_night_double : $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                         <div class="content">
