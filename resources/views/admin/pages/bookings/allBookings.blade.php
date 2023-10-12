@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-    Admin This Weeks Bookings
+    Admin All Bookings
 @endpush
 @push('page-scripts')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>This Weeks Bookings</h1>
+                    <h1>All Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -46,8 +46,8 @@
                     <div class="tab-panels-wrap">
                         <div class="list-group" id="list-tab" role="tablist">
                             <a class="list-group-item list-group-item-action" id="list-home-list" href="{{ route('admin.bookings.index') }}">Todays Bookings</a>
-                            <a class="list-group-item list-group-item-action active" id="list-profile-list" href="{{ route('admin.book-a-room.this-weeks-bookings-index') }}" >This Weeks Bookings</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{ route('admin.book-a-room.all-bookings-index') }}" aria-controls="list-messages">All Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{ route('admin.book-a-room.this-weeks-bookings-index') }}" >This Weeks Bookings</a>
+                            <a class="list-group-item list-group-item-action active" id="list-messages-list"  href="{{ route('admin.book-a-room.all-bookings-index') }}"  aria-controls="list-messages">All Bookings</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
                             <table class="table table-hovered">
@@ -62,7 +62,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($thisWeeksBookings as $booking)
+                                @foreach($allBookings as $booking)
                                     <tr>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>

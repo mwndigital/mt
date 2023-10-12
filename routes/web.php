@@ -134,6 +134,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('print-this-week-bookings', [AdminBookingController::class, 'printThisWeeksBookings'])->name('book-a-room.print-this-weeks-booking');
 
         Route::get('this-weeks-bookings', [AdminBookingController::class, 'thisWeeksBookingsIndex'])->name('book-a-room.this-weeks-bookings-index');
+        Route::get('all-bookings', [AdminBookingController::class, 'allBookingsIndex'])->name('book-a-room.all-bookings-index');
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::resource('bookings', AdminBookingController::class);
