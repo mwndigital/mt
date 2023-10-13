@@ -41,7 +41,7 @@
                     <form action="{{ route('admin.restaurant-bookings.store') }}" method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="">First Name *</label>
                                 <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" required>
                                 @error('first_name')
@@ -50,7 +50,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="">Last Name</label>
                                 <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
                                 @error('last_name')
@@ -59,11 +59,20 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="">Email Address</label>
                                 <input type="email" name="email" id="email" value="{{ old('email') }} example@example.com" required>
                                 <small>If you do not have the customers email address please leave leave the above in or input reservations@mashtun-aberlour.com as the email address is required</small>
                                 @error('email')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Mobile Number</label>
+                                <input type="tel" name="mobile_number" id="mobile_number" value="{{ old('mobile_number') }}">
+                                @error('mobile_number')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
