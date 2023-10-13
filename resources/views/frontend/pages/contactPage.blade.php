@@ -1,6 +1,15 @@
 @extends('layouts.frontend')
 @push('page-title')
-    Contact us
+    {{ $content->seo_title }}
+@endpush
+@push('page-description')
+    {{ $content->seo_description }}
+@endpush
+@push('page-keywords')
+    {{ $content->seo_keywords }}
+@endpush
+@push('page-image')
+    {{ $content->seo_image }}
 @endpush
 @section('content')
     <section id="contactPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ asset('images/contact-page-hero-banner-new.jpg') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
@@ -8,10 +17,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h1>Contact Us</h1>
-                        <p>
-                            The Mash Tun welcomes you to come and visit us any time of year, whether you want to spend a few evenings in our hotel or just come and enjoy lunch or evening meal on the River Spey, you are always assured a warm welcome.
-                        </p>
+                        <h1>{{ $content->hero_title }}</h1>
+                        {!! $content->hero_sub_title !!}
                     </div>
                 </div>
             </div>
@@ -22,24 +29,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>
-                        Riverside Inn * Iconic Whisky Bar * Whisky-Cigar Shop
+                        {{ $content->banner_one_title }}
                     </h2>
-                    <p>
-                        Nestled within the banks of the River Spey, surrounded by the picturesque landscape of Aberlour.
-                    </p>
-                    <p>The historic Mash Tun Whisky Bar is famous for its astonishing selection of whisky.</p>
-                    <p>
-                        You can come and stay in one of our five whisky themed rooms or book our exclusive lodge with views overlooking the River Spey.
-                    </p>
-                    <p>
-                        Alternatively our restaurant is open to the public and you can come and dine with us for lunch or dinner 7 days a week.
-                    </p>
-                    <p>
-                        We offer free allocated parking for guests staying with us, as each room has a parking space under the room name.
-                    </p>
-                    <p>
-                        Parking for guests dining with us is on the street just outside the door, there is also ample parking just a short stroll away from us.
-                    </p>
+                    {!! $content->banner_one_content !!}
                 </div>
                 <div class="col-lg-6">
                     <div class="owl-carousel contactPageImageSlider">
