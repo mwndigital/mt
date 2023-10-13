@@ -25,6 +25,9 @@
                 <li>
                     <a href="{{ route('admin.dining-page.edit', ['dining_page' => 1]) }}">Dining</a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.contact-page.edit', ['contact_page' => 1]) }}">Contact Us</a>
+                </li>
             </ul>
         </li>
     @endrole

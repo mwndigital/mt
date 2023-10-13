@@ -164,12 +164,12 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::resource('about-us', AdminAboutUsPageController::class);
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
         Route::resource('rooms-page', AdminRoomsPageController::class);
-        Route::resource('contact-us', AdminContactUsPageController::class);
         Route::resource('policy-pages', AdminPolicyPagesController::class);
         Route::resource('faqs-page', AdminFaqsPageController::class);
         Route::resource('bar-page', AdminBarPageController::class);
         Route::resource('dining-page', AdminDiningPageContent::class);
         Route::resource('lodge-page', AdminLodgePageController::class);
+        Route::resource('contact-page', AdminContactUsPageController::class);
     });
 
     //User management
