@@ -75,9 +75,7 @@ class FrontendRestaurantBookingController extends Controller
         // Iterate through reservations to extract table IDs
         foreach ($reservations as $reservation) {
             $tableIds = json_decode($reservation->table_ids);
-            if (is_array($tableIds)) {
-                $reservedTableIds = array_merge($reservedTableIds, $tableIds);
-            }
+            $reservedTableIds = array_merge($reservedTableIds, $tableIds);
         }
 
         // Filter the unique table IDs
