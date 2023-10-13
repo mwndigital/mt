@@ -96,7 +96,13 @@ class BookingController extends Controller
         $isRoom = $request->session()->get('isRoom');
         $checkInDate = $booking->checkin_date;
         $checkOutDate = $booking->checkout_date;
-        $rooms = Rooms::getAll($isRoom, $booking);
+        $rooms = Rooms::getAll(
+            $isRoom,
+            [
+                'no_of_adults' => $booking->no_of_adults,
+                'no_of_children' => $booking->no_of_children,
+            ]
+        );
 
         $filteredRooms = $rooms->filter(function ($room) use ($checkInDate, $checkOutDate) {
             return $room->checkAvailability($checkInDate, $checkOutDate);

@@ -40,28 +40,46 @@ class Rooms extends Model
         return $isDouble ? $this->price_per_night_double : $this->price_per_night_single;
     }
 
-    public function checkAvailability($checkIn, $checkOut)
+    public function getBookedDates($checkIn, $checkOut)
     {
 
-        $bookings = $this->bookings()->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+        return  $this->bookings()->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
             ->where(function ($query) use ($checkIn, $checkOut) {
                 $query->whereBetween('checkin_date', [$checkIn, $checkOut])
                     ->orWhere('checkout_date', '>', $checkIn);
             });
-
-        return $bookings->count() === 0;
     }
 
-    public static function getAll($isRoom = true, $booking)
+    public function checkAvailability($checkIn, $checkOut)
+    {
+        $booked = $this->getBookedDates($checkIn, $checkOut);
+
+        return $booked->count() === 0;
+    }
+
+    public static function getAll($isRoom = true, $data)
     {
         if ($isRoom) {
-            $rooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
-                ->where('child_cap', '>=', $booking->no_of_children)
+            $rooms = Rooms::where('adult_cap', '>=', $data['no_of_adults'])
+                ->where('child_cap', '>=', $data['no_of_children'])
                 ->where('room_type', '!=', 'lodge')
                 ->orderBy('price_per_night_single', 'asc');
         } else {
             $rooms = Rooms::where('room_type', 'lodge');
         }
         return $rooms->get();
+    }
+
+    public function getUnavailableDates($checkIn, $checkOut)
+    {
+        $booked_dates = $this->getBookedDates($checkIn, $checkOut)->pluck('checkin_date', 'checkout_date')->toArray();
+
+        $unavailable_dates = [];
+
+        foreach ($booked_dates as $check_out => $check_in) {
+            $unavailable_dates = array_merge($unavailable_dates, \Carbon\CarbonPeriod::create($check_in, $check_out)->toArray());
+        }
+
+        return $unavailable_dates;
     }
 }
