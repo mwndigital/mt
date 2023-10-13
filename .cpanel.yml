@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+  - export _user="$(id -u -n)"
+  - export DEPLOYPATH=/home/$_user/public_html/
+  - /bin/cp -R * $DEPLOYPATH
