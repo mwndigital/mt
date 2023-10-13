@@ -69,9 +69,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <label for="">Email address *</label>
                                 <input type="email" name="email" id="email" value="@if($booking->email == NULL)example@example.com @else {{ $booking->email }} @endif">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Mobile number</label>
+                                <input type="tel" name="mobile_number" id="mobile_number" value="{{ $booking->mobile_number }}">
+                                @error('mobile_number')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
