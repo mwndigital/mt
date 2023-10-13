@@ -157,7 +157,7 @@
                                             <th>Name</th>
                                             <th>Checkin Date & Checkout Date</th>
                                             <th>Arrival Time</th>
-                                            <th>Room Number</th>
+                                            <th>Room(s)</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -166,7 +166,11 @@
                                                 <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                 <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date)) }}</td>
                                                 <td>{{ $today->arrival_time }}</td>
-                                                <td style="text-align: right;">{{ $today->room_id }}</td>
+                                                <td style="text-align: right;">
+                                                    @foreach ($today->rooms as $room )
+                                                        {{ $room->name }}<br/>
+                                                    @endforeach
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -179,7 +183,7 @@
                                             <th>Name</th>
                                             <th>Checkin Date & Checkout Date</th>
                                             <th>Arrival Time</th>
-                                            <th>Room Number</th>
+                                            <th>Room(s)</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -188,7 +192,11 @@
                                                     <td>{{ $today->first_name }} {{ $today->last_name }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($today->checkin_date)) }} - {{ date('d/m/Y', strtotime($today->checkout_date)) }}</td>
                                                     <td>{{ $today->arrival_time }}</td>
-                                                    <td style="text-align: right;">{{ $today->room_id }}</td>
+                                                    <td style="text-align: right;">
+                                                        @foreach ($today->rooms as $room )
+                                                            {{ $room->name }}<br/>
+                                                        @endforeach
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
