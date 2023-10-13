@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\BookingStatus;
+use Carbon\Carbon;
 
 class Rooms extends Model
 {
@@ -42,11 +43,10 @@ class Rooms extends Model
 
     public function getBookedDates($checkIn, $checkOut)
     {
-
-        return  $this->bookings()->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
+        return $this->bookings()->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
             ->where(function ($query) use ($checkIn, $checkOut) {
                 $query->whereBetween('checkin_date', [$checkIn, $checkOut])
-                    ->orWhere('checkout_date', '>', $checkIn);
+                    ->orWhereBetween('checkout_date', [$checkIn, Carbon::parse($checkOut)->subDay(2)]);
             });
     }
 
