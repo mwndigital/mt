@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
-
+use App\Enums\BookingStatus;
 class CustomerRoomBookingsController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class CustomerRoomBookingsController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::where('user_id', auth()->user()->id)->get();
+        $bookings = Booking::where('user_id', auth()->user()->id)->where('status','!=', BookingStatus::DRAFT)->get();
 
         return view('customer.pages.rooms.index', compact('bookings'));
     }

@@ -90,11 +90,9 @@ const confirmBooking = (event) => {
                             <tr>
                                 <td><strong>Room Booked:</strong></td>
                                 <td>
-                                    @if($booking->room_id)
-                                        All Rooms
-                                    @else
-                                        {{ $booking->room->name }}
-                                    @endif
+                                    @foreach ($booking->rooms as $room )
+                                        {{ $room->name }}<br/>
+                                    @endforeach
                                 </td>
                             </tr>
                             <tr>

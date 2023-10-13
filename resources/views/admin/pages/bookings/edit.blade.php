@@ -28,9 +28,6 @@
                 scrollbar: true,
                 use24Hours: true,
             });
-            document.getElementById('no_of_adults').defaultValue = '0';
-            document.getElementById('no_of_children').defaultValue = '0';
-
         });
     </script>
 @endpush
@@ -60,6 +57,23 @@
     </section>
     <section class="pageMain">
         <div class="container">
+            <!-- Error Message -->
+            @if ($errors->any())
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger" role="alert">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>
+                                        <i class="fas fa-exclamation-circle"></i> {{ $error }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <form action="" method="post">
@@ -67,11 +81,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Check in date *</label>
-                                <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? $booking->checkin_date : '' }}">
+                                <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? date('d-m-Y', strtotime($booking->checkin_date)) : '' }}">
                             </div>
                             <div class="col-md-4">
                                 <label for="">Check out date *</label>
-                                <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? $booking->checkout_date : '' }}">
+                                <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? date('d-m-Y', strtotime($booking->checkout_date)) : '' }}">
                             </div>
                             <div class="col-md-4">
                                 <label for="">Arrival Time *</label>
@@ -88,6 +102,27 @@
                                 <input type="number" name="no_of_children" id="no_of_children" value="{{ $booking ? $booking->no_of_children : '' }}">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="pageSecTitle">
+                                    Selected Rooms
+                                </h4>
+                            </div>
+                        </div>
+                        <!-- Add this inside your form -->
+                        <div class="row">
+                            @foreach($rooms as $room)
+                                <div class="col-md-6">
+                                    <label>
+                                        <input type="checkbox" name="selected_rooms[]" value="{{ $room->id }}"
+                                        @if(in_array($room->id, $selectedRoomIds)) checked @endif>
+                                        {{ $room->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+
+
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="pageSecTitle">

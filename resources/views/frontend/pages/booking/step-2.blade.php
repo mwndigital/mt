@@ -34,6 +34,9 @@
                 const roomName = room.getAttribute('data-name');
                 const roomPrice = parseFloat(room.getAttribute('data-price'));
                 totalCost += roomPrice;
+                // Update select button text to selected
+                const selectButton = document.getElementById('select-text' + room.value);
+                selectButton.innerHTML = 'Selected';
 
                 summary.innerHTML += `
                         <li class="list-inline-item" style="width: 100%;">
@@ -66,7 +69,7 @@
                 <ul class="list-inline">
                     <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;"><strong>TOTAL</strong></li>
                     <li class="list-inline-item" style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
-                        £${totalCost}
+                        £${totalCost * {{ $booking->duration_of_stay }}}
                     </li>
                 </ul>
             </div>
@@ -75,11 +78,15 @@
             `;
         } else {
             // If no rooms are selected, show a warning and hide total and next button
-            const roomWarningElement = document.getElementById('roomWarning');
-            if (roomWarningElement) {
-                roomWarningElement.classList.remove('d-none');
-            }
+            roomWarningElement.classList.remove('d-none');
+            nextElement.classList.add('d-none');
         }
+        // Update select button text if not checked to select
+        const unCheckedCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(:checked)');
+        unCheckedCheckboxes.forEach(checkbox => {
+        const selectButton = document.getElementById('select-text' + checkbox.value);
+        selectButton.innerHTML = 'Select';
+        });
     }
 
     const onSubmit = () => {
@@ -146,9 +153,9 @@
                                 <div class="col-12">
                                     <div class="row innerRow">
                                         @foreach($filteredRooms as $room)
-                                            <div class="col-md-6" onclick="selectRoom({{$room}});">
+                                            <div class="col-md-6" onclick="selectRoom();">
                                                 <label class="checkItem">
-                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
+                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $booking->no_of_adults > 1 ? $room->price_per_night_double : $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
                                                         <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                                         <div class="content">
@@ -156,7 +163,7 @@
                                                             <h6 class="price">
                                                                 Price from: £{{ $room->price_per_night_single }}
                                                             </h6>
-                                                            <button type="button" class="btn mb-3">Select</button>
+                                                            <button type="button" class="btn mb-3" id="select-text{{ $room->id }}">Select</button>
                                                             {!! $room->short_description !!}
                                                         </div>
                                                     </label>

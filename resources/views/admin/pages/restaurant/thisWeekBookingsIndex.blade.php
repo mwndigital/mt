@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Todays Restaurant Bookings</h1>
+                    <h1>This Weeks Restaurant Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -46,12 +46,14 @@
                 <div class="col-12">
                     <div class="tab-panels-wrap">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list" href="{{ route('admin.restaurant-bookings.index') }}">Todays Bookings</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{ route('admin.restaurant-bookings.this-weeks-bookings') }}" role="tab">This Weeks Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list" href="{{ route('admin.restaurant-bookings.index') }}">Todays Bookings</a>
+                            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="{{ route('admin.restaurant-bookings.this-weeks-bookings') }}" role="tab">This Weeks Bookings</a>
                             <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{ route('admin.restaurant-bookings.all-bookings') }}" role="tab" aria-controls="list-messages">All Bookings</a>
                         </div>
+
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table w-100">
+
+                            <table class="table  w-100">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -64,7 +66,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($todaysBookings as $booking)
+                                @foreach($thisWeeksBookings as $booking)
                                     <tr>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>

@@ -93,7 +93,9 @@
                             <div class="col-md-4">
                                 <label for="">Time *</label>
                                 <select name="reservation_time" id="reservation_time" required>
-
+                                    <option value="{{ old('reservation_time') }}">
+                                        {{ old('reservation_time') }}
+                                    </option>
                                 </select>
                                 @error('reservation_time')
                                     <div class="text-danger">
@@ -103,12 +105,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Number of guests *</label>
-                                <select name="no_of_guests" id="no_of_guests" required>
-                                    <option selected disabled>Select number of guests</option>
-                                    @foreach(['1', '2', '3', '4', '5', '6'] as $g_number)
-                                        <option value="{{ $g_number }}" @if($g_number == (session('guest_number'))) selected @endif>{{ ucfirst($g_number) }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" name="no_of_guests" id="no_of_guests" required>
                                 @error('no_of_guests')
                                     <div class="text-danger">
                                         {{ $message }}

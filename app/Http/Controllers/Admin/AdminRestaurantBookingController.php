@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use PDF;
 
 class AdminRestaurantBookingController extends Controller
 {
@@ -26,23 +27,40 @@ class AdminRestaurantBookingController extends Controller
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
-            ->where('status', '=','confirmed')
-            ->orderBy('reservation_date', 'asc')
-            ->get();
         $todaysBookings = RestaurantBooking::where('reservation_date', '>=', $today)
             ->where('reservation_date', '<', $today->copy()->addDay())
             ->where('status', '=', 'confirmed')
             ->orderBy('reservation_time', 'asc')
             ->get();
+
+
+
+        return view('admin.pages.restaurant.index', compact('todaysBookings',));
+    }
+
+    public function thisWeeksBookingsIndex() {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
         $thisWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $today)
             ->where('reservation_date', '<=', $endOfWeek)
             ->where('status', '=', 'confirmed')
             ->orderBy('reservation_date', 'asc')
             ->get();
+        return view('admin.pages.restaurant.thisWeekBookingsIndex', compact('thisWeeksBookings'));
+    }
 
+    public function allBookingsIndex() {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        return view('admin.pages.restaurant.index', compact('todaysBookings', 'thisWeeksBookings', 'allBookings'));
+        $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('status', '=','confirmed')
+            ->orderBy('reservation_date', 'asc')
+            ->get();
+        return view('admin.pages.restaurant.allBookingsIndex', compact('allBookings'));
     }
 
     /**
@@ -224,7 +242,7 @@ class AdminRestaurantBookingController extends Controller
             'table_ids' => json_encode($tableIds),
         ]);
 
-        return redirect('admin/restaurant-bookings')->with('success', 'Booking successfully updated');
+        return redirect()->back()->with('success', 'Booking successfully updated');
     }
 
     public function cancelBooking($id) {
@@ -248,10 +266,43 @@ class AdminRestaurantBookingController extends Controller
         return redirect()->back()->with('success', 'Booking has been cancelled successfully');
     }
 
+    public function printTodayBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $todaysBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<', $today->copy()->addDay())
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_time', 'asc')
+            ->get();
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        $pdf = PDF::loadView('admin.pages.restaurant.todayPdf', compact('todaysBookings'));
+        return $pdf->stream('today-restaurant-bookings.pdf');
+    }
+
+    public function printThisWeeksBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+        $thisWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('reservation_date', '<=', $endOfWeek)
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.restaurant.thisWeekPdf', compact('thisWeeksBookings', 'today', 'endOfWeek', 'startOfWeek'));
+        return $pdf->stream('this-week-restaurant-bookings.pdf');
+    }
+
+    public function printAllBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $allBookings = RestaurantBooking::where('reservation_date', '>=', $today)
+            ->where('status', '=', 'confirmed')
+            ->orderBy('reservation_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.restaurant.allPdf', compact('today', 'allBookings'));
+        return $pdf->stream('all-restaurant-bookings.pdf');
+    }
+
     public function destroy($id)
     {
         $booking = RestaurantBooking::findOrFail($id);

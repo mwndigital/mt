@@ -71,10 +71,19 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label for="">Email Address *</label>
                                             <input type="email" name="email" id="email" value="{{ old('email') }}" required>
                                             @error('email')
+                                                <div class="text-danger">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Mobile Number</label>
+                                            <input type="tel" name="mobile_number" id="mobile_number" value="{{ old('mobile_number') }}">
+                                            @error('mobile_number')
                                                 <div class="text-danger">
                                                     {{ $message }}
                                                 </div>

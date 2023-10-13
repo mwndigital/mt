@@ -15,6 +15,7 @@ use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
 use App\Enums\BookingStatus;
 use Illuminate\Support\Facades\Validator;
+use PDF;
 
 class AdminBookingController extends Controller
 {
@@ -27,21 +28,49 @@ class AdminBookingController extends Controller
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        $allBookings = Booking::where('checkin_date', '>=', $today)
+        $todaysBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<', $today->copy()->addDay())
+            ->where('status', '!=', BookingStatus::DRAFT)
             ->orderBy('checkin_date', 'asc')
             ->get();
 
-        $todaysBookings = Booking::where('checkin_date', '>=', $today)
-            ->where('checkin_date', '<', $today->copy()->addDay())
-            ->orderBy('checkin_date', 'asc')
-            ->get();
+        return view('admin.pages.bookings.index', compact( 'todaysBookings'));
+    }
+
+    public function thisWeeksBookingsIndex(){
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
         $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
             ->where('checkin_date', '<=', $endOfWeek)
+            ->where('status', '!=', BookingStatus::DRAFT)
             ->orderBy('checkin_date', 'asc')
             ->get();
-        return view('admin.pages.bookings.index', compact('allBookings', 'todaysBookings', 'thisWeeksBookings'));
+
+        return view('admin.pages.bookings.thisWeeksBookings', compact('thisWeeksBookings'));
     }
+
+    public function allBookingsIndex(){
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $allBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        return view('admin.pages.bookings.allBookings', compact('allBookings'));
+    }
+
+    public function deletedIndex(){
+        $allBookings = Booking::onlyTrashed()->get();
+
+        return view('admin.pages.bookings.deletedBookings', compact('allBookings'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -239,7 +268,7 @@ class AdminBookingController extends Controller
      */
     public function show(string $id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::withTrashed()->findOrFail($id);
         return view('admin.pages.bookings.show', compact('booking'));
     }
 
@@ -248,10 +277,19 @@ class AdminBookingController extends Controller
      */
     public function edit(string $id)
     {
-        $booking = Booking::findOrFail($id);
+        $booking = Booking::withTrashed()->findOrFail($id);
         $countries = CountryListFacade::getList('en');
+        $roomType = $booking->type;
+        $selectedRoomIds = $booking->rooms->pluck('id')->toArray();
 
-        return view('admin.pages.bookings.edit', compact('booking', 'countries'));
+
+        if($roomType == 'lodge'){
+            $rooms = Rooms::where('room_type', $roomType)->get();
+        } else{
+            $rooms = Rooms::where('room_type', '!=', 'lodge')->get();
+        }
+
+        return view('admin.pages.bookings.edit', compact('booking', 'countries', 'rooms', 'selectedRoomIds'));
     }
 
     /**
@@ -259,7 +297,38 @@ class AdminBookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $booking = Booking::withTrashed()->findOrFail($id);
+        // Update the booking
+        $validated = $request->validate([
+            'checkin_date' => ['required', 'date_format:d-m-Y'],
+            'checkout_date' => ['required', 'date_format:d-m-Y'],
+            'arrival_time' => ['required'],
+            'no_of_adults' => ['required', 'integer', 'min:1'],
+            'no_of_children' => ['required', 'integer'],
+            'user_title' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'address_line_one' => ['required', 'string', 'max:255'],
+            'address_line_two' => ['nullable', 'string', 'max:255'],
+            'postcode' => ['required', 'string', 'max:100'],
+            'city' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'max:13'],
+            'email_address' => ['required', 'email']
+        ]);
+        $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
+        $checkoutDate = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
+        $validated['checkin_date'] = $checkinDate;
+        $validated['checkout_date'] = $checkoutDate;
+
+       // Update
+        $booking->update($validated);
+
+        // Update the rooms
+        $booking->rooms()->sync($request->selected_rooms);
+
+        return redirect()->route('admin.bookings.index')->with('success', 'Booking has been updated successfully');
+
     }
 
     public function csvUpload(){
@@ -361,6 +430,33 @@ class AdminBookingController extends Controller
         };
 
         return redirect()->back()->with('success', $response['message']);
+    }
+
+    public function printTodayBooking(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $todaysBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<', $today->copy()->addDay())
+            ->whereIn('status', ['confirmed', 'pending', 'paid'])
+            ->orderBy('checkin_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.bookings.todayPdf', compact('todaysBookings'));
+        return $pdf->stream('today-room-bookings.pdf');
+
+    }
+
+    public function printThisWeeksBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
+        $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
+            ->where('checkin_date', '<=', $endOfWeek)
+            ->whereIn('status',  ['confirmed', 'pending', 'paid'])
+            ->orderBy('checkin_date', 'ASC')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.bookings.thisWeekPdf', compact('today', 'startOfWeek', 'endOfWeek', 'thisWeeksBookings'));
+        return $pdf->stream('this-week-room-bookings.pdf');
     }
 
     public function markAsPaid(Request $request, string $id) {

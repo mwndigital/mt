@@ -57,22 +57,31 @@
                         @if($hotelBookings->isEmpty())
                             <h4 class="noBooking">You currently have no bookings</h4>
                         @else
-                            <table class="table">
+                            <table class="table table-hovered">
                                 <thead>
                                 <tr>
-                                    <th>Check-in Date</th>
-                                    <th>Arrival Time</th>
-                                    <th>Check-out Date</th>
-                                    <th>No of guests</th>
+                                    <th>Status</th>
+                                    <th>Check-In</th>
+                                    <th>Check-Out</th>
+                                    <th>Rooms</th>
+                                    <th>Name</th>
+                                    <th>Total</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($hotelBookings as $booking)
                                     <tr>
-                                        <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
-                                        <td>{{ $booking->reservation_time }}</td>
-                                        <td>{{ $booking->joining_for }}</td>
-                                        <td>{{ $booking->no_of_guests }}</td>
+                                        <td>{!! $booking->getStatus() !!}</td>
+                                        <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
+                                        <td>
+                                            @foreach ($booking->rooms as $room )
+                                                {{ $room->name }}<br/>
+                                           @endforeach
+                                        </td>
+                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                        <td>{{ $booking->total }}</td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>

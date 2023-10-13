@@ -13,6 +13,7 @@ class RestaurantBooking extends Model
         'first_name',
         'last_name',
         'email',
+        'mobile_number',
         'reservation_date',
         'reservation_time',
         'reservation_end_time',

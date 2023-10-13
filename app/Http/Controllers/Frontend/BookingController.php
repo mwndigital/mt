@@ -43,13 +43,14 @@ class BookingController extends Controller
 
     public function stepOneStore(Request $request)
     {
-        $request->session()->put('isRoom', $request->type != 'lodge');
+        $isRoom = $request->type != 'lodge';
+        $request->session()->put('isRoom', $isRoom);
 
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
             'checkout_date' => ['required', 'date_format:d-m-Y'],
             'arrival_time' => ['required'],
-            'no_of_adults' => ['required', 'integer'],
+            'no_of_adults' => ['required', 'integer', 'min:1'],
             'no_of_children' => ['required', 'integer'],
         ]);
 
@@ -71,12 +72,21 @@ class BookingController extends Controller
         $duration = Carbon::parse($checkinDate)->diffInDays(Carbon::parse($checkoutDate));
 
         $booking->duration_of_stay = $duration;
+        // If duration only 1 night and if is not room then redirect back
+        if (!$isRoom && $duration == 1) {
+            return redirect()->back()
+                ->with('error', 'Minimum stay for lodge is 2 nights.');
+        }
+        if (!$duration) {
+            return redirect()->back()
+                ->with('error', 'Check-in date and check-out date cannot be the same.');
+        }
         $validated['checkin_date'] = $checkinDate;
         $validated['checkout_date'] = $checkoutDate;
         $validated['booking_ref'] = 'mt-' . strtoupper(Str::random(8));
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
-        $request->session()->put('type', $request->type != 'lodge');
+        $request->session()->put('type', $isRoom);
         return to_route('book-a-room-step-2');
     }
 
@@ -84,58 +94,21 @@ class BookingController extends Controller
     {
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
+        $checkInDate = $booking->checkin_date;
+        $checkOutDate = $booking->checkout_date;
+        $rooms = Rooms::getAll(
+            $isRoom,
+            [
+                'no_of_adults' => $booking->no_of_adults,
+                'no_of_children' => $booking->no_of_children,
+            ]
+        );
 
-        // Fetch available rooms based on the number of adults and children
-        if ($isRoom) {
-            $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
-                ->where('child_cap', '>=', $booking->no_of_children)
-                ->where('room_type', '!=', 'lodge')
-                ->orderBy('price_per_night_single', 'asc')
-                ->get();
-        } else {
-            $availableRooms = Rooms::where('room_type', 'lodge')
-                ->get();
-        }
-        // Get the check-in and check-out dates in the "d-m-Y" format
-        $checkinDate = $booking->checkin_date;
-        $checkoutDate = $booking->checkout_date;
-
-        // Filter out the rooms that have conflicts with existing bookings for the selected time period
-        $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate, $isRoom) {
-            if (!$isRoom) {
-                // Lodge availability
-                $conflictingBooking = Booking::where('type', 'lodge')
-                    ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
-                    ->where(function ($query) use ($checkinDate, $checkoutDate) {
-                        $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
-                            ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
-                            ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
-                                $query->where('checkin_date', '<=', $checkinDate)
-                                    ->where('checkout_date', '>=', $checkoutDate);
-                            });
-                    })
-                    ->exists();
-            } else {
-                //where('room_id', $room->id)
-                $conflictingBooking = Booking::whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
-                    ->whereHas('rooms', function ($query) use ($room) {
-                        $query->where('room_id', $room->id);
-                    })
-                    ->where(function ($query) use ($checkinDate, $checkoutDate) {
-                        $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
-                            ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
-                            ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
-                                $query->where('checkin_date', '<=', $checkinDate)
-                                    ->where('checkout_date', '>=', $checkoutDate);
-                            });
-                    })
-                    ->exists();
-            }
-
-            return !$conflictingBooking;
+        $filteredRooms = $rooms->filter(function ($room) use ($checkInDate, $checkOutDate) {
+            return $room->checkAvailability($checkInDate, $checkOutDate);
         });
 
-        if ($filteredRooms->isEmpty()) {
+        if ($filteredRooms->isEmpty() || (!$isRoom && $filteredRooms->count() != $rooms->count())) {
             return redirect()->back()
                 ->with('error', 'No rooms/lodge available for the selected dates.');
         }
@@ -157,28 +130,17 @@ class BookingController extends Controller
 
         $request->session()->put('booking', $booking);
         // Convert date strings to Y-m-d format using Carbon
-        $checkin_date = $booking->checkin_date;
-        $checkout_date = $booking->checkout_date;
+        $checkInDate = $booking->checkin_date;
+        $checkOutDate = $booking->checkout_date;
 
         // Check if any booking conflicts exist for the selected room and dates
-        $conflictingBooking = DB::table('bookings')
-            // ->whereIn('room_id', $validated['room_id'])
-            ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
-            ->where(function ($query) use ($checkin_date, $checkout_date) {
-                $query->whereBetween('checkin_date', [$checkin_date, $checkout_date])
-                    ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date])
-                    ->orWhere(function ($query) use ($checkin_date, $checkout_date) {
-                        $query->where('checkin_date', '<=', $checkin_date)
-                            ->where('checkout_date', '>=', $checkout_date);
-                    });
-            })
-            ->first();
+        $filteredRooms = $rooms->filter(function ($room) use ($checkInDate, $checkOutDate) {
+            return $room->checkAvailability($checkInDate, $checkOutDate);
+        });
 
-        // if ($conflictingBooking) {
-        //     // Booking conflicts exist, redirect back with a notice
-        //     return redirect()->route('book-a-room-step-2')
-        //         ->with('room_conflict', true);
-        // }
+        if ($filteredRooms->isEmpty()) {
+            return redirect()->route('book-a-room-step-2')->with('room_conflict', true);
+        }
 
         return redirect()->route('book-a-room-step-3');
     }

@@ -246,6 +246,10 @@
                 outline: none;
                 text-decoration: none;
             }
+
+            option:checked {
+                background-color: $lightGrey;
+            }
         }
         textarea {
             background-color: $w;
