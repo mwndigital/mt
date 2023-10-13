@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/available', [AvailableController::class, 'index']);
 
 // Dev Routes
-Route::get('/dev/deployment', [DevController::class, 'deployment']);
+Route::post('/dev/deployment', [DevController::class, 'deployment']);
