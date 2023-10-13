@@ -6,31 +6,36 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Enums\BookingStatus;
+use Carbon\Carbon;
+use App\Models\Rooms;
 
 class AvailableController extends Controller
 {
     public function index(Request $request)
     {
-        $start_date = \Carbon\Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-        $end_date = \Carbon\Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+        $isRoom = $request->type == 'room' ?? false;
+        $adults = $request->adults ?? 1;
+        $children = $request->children ?? 0;
+        // Get from current day to 3 month after all bookings and get unavailable dates
+        $today = now()->format('Y-m-d');
+        $threeMonthAfter = now()->addMonths(5)->format('Y-m-d');
+        $rooms = Rooms::getAll($isRoom, [
+            'no_of_adults' => $adults,
+            'no_of_children' => $children
 
-        // Find unavailable dates from bookings room
-        $bookings = Booking::where('status', '!=', BookingStatus::DRAFT)
-            ->where('checkin_date', '<=', $end_date)
-            ->where('checkout_date', '>=', $start_date)
-            ->get();
+        ]);
 
-        // Check rooms availability from bookings
-        $unavailable = [];
-        foreach ($bookings as $booking) {
-            $unavailable[] = [
-                'start' => $booking->checkin_date,
-                'end' => $booking->checkout_date,
-            ];
+        $unavailable_dates = [];
+
+        foreach ($rooms as $room) {
+            $unavailable_dates[$room->id] = $room->getUnavailableDates($today, $threeMonthAfter);
         }
 
         return response()->json([
-            'unavailable' => $unavailable,
+            'success' => true,
+            'type' => $request->type,
+            'rooms' => $rooms,
+            'unavailable_dates' => $unavailable_dates
         ]);
     }
 }
