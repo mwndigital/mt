@@ -9,10 +9,7 @@ class DevController extends Controller
 {
     public function deployment(Request $request)
     {
-        // Repository Update
         try {
-
-
             shell_exec('/usr/local/cpanel/bin/uapi VersionControl update name=mt repository_root=/home/mashtunaberlour/repositories/mt branch=main source_repository=\'{"remote_name":"origin"}\'
         ');
             shell_exec('/usr/local/cpanel/bin/uapi VersionControlDeployment create repository_root=/home/mashtunaberlour/repositories/mt');
