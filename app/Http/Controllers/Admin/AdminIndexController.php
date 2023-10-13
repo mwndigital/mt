@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\BookingStatus;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminContactFormSubmissionMail;
 use App\Models\Booking;
@@ -32,12 +33,14 @@ class AdminIndexController extends Controller
             ->get();
 
         $roomToday = Booking::where('checkin_date', '>=', $today)
-            ->where('checkin_date', '<', $today->copy()->addDay(), '>=', $today)
-            ->orderBy('arrival_time', 'asc')
+            ->where('checkin_date', '<', $today->copy()->addDay())
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->orderBy('checkin_date', 'asc')
             ->get();
         $roomThisWeek = Booking::where('checkin_date', '>=', $today)
             ->where('checkin_date', '<=', $endOfWeek)
-            ->orderBy('arrival_time', 'asc')
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->orderBy('checkin_date', 'asc')
             ->get();
 
         return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek', 'roomToday', 'roomThisWeek'));
