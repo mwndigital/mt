@@ -5,7 +5,7 @@ import Calendar from "./Calendar";
 function BookingForm() {
     // Get from url type params (room or lodge)
     const urlParams = new URLSearchParams(window.location.search);
-    const type = urlParams.get("type");
+    const type = urlParams.get("type") || "room";
     const [roomType, setRoomType] = useState(type);
     const [children, setChildren] = useState(0);
     const [adults, setAdults] = useState(1);
@@ -13,6 +13,8 @@ function BookingForm() {
     const handleType = (e) => {
         setRoomType(e.target.value);
     };
+
+    console.log(roomType);
     return (
         <>
             <div className="row">
