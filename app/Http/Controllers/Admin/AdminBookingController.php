@@ -158,8 +158,8 @@ class AdminBookingController extends Controller
         });
 
         if ($filteredRooms->isEmpty() || (!$isRoom && $filteredRooms->count() != $rooms->count())) {
-            // Booking conflicts exist, redirect back with a notice
-            return redirect()->route('admin.book-a-room-step-one')
+            // Booking conflicts exist, redirect /admin/bookings/create
+            return redirect()->route('admin.bookings.create')
                 ->with('room_conflict', true);
         }
 

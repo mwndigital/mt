@@ -96,7 +96,7 @@
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
-                                    <a href="{{ route('book-a-room-index') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
+                                    <a href="/admin/bookings/create" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
                                     <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
