@@ -16,6 +16,11 @@ use Monarobase\CountryList\CountryListFacade;
 use App\Enums\BookingStatus;
 use Illuminate\Support\Facades\Validator;
 use PDF;
+use Illuminate\Support\Str;
+use App\Mail\AdminBookingConfirmationMail;
+use App\Notifications\AdminNewRoomBookingNotification;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
 
 class AdminBookingController extends Controller
 {
@@ -34,10 +39,11 @@ class AdminBookingController extends Controller
             ->orderBy('checkin_date', 'asc')
             ->get();
 
-        return view('admin.pages.bookings.index', compact( 'todaysBookings'));
+        return view('admin.pages.bookings.index', compact('todaysBookings'));
     }
 
-    public function thisWeeksBookingsIndex(){
+    public function thisWeeksBookingsIndex()
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
@@ -51,7 +57,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.thisWeeksBookings', compact('thisWeeksBookings'));
     }
 
-    public function allBookingsIndex(){
+    public function allBookingsIndex()
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
@@ -64,7 +71,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.allBookings', compact('allBookings'));
     }
 
-    public function deletedIndex(){
+    public function deletedIndex()
+    {
         $allBookings = Booking::onlyTrashed()->get();
 
         return view('admin.pages.bookings.deletedBookings', compact('allBookings'));
@@ -78,12 +86,16 @@ class AdminBookingController extends Controller
     public function create(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $isRoom = $request->session()->get('isRoom');
         $tables = RestaurantTable::all();
-        return view('admin.pages.bookings.create-steps.step-one', compact('booking', 'tables'));
+        return view('admin.pages.bookings.create-steps.step-one', compact('booking', 'tables', 'isRoom'));
     }
 
     public function stepOneStore(Request $request)
     {
+        $isRoom = $request->type != 'lodge';
+        $request->session()->put('isRoom', $isRoom);
+
         $validated = $request->validate([
             'checkin_date' => ['required', 'date_format:d-m-Y'],
             'checkout_date' => ['required', 'date_format:d-m-Y'],
@@ -106,13 +118,22 @@ class AdminBookingController extends Controller
         $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
         $checkoutDate = Carbon::createFromFormat('d-m-Y', $validated['checkout_date'])->format('Y-m-d');
 
-        $booking->checkin_date = $checkinDate;
-        $booking->checkout_date = $checkoutDate;
-
         // Calculate the duration of the stay in days
         $duration = Carbon::parse($checkinDate)->diffInDays(Carbon::parse($checkoutDate));
 
+        if (!$isRoom && $duration == 1) {
+            return redirect()->back()
+                ->with('error', 'Minimum stay for lodge is 2 nights.');
+        }
+        if (!$duration) {
+            return redirect()->back()
+                ->with('error', 'Check-in date and check-out date cannot be the same.');
+        }
+
         $booking->duration_of_stay = $duration;
+        $validated['checkin_date'] = $checkinDate;
+        $validated['checkout_date'] = $checkoutDate;
+        $validated['booking_ref'] = 'mt-' . strtoupper(Str::random(8));
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
@@ -121,63 +142,52 @@ class AdminBookingController extends Controller
     public function stepTwoShow(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $isRoom = $request->session()->get('isRoom');
+        $checkInDate = $booking->checkin_date;
+        $checkOutDate = $booking->checkout_date;
+        $rooms = Rooms::getAll(
+            $isRoom,
+            [
+                'no_of_adults' => $booking->no_of_adults,
+                'no_of_children' => $booking->no_of_children,
+            ]
+        );
 
-        // Fetch available rooms based on the number of adults and children
-        $availableRooms = Rooms::where('adult_cap', '>=', $booking->no_of_adults)
-            ->where('child_cap', '>=', $booking->no_of_children)
-            ->get();
-
-        // Get the check-in and check-out dates in the "d-m-Y" format
-        $checkinDate = Carbon::createFromFormat('d-m-Y', $booking->checkin_date)->format('d-m-Y');
-        $checkoutDate = Carbon::createFromFormat('d-m-Y', $booking->checkout_date)->format('d-m-Y');
-
-        // Filter out the rooms that have conflicts with existing bookings for the selected time period
-        $filteredRooms = $availableRooms->filter(function ($room) use ($checkinDate, $checkoutDate) {
-            $conflictingBooking = Booking::where('room_id', $room->id)
-                ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
-                ->where(function ($query) use ($checkinDate, $checkoutDate) {
-                    $query->whereBetween('checkin_date', [$checkinDate, $checkoutDate])
-                        ->orWhereBetween('checkout_date', [$checkinDate, $checkoutDate])
-                        ->orWhere(function ($query) use ($checkinDate, $checkoutDate) {
-                            $query->where('checkin_date', '<=', $checkinDate)
-                                ->where('checkout_date', '>=', $checkoutDate);
-                        });
-                })
-                ->exists();
-
-            return !$conflictingBooking;
+        $filteredRooms = $rooms->filter(function ($room) use ($checkInDate, $checkOutDate) {
+            return $room->checkAvailability($checkInDate, $checkOutDate);
         });
+
+        if ($filteredRooms->isEmpty() || (!$isRoom && $filteredRooms->count() != $rooms->count())) {
+            // Booking conflicts exist, redirect back with a notice
+            return redirect()->route('admin.book-a-room-step-one')
+                ->with('room_conflict', true);
+        }
+
         return view('admin.pages.bookings.create-steps.step-two', compact('booking', 'filteredRooms'));
     }
 
     public function stepTwoStore(Request $request)
     {
         $validated = $request->validate([
-            'room_id' => ['required', 'integer'],
+            'room_id' => ['required', 'array'],
         ]);
+        $roomIds = $validated['room_id'];
 
         $booking = $request->session()->get('booking');
+        $rooms = Rooms::whereIn('id', $roomIds)->get();
+        $booking->rooms = $rooms;
+
+        $checkInDate = $booking->checkin_date;
+        $checkOutDate = $booking->checkout_date;
+
         $booking->fill($validated);
         $request->session()->put('booking', $booking);
 
-        // Convert date strings to Y-m-d format using Carbon
-        $checkin_date = Carbon::createFromFormat('d-m-Y', $booking->checkin_date)->format('Y-m-d');
-        $checkout_date = Carbon::createFromFormat('d-m-Y', $booking->checkout_date)->format('Y-m-d');
+        $filteredRooms = $rooms->filter(function ($room) use ($checkInDate, $checkOutDate) {
+            return $room->checkAvailability($checkInDate, $checkOutDate);
+        });
 
-        // Check if any booking conflicts exist for the selected room and dates
-        $conflictingBooking = DB::table('bookings')
-            ->where('room_id', $booking->room_id)
-            ->where(function ($query) use ($checkin_date, $checkout_date) {
-                $query->whereBetween('checkin_date', [$checkin_date, $checkout_date])
-                    ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date])
-                    ->orWhere(function ($query) use ($checkin_date, $checkout_date) {
-                        $query->where('checkin_date', '<=', $checkin_date)
-                            ->where('checkout_date', '>=', $checkout_date);
-                    });
-            })
-            ->first();
-
-        if ($conflictingBooking) {
+        if ($filteredRooms->isEmpty()) {
             // Booking conflicts exist, redirect back with a notice
             return redirect()->route('admin.book-a-room-step-two')
                 ->with('room_conflict', true);
@@ -189,8 +199,9 @@ class AdminBookingController extends Controller
     public function stepThreeShow(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $isRoom = $request->session()->get('isRoom');
         $countries = CountryListFacade::getList('en');
-        return view('admin.pages.bookings.create-steps.step-three', compact('booking', 'countries'));
+        return view('admin.pages.bookings.create-steps.step-three', compact('booking', 'countries', 'isRoom'));
     }
     public function stepThreeStore(Request $request)
     {
@@ -235,21 +246,49 @@ class AdminBookingController extends Controller
     public function stepFourShow(Request $request)
     {
         $booking = $request->session()->get('booking');
-
-        $roomName = $booking['room_name'];
-        return view('admin.pages.bookings.create-steps.step-four', compact('booking', 'roomName'));
+        return view('admin.pages.bookings.create-steps.step-four', compact('booking'));
     }
     public function stepFourStore(Request $request)
     {
         $booking = $request->session()->get('booking');
+        $isRoom = $request->session()->get('isRoom');
         $validated = $request->validate([
             'cancellationPolicyAgree' => ['nullable'],
         ]);
         $booking->fill($validated);
-        $booking->save();
-        $request->session()->forget('booking');
 
-        Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+        $currentData = $booking->toArray();
+        unset($currentData['rooms']);
+
+        $book = Booking::create(array_merge($currentData, [
+            'booking_ref' => 'mt-' . strtoupper(Str::random(8)),
+            'status' => BookingStatus::CONFIRMED,
+            'total' =>  $booking->getTotalAmount(),
+            'type' => $isRoom ? 'room' : 'lodge',
+        ]));
+
+        $book->rooms()->sync($booking->rooms);
+
+        // Send email to customer
+        try {
+            Mail::to($booking['email_address'])->send(new BookingConfirmationMail($booking));
+            Mail::to('reservations@mashtun-aberlour.com')->send(new AdminBookingConfirmationMail($book));
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        // Notify admins
+        try {
+            $adminUsers = Role::whereIn('name', ['admin', 'super admin'])->first()->users;
+            foreach ($adminUsers as $adminUser) {
+                $adminUser->notify(new AdminNewRoomBookingNotification($book));
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+        }
+
+        $request->session()->forget('booking');
+        $request->session()->forget('isRoom');
 
         return redirect('admin/bookings')->with('success', 'New booking has been created successfully and an email has been sent to the customer');
     }
@@ -283,9 +322,9 @@ class AdminBookingController extends Controller
         $selectedRoomIds = $booking->rooms->pluck('id')->toArray();
 
 
-        if($roomType == 'lodge'){
+        if ($roomType == 'lodge') {
             $rooms = Rooms::where('room_type', $roomType)->get();
-        } else{
+        } else {
             $rooms = Rooms::where('room_type', '!=', 'lodge')->get();
         }
 
@@ -321,24 +360,25 @@ class AdminBookingController extends Controller
         $validated['checkin_date'] = $checkinDate;
         $validated['checkout_date'] = $checkoutDate;
 
-       // Update
+        // Update
         $booking->update($validated);
 
         // Update the rooms
         $booking->rooms()->sync($request->selected_rooms);
 
         return redirect()->route('admin.bookings.index')->with('success', 'Booking has been updated successfully');
-
     }
 
-    public function csvUpload(){
+    public function csvUpload()
+    {
         return view('admin.pages.bookings.uploads');
     }
-    public function csvStore(Request $request) {
+    public function csvStore(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'csv_file' => ['required', 'mimes:csv,txt'],
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->with('error', $validator->errors()->all());
         }
 
@@ -348,10 +388,10 @@ class AdminBookingController extends Controller
 
         //Read the data from file
         $data = [];
-        if(($handle = fopen(storage_path('app/' . $file_path), 'r')) !== false) {
+        if (($handle = fopen(storage_path('app/' . $file_path), 'r')) !== false) {
             $header = fgetcsv($handle, 1000, ',');
-            while(($row = fgetcsv($handle, 1000, ",")) !== false) {
-                if(count($header) == count($row)) {
+            while (($row = fgetcsv($handle, 1000, ",")) !== false) {
+                if (count($header) == count($row)) {
                     $data[] = array_combine($header, $row);
                 }
             }
@@ -366,11 +406,10 @@ class AdminBookingController extends Controller
             'ALLFIVE ROOMS ' => 1, 2, 3, 4, 5,
         ];
         //Add into the DB
-        foreach($data as $row) {
-            if(isset($roomMapping[$row['room_booked']])) {
+        foreach ($data as $row) {
+            if (isset($roomMapping[$row['room_booked']])) {
                 $roomId = $roomMapping[$row['room_booked']];
-            }
-            else {
+            } else {
                 $roomId = 10;
             }
             $booking = [
@@ -432,7 +471,8 @@ class AdminBookingController extends Controller
         return redirect()->back()->with('success', $response['message']);
     }
 
-    public function printTodayBooking(Request $request) {
+    public function printTodayBooking(Request $request)
+    {
         $today = Carbon::today()->startOfDay();
         $todaysBookings = Booking::where('checkin_date', '>=', $today)
             ->where('checkin_date', '<', $today->copy()->addDay())
@@ -442,10 +482,10 @@ class AdminBookingController extends Controller
 
         $pdf = PDF::loadView('admin.pages.bookings.todayPdf', compact('todaysBookings'));
         return $pdf->stream('today-room-bookings.pdf');
-
     }
 
-    public function printThisWeeksBookings(Request $request) {
+    public function printThisWeeksBookings(Request $request)
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
@@ -459,7 +499,8 @@ class AdminBookingController extends Controller
         return $pdf->stream('this-week-room-bookings.pdf');
     }
 
-    public function markAsPaid(Request $request, string $id) {
+    public function markAsPaid(Request $request, string $id)
+    {
         $booking = Booking::findOrFail($id);
 
         $booking->update(['status' => 'paid']);

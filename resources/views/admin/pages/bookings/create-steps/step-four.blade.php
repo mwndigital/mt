@@ -64,9 +64,11 @@
                             <table class="table table-responsive w-100">
                                 <tbody>
                                 <tr>
-                                    <td><strong>Room:</strong></td>
+                                    <td><strong>Rooms:</strong></td>
                                     <td>
-                                        {{ $booking->room->name }}
+                                     @foreach ($booking->rooms as $room)
+                                        {{ $room->name }} <br>
+                                     @endforeach
                                     </td>
                                 </tr>
                                 <tr>

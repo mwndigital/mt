@@ -35,7 +35,10 @@
                 <strong>Duration of stay:</strong> {{ $booking->duration_of_stay }} nights
             </li>
             <li>
-                <strong>Your Room:</strong> {{ $booking->room->name }}
+                <strong>Your Room:</strong>
+                @foreach ($booking->rooms as $room )
+                    {{ $room->name }} <br>
+                @endforeach
             </li>
             <li>
                 <strong>Number of Adults:</strong> {{ $booking->no_of_adults }}
