@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormSubmissionStoreRequest;
 use App\Mail\AdminContactFormSubmissionMail;
 use App\Models\ContactFormSubmissions;
+use App\Models\ContactPageContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +17,8 @@ class ContactPageController extends Controller
      */
     public function index()
     {
-        return view('frontend.pages.contactPage');
+        $content = ContactPageContent::first();
+        return view('frontend.pages.contactPage', compact('content'));
     }
 
     /**
