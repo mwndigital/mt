@@ -88,11 +88,11 @@ $(document).ready(function () {
                         <div class="roomItem card">
                                  <div class="owl-carousel owl-theme">
                                     <div class="item">
-                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}" style="height: 238px;">
                                     </div>
                                     @foreach($room->images as $image)
                                         <div class="item">
-                                            <img class="img-fluid" src="{{ Storage::url($image->image) }}">
+                                            <img class="img-fluid" src="{{ Storage::url($image->image) }}" style="height: 238px;">
                                         </div>
                                     @endforeach
                                 </div>
