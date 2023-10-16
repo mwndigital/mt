@@ -43,12 +43,20 @@ class Rooms extends Model
 
     public function getBookedDates($checkIn, $checkOut)
     {
-        return $this->bookings()->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING, BookingStatus::PAID])
-            ->where(function ($query) use ($checkIn, $checkOut) {
-                $query->whereBetween('checkin_date', [$checkIn, $checkOut])
-                    ->orWhereBetween('checkout_date', [$checkIn, Carbon::parse($checkOut)->subDay(2)]);
-            });
+        $query = "
+        SELECT b.*
+        FROM bookings b
+        LEFT JOIN booking_room br ON b.id = br.booking_id
+        INNER JOIN rooms r ON r.id = br.room_id
+        WHERE br.room_id = ?
+        AND (b.checkin_date < ? AND b.checkout_date > ?)
+        ORDER BY b.id;
+    ";
+        return Booking::fromQuery($query, [$this->id, $checkOut, $checkIn]);
     }
+
+
+
 
     public function checkAvailability($checkIn, $checkOut)
     {
