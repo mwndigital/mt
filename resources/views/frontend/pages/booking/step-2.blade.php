@@ -4,8 +4,19 @@
 @endpush
 @push('page-scripts')
 <script>
-    const selectRoom = () => {
+    const selectRoom = (currentRoom) => {
+        const isRoom = {{ $isRoom ? 'true' : 'false' }};
         const selectedRooms = document.querySelectorAll('input[name="room_id[]"]:checked');
+        if (!isRoom) {
+                // remove all selected rooms except the current one
+                selectedRooms.forEach(room => {
+                    const roomId = room.value
+                    if (roomId != currentRoom.id) {
+                        room.checked = false;
+                    }
+                });
+        }
+        const newSelectedRooms = document.querySelectorAll('input[name="room_id[]"]:checked');
         const summary = document.getElementById('sub-list');
         const phpSummary = document.getElementById('php-list');
         const totalElement = document.getElementById('total');
@@ -17,7 +28,7 @@
          const nextElement = document.getElementById('next');
          const roomWarningElement = document.getElementById('roomWarning');
 
-        if (selectedRooms.length > 0) {
+        if (newSelectedRooms.length > 0) {
             // Generate summary for selected rooms
             let totalCost = 0;
             nextElement.classList.remove('d-none');
@@ -30,7 +41,7 @@
                 </li>
             `;
 
-            selectedRooms.forEach(room => {
+            newSelectedRooms.forEach(room => {
                 const roomName = room.getAttribute('data-name');
                 const roomPrice = parseFloat(room.getAttribute('data-price'));
                 totalCost += roomPrice;
@@ -153,7 +164,7 @@
                                 <div class="col-12">
                                     <div class="row innerRow">
                                         @foreach($filteredRooms as $room)
-                                            <div class="col-md-6" onclick="selectRoom();">
+                                            <div class="col-md-6" onclick="selectRoom({{$room}});">
                                                 <label class="checkItem">
                                                     <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif data-price="{{ $booking->no_of_adults > 1 ? $room->price_per_night_double : $room->price_per_night_single }}" data-name="{{ $room->name }}" data-duration="{{ $room->duration_of_stay }}">
                                                     <label for="room_{{ $room->id }}">
