@@ -113,7 +113,7 @@
             </ul>
         </div>
     @endif
-    @if(session('booking_conflict'))
+    @if(session('room_conflict'))
         <div class="alert alert-danger" role="alert">
             The selected dates are already booked. Please choose different dates.
         </div>

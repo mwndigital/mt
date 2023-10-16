@@ -54,7 +54,7 @@ use Spatie\Sitemap\SitemapGenerator;
 */
 
 //Admin Routes
-Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->prefix('admin')->group(function(){
+Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->prefix('admin')->group(function () {
     // API will move to api.php
     Route::delete('remove-image', [\App\Http\Controllers\Admin\ApiController::class, 'removeImage'])->name('remove-image');
     Route::post('upload-image', [\App\Http\Controllers\Admin\ApiController::class, 'uploadImage'])->name('upload-image');
@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
 
     //FAQs
-    Route::prefix('faqs')->group(function(){
+    Route::prefix('faqs')->group(function () {
         Route::resource('faq', AdminFaqController::class)->names([
             'index' => 'faq.index',
             'create' => 'faq.create',
@@ -93,7 +93,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     });
 
     //Menu Category
-    Route::prefix('menu')->group(function(){
+    Route::prefix('menu')->group(function () {
         Route::resource('category', MenuCategoryController::class)->names([
             'index' => 'menu-category.index',
             'create' => 'menu-category.create',
@@ -109,8 +109,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::resource('menu', MenuController::class);
 
     //Gallery
-    Route::prefix('gallery')->group(function(){
-       Route::resource('gallery-category', AdminGalleryCategoryController::class);
+    Route::prefix('gallery')->group(function () {
+        Route::resource('gallery-category', AdminGalleryCategoryController::class);
     });
     Route::resource('gallery', AdminGalleryController::class);
 
@@ -118,7 +118,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::resource('whisky', WhiskyController::class);
 
     //Bookings
-    Route::prefix('bookings')->group(function(){
+    Route::prefix('bookings')->group(function () {
         Route::post('stepOneStore', [AdminBookingController::class, 'stepOneStore'])->name('book-a-room-step-one-store');
         Route::get('stepTwo', [AdminBookingController::class, 'stepTwoShow'])->name('book-a-room-step-two');
         Route::post('stepTwoStore', [AdminBookingController::class, 'stepTwoStore'])->name('book-a-room-step-two-store');
@@ -138,12 +138,12 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('deleted-bookings', [AdminBookingController::class, 'deletedIndex'])->name('book-a-room.deleted-bookings-index');
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
-    Route::resource('bookings', AdminBookingController::class);
+    Route::resource('bookings', AdminBookingController::class)->name('bookings', 'bookings.index');
     Route::post('bookings/{id}/edit', [AdminBookingController::class, 'update'])->name('bookings.edit');
 
 
     //Restaurant Booking controller
-    Route::prefix('restaurant-bookings')->group(function(){
+    Route::prefix('restaurant-bookings')->group(function () {
         Route::get('upload', [AdminRestaurantBookingController::class, 'csvUpload'])->name('restaurant-bookings.csv-upload');
         Route::post('csv-store', [AdminRestaurantBookingController::class, 'csvStore'])->name('restaurant-bookings.csv-store');
         Route::get('print-today-bookings', [AdminRestaurantBookingController::class, 'printTodayBookings'])->name('restaurant-bookings.print-today-bookings');
@@ -159,7 +159,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::resource('restaurant-tables', AdminRestaurantTableController::class);
 
     //Pages
-    Route::prefix('pages')->group(function(){
+    Route::prefix('pages')->group(function () {
         Route::resource('homepage', AdminHomepageController::class);
         Route::resource('about-us', AdminAboutUsPageController::class);
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
@@ -173,41 +173,40 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     });
 
     //User management
-    Route::prefix('users')->group(function(){
-       Route::get('/', [AdminUserManagementController::class, 'index'])->name('users.index');
-       Route::get('/create', [AdminUserManagementController::class, 'create'])->name('users.create');
-       Route::post('/store', [AdminUserManagementController::class, 'store'])->name('users.store');
+    Route::prefix('users')->group(function () {
+        Route::get('/', [AdminUserManagementController::class, 'index'])->name('users.index');
+        Route::get('/create', [AdminUserManagementController::class, 'create'])->name('users.create');
+        Route::post('/store', [AdminUserManagementController::class, 'store'])->name('users.store');
     });
 });
 
 //Staff Routes
-Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->group(function(){
+Route::middleware(['auth', 'role:staff'])->name('staff.')->prefix('staff')->group(function () {
     //Dashboard
     Route::get('dashboard', [\App\Http\Controllers\Staff\StaffIndexController::class, 'index'])->name('dashboard');
-
 });
 
 //Customer Routes
-Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function(){
+Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(function () {
     //Dashboard
     Route::get('dashboard', [CustomerIndexController::class, 'index'])->name('dashboard');
 
     //Restaurant Bookings
-    Route::prefix('dining-bookings')->group(function(){
+    Route::prefix('dining-bookings')->group(function () {
         Route::get('/', [CustomerRestaurantController::class, 'index'])->name('dining-bookings');
     });
 
     //Room Bookings
-    Route::prefix('room-bookings')->group(function(){
-       Route::get('/', [CustomerRoomBookingsController::class, 'index'])->name('room-bookings');
+    Route::prefix('room-bookings')->group(function () {
+        Route::get('/', [CustomerRoomBookingsController::class, 'index'])->name('room-bookings');
     });
 
     //Account
-    Route::prefix('my-account')->group(function(){
-       Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
-       Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');
-       Route::put('/update/{id}', [CustomerAccountController::class, 'update'])->name('my-account.update');
-       Route::get('/change-password/{id}', [CustomerAccountController::class, 'changePasswordView'])->name('my-account.change-password');
+    Route::prefix('my-account')->group(function () {
+        Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
+        Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');
+        Route::put('/update/{id}', [CustomerAccountController::class, 'update'])->name('my-account.update');
+        Route::get('/change-password/{id}', [CustomerAccountController::class, 'changePasswordView'])->name('my-account.change-password');
     });
 });
 
@@ -251,11 +250,11 @@ Route::get('/{slug}', [FrontendPolicyPageController::class, 'show'])
     ->name('policy-page.show');
 
 //Restaurant booking
-Route::prefix('book-a-table')->group(function(){
+Route::prefix('book-a-table')->group(function () {
     Route::get('step-one', [FrontendRestaurantBookingController::class, 'index'])->name('book-a-table-index');
     Route::post('step-one-store', [FrontendRestaurantBookingController::class, 'indexStore'])->name('book-a-table-index-store');
     Route::get('step-two', [FrontendRestaurantBookingController::class, 'stepTwoShow'])->name('book-a-table-step-two-show');
-    Route::post('step-two-store', [FrontendRestaurantBookingController::class,'stepTwoStore'])->name('book-a-table-step-two-store');
+    Route::post('step-two-store', [FrontendRestaurantBookingController::class, 'stepTwoStore'])->name('book-a-table-step-two-store');
     Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thankYou'])->name('book-a-table-thank-you');
 });
 
