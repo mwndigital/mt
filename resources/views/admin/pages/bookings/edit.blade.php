@@ -16,19 +16,46 @@
                 defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
                 minDate: 0
             });
-            $('#arrival_time').timepicker({
-                timeFormat: 'h:mm',
-                interval: 30,
-                minTime: '14:00',
-                maxTime: '21:00',
-                defaultTime: '14:00',
-                startTime: '14:00',
-                dynamic: false,
-                dropdown: true,
-                scrollbar: true,
-                use24Hours: true,
-            });
         });
+        const defaultSelectedRooms = {!! json_encode($selectedRoomIds) !!};
+         // Add event listener for room checkboxes
+        const checkAvailability = (roomId) => {
+            const checkinDate = $('#checkin_date').val();
+            const checkoutDate = $('#checkout_date').val();
+
+            // if the room is already selected, don't send AJAX request
+            if (defaultSelectedRooms.includes(roomId)) {
+                return;
+            }
+
+
+            // Send AJAX request
+            const isChecked = $('#room-' + roomId).is(':checked');
+            if(isChecked){
+            $.ajax({
+                url: '/api/check-room',
+                type: 'POST',
+                data: {
+                    room_id: roomId,
+                    checkin_date: checkinDate,
+                    checkout_date: checkoutDate,
+                },
+                success: function(response) {
+                    if (response.is_available) {
+                        // Room is available, check the checkbox
+                        $('input[value="' + roomId + '"]').prop('checked', true);
+                    } else {
+                        // Room is not available, uncheck the checkbox
+                        $('input[value="' + roomId + '"]').prop('checked', false);
+                        alert('Room is not available for selected dates.');
+                    }
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+             }
+        }
     </script>
 @endpush
 @push('page-styles')
@@ -79,15 +106,15 @@
                     <form action="" method="post">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="">Check in date *</label>
                                 <input type="text" name="checkin_date" id="checkin_date" value="{{ $booking ? date('d-m-Y', strtotime($booking->checkin_date)) : '' }}">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="">Check out date *</label>
                                 <input type="text" name="checkout_date" id="checkout_date" value="{{ $booking ? date('d-m-Y', strtotime($booking->checkout_date)) : '' }}">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-none">
                                 <label for="">Arrival Time *</label>
                                 <input type="text" name="arrival_time" id="arrival_time" value="{{ $booking ? $booking->arrival_time : '' }}">
                             </div>
@@ -114,7 +141,7 @@
                             @foreach($rooms as $room)
                                 <div class="col-md-6">
                                     <label>
-                                        <input type="checkbox" name="selected_rooms[]" value="{{ $room->id }}"
+                                        <input onclick="checkAvailability({{$room->id}});" id="room-{{$room->id}}" type="checkbox" name="selected_rooms[]" value="{{ $room->id }}"
                                         @if(in_array($room->id, $selectedRoomIds)) checked @endif>
                                         {{ $room->name }}
                                     </label>

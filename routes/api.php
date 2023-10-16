@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/available', [AvailableController::class, 'index']);
+Route::post('/check-room', [AvailableController::class, 'checkRoom']);
 
 // Dev Routes
 Route::post('/dev/deployment', [DevController::class, 'deployment']);
