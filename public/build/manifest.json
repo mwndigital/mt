@@ -99,7 +99,7 @@
     "src": "resources/assets/sass/frontend.scss"
   },
   "resources/components/BookingForm.jsx": {
-    "file": "assets/BookingForm-c5c13644.js",
+    "file": "assets/BookingForm-5a6f86c0.js",
     "imports": [
       "resources/components/Calendar.jsx"
     ],
