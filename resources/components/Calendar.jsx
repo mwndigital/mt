@@ -5,23 +5,12 @@ import { DateRangePicker } from "react-dates";
 import { createRoot } from "react-dom/client";
 import moment from "moment";
 
-function Calendar({ roomType, minimumNights }) {
+function Calendar({ roomType, minimumNights, unavailableDates }) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [focusedInput, setFocusedInput] = useState(null); // Add this line
 
     const isMobile = window.innerWidth <= 768;
-
-    const unavailableDates = [
-        {
-            startDate: moment().add(2, "days"),
-            endDate: moment().add(4, "days"),
-        }, // Unavailable from 2 days from today to 4 days from today
-        {
-            startDate: moment().add(8, "days"),
-            endDate: moment().add(10, "days"),
-        }, // Unavailable from 8 days from today to 10 days from today
-    ];
 
     const handleDatesChange = ({ startDate, endDate }) => {
         setStartDate(startDate);
@@ -33,16 +22,13 @@ function Calendar({ roomType, minimumNights }) {
             moment(endDate).format("DD-MM-YYYY");
     };
 
+    const totalNight = endDate && startDate && endDate.diff(startDate, "days");
+
     const isDayBlocked = (day) => {
-        return unavailableDates.some((range) =>
-            day.isBetween(range.startDate, range.endDate, null, "[]")
+        return unavailableDates.some(
+            (date) => date === day.format("YYYY-MM-DD")
         );
     };
-
-    // Allow today and after to be selected
-    const isOutsideRange = (day) => day.isBefore(moment().subtract(1, "days"));
-
-    const totalNight = endDate && startDate && endDate.diff(startDate, "days");
 
     return (
         <>
@@ -59,7 +45,7 @@ function Calendar({ roomType, minimumNights }) {
                 endDateId="endDate"
                 enableOutsideDays={true}
                 // isOutsideRange={isOutsideRange} // Allow selection of any date
-                // isDayBlocked={[]} // Mark unavailable dates
+                isDayBlocked={isDayBlocked} // Mark unavailable dates
                 minimumNights={minimumNights}
                 displayFormat="DD/MM/YYYY"
                 // withFullScreenPortal={true}

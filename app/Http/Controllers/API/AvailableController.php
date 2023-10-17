@@ -38,6 +38,8 @@ class AvailableController extends Controller
 
         // If every room is unavailable in same date, then it is unavailable
         $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
+        // remove key from array
+        $unavailable_dates = array_values($unavailable_dates);
 
         return response()->json([
             'success' => true,
