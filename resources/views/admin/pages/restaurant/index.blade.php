@@ -51,7 +51,7 @@
                             <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{ route('admin.restaurant-bookings.all-bookings') }}" role="tab" aria-controls="list-messages">All Bookings</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table w-100">
+                            <table class="table w-100 dataTablesTable">
                                 <thead>
                                 <tr>
                                     <th>Name</th>

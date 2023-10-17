@@ -53,7 +53,7 @@
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <table class="table  w-100">
+                            <table class="table  w-100 dataTablesTable">
                                 <thead>
                                 <tr>
                                     <th>Name</th>

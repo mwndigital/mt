@@ -51,7 +51,7 @@
                             <a class="list-group-item list-group-item-action active" id="list-messages-list" href="{{ route('admin.book-a-room.deleted-bookings-index') }}" aria-controls="list-messages">Deleted</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table table-hovered">
+                            <table class="table table-hovered dataTablesTable">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
