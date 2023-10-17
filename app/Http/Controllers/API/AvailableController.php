@@ -18,7 +18,7 @@ class AvailableController extends Controller
         $children = $request->children ?? 0;
         // Get from current day to 5 month after all bookings and get unavailable dates
         $today = now()->format('Y-m-d');
-        $monthsAfter = now()->addMonths(6)->format('Y-m-d');
+        $monthsAfter = now()->addMonths(20)->format('Y-m-d');
         $rooms = Rooms::getAll($isRoom, [
             'no_of_adults' => $adults,
             'no_of_children' => $children
@@ -26,15 +26,18 @@ class AvailableController extends Controller
         ]);
 
         $unavailable_dates = [];
+        $room_unavailable_dates = [];
 
         foreach ($rooms as $room) {
-            $unavailable_dates[] = [
+            $room_unavailable_dates[] = [
                 'room_id' => $room->id,
                 'room_name' => $room->name,
                 'unavailable_dates' => $room->getUnavailableDates($today, $monthsAfter)
             ];
         }
 
+        // If every room is unavailable in same date, then it is unavailable
+        $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
 
         return response()->json([
             'success' => true,

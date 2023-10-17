@@ -43,7 +43,7 @@ class Rooms extends Model
 
     public function getBookedDates($checkIn, $checkOut)
     {
-        $query = "
+        $sql = "
         SELECT b.*
         FROM bookings b
         LEFT JOIN booking_room br ON b.id = br.booking_id
@@ -52,7 +52,8 @@ class Rooms extends Model
         AND (b.checkin_date < ? AND b.checkout_date > ?)
         ORDER BY b.id;
     ";
-        return Booking::fromQuery($query, [$this->id, $checkOut, $checkIn]);
+        $query = Booking::fromQuery($sql, [$this->id, $checkOut, $checkIn]);
+        return $query;
     }
 
 
@@ -78,14 +79,21 @@ class Rooms extends Model
         return $rooms->get();
     }
 
-    public function getUnavailableDates($checkIn, $checkOut)
+    public function getUnavailableDates($startDate, $endDate)
     {
-        $booked_dates = $this->getBookedDates($checkIn, $checkOut)->pluck('checkin_date', 'checkout_date')->toArray();
+        $booked_dates = $this->getBookedDates($startDate, $endDate)->pluck('checkout_date', 'checkin_date')->toArray();
 
         $unavailable_dates = [];
+        // Check every day between start and end date if it is in the booked dates array
+        for ($date = Carbon::parse($startDate); $date->lte($endDate); $date->addDay()) {
+            $currentDate = $date->format('Y-m-d');
 
-        foreach ($booked_dates as $check_out => $check_in) {
-            $unavailable_dates = array_merge($unavailable_dates, \Carbon\CarbonPeriod::create($check_in, $check_out)->toArray());
+            foreach ($booked_dates as $checkin_date => $checkout_date) {
+                if ($currentDate >= $checkin_date && $currentDate < $checkout_date) {
+                    $unavailable_dates[] = $currentDate;
+                    break; // Break out of the loop once a match is found
+                }
+            }
         }
 
         return $unavailable_dates;
