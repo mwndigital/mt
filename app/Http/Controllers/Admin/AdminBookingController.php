@@ -48,7 +48,7 @@ class AdminBookingController extends Controller
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        $thisWeeksBookings = Booking::where('checkin_date', '>=', $today)
+        $thisWeeksBookings = Booking::where('checkin_date', '>=', $startOfWeek)
             ->where('checkin_date', '<=', $endOfWeek)
             ->where('status', '!=', BookingStatus::DRAFT)
             ->orderBy('checkin_date', 'asc')
@@ -63,10 +63,9 @@ class AdminBookingController extends Controller
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
 
-        $allBookings = Booking::where('checkin_date', '>=', $today)
-            ->where('status', '!=', BookingStatus::DRAFT)
+        $allBookings = Booking::where('status', '!=', BookingStatus::DRAFT)
             ->orderBy('checkin_date', 'asc')
-            ->get();
+            ->paginate(15);
 
         return view('admin.pages.bookings.allBookings', compact('allBookings'));
     }
