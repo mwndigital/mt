@@ -13,9 +13,9 @@
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
             border-bottom: 2px solid #BEA058;
-            -webkit-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
-            -moz-box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
-            box-shadow: 2px 15px 20px -8px rgba(0,0,0,0.5);
+            -webkit-box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
+            box-shadow: 2px 15px 20px -8px rgba(0, 0, 0, 0.5);
         }
     </style>
     <section class="policyPageTop">

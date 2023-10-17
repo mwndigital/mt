@@ -30,7 +30,9 @@
                         {!! $content->hero_content !!}
                         <div class="btn-group">
 
-                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal" data-bs-target="#viewDinnerMenuModal">Dinner Menu</button>
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal"
+                                    data-bs-target="#viewDinnerMenuModal">Dinner Menu
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -72,13 +74,15 @@
         </div>
     </section>
 
-    <section class="bookMealBanner" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ Storage::url($content->book_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
+    <section class="bookMealBanner"
+             style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ Storage::url($content->book_banner_background_image) }}'); background-attachment: fixed; background-position: top center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <h3 class="secTitle">{{ $content->book_banner_title }}</h3>
                     {!! $content->book_banner_content !!}
-                    <button class="darkGoldBtn" href="{{ $content->book_banner_button_link }}">{{ $content->book_banner_button_content }}</button>
+                    <button class="darkGoldBtn"
+                            href="{{ $content->book_banner_button_link }}">{{ $content->book_banner_button_content }}</button>
                 </div>
             </div>
         </div>

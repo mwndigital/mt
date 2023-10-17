@@ -5,9 +5,9 @@
 @push('page-scripts')
     <script>
         var $select = $('#table_ids');
-        $select.each(function() {
+        $select.each(function () {
             $(this).addClass($(this).children(':selected').val());
-        }).on('change', function(ev) {
+        }).on('change', function (ev) {
             $(this).attr('class', '').addClass($(this).children(':selected').val());
         });
     </script>
@@ -51,7 +51,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">First Name *</label>
-                                <input type="text" name="first_name" id="first_name" value="{{ old('first_name', $booking->first_name) }}" required>
+                                <input type="text" name="first_name" id="first_name"
+                                       value="{{ old('first_name', $booking->first_name) }}" required>
                                 @error('first_name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -60,7 +61,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input type="text" name="last_name" id="last_name" value="{{ old('last_name', $booking->last_name) }}" required>
+                                <input type="text" name="last_name" id="last_name"
+                                       value="{{ old('last_name', $booking->last_name) }}" required>
                                 @error('last_name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -71,28 +73,32 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Email address *</label>
-                                <input type="email" name="email" id="email" value="@if($booking->email == NULL)example@example.com @else {{ $booking->email }} @endif">
+                                <input type="email" name="email" id="email"
+                                       value="@if($booking->email == NULL)example@example.com @else {{ $booking->email }} @endif">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Mobile number</label>
-                                <input type="tel" name="mobile_number" id="mobile_number" value="{{ $booking->mobile_number }}">
+                                <input type="tel" name="mobile_number" id="mobile_number"
+                                       value="{{ $booking->mobile_number }}">
                                 @error('mobile_number')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Joining for</label>
-                                <input type="text" name="joining_for" id="joining_for" value="{{ $booking->joining_for }}">
+                                <input type="text" name="joining_for" id="joining_for"
+                                       value="{{ $booking->joining_for }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Date</label>
-                                <input type="date" name="reservation_date" id="reservation_date"  value="{{ old('reservation_date', $booking->reservation_date) }}">
+                                <input type="date" name="reservation_date" id="reservation_date"
+                                       value="{{ old('reservation_date', $booking->reservation_date) }}">
                                 @error('reservation_date')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -102,7 +108,8 @@
                             <div class="col-md-4">
                                 <label for="">Time</label>
                                 <select name="reservation_time" id="reservation_time" required>
-                                    <option selected value="{{ $booking->reservation_time }}">{{ $booking->reservation_time }}</option>
+                                    <option selected
+                                            value="{{ $booking->reservation_time }}">{{ $booking->reservation_time }}</option>
                                 </select>
                                 @error('reservation_time')
                                 <div class="text-danger">
@@ -112,7 +119,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Number of guests</label>
-                                <input type="number" name="no_of_guests" id="no_of_guests" value="{{ $booking->no_of_guests }}" required>
+                                <input type="number" name="no_of_guests" id="no_of_guests"
+                                       value="{{ $booking->no_of_guests }}" required>
                                 @error('no_of_guests')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -125,7 +133,8 @@
                                 <label for="">Table *</label>
                                 <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
                                     @foreach($tables as $table)
-                                        <option value="{{ $table->id }}" @if(in_array($table->id, $tableIds)) selected @endif>
+                                        <option value="{{ $table->id }}"
+                                                @if(in_array($table->id, $tableIds)) selected @endif>
                                             {{ $table->name }} - {{ $table->no_of_seats }} seats
                                         </option>
                                     @endforeach
@@ -144,7 +153,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Dietary Information</label>
-                                <textarea name="dietary_information" id="dietary_information" cols="30" rows="10">{{ old('dietary_information', $booking->dietary_information) }}</textarea>
+                                <textarea name="dietary_information" id="dietary_information" cols="30"
+                                          rows="10">{{ old('dietary_information', $booking->dietary_information) }}</textarea>
                                 @error('dietary_information')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -153,7 +163,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Additional Information</label>
-                                <textarea name="additional_information" id="additional_information" cols="30" rows="10">{{ old('additional_information', $booking->additional_information) }}</textarea>
+                                <textarea name="additional_information" id="additional_information" cols="30"
+                                          rows="10">{{ old('additional_information', $booking->additional_information) }}</textarea>
                                 @error('additional_information')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -173,10 +184,10 @@
     </section>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             var selectedJoiningFor = '';
 
-            $('#joining_for').change(function(){
+            $('#joining_for').change(function () {
                 selectedJoiningFor = $(this).val();
                 updateReservationTime(selectedJoiningFor);
             });
@@ -184,7 +195,7 @@
             function updateReservationTime(joiningFor) {
                 var timeOptions = '';
 
-                if(joiningFor === 'lunch') {
+                if (joiningFor === 'lunch') {
                     timeOptions =
                         '<option value="12:00">12:00</option>' +
                         '<option value="12:15">12:15</option>' +
@@ -195,8 +206,7 @@
                         '<option value="13:30">13:30</option>' +
                         '<option value="13:45">13:45</option>' +
                         '<option value="14:00">14:00</option>'
-                }
-                else if(joiningFor === 'evening') {
+                } else if (joiningFor === 'evening') {
                     timeOptions =
                         '<option value="18:00">18:00</option>' +
                         '<option value="18:15">18:15</option>' +

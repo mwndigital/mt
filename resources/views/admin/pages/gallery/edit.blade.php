@@ -36,13 +36,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.gallery.update', $item->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.gallery.update', $item->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $item->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $item->name) }}"
+                                       required>
                                 @error('name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -62,7 +64,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current Image</label>
-                                <img class="img-fluid" style="display: block; height: 100px; margin: 0; width: 100px;" src="{{ Storage::url($item->image) }}">
+                                <img class="img-fluid" style="display: block; height: 100px; margin: 0; width: 100px;"
+                                     src="{{ Storage::url($item->image) }}">
                             </div>
                         </div>
                         <div class="row">
@@ -71,7 +74,8 @@
                                 <select name="category_id" id="category_id" required>
                                     <option selected disabled>-- Choose a category --</option>
                                     @foreach($category as $cat)
-                                        <option value="{{ $cat->id }}" @if($cat->id == $item->category_id) selected @endif>{{ $cat->name }}</option>
+                                        <option value="{{ $cat->id }}"
+                                                @if($cat->id == $item->category_id) selected @endif>{{ $cat->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

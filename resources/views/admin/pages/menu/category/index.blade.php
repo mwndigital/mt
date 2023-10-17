@@ -31,49 +31,51 @@
                 <div class="col-12">
                     <table class="table table-responsive table-hovered">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($category as $cat)
-                                <tr>
-                                    <td>{{ $cat->name }}</td>
-                                    <td>
-                                        @if($cat->description)
-                                            {!! $cat->description !!}
-                                        @else
-                                            --
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('admin.menu-category.show', $cat->id) }}">View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('admin.menu-category.edit', $cat->id) }}">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.menu-category.destroy', $cat->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($category as $cat)
+                            <tr>
+                                <td>{{ $cat->name }}</td>
+                                <td>
+                                    @if($cat->description)
+                                        {!! $cat->description !!}
+                                    @else
+                                        --
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('admin.menu-category.show', $cat->id) }}">View</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.menu-category.edit', $cat->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('admin.menu-category.destroy', $cat->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

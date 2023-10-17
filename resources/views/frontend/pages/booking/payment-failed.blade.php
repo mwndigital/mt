@@ -11,7 +11,7 @@
                         Payment Error
                     </h1>
                     <p>
-                        Sorry, there was an error processing your payment.  Please try again later.
+                        Sorry, there was an error processing your payment. Please try again later.
                     </p>
                     <p>
                         Error message: {{ $error }}

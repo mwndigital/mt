@@ -44,7 +44,8 @@
 
     @if(session('room_conflict'))
         <div class="alert alert-danger" role="alert">
-            The selected room is already booked for the chosen dates. Please choose another room or go back and choose different dates.
+            The selected room is already booked for the chosen dates. Please choose another room or go back and choose
+            different dates.
         </div>
     @endif
 
@@ -66,9 +67,9 @@
                                 <tr>
                                     <td><strong>Rooms:</strong></td>
                                     <td>
-                                     @foreach ($booking->rooms as $room)
-                                        {{ $room->name }} <br>
-                                     @endforeach
+                                        @foreach ($booking->rooms as $room)
+                                            {{ $room->name }} <br>
+                                        @endforeach
                                     </td>
                                 </tr>
                                 <tr>
@@ -131,10 +132,12 @@
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
-                                    <a href="{{ route('admin.book-a-room-step-three') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
+                                    <a href="{{ route('admin.book-a-room-step-three') }}" class="backBtn"><i
+                                            class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class='nextBtn'>Submit <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class='nextBtn'>Submit <i class="fas fa-chevron-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>

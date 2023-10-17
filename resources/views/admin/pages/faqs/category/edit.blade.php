@@ -16,7 +16,8 @@
                     <h1>Edit {{ $category->name }}FAQ Category</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faq-category.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All Categories</a>
+                    <a href="{{ route('admin.faq-category.index') }}" class="blueBtn"><i
+                            class="fas fa-chevron-left"></i> All Categories</a>
                 </div>
             </div>
         </div>
@@ -31,7 +32,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}"
+                                       required>
                                 @error('name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -42,9 +44,9 @@
                                 <label for="">Order</label>
                                 <input type="number" name="order" id="order" value="{{ $category->order }}" required>
                                 @error('order')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>

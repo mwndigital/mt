@@ -3,11 +3,11 @@
     Thank you for your booking
 @endpush
 @push('page-styles')
-<style>
-    #message {
-        margin-top: 300px;
-    }
-</style>
+    <style>
+        #message {
+            margin-top: 300px;
+        }
+    </style>
 @endpush
 @section('content')
     <section class="bookingThankYouPageMainRoom">
@@ -18,7 +18,8 @@
                     <div class="col-12" id="message">
                         <h1>Thank you for your booking</h1>
                         <p>
-                            An email has been sent to the email address which you provided with full details of your booking.
+                            An email has been sent to the email address which you provided with full details of your
+                            booking.
                         </p>
                         <p>
                             <!-- Go Homepage -->

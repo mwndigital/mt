@@ -59,7 +59,8 @@
 
     @if(session('room_conflict'))
         <div class="alert alert-danger" role="alert">
-            The selected room is already booked for the chosen dates. Please choose another room or go back and choose different dates.
+            The selected room is already booked for the chosen dates. Please choose another room or go back and choose
+            different dates.
         </div>
     @endif
 
@@ -82,9 +83,12 @@
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6">
                                                 <label class="checkItem">
-                                                    <input type="radio" name="room_id[]" id="room_{{ $room->id }}" value="{{ $room->id }}" @if($booking && $booking->room_id == $room->id) checked @endif>
+                                                    <input type="radio" name="room_id[]" id="room_{{ $room->id }}"
+                                                           value="{{ $room->id }}"
+                                                           @if($booking && $booking->room_id == $room->id) checked @endif>
                                                     <label for="room_{{ $room->id }}">
-                                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                                        <img class="img-fluid"
+                                                             src="{{ Storage::url($room->featured_image) }}">
                                                         <h4>{{ $room->name }}</h4>
                                                     </label>
                                                 </label>
@@ -96,10 +100,12 @@
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
-                                    <a href="/admin/bookings/create" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
+                                    <a href="/admin/bookings/create" class="backBtn"><i class='fas fa-chevron-left'></i>
+                                        Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class="nextBtn">Next <i class="fas fa-chevron-right"></i>
+                                    </button>
                                     {{--<a href="{{ route('book-a-room-step-3') }}" class="nextBtn">Next <i class="fas fa-chevron-right"></i></a>--}}
                                 </div>
                             </div>

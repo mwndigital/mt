@@ -77,7 +77,7 @@
                                         <td>
                                             @foreach ($booking->rooms as $room )
                                                 {{ $room->name }}<br/>
-                                           @endforeach
+                                            @endforeach
                                         </td>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ $booking->total }}</td>

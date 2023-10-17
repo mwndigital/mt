@@ -10,14 +10,15 @@
                     <div class="mainLoginWrapper">
                         <div class="row">
                             <div class="col-md-5">
-                                <img class="img-fluid" src="{{ asset('images/outside-image-2.jpg') }}" alt="Mash Tun building image">
+                                <img class="img-fluid" src="{{ asset('images/outside-image-2.jpg') }}"
+                                     alt="Mash Tun building image">
                             </div>
                             <div class="col-md-7">
                                 <div class="formWrap">
                                     <h1>Login</h1>
                                     <?php
                                     $redirect = [];
-                                    if(isset($_GET['redirect'])){
+                                    if (isset($_GET['redirect'])) {
                                         $redirect = ['redirect' => $_GET['redirect']];
                                     } ?>
                                     <form method="POST" action="{{ route('login', $redirect) }}" class="loginForm">
@@ -27,7 +28,10 @@
                                                 <label for="">
                                                     Email Address
                                                 </label>
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                <input id="email" type="email"
+                                                       class="form-control @error('email') is-invalid @enderror"
+                                                       name="email" value="{{ old('email') }}" required
+                                                       autocomplete="email" autofocus>
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -39,7 +43,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="">Password</label>
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                <input id="password" type="password"
+                                                       class="form-control @error('password') is-invalid @enderror"
+                                                       name="password" required autocomplete="current-password">
 
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
@@ -51,7 +57,8 @@
                                         <div class="row align-items-center mt-4">
                                             <div class="col-md-6">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                    <input class="form-check-input" type="checkbox" name="remember"
+                                                           id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                                     <label class="form-check-label" for="remember">
                                                         {{ __('Remember Me') }}

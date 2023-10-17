@@ -37,11 +37,16 @@
                                 @foreach($category->faq as $faq)
                                     <div class="accordion-item">
                                         <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ str_replace(' ', '', $faq->question) }}" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#{{ str_replace(' ', '', $faq->question) }}"
+                                                    aria-expanded="false" aria-controls="collapseOne">
                                                 {{ $faq->question }}
                                             </button>
                                         </h2>
-                                        <div id="{{ str_replace(' ', '', $faq->question) }}" class="accordion-collapse collapse" data-bs-parent="#{{ str_replace(' ', '_', $category->name) }}">
+                                        <div id="{{ str_replace(' ', '', $faq->question) }}"
+                                             class="accordion-collapse collapse"
+                                             data-bs-parent="#{{ str_replace(' ', '_', $category->name) }}">
                                             <div class="accordion-body">
                                                 {!! $faq->answer !!}
                                             </div>

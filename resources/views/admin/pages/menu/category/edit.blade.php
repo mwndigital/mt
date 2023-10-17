@@ -4,7 +4,7 @@
 @endpush
 @push('page-scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             tinymce.init({
                 selector: '#description',
                 plugins: 'code table lists',
@@ -52,13 +52,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.menu-category.update', $category->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.menu-category.update', $category->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}"
+                                       required>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -69,7 +71,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Description</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="">{{ old('description', $category->description)  }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10"
+                                          class="">{{ old('description', $category->description)  }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -85,7 +88,8 @@
                             <div class="col-md-6">
                                 @if($category->image)
                                     <label for="">Current Image</label>
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;" class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
+                                         class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                 @else
                                     <label for="">Current Image</label>
                                     <small>Image currently not set</small>

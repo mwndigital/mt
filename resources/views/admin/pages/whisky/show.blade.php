@@ -49,32 +49,33 @@
                 <div class="col-12">
                     <table class="table">
                         <tbody>
-                            <tr>
-                                <td><strong>Name:</strong></td>
-                                <td>{{ $whisky->name }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Description:</strong></td>
-                                <td>{!! $whisky->description !!}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Price:</strong></td>
-                                <td>£{{ $whisky->price }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Drink Size:</strong></td>
-                                <td>{{ $whisky->drink_size }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Image:</strong></td>
-                                <td>
-                                    @if($whisky->image)
-                                        <img style="display: block; height: 100px; margin: 0; width: auto;" class="img-fluid" src="{{ Storage::url($whisky->image) }}">
-                                    @else
-                                        --
-                                    @endif
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><strong>Name:</strong></td>
+                            <td>{{ $whisky->name }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description:</strong></td>
+                            <td>{!! $whisky->description !!}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price:</strong></td>
+                            <td>£{{ $whisky->price }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drink Size:</strong></td>
+                            <td>{{ $whisky->drink_size }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Image:</strong></td>
+                            <td>
+                                @if($whisky->image)
+                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
+                                         class="img-fluid" src="{{ Storage::url($whisky->image) }}">
+                                @else
+                                    --
+                                @endif
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

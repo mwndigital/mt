@@ -33,24 +33,24 @@
                         </tr>
                         </tbody>
                         <tbody>
-                            @foreach($bookings as $booking)
-                                <tr>
-                                    <td>{{ $booking->first_name }}</td>
-                                    <td>{{ $booking->last_name }}</td>
-                                    <td>{{ $booking->email_address }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
-                                    <td></td>
-                                </tr>
-                            @endforeach
-                            {{--@foreach($restaurantBooking as $booking)
-                                <tr>
-                                    <td>{{ $booking->first_name }}</td>
-                                    <td>{{ $booking->last_name }}</td>
-                                    <td>{{ $booking->email_address }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
-                                    <td></td>
-                                </tr>
-                            @endforeach--}}
+                        @foreach($bookings as $booking)
+                            <tr>
+                                <td>{{ $booking->first_name }}</td>
+                                <td>{{ $booking->last_name }}</td>
+                                <td>{{ $booking->email_address }}</td>
+                                <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                        {{--@foreach($restaurantBooking as $booking)
+                            <tr>
+                                <td>{{ $booking->first_name }}</td>
+                                <td>{{ $booking->last_name }}</td>
+                                <td>{{ $booking->email_address }}</td>
+                                <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
+                                <td></td>
+                            </tr>
+                        @endforeach--}}
                         </tbody>
                     </table>
                 </div>

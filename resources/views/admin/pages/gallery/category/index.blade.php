@@ -39,10 +39,12 @@
                         @foreach($category as $cat)
                             <tr>
                                 <td>{{ $cat->name }}</td>
-                                <td><img class="img-fluid" src="{{ Storage::url($cat->featured_image) }}" style="height: 75px; width: 75px;"></td>
+                                <td><img class="img-fluid" src="{{ Storage::url($cat->featured_image) }}"
+                                         style="height: 75px; width: 75px;"></td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
@@ -51,7 +53,9 @@
                                                     <a href="{{ route('admin.gallery-category.edit', $cat->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.gallery-category.destroy', $cat->id) }}" method="POST">
+                                                    <form
+                                                        action="{{ route('admin.gallery-category.destroy', $cat->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="confirm-delete-btn" type="submit">Delete</button>

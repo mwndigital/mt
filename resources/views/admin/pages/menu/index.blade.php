@@ -46,7 +46,8 @@
                                 <td>{{ $mi->category }}</td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
@@ -58,7 +59,8 @@
                                                     <a href="{{ route('admin.menu.edit', $mi->id) }}">Edit</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.menu.destroy', $mi->id) }}" method="POST">
+                                                    <form action="{{ route('admin.menu.destroy', $mi->id) }}"
+                                                          method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <button class="confirm-delete-btn" type="submit">Delete</button>

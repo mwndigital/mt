@@ -31,13 +31,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.bar-restaurant.update', ['bar_restaurant' => $brc->id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.bar-restaurant.update', ['bar_restaurant' => $brc->id]) }}"
+                          method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Page Title *</label>
-                                <input type="text" name="page_title" id="page_title" value="{{ old('page_title', $brc->page_title) }}" required>
+                                <input type="text" name="page_title" id="page_title"
+                                       value="{{ old('page_title', $brc->page_title) }}" required>
                                 @error('page_title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -54,7 +56,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>
-                                <input type="text" name="hero_banner_title" id="hero_banner_title" value="{{ old('hero_banner_title', $brc->hero_banner_title) }}" required>
+                                <input type="text" name="hero_banner_title" id="hero_banner_title"
+                                       value="{{ old('hero_banner_title', $brc->hero_banner_title) }}" required>
                                 @error('hero_banner_title')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,7 +68,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Background Image *</label>
-                                <input type="file" name="hero_banner_background_image" id="hero_banner_background_image" >
+                                <input type="file" name="hero_banner_background_image"
+                                       id="hero_banner_background_image">
                                 @error('hero_banner_background_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -75,7 +79,8 @@
                             <div class="col-md-6">
                                 <label for="">Current background image</label>
                                 @if($brc->hero_banner_background_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->hero_banner_background_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid" src="{{ Storage::url($brc->hero_banner_background_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -90,7 +95,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title * </label>
-                                <input type="text" name="banner_one_titke" id="banner_one_title" value="{{ old('banner_one_title', $brc->banner_one_title) }}">
+                                <input type="text" name="banner_one_titke" id="banner_one_title"
+                                       value="{{ old('banner_one_title', $brc->banner_one_title) }}">
                                 @error('banner_one_title')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -101,7 +107,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Content *</label>
-                                <textarea name="banner_one_content" id="banner_one_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_one_content', $brc->banner_one_content) }}</textarea>
+                                <textarea name="banner_one_content" id="banner_one_content" cols="30" rows="10"
+                                          class="tinyEditor"
+                                          required>{{ old('banner_one_content', $brc->banner_one_content) }}</textarea>
                                 @error('banner_one_content')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -112,7 +120,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Big Image *</label>
-                                <input type="file" name="banner_one_big_image" id="banner_one_big_image" >
+                                <input type="file" name="banner_one_big_image" id="banner_one_big_image">
                                 @error('banner_one_big_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -122,7 +130,8 @@
                             <div class="col-md-6">
                                 <label for="">Current Big Image</label>
                                 @if($brc->banner_one_big_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_one_big_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_one_big_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -131,7 +140,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Small Image *</label>
-                                <input type="file" name="banner_one_small_image" id="banner_one_small_image" >
+                                <input type="file" name="banner_one_small_image" id="banner_one_small_image">
                                 @error('banner_one_small_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -141,7 +150,8 @@
                             <div class="col-md-6">
                                 <label for="">Current small image</label>
                                 @if($brc->banner_one_small_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_one_small_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_one_small_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -157,7 +167,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Image *</label>
-                                <input type="file" name="separator_banner_image" id="separator_banner_image" >
+                                <input type="file" name="separator_banner_image" id="separator_banner_image">
                                 @error('separator_banner_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -167,7 +177,8 @@
                             <div class="col-md-6">
                                 <label for="">Current separator image</label>
                                 @if($brc->separator_banner_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->separator_banner_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid" src="{{ Storage::url($brc->separator_banner_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -183,7 +194,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>
-                                <input type="text" name="banner_two_title" id="banner_two_title" value="{{ old('banner_two_title', $brc->banner_two_title) }}" required>
+                                <input type="text" name="banner_two_title" id="banner_two_title"
+                                       value="{{ old('banner_two_title', $brc->banner_two_title) }}" required>
                                 @error('banner_two_title')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -194,7 +206,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Content *</label>
-                                <textarea name="banner_two_content" id="banner_two_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_two_content', $brc->banner_two_content) }}</textarea>
+                                <textarea name="banner_two_content" id="banner_two_content" cols="30" rows="10"
+                                          class="tinyEditor"
+                                          required>{{ old('banner_two_content', $brc->banner_two_content) }}</textarea>
                                 @error('banner_two_content')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -215,7 +229,8 @@
                             <div class="col-md-6">
                                 <label for="">Current Image</label>
                                 @if($brc->banner_two_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_two_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid" src="{{ Storage::url($brc->banner_two_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -230,7 +245,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>
-                                <input type="text" name="book_stay_banner_title" id="book_stay_banner_title" value="{{ old('book_stay_banner_title', $brc->book_stay_banner_title) }}" required>
+                                <input type="text" name="book_stay_banner_title" id="book_stay_banner_title"
+                                       value="{{ old('book_stay_banner_title', $brc->book_stay_banner_title) }}"
+                                       required>
                                 @error('book_stay_banner_title')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -241,7 +258,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Content *</label>
-                                <textarea name="book_stay_banner_content" id="book_stay_banner_content" cols="30" rows="10" class="tinyEditor" required>{{ old('book_stay_banner_content', $brc->book_stay_banner_content) }}</textarea>
+                                <textarea name="book_stay_banner_content" id="book_stay_banner_content" cols="30"
+                                          rows="10" class="tinyEditor"
+                                          required>{{ old('book_stay_banner_content', $brc->book_stay_banner_content) }}</textarea>
                                 @error('book_stay_banner_content')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -252,7 +271,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Background Image *</label>
-                                <input type="file" name="book_stay_banner_background_image" id="book_stay_banner_background_image">
+                                <input type="file" name="book_stay_banner_background_image"
+                                       id="book_stay_banner_background_image">
                                 @error('book_stay_banner_background_image')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -262,7 +282,9 @@
                             <div class="col-md-6">
                                 <label for="">Current background image</label>
                                 @if($brc->book_stay_banner_background_image)
-                                    <img class="img-fluid" src="{{ Storage::url($brc->book_stay_banner_background_image) }}" style="display: block; height: 150px; margin-left: 0; width: auto;">
+                                    <img class="img-fluid"
+                                         src="{{ Storage::url($brc->book_stay_banner_background_image) }}"
+                                         style="display: block; height: 150px; margin-left: 0; width: auto;">
                                 @else
                                     No featured image currently set
                                 @endif
@@ -276,7 +298,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Page Description</label>
-                                <textarea name="page_description" id="page_description" cols="30" rows="10">{{ old('page_description', $brc->page_description) }}</textarea>
+                                <textarea name="page_description" id="page_description" cols="30"
+                                          rows="10">{{ old('page_description', $brc->page_description) }}</textarea>
                                 @error('page_description')
                                 <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -288,18 +311,19 @@
                             <div class="col-12">
                                 <label for="">Page Keywords</label>
                                 <small>Please use comma's to separate keywords/phrases</small>
-                                <textarea name="page_keywords" id="page_keywords" cols="30" rows="10">{{ old('page_keywords', $brc->page_keywords) }}</textarea>
+                                <textarea name="page_keywords" id="page_keywords" cols="30"
+                                          rows="10">{{ old('page_keywords', $brc->page_keywords) }}</textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Social Media image</label>
-                                <small>This is the image you want to use on social media when posting a link to this page</small>
+                                <small>This is the image you want to use on social media when posting a link to this
+                                    page</small>
                                 <br>
                                 <input type="file" name="page_image" id="page_image">
                             </div>
                         </div>
-
 
 
                         <div class="row">

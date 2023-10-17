@@ -16,7 +16,8 @@
                     <h1>All FAQ</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faq.create') }}" class="blueBtn">Add new faq <i class="fas fa-plus"></i></a>
+                    <a href="{{ route('admin.faq.create') }}" class="blueBtn">Add new faq <i
+                            class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>
@@ -27,40 +28,42 @@
                 <div class="col-12">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($faqs as $faq)
-                                <tr>
-                                    <td>{{ $faq->question }}</td>
-                                    <td>{{ $faq->category->name }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('admin.faq.edit', $faq->id) }}">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.faq.destroy', $faq->id) }}" method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($faqs as $faq)
+                            <tr>
+                                <td>{{ $faq->question }}</td>
+                                <td>{{ $faq->category->name }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('admin.faq.edit', $faq->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('admin.faq.destroy', $faq->id) }}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

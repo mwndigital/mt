@@ -16,7 +16,8 @@
                     <h1>All FAQ Categories</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faq-category.create') }}" class="blueBtn">Add new category <i class="fas fa-plus"></i></a>
+                    <a href="{{ route('admin.faq-category.create') }}" class="blueBtn">Add new category <i
+                            class="fas fa-plus"></i></a>
                 </div>
             </div>
         </div>
@@ -34,33 +35,34 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $cat)
-                                <tr>
-                                    <td>{{ $cat->name }}</td>
-                                    <td>{{ $cat->order }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('admin.faq-category.edit', $cat->id) }}">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="" method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($categories as $cat)
+                            <tr>
+                                <td>{{ $cat->name }}</td>
+                                <td>{{ $cat->order }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('admin.faq-category.edit', $cat->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

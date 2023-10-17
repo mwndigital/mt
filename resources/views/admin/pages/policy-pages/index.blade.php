@@ -38,36 +38,39 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($policyPages as $policyPage)
-                                <tr>
-                                    <td>{{ $policyPage->title }}</td>
-                                    <td>{{ $policyPage->slug }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('admin.policy-pages.show', $policyPage->id) }}">View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('admin.policy-pages.edit', $policyPage->id) }}">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.policy-pages.destroy', $policyPage->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($policyPages as $policyPage)
+                            <tr>
+                                <td>{{ $policyPage->title }}</td>
+                                <td>{{ $policyPage->slug }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('admin.policy-pages.show', $policyPage->id) }}">View</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.policy-pages.edit', $policyPage->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form
+                                                        action="{{ route('admin.policy-pages.destroy', $policyPage->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

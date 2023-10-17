@@ -31,45 +31,47 @@
                 <div class="col-12">
                     <table class="table table-hovered">
                         <thead>
-                            <tr>
-                                <th>Room Name</th>
-                                <th>Room Type</th>
-                                <th>Capacity</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Room Name</th>
+                            <th>Room Type</th>
+                            <th>Capacity</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($rooms as $room)
-                                <tr>
-                                    <td>{{ $room->name }}</td>
-                                    <td>{{ $room->room_type }}</td>
-                                    <td>{{ $room->adult_cap }} Adults, {{ $room->child_cap }} Children</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="/admin/rooms/{{ $room->id }}">View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/admin/rooms/{{ $room->id }}/edit">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($rooms as $room)
+                            <tr>
+                                <td>{{ $room->name }}</td>
+                                <td>{{ $room->room_type }}</td>
+                                <td>{{ $room->adult_cap }} Adults, {{ $room->child_cap }} Children</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="/admin/rooms/{{ $room->id }}">View</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/admin/rooms/{{ $room->id }}/edit">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('admin.rooms.destroy', $room->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

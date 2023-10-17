@@ -43,9 +43,9 @@
                                 <label for="">Name *</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" required>
                                 @error('name')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -54,9 +54,9 @@
                                 <label for="">Image *</label>
                                 <input type="file" name="image" id="image" required>
                                 @error('image')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>

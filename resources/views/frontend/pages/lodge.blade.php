@@ -27,7 +27,9 @@
                     <div class="col-md-8 offset-md-2">
                         <h1>Stalla Dhu Lodge</h1>
                         <p>
-                            Our 4 bedroom lodge with a luxury log cabin feel offers sumptuous relaxing options with sun deck, views of river to leathery embrace of gathering room. It is rented as a single rental and can accommodate 2-8 persons.
+                            Our 4 bedroom lodge with a luxury log cabin feel offers sumptuous relaxing options with sun
+                            deck, views of river to leathery embrace of gathering room. It is rented as a single rental
+                            and can accommodate 2-8 persons.
                         </p>
                     </div>
                 </div>
@@ -43,10 +45,14 @@
                         Indulge in a little piece of heaven...
                     </h2>
                     <p>
-                        The Stalla Dhu Lodge at the Mash Tun presents an inspiring getaway in the heart of Speyside with four luxury bedrooms, four bathrooms and a private first floor terrace, it can accommodate 2 to 8 persons.
+                        The Stalla Dhu Lodge at the Mash Tun presents an inspiring getaway in the heart of Speyside with
+                        four luxury bedrooms, four bathrooms and a private first floor terrace, it can accommodate 2 to
+                        8 persons.
                     </p>
                     <p>
-                        You would be forgiven if you felt you were in The Rocky Mountains as it’s cozy, warm wood finishes meander thru the property with room names like Outlook and Hideout enhancing the welcome you will no doubt feel.
+                        You would be forgiven if you felt you were in The Rocky Mountains as it’s cozy, warm wood
+                        finishes meander thru the property with room names like Outlook and Hideout enhancing the
+                        welcome you will no doubt feel.
                     </p>
                     <a class="darkGoldBtn mb-2" href="{{ route('book-a-room-index',['type'=>'lodge']) }}">Book Now</a>
 
@@ -107,7 +113,9 @@
                         Slipper bath tubs enhance some of the rooms for that real prairie feeling.
                     </p>
                     <p>
-                        The Gathering Room with its rich leather furniture ,fireplace and dining tables will be your relaxing space after a day of Speyside adventure... private dining can all be arranged as can inspiring whisky tastings .
+                        The Gathering Room with its rich leather furniture ,fireplace and dining tables will be your
+                        relaxing space after a day of Speyside adventure... private dining can all be arranged as can
+                        inspiring whisky tastings .
                     </p>
 
                 </div>
@@ -122,7 +130,8 @@
                         Take a visit to our nurturing wood burning sauna....
                     </h3>
                     <p>
-                        We invite you to experience all we have to offer from a relaxing drink and dine deck with a river view... or nurturing a wood burning sauna under the trees... we are at your service.
+                        We invite you to experience all we have to offer from a relaxing drink and dine deck with a
+                        river view... or nurturing a wood burning sauna under the trees... we are at your service.
                     </p>
                     <p>
                         Stalla Dhu Lodge has a reserved parking spot and full use of the wood burning Sauna.

@@ -54,7 +54,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Description *</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor" required>{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor"
+                                          required>{{ old('description') }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,7 +66,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Price *</label>
-                                <input type="number" name="price" id="pruce" step="any" value="{{ old('price') }}" required>
+                                <input type="number" name="price" id="pruce" step="any" value="{{ old('price') }}"
+                                       required>
                                 @error('price')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -74,9 +76,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Drink Size *</label>
-                                <input type="text" name="drink_size" id="drink_size" value="{{ old('drink_size') }}" required>
+                                <input type="text" name="drink_size" id="drink_size" value="{{ old('drink_size') }}"
+                                       required>
                                 @error('drink_size')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

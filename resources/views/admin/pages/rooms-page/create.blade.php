@@ -54,7 +54,8 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="">Title *</label>
-                            <input type="text" name="hero_banner_title" id="hero_banner_title" value="{{ old('hero_banner_title') }}" required>
+                            <input type="text" name="hero_banner_title" id="hero_banner_title"
+                                   value="{{ old('hero_banner_title') }}" required>
                             @error('hero_banner_title')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,7 +66,8 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="">Background image *</label>
-                            <input type="file" name="hero_banner_background_image" id="hero_banner_background_image" required>
+                            <input type="file" name="hero_banner_background_image" id="hero_banner_background_image"
+                                   required>
                             @error('hero_banner_background_image')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -82,7 +84,9 @@
                     <div class="row">
                         <div class="col-12">
                             <label for="">Content *</label>
-                            <textarea name="rooms_info_banner_content" id="rooms_info_banner_content" cols="30" rows="10" class="tinyEditor" required>{{ old('rooms_info_banner_content') }}</textarea>
+                            <textarea name="rooms_info_banner_content" id="rooms_info_banner_content" cols="30"
+                                      rows="10" class="tinyEditor"
+                                      required>{{ old('rooms_info_banner_content') }}</textarea>
                             @error('rooms_info_banner_content')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
