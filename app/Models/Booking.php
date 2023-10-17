@@ -9,12 +9,14 @@ use Illuminate\Support\Str;
 use App\Enums\BookingStatus;
 use App\Enums\TransactionType;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 use Monarobase\CountryList\CountryListFacade;
 
 class Booking extends Model implements \Serializable
 {
     use HasFactory;
     use SoftDeletes;
+    use Searchable;
 
     protected $table = 'bookings';
 
@@ -211,4 +213,6 @@ class Booking extends Model implements \Serializable
             return $this->country;
         }
     }
+
+
 }
