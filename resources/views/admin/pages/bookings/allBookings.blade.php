@@ -113,6 +113,7 @@
                             </table>
                         </div>
                     </div>
+                    {{ $allBookings->links() }}
                 </div>
             </div>
         </div>
