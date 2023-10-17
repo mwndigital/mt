@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import Calendar from "./Calendar";
 
@@ -8,8 +8,21 @@ function BookingForm() {
     const [roomType, setRoomType] = useState(type);
     const [children, setChildren] = useState(0);
     const [adults, setAdults] = useState(1);
+    const [unavailableDates, setUnavailableDates] = useState([]);
 
     const handleType = (e) => setRoomType(e.target.value);
+
+    const getUnavailableDates = async () =>
+        fetch(`/api/available?type=${roomType}`).then((res) => res.json());
+
+    // if room type adults and children change, fetch unavailable dates
+
+    useEffect(() => {
+        getUnavailableDates().then((res) => {
+            if (res.error) return;
+            setUnavailableDates(res.unavailable_dates);
+        });
+    }, [roomType, adults, children]);
 
     return (
         <>
@@ -18,6 +31,7 @@ function BookingForm() {
                     <Calendar
                         roomType={roomType}
                         minimumNights={roomType === "room" ? 1 : 2}
+                        unavailableDates={unavailableDates}
                     />
                 </div>
                 <div className="col-md-6">
