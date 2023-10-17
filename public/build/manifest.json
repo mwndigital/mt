@@ -1,34 +1,37 @@
 {
+  "__commonjsHelpers-de833af9.js": {
+    "file": "assets/_commonjsHelpers-de833af9.js"
+  },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
-    "file": "assets/fa-brands-400-20c4a58b.ttf",
+    "file": "assets/fa-brands-400-003f1154.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
-    "file": "assets/fa-brands-400-74833209.woff2",
+    "file": "assets/fa-brands-400-faae6fc0.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
-    "file": "assets/fa-regular-400-528d022d.ttf",
+    "file": "assets/fa-regular-400-7d81a1a7.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
-    "file": "assets/fa-regular-400-8e7e5ea1.woff2",
+    "file": "assets/fa-regular-400-9169d8be.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
-    "file": "assets/fa-solid-900-67a65763.ttf",
+    "file": "assets/fa-solid-900-cea79b34.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
-    "file": "assets/fa-solid-900-7152a693.woff2",
+    "file": "assets/fa-solid-900-886c8611.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
-    "file": "assets/fa-v4compatibility-0515a423.ttf",
+    "file": "assets/fa-v4compatibility-455e8e72.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
-    "file": "assets/fa-v4compatibility-694a17c3.woff2",
+    "file": "assets/fa-v4compatibility-335fd7d9.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
   },
   "resources/assets/fonts/CaveatBrush-Regular.ttf": {
@@ -69,7 +72,10 @@
     "src": "resources/assets/js/admin.js"
   },
   "resources/assets/js/app.js": {
-    "file": "assets/app-66e7f68a.js",
+    "file": "assets/app-d53ee090.js",
+    "imports": [
+      "__commonjsHelpers-de833af9.js"
+    ],
     "isEntry": true,
     "src": "resources/assets/js/app.js"
   },
@@ -79,29 +85,30 @@
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-f8d33dcc.css",
+    "file": "assets/admin-d613a76a.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },
   "resources/assets/sass/app.scss": {
-    "file": "assets/app-b181ddaf.css",
+    "file": "assets/app-cc38a9bb.css",
     "isEntry": true,
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/customer.scss": {
-    "file": "assets/customer-2b2152fa.css",
+    "file": "assets/customer-cb7d17dd.css",
     "isEntry": true,
     "src": "resources/assets/sass/customer.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-245445a9.css",
+    "file": "assets/frontend-dc59f6d7.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   },
   "resources/components/BookingForm.jsx": {
-    "file": "assets/BookingForm-2a653cfd.js",
+    "file": "assets/BookingForm-a050951c.js",
     "imports": [
-      "resources/components/Calendar.jsx"
+      "resources/components/Calendar.jsx",
+      "__commonjsHelpers-de833af9.js"
     ],
     "isEntry": true,
     "src": "resources/components/BookingForm.jsx"
@@ -114,7 +121,10 @@
     "css": [
       "assets/Calendar-baacc194.css"
     ],
-    "file": "assets/Calendar-5ac888a8.js",
+    "file": "assets/Calendar-f766b6e2.js",
+    "imports": [
+      "__commonjsHelpers-de833af9.js"
+    ],
     "isEntry": true,
     "src": "resources/components/Calendar.jsx"
   }
