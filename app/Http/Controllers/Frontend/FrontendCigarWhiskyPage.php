@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class FrontendCigarWhiskyPage extends Controller
 {
-    //
+    public function index(){
+
+        return view('frontend.pages.cigarWhiskyPage');
+    }
 }

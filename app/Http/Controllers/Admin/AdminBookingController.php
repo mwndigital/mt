@@ -442,7 +442,7 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         $booking->delete();
-        return redirect()->route('admin.bookings.index')->with('success', 'Booking has been deleted successfully');
+        return redirect()->back()->with('success', 'Booking has been deleted successfully');
     }
 
     public function changeStatus(Request $request, string $id)
