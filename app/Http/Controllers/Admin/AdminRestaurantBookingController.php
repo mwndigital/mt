@@ -202,7 +202,7 @@ class AdminRestaurantBookingController extends Controller
         $tables = RestaurantTable::all();
         $tableIds = json_decode($booking->table_ids);
 
-        dd($tableIds);
+        //dd($tableIds);
 
         return view('admin.pages.restaurant.edit', compact('booking', 'tables', 'tableIds'));
     }
