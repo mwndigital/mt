@@ -134,7 +134,7 @@
                                 <select name="table_ids[]" id="table_ids" multiple required style="height: 100px;">
                                     @foreach($tables as $table)
                                         <option value="{{ $table->id }}"
-                                                @if(in_array($table->id, $tableIds)) selected @endif>
+                                                @if(is_array($tableIds) && in_array($table->id, $tableIds)) selected @endif>
                                             {{ $table->name }} - {{ $table->no_of_seats }} seats
                                         </option>
                                     @endforeach

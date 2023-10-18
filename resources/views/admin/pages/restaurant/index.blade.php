@@ -79,7 +79,7 @@
                                         <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->no_of_guests }}</td>
                                         <td>
-                                            @if($booking->table_ids && $booking->table_id == 1)
+                                            @if(isset($booking->table_ids) && is_array(json_decode($booking->table_ids)))
                                                 @foreach(json_decode($booking->table_ids) as $tableId)
                                                     Table {{ $tableId }}
                                                 @endforeach

@@ -8,6 +8,9 @@
     .table-responsive {
         height: 100%;
     }
+    .dataTables_scrollBody {
+        min-height: 300px;
+    }
     table {
         overflow-x: auto;
         width: 100%;
