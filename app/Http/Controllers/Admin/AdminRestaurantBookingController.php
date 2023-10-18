@@ -202,6 +202,8 @@ class AdminRestaurantBookingController extends Controller
         $tables = RestaurantTable::all();
         $tableIds = json_decode($booking->table_ids);
 
+        dd($tableIds);
+
         return view('admin.pages.restaurant.edit', compact('booking', 'tables', 'tableIds'));
     }
 
@@ -242,9 +244,16 @@ class AdminRestaurantBookingController extends Controller
             'no_of_guests' => $validated['no_of_guests'],
             'dietary_info' => $validated['dietary_information'],
             'additional_information' => $validated['additional_information'],
-            'table_id' => 1,
-            'table_ids' => json_encode($tableIds),
+
         ]);
+
+        if (count($tableIds) === 1) {
+            // If only one table is selected, set 'table_id' to that value.
+            $booking->update(['table_id' => $tableIds[0]]);
+        } else {
+            // If multiple tables are selected, encode the array of table IDs.
+            $booking->update(['table_ids' => json_encode($tableIds)]);
+        }
 
         return redirect()->back()->with('success', 'Booking successfully updated');
     }
