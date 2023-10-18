@@ -32,49 +32,50 @@
                     <h2>Staff & Admins</h2>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @foreach ($user->roles as $role)
-                                            {{ $role->name }},
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    @foreach ($user->roles as $role)
+                                        {{ $role->name }},
+                                    @endforeach
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
 
-                                                    <li>
-                                                        <a href="">Edit</a>
-                                                    </li>
-                                                    @role('super admin')
-                                                        <li>
-                                                            <form action="" method="POST">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                            </form>
-                                                        </li>
-                                                    @endrole
-                                                </ul>
-                                            </div>
+                                                <li>
+                                                    <a href="">Edit</a>
+                                                </li>
+                                                @role('super admin')
+                                                <li>
+                                                    <form action="" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                                @endrole
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     @role('super admin')
@@ -100,7 +101,8 @@
                                 </td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">

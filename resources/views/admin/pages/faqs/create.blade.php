@@ -16,7 +16,8 @@
                     <h1>Create FAQ</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faq.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All FAQs</a>
+                    <a href="{{ route('admin.faq.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All
+                        FAQs</a>
                 </div>
             </div>
         </div>
@@ -42,7 +43,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Answer *</label>
-                                <textarea name="answer" id="answer" cols="30" rows="10" class="tinyEditor" required>{{ old('answer') }}</textarea>
+                                <textarea name="answer" id="answer" cols="30" rows="10" class="tinyEditor"
+                                          required>{{ old('answer') }}</textarea>
                             </div>
                         </div>
                         <div class="row">

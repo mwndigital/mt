@@ -45,4 +45,8 @@ $(document).ready(function(){
         });
     });
 
+    //Initiate DT
+
+
+
 });

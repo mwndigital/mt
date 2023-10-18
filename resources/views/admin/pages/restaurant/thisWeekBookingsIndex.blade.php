@@ -31,8 +31,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="btn-group">
-                        <a href="{{ route('admin.restaurant-bookings.print-today-bookings') }}" target="_blank" class="btn btn-primary">Print Today's Bookings</a>
-                        <a href="{{ route('admin.restaurant-bookings.print-this-week-bookings') }}" target="_blank" class="btn btn-primary">Print this weeks bookings </a>
+                        <a href="{{ route('admin.restaurant-bookings.print-today-bookings') }}" target="_blank"
+                           class="btn btn-primary">Print Today's Bookings</a>
+                        <a href="{{ route('admin.restaurant-bookings.print-this-week-bookings') }}" target="_blank"
+                           class="btn btn-primary">Print this weeks bookings </a>
                         {{--<a href="{{ route('admin.restaurant-bookings.print-all-bookings') }}" target="_blank" class="btn btn-primary">All Bookings</a>--}}
                     </div>
                 </div>
@@ -46,14 +48,19 @@
                 <div class="col-12">
                     <div class="tab-panels-wrap">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action" id="list-home-list" href="{{ route('admin.restaurant-bookings.index') }}">Todays Bookings</a>
-                            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list" href="{{ route('admin.restaurant-bookings.this-weeks-bookings') }}" role="tab">This Weeks Bookings</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{ route('admin.restaurant-bookings.all-bookings') }}" role="tab" aria-controls="list-messages">All Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-home-list"
+                               href="{{ route('admin.restaurant-bookings.index') }}">Todays Bookings</a>
+                            <a class="list-group-item list-group-item-action active" id="list-profile-list"
+                               data-bs-toggle="list" href="{{ route('admin.restaurant-bookings.this-weeks-bookings') }}"
+                               role="tab">This Weeks Bookings</a>
+                            <a class="list-group-item list-group-item-action" id="list-messages-list"
+                               href="{{ route('admin.restaurant-bookings.all-bookings') }}" role="tab"
+                               aria-controls="list-messages">All Bookings</a>
                         </div>
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <table class="table  w-100">
+                            <table class="table  w-100 dataTablesTable">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -84,7 +91,8 @@
                                         </td>
                                         <td>
                                             <div class="dropdown">
-                                                <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
                                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
@@ -98,18 +106,26 @@
                                                             <a href="{{ route('admin.restaurant-bookings.edit', $booking->id) }}">Edit</a>
                                                         </li>
                                                         <li>
-                                                            <form action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}" method="POST">
+                                                            <form
+                                                                action="{{ route('admin.restaurant-bookings.cancel-booking', $booking->id) }}"
+                                                                method="POST">
                                                                 @csrf
                                                                 @method('PUT') <!-- Add this hidden field to override the method -->
-                                                                <button type="submit" class="cancelBookingBtn">Cancel Booking</button>
+                                                                <button type="submit" class="cancelBookingBtn">Cancel
+                                                                    Booking
+                                                                </button>
                                                             </form>
 
                                                         </li>
                                                         <li>
-                                                            <form action="{{ route('admin.restaurant-bookings.destroy', $booking->id) }}" method="POST">
+                                                            <form
+                                                                action="{{ route('admin.restaurant-bookings.destroy', $booking->id) }}"
+                                                                method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button class="deleteBtn confirm-delete-btn" type="submit">Delete</button>
+                                                                <button class="deleteBtn confirm-delete-btn"
+                                                                        type="submit">Delete
+                                                                </button>
                                                             </form>
                                                         </li>
                                                     </ul>

@@ -29,7 +29,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.restaurant-bookings.csv-store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.restaurant-bookings.csv-store') }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">

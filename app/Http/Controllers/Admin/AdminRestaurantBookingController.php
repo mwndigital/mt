@@ -311,6 +311,6 @@ class AdminRestaurantBookingController extends Controller
     {
         $booking = RestaurantBooking::findOrFail($id);
         $booking->delete();
-        return redirect('admin/restaurant-bookings')->with('success', 'Booking deleted successfully');
+        return redirect()->back()->with('success', 'Booking deleted successfully');
     }
 }

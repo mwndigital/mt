@@ -3,13 +3,13 @@
     Admin Create Room
 @endpush
 @push('page-scripts')
-<script>
-    $(document).ready(function() {
-        $('#addImageButton').click(function() {
-            $('#imageContainer').append('<input type="file" name="images[]" class="form-control mt-2" multiple>');
+    <script>
+        $(document).ready(function () {
+            $('#addImageButton').click(function () {
+                $('#imageContainer').append('<input type="file" name="images[]" class="form-control mt-2" multiple>');
+            });
         });
-    });
-</script>
+    </script>
 @endpush
 @push('page-styles')
 
@@ -23,7 +23,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.rooms.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> Back to Rooms</a>
+                        <a href="{{ route('admin.rooms.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i>
+                            Back to Rooms</a>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Adult Capacity *</label>
-                                <input type="number" name="adult_cap" id="adult_cap" value="{{ old('adult_cap') }}" required>
+                                <input type="number" name="adult_cap" id="adult_cap" value="{{ old('adult_cap') }}"
+                                       required>
                                 @error('adult_cap')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -83,7 +85,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Child Capacity *</label>
-                                <input type="number" name="child_cap" id="child_cap" value="{{ old('child_cap') }}" required>
+                                <input type="number" name="child_cap" id="child_cap" value="{{ old('child_cap') }}"
+                                       required>
                                 @error('child_cap')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -111,7 +114,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Price per night double *</label>
-                                <input type="number" name="price_per_night_double" id="price_per_night_double" step="any" value="" required>
+                                <input type="number" name="price_per_night_double" id="price_per_night_double"
+                                       step="any" value="" required>
                                 @error('price_per_night_double')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -120,7 +124,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Price per night single *</label>
-                                <input type="number" name="price_per_night_single" id="price_per_night_single" value="" step="any" required>
+                                <input type="number" name="price_per_night_single" id="price_per_night_single" value=""
+                                       step="any" required>
                                 @error('price_per_night_single')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -131,7 +136,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Description *</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor">{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10"
+                                          class="tinyEditor">{{ old('description') }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -140,7 +146,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Short Description</label>
-                                <textarea name="short_description" id="short_description" cols="30" rows="10" class="tinyEditor">{{ old('short_description') }}</textarea>
+                                <textarea name="short_description" id="short_description" cols="30" rows="10"
+                                          class="tinyEditor">{{ old('short_description') }}</textarea>
                                 @error('short_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -161,8 +168,8 @@
                         </div>
 
 
-                          <!-- Image Upload Section -->
-                          <div class="row mt-4">
+                        <!-- Image Upload Section -->
+                        <div class="row mt-4">
                             <div class="col-12">
                                 <h3>Upload Images</h3>
                             </div>
@@ -175,7 +182,8 @@
                                 @endif
                             </div>
                             <div class="col-12 mt-2">
-                                <button type="button" class="btn btn-success" id="addImageButton">+ Add New Image</button>
+                                <button type="button" class="btn btn-success" id="addImageButton">+ Add New Image
+                                </button>
                             </div>
                         </div>
 

@@ -13,14 +13,15 @@
         "bootstrap": "^5.2.3",
         "laravel-mix": "^6.0.49",
         "laravel-vite-plugin": "^0.7.5",
+        "react-dom": "^18.2.0",
         "sass": "^1.63.6",
         "sass-loader": "^13.3.2",
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "datatables.net-dt": "^1.13.6",
         "lightbox2": "^2.11.4",
-        "react": "^18.2.0",
-        "react-dates": "^21.8.0",
-        "react-dom": "^18.2.0"
+        "react": "^16.1.1",
+        "react-dates": "^21.8.0"
     }
 }

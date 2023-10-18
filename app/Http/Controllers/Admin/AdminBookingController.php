@@ -351,7 +351,7 @@ class AdminBookingController extends Controller
             'postcode' => ['required', 'string', 'max:100'],
             'city' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'max:13'],
+            'phone_number' => ['required'],
             'email_address' => ['required', 'email']
         ]);
         $checkinDate = Carbon::createFromFormat('d-m-Y', $validated['checkin_date'])->format('Y-m-d');
@@ -442,7 +442,7 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         $booking->delete();
-        return redirect()->route('admin.bookings.index')->with('success', 'Booking has been deleted successfully');
+        return redirect()->back()->with('success', 'Booking has been deleted successfully');
     }
 
     public function changeStatus(Request $request, string $id)

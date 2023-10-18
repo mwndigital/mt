@@ -13,7 +13,8 @@
 
 @endpush
 @section('content')
-    <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
+    <section class="bookingPageTop"
+             style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/restaurant/restaurant-page-hero-banner.png') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -53,60 +54,66 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="">First Name *</label>
-                                            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" required>
+                                            <input type="text" name="first_name" id="first_name"
+                                                   value="{{ old('first_name') }}" required>
                                             @error('first_name')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label for="">Last Name *</label>
-                                            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" required>
+                                            <input type="text" name="last_name" id="last_name"
+                                                   value="{{ old('last_name') }}" required>
                                             @error('last_name')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="">Email Address *</label>
-                                            <input type="email" name="email" id="email" value="{{ old('email') }}" required>
+                                            <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                                   required>
                                             @error('email')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label for="">Mobile Number</label>
-                                            <input type="tel" name="mobile_number" id="mobile_number" value="{{ old('mobile_number') }}">
+                                            <input type="tel" name="mobile_number" id="mobile_number"
+                                                   value="{{ old('mobile_number') }}">
                                             @error('mobile_number')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="">Additional Information</label>
-                                            <textarea name="additional_information" id="additional_information" cols="30" rows="10">{{ old('additional_information') }}</textarea>
+                                            <textarea name="additional_information" id="additional_information"
+                                                      cols="30" rows="10">{{ old('additional_information') }}</textarea>
                                             @error('additional_information')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label for="">Dietary Information</label>
-                                            <textarea name="dietary_information" id="dietary_information" cols="30" rows="10">{{ old('dietary_information') }}</textarea>
+                                            <textarea name="dietary_information" id="dietary_information" cols="30"
+                                                      rows="10">{{ old('dietary_information') }}</textarea>
                                             @error('dietary_information')
-                                                <div class="text-danger">
-                                                    {{ $message }}
-                                                </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                             @enderror
                                         </div>
                                     </div>
@@ -134,13 +141,12 @@
                                             </div>
                                             @enderror
                                             <script>
-                                                $(document).ready(function(){
-                                                    $('#create_account').change(function(){
+                                                $(document).ready(function () {
+                                                    $('#create_account').change(function () {
                                                         var selected = $(this).val();
-                                                        if(selected === 'yes') {
+                                                        if (selected === 'yes') {
                                                             $('#passwordAccountField').css('display', 'flex');
-                                                        }
-                                                        else if(selected === 'no') {
+                                                        } else if (selected === 'no') {
                                                             $('#passwordAccountField').css('display', 'none');
                                                         }
                                                     });
@@ -160,7 +166,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="">Confirm Password</label>
-                                            <input type="password" name="confirmation_password" id="confirmation_password">
+                                            <input type="password" name="confirmation_password"
+                                                   id="confirmation_password">
                                             @error('confirmation_password')
                                             <div class="text-danger">
                                                 {{ $message }}
@@ -221,7 +228,8 @@
                                     </a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class="nextBtn">Complete Booking <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class="nextBtn">Complete Booking <i
+                                            class="fas fa-chevron-right"></i></button>
 
                                 </div>
                             </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\AdminRestaurantBookingController;
 use App\Http\Controllers\Admin\AdminRestaurantTableController;
+use App\Http\Controllers\Admin\AdminSearchController;
 use App\Http\Controllers\Admin\AdminUserManagementController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\Frontend\AboutUsPageController;
 use App\Http\Controllers\Frontend\BarPageController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\ContactPageController;
+use App\Http\Controllers\Frontend\FrontendCigarWhiskyPage;
 use App\Http\Controllers\Frontend\FrontendFaqController;
 use App\Http\Controllers\Frontend\FrontendGalleryController;
 use App\Http\Controllers\Frontend\FrontendLodgeController;
@@ -172,6 +174,9 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::resource('contact-page', AdminContactUsPageController::class);
     });
 
+    //Search
+    Route::get('/search', [AdminSearchController::class, 'search'])->name('search');
+
     //User management
     Route::prefix('users')->group(function () {
         Route::get('/', [AdminUserManagementController::class, 'index'])->name('users.index');
@@ -226,6 +231,7 @@ Route::post('/contact-us-submission-store', [ContactPageController::class, 'stor
 Route::resource('/gallery', FrontendGalleryController::class);
 Route::get('/dining', [FrontendRestaurantPageController::class, 'index'])->name('restaurant.index');
 Route::get('/faqs', [FrontendFaqController::class, 'index'])->name('faqs.index');
+Route::get('/cigar-and-whisky-shop', [FrontendCigarWhiskyPage::class, 'index'])->name('cigar-whisky-shop.index');
 Route::prefix('book-a-room')->group(function () {
     Route::get('select-room/{id}', [BookingController::class, 'selectRoom'])->name('select-room');
     Route::get('step-2', [BookingController::class, 'stepTwoShow'])->name('book-a-room-step-2');

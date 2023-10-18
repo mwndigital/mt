@@ -54,7 +54,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Description</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor">{{ old('description')  }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10"
+                                          class="tinyEditor">{{ old('description')  }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

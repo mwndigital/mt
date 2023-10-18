@@ -10,6 +10,49 @@ header {
         height: 70px;
         width: auto;
     }
+
+    .searchWrapper {
+        form.searchForm {
+
+            .input-group {
+                background-color: $w;
+                border: 1px solid $w;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: row;
+                height: 50px;
+                overflow: hidden;
+                input[type='search'] {
+                    background-color: $w;
+                    border: 0;
+                    color: $darkBlue;
+                    font-size: 1.1rem;
+                    height: 50px;
+                    padding: 0 .5rem;
+                    @include transition(all .4s ease-in-out);
+                    width: 90%;
+
+                    &:hover,
+                    &:focus {
+                        background-color: transparent;
+                        border: 0;
+                        box-shadow: none;
+                        color: $darkBlue;
+                        outline: none;
+                        text-decoration: none;
+                    }
+                }
+                button.input-group-text {
+                    background-color: $w;
+                    border: 0;
+                    border-radius: 0;
+                    color: $darkBlue;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+
     ul {
         display: flex;
         flex-direction: row;

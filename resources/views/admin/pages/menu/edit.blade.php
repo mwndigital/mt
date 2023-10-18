@@ -7,7 +7,7 @@
 @endpush
 @push('page-styles')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             tinymce.init({
                 selector: '#description',
                 plugins: 'code table lists',
@@ -58,7 +58,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $menu->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $menu->name) }}"
+                                       required>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -69,7 +70,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Description *</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="" required>{{ old('description') }}</textarea>
+                                <textarea name="description" id="description" cols="30" rows="10" class=""
+                                          required>{{ old('description') }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -80,7 +82,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Price *</label>
-                                <input type="number" name="price" id="pruce" step="any" value="{{ old('price', $menu->price) }}" required>
+                                <input type="number" name="price" id="pruce" step="any"
+                                       value="{{ old('price', $menu->price) }}" required>
                                 @error('price')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,7 +94,8 @@
                                 <label for="">Category *</label>
                                 <select name="category" id="category" required>
                                     @foreach($category as $cat)
-                                        <option value="{{ $cat->name }}" @if($cat->name == $menu->category) selected @endif>{{ $cat->name }}</option>
+                                        <option value="{{ $cat->name }}"
+                                                @if($cat->name == $menu->category) selected @endif>{{ $cat->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category')
@@ -114,7 +118,8 @@
                             <div class="col-md-6">
                                 <label for="">Current Image</label>
                                 @if($menu->image)
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;" class="img-fluid" src="{{ Storage::url($menu->image) }}">
+                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
+                                         class="img-fluid" src="{{ Storage::url($menu->image) }}">
                                 @else
                                     <small>Currently no image set</small>
                                 @endif

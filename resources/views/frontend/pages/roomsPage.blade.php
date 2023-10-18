@@ -12,56 +12,56 @@
     {{ Storage::url($content->seo_image) }}
 @endpush
 @push('page-scripts')
-<script>
+    <script>
 
-<!-- Owl carousel-->
-$(document).ready(function () {
-    $('.owl-carousel').owlCarousel({
-        loop: false,
-        margin: 0,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        // Right and left arrow with icon
-        navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-        responsive: {
-            0: {
-                items: 1
-            }
-        }
-    });
-});
-</script>
+        <!-- Owl carousel-->
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                // Right and left arrow with icon
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    }
+                }
+            });
+        });
+    </script>
 @endpush
 @push('page-styles')
-<style>
-    .owl-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
+    <style>
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
 
-.owl-prev,
-.owl-next {
-    background-color: #fff; /* Adjust the background color as needed */
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
+        .owl-prev,
+        .owl-next {
+            background-color: #fff; /* Adjust the background color as needed */
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
 
-.owl-prev {
-    order: 1;
-}
+        .owl-prev {
+            order: 1;
+        }
 
-.owl-next {
-    order: 2;
-}
-</style>
+        .owl-next {
+            order: 2;
+        }
+    </style>
 
 @endpush
 @section('content')
@@ -86,16 +86,18 @@ $(document).ready(function () {
                 @foreach($rooms as $room)
                     <div class="col-lg-4 col-md-6">
                         <div class="roomItem card">
-                                 <div class="owl-carousel owl-theme">
-                                    <div class="item">
-                                        <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}" style="height: 238px;">
-                                    </div>
-                                    @foreach($room->images as $image)
-                                        <div class="item">
-                                            <img class="img-fluid" src="{{ Storage::url($image->image) }}" style="height: 238px;">
-                                        </div>
-                                    @endforeach
+                            <div class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}"
+                                         style="height: 238px;">
                                 </div>
+                                @foreach($room->images as $image)
+                                    <div class="item">
+                                        <img class="img-fluid" src="{{ Storage::url($image->image) }}"
+                                             style="height: 238px;">
+                                    </div>
+                                @endforeach
+                            </div>
                             <div class="card-body">
                                 <h4>{{ $room->name }}</h4>
                                 <div class="content">

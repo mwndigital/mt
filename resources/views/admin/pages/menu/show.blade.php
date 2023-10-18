@@ -71,7 +71,8 @@
                             <td><strong>Image:</strong></td>
                             <td>
                                 @if($menu->image)
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;" class="img-fluid" src="{{ Storage::url($menu->image) }}">
+                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
+                                         class="img-fluid" src="{{ Storage::url($menu->image) }}">
                                 @else
                                     --
                                 @endif

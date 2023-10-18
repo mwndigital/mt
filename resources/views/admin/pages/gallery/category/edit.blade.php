@@ -36,13 +36,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.gallery-category.update',  $category->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.gallery-category.update',  $category->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title/Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}"
+                                       required>
                                 @error('name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -62,7 +64,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current image</label>
-                                <img class="img-fluid" style="display: block; height: 100px; margin: 0; width: 100px;" src="{{ Storage::url($category->featured_image) }}">
+                                <img class="img-fluid" style="display: block; height: 100px; margin: 0; width: 100px;"
+                                     src="{{ Storage::url($category->featured_image) }}">
                             </div>
                         </div>
                         <div class="row">

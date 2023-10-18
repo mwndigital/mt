@@ -17,7 +17,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.policy-pages.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> Back to Rooms</a>
+                        <a href="{{ route('admin.policy-pages.index') }}" class="blueBtn"><i
+                                class="fas fa-chevron-left"></i> Back to Rooms</a>
                     </div>
                 </div>
             </div>
@@ -36,13 +37,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.policy-pages.update', $policyPage->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.policy-pages.update', $policyPage->id) }}" method="post"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Title *</label>
-                                <input type="text" name="title" id="title" value="{{ old('title', $policyPage->title) }}" required>
+                                <input type="text" name="title" id="title"
+                                       value="{{ old('title', $policyPage->title) }}" required>
                                 @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -53,7 +56,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Content *</label>
-                                <textarea name="main_content" id="main_content" cols="30" rows="10" class="tinyEditor">{{ old('main_content', $policyPage->main_content) }}</textarea>
+                                <textarea name="main_content" id="main_content" cols="30" rows="10"
+                                          class="tinyEditor">{{ old('main_content', $policyPage->main_content) }}</textarea>
                                 @error('main_content')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

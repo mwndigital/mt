@@ -45,16 +45,17 @@
                                 <label for="">Name *</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}" required>
                                 @error('name')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Number of seats *</label>
-                                <input type="number" name="no_of_seats" id="no_of_seats" value="{{ old('no_of_seats') }}" required>
+                                <input type="number" name="no_of_seats" id="no_of_seats"
+                                       value="{{ old('no_of_seats') }}" required>
                                 @error('no_of_seats')
                                 <div class="text-danger">
                                     {{ $message }}

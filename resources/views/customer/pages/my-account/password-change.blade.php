@@ -33,9 +33,9 @@
                                 <label for="">Password *</label>
                                 <input type="password" name="password" id="password" required>
                                 @error('password')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-md-6">

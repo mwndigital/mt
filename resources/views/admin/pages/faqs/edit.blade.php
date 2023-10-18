@@ -16,7 +16,8 @@
                     <h1>Edit {{ $faq->name }} FAQ</h1>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.faq.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All FAQs</a>
+                    <a href="{{ route('admin.faq.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> All
+                        FAQs</a>
                 </div>
             </div>
         </div>
@@ -31,7 +32,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Name *</label>
-                                <input type="text" name="question" id="question" value="{{ old('question', $faq->question) }}" required>
+                                <input type="text" name="question" id="question"
+                                       value="{{ old('question', $faq->question) }}" required>
                                 @error('question')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -43,7 +45,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Answer *</label>
-                                <textarea name="answer" id="answer" cols="30" rows="10" class="tinyEditor" required>{{ old('answer', $faq->answer) }}</textarea>
+                                <textarea name="answer" id="answer" cols="30" rows="10" class="tinyEditor"
+                                          required>{{ old('answer', $faq->answer) }}</textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -51,7 +54,8 @@
                                 <label for="">Category *</label>
                                 <select name="category_id" id="category_id" required>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if($category->id == $faq->category_id) selected @endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}"
+                                                @if($category->id == $faq->category_id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

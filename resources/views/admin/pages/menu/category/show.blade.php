@@ -59,7 +59,8 @@
                             <td><strong>Image:</strong></td>
                             <td>
                                 @if($category->image)
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;" class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
+                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
+                                         class="img-fluid" src="{{ Storage::url($room->featured_image) }}">
                                 @else
                                     --
                                 @endif

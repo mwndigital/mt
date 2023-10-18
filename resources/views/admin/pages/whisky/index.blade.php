@@ -39,37 +39,39 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($whisky as $whisky)
-                                <tr>
-                                    <td>{{ $whisky->name }}</td>
-                                    <td>£{{ $whisky->price }}</td>
-                                    <td>{{ $whisky->drink_size }}</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <ul>
-                                                    <li>
-                                                        <a href="{{ route('admin.whisky.show', $whisky->id) }}">View</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{ route('admin.whisky.edit', $whisky->id) }}">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <form action="{{ route('admin.whisky.destroy', $whisky->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button class="confirm-delete-btn" type="submit">Delete</button>
-                                                        </form>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        @foreach($whisky as $whisky)
+                            <tr>
+                                <td>{{ $whisky->name }}</td>
+                                <td>£{{ $whisky->price }}</td>
+                                <td>{{ $whisky->drink_size }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('admin.whisky.show', $whisky->id) }}">View</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('admin.whisky.edit', $whisky->id) }}">Edit</a>
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('admin.whisky.destroy', $whisky->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

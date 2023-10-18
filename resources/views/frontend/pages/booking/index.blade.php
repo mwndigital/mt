@@ -8,7 +8,7 @@
 @endpush
 @push('page-scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             // Function to toggle visibility of adult and children inputs
             function toggleGuestInputs() {
                 var selectedType = $('#type').val();
@@ -27,7 +27,7 @@
             toggleGuestInputs();
 
             // Listen for changes in the #type field
-            $('#type').on('change', function() {
+            $('#type').on('change', function () {
                 toggleGuestInputs();
             });
         });
@@ -35,7 +35,8 @@
 
 @endpush
 @section('content')
-    <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
+    <section class="bookingPageTop"
+             style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -76,7 +77,7 @@
                         </div>
                         <form method="post" action="{{ route('book-a-room-step-1-store') }}">
                             @csrf
-                          <span id="booking-form"></span>
+                            <span id="booking-form"></span>
                         </form>
                     </div>
                 </div>

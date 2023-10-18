@@ -1,12 +1,23 @@
 <header>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-6">
+            <div class="col-md-4">
                 <a href="" class="brand">
                     <img class="img-fluid adminTopBarLogo" src="{{ asset('logos/main-logo.webp') }}">
                 </a>
             </div>
-            <div class="col-6">
+            <div class="col-md-4">
+                <div class="searchWrapper">
+                    <form class="searchForm" action="{{ route('admin.search') }}">
+
+                        <div class="input-group">
+                            <input type="search" name="q" id="search" placeholder="Search...">
+                            <button type="submit" class="input-group-text"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <ul class="d-flex justify-content-end">
                     <li>
                         <button type="button" class="sidebarToggleBtn">

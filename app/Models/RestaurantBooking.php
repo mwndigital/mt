@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class RestaurantBooking extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $fillable = [
         'first_name',
@@ -32,6 +34,24 @@ class RestaurantBooking extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public $asYouType = True;
+
+    public function shouldBeSearchable()
+    {
+        return true;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'reservation_date' => $this->reservation_date,
+            'joining_for' => $this->joining_for
+        ];
     }
 
 }

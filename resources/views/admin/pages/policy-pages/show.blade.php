@@ -17,7 +17,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('admin.policy-pages.index') }}" class="blueBtn"><i class="fas fa-chevron-left"></i> Back to Rooms</a>
+                        <a href="{{ route('admin.policy-pages.index') }}" class="blueBtn"><i
+                                class="fas fa-chevron-left"></i> Back to Rooms</a>
                     </div>
                 </div>
             </div>
@@ -47,18 +48,18 @@
                 <div class="col-12">
                     <table class="table table-responsive w-100">
                         <tbody>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td>{{ $policyPage->title }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Slug</strong></td>
-                                <td>{{ $policyPage->slug }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Main content</strong></td>
-                                <td>{!! $policyPage->main_content !!}</td>
-                            </tr>
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td>{{ $policyPage->title }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Slug</strong></td>
+                            <td>{{ $policyPage->slug }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Main content</strong></td>
+                            <td>{!! $policyPage->main_content !!}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -13,7 +13,8 @@
     </style>
 @endpush
 @section('content')
-    <section class="bookingPageTop" style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
+    <section class="bookingPageTop"
+             style="background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ asset('images/rooms/Room_Aberlour.webp') }}'); background-attachment: fixed; background-position: bottom center; background-repeat: no-repeat; background-size: cover;">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -50,79 +51,105 @@
                             @csrf
                             <table class="table table-responsive w-100">
                                 <tbody>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Room(s):</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">
-                                            @foreach ($booking->rooms as $room )
-                                                {{ $room->name }} <br>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check in Date</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->checkin_date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check out date</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->checkout_date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Arrival Time:</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->arrival_time }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of Adults</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_adults }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of children</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_children }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Title</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ ucfirst($booking->user_title) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Name</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Address</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">
-                                            {{ $booking->address_line_one }} <br>
-                                            @if($booking->address_line_two)
-                                                {{ $booking->address_line_two }}<br>
-                                            @endif
-                                            {{ $booking->postcode }} <br>
-                                            {{ $booking->city }} <br>
-                                            {{ $booking->country_name  }} <br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Phone Number</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->phone_number }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Email Address</strong></td>
-                                        <td style="color: #000; font-size: 1rem;">{{ $booking->email_address }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        <strong
+                                            style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Room(s):</strong>
+                                    </td>
+                                    <td style="color: #000; font-size: 1rem;">
+                                        @foreach ($booking->rooms as $room )
+                                            {{ $room->name }} <br>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check in
+                                            Date</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->checkin_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Check out
+                                            date</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->checkout_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Arrival
+                                            Time:</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->arrival_time }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of
+                                            Adults</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_adults }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Number of
+                                            children</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->no_of_children }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong
+                                            style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Title</strong>
+                                    </td>
+                                    <td style="color: #000; font-size: 1rem;">{{ ucfirst($booking->user_title) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong
+                                            style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Name</strong>
+                                    </td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong
+                                            style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Address</strong>
+                                    </td>
+                                    <td style="color: #000; font-size: 1rem;">
+                                        {{ $booking->address_line_one }} <br>
+                                        @if($booking->address_line_two)
+                                            {{ $booking->address_line_two }}<br>
+                                        @endif
+                                        {{ $booking->postcode }} <br>
+                                        {{ $booking->city }} <br>
+                                        {{ $booking->country_name  }} <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Phone
+                                            Number</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #002C50; font-size: 1.15rem; font-weight: bold;">Email
+                                            Address</strong></td>
+                                    <td style="color: #000; font-size: 1rem;">{{ $booking->email_address }}</td>
+                                </tr>
                                 </tbody>
                             </table>
 
                             <div class="row">
                                 <div class="col-12">
                                     <label for="">
-                                        <input type="checkbox" name="cancellationPolicyAgree" id="cancellationPolicyAgree" value="I have read and agree to The Mash Tun's Deposit and Cancellation Policy" required> By submitting your booking you agree to The Mash Tun's <a href="/deposit-cancellations-policy" target="_blank">Deposit & Cancellation Policy</a>.
+                                        <input type="checkbox" name="cancellationPolicyAgree"
+                                               id="cancellationPolicyAgree"
+                                               value="I have read and agree to The Mash Tun's Deposit and Cancellation Policy"
+                                               required> By submitting your booking you agree to The Mash Tun's <a
+                                            href="/deposit-cancellations-policy" target="_blank">Deposit &
+                                            Cancellation Policy</a>.
                                     </label>
                                 </div>
                             </div>
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
-                                    <a href="{{ route('book-a-room-step-3') }}" class="backBtn"><i class='fas fa-chevron-left'></i> Back</a>
+                                    <a href="{{ route('book-a-room-step-3') }}" class="backBtn"><i
+                                            class='fas fa-chevron-left'></i> Back</a>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end">
-                                    <button type="submit" class='nextBtn'>Book Now <i class="fas fa-chevron-right"></i></button>
+                                    <button type="submit" class='nextBtn'>Book Now <i class="fas fa-chevron-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>

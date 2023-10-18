@@ -44,7 +44,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name', $table->name) }}" required>
+                                <input type="text" name="name" id="name" value="{{ old('name', $table->name) }}"
+                                       required>
                                 @error('name')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -55,7 +56,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Number of seats *</label>
-                                <input type="number" name="no_of_seats" id="no_of_seats" value="{{ old('no_of_seats', $table->no_of_seats) }}" required>
+                                <input type="number" name="no_of_seats" id="no_of_seats"
+                                       value="{{ old('no_of_seats', $table->no_of_seats) }}" required>
                                 @error('no_of_seats')
                                 <div class="text-danger">
                                     {{ $message }}
@@ -67,15 +69,21 @@
                             <div class="col-md-6">
                                 <label for="">Status</label>
                                 <select name="status" id="status">
-                                    <option value="available" @if($table->status == 'available') selected @endif>Available</option>
-                                    <option value="unavailable" @if($table->status == 'unavailable') selected @endif>Unavailable</option>
+                                    <option value="available" @if($table->status == 'available') selected @endif>
+                                        Available
+                                    </option>
+                                    <option value="unavailable" @if($table->status == 'unavailable') selected @endif>
+                                        Unavailable
+                                    </option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Bookable by guest</label>
                                 <select name="bookable_by_guest" id="bookable_by_guest">
-                                    <option value="yes" @if($table->bookable_by_guest == 'yes') selected @endif>Yes</option>
-                                    <option value="no" @if($table->bookable_by_guest == 'no') selected @endif>No</option>
+                                    <option value="yes" @if($table->bookable_by_guest == 'yes') selected @endif>Yes
+                                    </option>
+                                    <option value="no" @if($table->bookable_by_guest == 'no') selected @endif>No
+                                    </option>
                                 </select>
                             </div>
                         </div>
