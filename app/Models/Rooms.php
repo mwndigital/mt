@@ -43,18 +43,23 @@ class Rooms extends Model
 
     public function getBookedDates($checkIn, $checkOut)
     {
-        $sql = "
-        SELECT b.*
-        FROM bookings b
-        LEFT JOIN booking_room br ON b.id = br.booking_id
-        INNER JOIN rooms r ON r.id = br.room_id
-        WHERE br.room_id = ?
-        AND (b.checkin_date < ? AND b.checkout_date > ?)
-        ORDER BY b.id;
-    ";
-        $query = Booking::fromQuery($sql, [$this->id, $checkOut, $checkIn]);
-        return $query;
+        return Booking::select('bookings.*')
+            ->leftJoin('booking_room', 'bookings.id', '=', 'booking_room.booking_id')
+            ->join('rooms', 'rooms.id', '=', 'booking_room.room_id')
+            ->where('booking_room.room_id', $this->id)
+            ->where(function ($query) use ($checkIn, $checkOut) {
+                $query->where('bookings.checkin_date', '<', $checkOut)
+                    ->where('bookings.checkout_date', '>', $checkIn);
+            })
+            ->whereIn('bookings.status', [
+                BookingStatus::CONFIRMED->value,
+                BookingStatus::PAID->value,
+                BookingStatus::PENDING->value
+            ])
+            ->orderBy('bookings.id')
+            ->get();
     }
+
 
 
 
@@ -81,21 +86,20 @@ class Rooms extends Model
 
     public function getUnavailableDates($startDate, $endDate)
     {
-        $booked_dates = $this->getBookedDates($startDate, $endDate)->pluck('checkout_date', 'checkin_date')->toArray();
+        $startDate = Carbon::parse($startDate)->subDays(15)->format('Y-m-d');
+        $booked_dates = $this->getBookedDates($startDate, $endDate)->pluck('checkin_date', 'checkout_date')->toArray();
+        $dates = [];
 
-        $unavailable_dates = [];
-        // Check every day between start and end date if it is in the booked dates array
         for ($date = Carbon::parse($startDate); $date->lte($endDate); $date->addDay()) {
             $currentDate = $date->format('Y-m-d');
-
-            foreach ($booked_dates as $checkin_date => $checkout_date) {
+            foreach ($booked_dates as $checkout_date => $checkin_date) {
                 if ($currentDate >= $checkin_date && $currentDate < $checkout_date) {
-                    $unavailable_dates[] = $currentDate;
-                    break; // Break out of the loop once a match is found
+                    $dates[] = $currentDate;
+                    break;
                 }
             }
         }
 
-        return $unavailable_dates;
+        return $dates;
     }
 }
