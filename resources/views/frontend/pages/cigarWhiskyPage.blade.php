@@ -26,7 +26,7 @@
                         </p>
                         <div class="btn-group">
                             <button type="button" class="darkGoldBtn" data-bs-toggle="modal"
-                                    data-bs-target="#viewCigarMenuModal">Cigar List
+                                    data-bs-target="#viewCigarMenuModal">Cigar Menu
                             </button>
                         </div>
                     </div>

@@ -153,7 +153,7 @@ header {
                 a {
                     color: $w;
                     font-family: $popMed;
-                    font-size: 1.25rem;
+                    font-size: 1rem;
                     text-decoration: none;
                     @include transition(all .4s ease-in-out);
                     &:hover {
@@ -207,8 +207,9 @@ header {
             li {
                 .dropdown {
                     button.darkGoldBtn {
+                        padding: .75rem 1.5rem;
                         text-transform: uppercase;
-                        width: 200px;
+                        width: 150px;
 
                         i {
                             margin-left: 10px;
