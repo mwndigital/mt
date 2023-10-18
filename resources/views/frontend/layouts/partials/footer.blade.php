@@ -88,6 +88,19 @@
                 </div>
             </div>
 
+            <div class="modal fade viewMenuModal" id="viewCigarMenuModal">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe src="{{ asset('images/menus/mash-tun-cigar-menu.pdf') }}" frameborder="0" width="100%" height="700px"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         <footer>
             <div class="footerMain">
