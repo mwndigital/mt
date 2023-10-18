@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'driver' => env('SCOUT_DRIVER', 'tntsearch'),
+    'driver' => env('SCOUT_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +139,7 @@ return [
         ],
     ],
 
-    'tntsearch' => [
+    /*'tntsearch' => [
         'storage'  => storage_path(), //place where the index files will be stored
         'fuzziness' => env('TNTSEARCH_FUZZINESS', false),
         'fuzzy' => [
@@ -152,6 +152,6 @@ return [
         'modelPath' => 'models',
         'searchBoolean' => env('TNTSEARCH_BOOLEAN', false),
         'maxDocs' => env('TNTSEARCH_MAX_DOCS', 500),
-    ],
+    ],*/
 
 ];

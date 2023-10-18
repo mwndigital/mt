@@ -36,22 +36,5 @@ class RestaurantBooking extends Model
         return $this->belongsTo(User::class);
     }
 
-    public $asYouType = True;
-
-    public function shouldBeSearchable()
-    {
-        return true;
-    }
-
-    public function toSearchableArray()
-    {
-        return [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email' => $this->email,
-            'reservation_date' => $this->reservation_date,
-            'joining_for' => $this->joining_for
-        ];
-    }
 
 }
