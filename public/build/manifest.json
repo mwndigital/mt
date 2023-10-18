@@ -85,7 +85,7 @@
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-d613a76a.css",
+    "file": "assets/admin-41145b49.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },
@@ -100,7 +100,7 @@
     "src": "resources/assets/sass/customer.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-20c12b9a.css",
+    "file": "assets/frontend-af40b948.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   },

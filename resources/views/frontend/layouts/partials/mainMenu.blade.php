@@ -25,6 +25,9 @@
                 <li>
                     <a href="{{ route('lodge.index') }}">Lodge</a>
                 </li>
+                <li>
+                    <a href="">Cigar & Whisky Shop</a>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
                     <ul class="dropdown-menu">
@@ -44,6 +47,9 @@
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewWhiskyMenuModal">
                                 Whisky Flights Menu
                             </a>
+                        </li>
+                        <li>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewCigarMenuModal">Cigar Menu</a>
                         </li>
                     </ul>
                 </li>

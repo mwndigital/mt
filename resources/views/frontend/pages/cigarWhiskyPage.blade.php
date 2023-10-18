@@ -24,6 +24,11 @@
                         <p>
                             Not only can you join us for our delicious food, a stay in one of our beautiful rooms or our lodge but you can also purchase a range of amazing whisky's and cigars from our fully stocked shop.
                         </p>
+                        <div class="btn-group">
+                            <button type="button" class="darkGoldBtn" data-bs-toggle="modal"
+                                    data-bs-target="#viewCigarMenuModal">Cigar Menu
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
