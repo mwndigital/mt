@@ -110,12 +110,12 @@
                             <div class="col-md-6">
                                 <label for="">Check in date *</label>
                                 <input type="text" name="checkin_date" id="checkin_date"
-                                       value="{{ $booking ? date('d-m-Y', strtotime($booking->checkin_date)) : '' }}">
+                                       value="{{ $booking ? date('d-m-Y', strtotime(old('checkin_date',$booking->checkin_date))) : '' }}">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Check out date *</label>
                                 <input type="text" name="checkout_date" id="checkout_date"
-                                       value="{{ $booking ? date('d-m-Y', strtotime($booking->checkout_date)) : '' }}">
+                                       value="{{ $booking ? date('d-m-Y', strtotime(old('checkout_date',$booking->checkout_date))) : '' }}">
                             </div>
                             <div class="col-md-4 d-none">
                                 <label for="">Arrival Time *</label>
@@ -127,12 +127,12 @@
                             <div class="col-md-6">
                                 <label for="">Number of adults *</label>
                                 <input type="number" name="no_of_adults" id="no_of_adults"
-                                       value="{{ $booking ? $booking->no_of_adults : '' }}">
+                                       value="{{ $booking ? old('no_of_adults',$booking->no_of_adults) : '' }}">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Number of children *</label>
                                 <input type="number" name="no_of_children" id="no_of_children"
-                                       value="{{ $booking ? $booking->no_of_children : '' }}">
+                                       value="{{ $booking ? old('no_of_children',$booking->no_of_children) : '' }}">
                             </div>
                         </div>
                         <div class="row">
@@ -178,28 +178,28 @@
                             <div class="col-md-4">
                                 <label for="">First Name *</label>
                                 <input type="text" name="first_name" id="first_name"
-                                       value="{{ $booking ? $booking->first_name : '' }}" required>
+                                       value="{{ $booking ? old('first_name',$booking->first_name) : '' }}" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="">Surname *</label>
                                 <input type="text" name="last_name" id="last_name"
-                                       value="{{ $booking ? $booking->last_name : '' }}" required>
+                                       value="{{ $booking ? old('last_name',$booking->last_name) : '' }}" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Address line one *</label>
                                 <input type="text" name="address_line_one" id="address_line_one"
-                                       value="{{ $booking ? $booking->address_line_one : '' }}" required>
+                                       value="{{ $booking ? old('address_line_one',$booking->address_line_one) : '' }}" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="">Address line two</label>
                                 <input type="text" name="address_line_two" id="address_line_two"
-                                       value="{{ $booking ? $booking->address_line_two : '' }}">
+                                       value="{{ $booking ? old('address_line_two',$booking->address_line_two) : '' }}">
                             </div>
                             <div class="col-md-4">
                                 <label for="">City *</label>
-                                <input type="text" name="city" id="city" value="{{ $booking ? $booking->city : '' }}"
+                                <input type="text" name="city" id="city" value="{{ $booking ? old('city',$booking->city) : '' }}"
                                        required>
                             </div>
                         </div>
@@ -207,14 +207,14 @@
                             <div class="col-md-6">
                                 <label for="">Postcode *</label>
                                 <input type="text" name="postcode" id="postcode"
-                                       value="{{ $booking ? $booking->postcode : '' }}" required>
+                                       value="{{ $booking ? old('postcode',$booking->postcode) : '' }}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Country *</label>
                                 <select name="country" id="country" required>
                                     @foreach($countries as $country)
                                         <option value="{{ $country }}"
-                                                @if($country === 'United Kingdom') selected @endif>{{ $country }}</option>
+                                                @if($booking && $booking->country == $country) selected @endif>{{ $country }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -223,12 +223,12 @@
                             <div class="col-md-6">
                                 <label for="">Phone number *</label>
                                 <input type="tel" name="phone_number" id="phone_number"
-                                       value="{{ $booking ? $booking->phone_number : '' }}" required>
+                                       value="{{ $booking ? old('phone_number',$booking->phone_number) : '' }}" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Email address *</label>
                                 <input type="email" name="email_address" id="email_address"
-                                       value="{{ $booking ? $booking->email_address : '' }}" required>
+                                       value="{{ $booking ? old('email_address',$booking->email_address) : '' }}" required>
                             </div>
                         </div>
 
