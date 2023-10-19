@@ -5,7 +5,12 @@ import { DateRangePicker } from "react-dates";
 import { createRoot } from "react-dom/client";
 import moment from "moment";
 
-function Calendar({ roomType, minimumNights, unavailableDates }) {
+function Calendar({
+    roomType,
+    minimumNights,
+    unavailableDates,
+    fullAvailability,
+}) {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [focusedInput, setFocusedInput] = useState(null); // Add this line
@@ -55,6 +60,7 @@ function Calendar({ roomType, minimumNights, unavailableDates }) {
                 showClearDates={true}
                 noBorder={true}
                 autoFocus={true}
+                disabled={!fullAvailability}
             />
         </>
     );
