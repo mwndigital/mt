@@ -17,7 +17,7 @@
                     </form>
                 </div>
             </div>--}}
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <ul class="d-flex justify-content-end">
                     <li>
                         <button type="button" class="sidebarToggleBtn">
