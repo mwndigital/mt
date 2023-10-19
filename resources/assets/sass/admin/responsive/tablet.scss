@@ -1,0 +1,58 @@
+header {
+    a.brand {
+        display: block;
+        margin-bottom: 20px;
+        width: 100%;
+
+        img {
+            display: block;
+            margin: auto;
+        }
+    }
+    ul.justify-content-end {
+        margin: 0;
+        justify-content: end !important;
+        padding: 0;
+
+        li {
+
+            &.dropdown {
+
+                .dropdown-menu {
+                    inset: 0px -75px 0px auto;
+                    width: 375px;
+
+                    li.notificationItemInner {
+                        padding-left: 0;
+                        padding-right: 0;
+                        max-width: 100%;
+                        white-space: normal;
+                        button.mark-as-read {
+                            position: relative;
+                        }
+                        h5 {
+                            max-width: 95%;
+                            word-break: break-all;
+                        }
+                        p{
+                            word-break: break-all;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+main.main {
+    padding: 4rem 0 1.5rem 0;
+}
+.mainSidebar.show {
+    padding-top: 4rem;
+    width: 50%;
+    z-index: 1070;
+}
+.pageActionsBanner {
+    .btn-group {
+        flex-direction: row;
+    }
+}
