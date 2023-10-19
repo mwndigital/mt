@@ -32,7 +32,7 @@ class AdminNewRoomBookingNotification extends Notification
     public function toDatabase(object $notifiable): array {
         return [
             'title' => 'A new room booking has been made',
-            'message' => $this->booking->first_name . ' ' . $this->booking->last_name . ' has booked a room for ' . $this->booking->checkin_date . ' until ' . $this->booking->checkout_date
+            'message' => $this->booking->first_name . ' ' . $this->booking->last_name . ' has booked a room for ' . date('d/m/Y', strtotime($this->booking->checkin_date)) . ' until ' . date('d/m/Y', strtotime('$this->booking->checkout_date'))
         ];
     }
 
@@ -45,7 +45,7 @@ class AdminNewRoomBookingNotification extends Notification
     {
         return [
             'title' => 'A new room booking has been made',
-            'message' => $this->booking->first_name . ' ' . $this->booking->last_name . ' has booked a room for ' . $this->booking->checkin_date . ' until ' . $this->booking->checkout_date
+            'message' => $this->booking->first_name . ' ' . $this->booking->last_name . ' has booked a room for ' . date('d/m/Y', strtotime($this->booking->checkin_date)) . ' until ' . date('d/m/Y', strtotime($this->booking->checkout_date))
         ];
     }
 }

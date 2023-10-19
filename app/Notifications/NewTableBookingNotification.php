@@ -33,7 +33,7 @@ class NewTableBookingNotification extends Notification
     {
         return [
             'title' => 'A new table booking has been made',
-            'message' => $this->table_booking->first_name . ' ' . $this->table_booking->last_name . ' has made a booking for ' . $this->table_booking->joining_for . ' on ' . $this->table_booking->reservation_date . ' at ' . $this->table_booking->reservation_time
+            'message' => $this->table_booking->first_name . ' ' . $this->table_booking->last_name . ' has made a booking for ' . $this->table_booking->joining_for . ' on ' . date('d/m/Y', strtotime($this->table_booking->reservation_date)) . ' at ' . $this->table_booking->reservation_time
         ];
     }
 
