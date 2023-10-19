@@ -114,8 +114,38 @@ header {
                     overflow-x: auto;
                     padding: 1rem;
 
+                    .notifTopItem {
+                        margin-bottom: 25px;
+                        h5 {
+                            color: $darkBlue;
+                            font-family: $popMed;
+                            font-size: 1.5rem;
+                            margin-bottom: 0;
+                        }
+                        form {
+                            button {
+                                color: $darkBlue;
+                                display: block;
+                                width: 100%;
+                                text-align: right;
+                                @include transition(all .4s ease-in-out);
+
+                                &:hover {
+                                    background-color: transparent;
+                                    border: 0;
+                                    border-radius: 0;
+                                    box-shadow: none;
+                                    color: $darkGold;
+                                    outline: none;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+
                     li.notificationItemInner {
                         border-bottom: 1px solid $darkGold;
+                        position: relative;
 
                         h5 {
                             color: $darkBlue;
@@ -135,7 +165,7 @@ header {
                             font-size: .7rem;
                             position: absolute;
                             right: 1rem;
-                            top: 1rem;
+                            top: 0;
                             @include transition(all .4s ease-in-out);
 
                             &:hover {
@@ -146,6 +176,14 @@ header {
                                 outline: none;
                                 text-decoration: none;
                             }
+                        }
+
+                        &:hover,
+                        &:focus {
+                            background-color: transparent;
+                            border: 0;
+                            box-shadow: none;
+                            outline: none;
                         }
                     }
 

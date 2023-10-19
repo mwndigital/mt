@@ -19,15 +19,14 @@
                 th {
                     color: $darkBlue;
                     font-family: $libBold;
-                    font-size: 1.1rem;
+                    font-size: 1rem;
                     height: auto;
-                    min-width: 200px;
                     width: auto;
                     &:last-of-type {
                         display: flex;
                         justify-content: flex-end;
 
-                        min-width: 200px;
+
                     }
                 }
             }
@@ -37,7 +36,7 @@
                 td {
                     //display: table-cell;
                     font-family: $libReg;
-                    font-size: 1rem;
+                    font-size: .8rem;
                     //height: 100%;
 
 

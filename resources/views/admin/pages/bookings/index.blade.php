@@ -59,7 +59,7 @@
                                aria-controls="list-messages">Deleted</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table table-hovered dataTablesTable">
+                            <table class="table table-hovered">
                                 <thead>
                                 <tr>
                                     <th>Name</th>

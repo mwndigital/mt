@@ -88,6 +88,10 @@ class FrontendRestaurantBookingController extends Controller
             ->whereNotIn('id', $reservedTableIds)
             ->get();
 
+        if($tables == NULL) {
+            return redirect()->back()->with('error', 'We are fully booked on this date, please choose another.');
+        }
+
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
     }
     public function stepTwoStore(Request $request) {

@@ -85,7 +85,7 @@
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-a970954a.css",
+    "file": "assets/admin-623bf3eb.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },
@@ -105,7 +105,7 @@
     "src": "resources/assets/sass/frontend.scss"
   },
   "resources/components/BookingForm.jsx": {
-    "file": "assets/BookingForm-48db3dc5.js",
+    "file": "assets/BookingForm-a050951c.js",
     "imports": [
       "resources/components/Calendar.jsx",
       "__commonjsHelpers-de833af9.js"
@@ -121,7 +121,7 @@
     "css": [
       "assets/Calendar-baacc194.css"
     ],
-    "file": "assets/Calendar-06690e82.js",
+    "file": "assets/Calendar-f766b6e2.js",
     "imports": [
       "__commonjsHelpers-de833af9.js"
     ],

@@ -60,7 +60,7 @@
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <table class="table dataTablesTable">
+                            <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
