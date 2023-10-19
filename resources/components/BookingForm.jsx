@@ -13,7 +13,9 @@ function BookingForm() {
     const handleType = (e) => setRoomType(e.target.value);
 
     const getUnavailableDates = async () =>
-        fetch(`/api/available?type=${roomType}`).then((res) => res.json());
+        fetch(
+            `/api/available?type=${roomType}&adults=${adults}&children=${children}`
+        ).then((res) => res.json());
 
     // if room type adults and children change, fetch unavailable dates
 
