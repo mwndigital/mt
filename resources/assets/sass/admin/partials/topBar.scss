@@ -110,7 +110,8 @@ header {
                     -webkit-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
                     -moz-box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
                     box-shadow: 3px 10px 20px -15px rgba(0,0,0,0.5);
-
+                    height: 400px;
+                    overflow-x: auto;
                     padding: 1rem;
 
                     li.notificationItemInner {
