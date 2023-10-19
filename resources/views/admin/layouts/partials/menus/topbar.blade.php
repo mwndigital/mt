@@ -34,13 +34,32 @@
                             @endif
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <div class="row align-items-center notifTopItem">
+                                    <div class="col-md-8">
+                                        <h5>Notifications</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <form action="{{ route('admin.mark-all-notifications-as-read') }}" method="post">
+                                            @csrf
+                                            <button type="submit">Mark all as read</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
                             @foreach(auth()->user()->unreadNotifications as $notification)
                                 <li class="dropdown-item notificationItemInner">
                                     <h5>{{ $notification->data['title'] }}</h5>
                                     <p>
                                         {{ $notification->data['message'] }}
                                     </p>
-                                    <button class="mark-as-read" data-notification-id="{{ $notification->id }}">Mark as Read</button>
+                                    <form action="{{ route('admin.mark-notification-as-read', $notification->id) }}" method="post">
+                                        @csrf
+                                        @method('patch')
+                                        <button type="submit" class="mark-as-read">
+                                            Mark as read
+                                        </button>
+                                    </form>
                                 </li>
                             @endforeach
                         </ul>

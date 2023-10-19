@@ -183,6 +183,10 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('/create', [AdminUserManagementController::class, 'create'])->name('users.create');
         Route::post('/store', [AdminUserManagementController::class, 'store'])->name('users.store');
     });
+
+    //Notifications
+    Route::get('mark-all-notifications-as-read', [AdminIndexController::class, 'markAllNotificationsAsRead'])->name('mark-all-notifications-as-read');
+    Route::patch('mark-notification-as-read/{id}', [AdminindexController::class, 'markNotificationAsRead'])->name('mark-notification-as-read');
 });
 
 //Staff Routes
