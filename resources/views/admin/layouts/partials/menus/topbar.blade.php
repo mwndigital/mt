@@ -6,7 +6,7 @@
                     <img class="img-fluid adminTopBarLogo" src="{{ asset('logos/main-logo.webp') }}">
                 </a>
             </div>
-            <div class="col-md-4">
+            {{--<div class="col-md-4">
                 <div class="searchWrapper">
                     <form class="searchForm" action="{{ route('admin.search') }}">
 
@@ -16,7 +16,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>--}}
             <div class="col-md-4">
                 <ul class="d-flex justify-content-end">
                     <li>
