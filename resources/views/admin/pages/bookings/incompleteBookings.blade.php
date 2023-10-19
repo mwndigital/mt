@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-    Admin All Bookings
+    Admin Todays Bookings
 @endpush
 @push('page-scripts')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Deleted Bookings</h1>
+                    <h1>Todays Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -54,10 +54,10 @@
                             <a class="list-group-item list-group-item-action" id="list-messages-list"
                                href="{{ route('admin.book-a-room.all-bookings-index') }}" aria-controls="list-messages">All
                                 Bookings</a>
-                            <a class="list-group-item list-group-item-action active" id="list-messages-list"
+                            <a class="list-group-item list-group-item-action" id="list-messages-list"
                                href="{{ route('admin.book-a-room.deleted-bookings-index') }}"
                                aria-controls="list-messages">Deleted</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list"
+                            <a class="list-group-item list-group-item-action active" id="list-messages-list"
                                href="{{ route('admin.book-a-room.incomplete-bookings') }}"
                                aria-controls="list-messages">incomplete</a>
                         </div>
@@ -68,13 +68,13 @@
                                     <th>Name</th>
                                     <th>Check-In</th>
                                     <th>Check-Out</th>
-                                    <th>Room</th>
+                                    <th>Rooms</th>
                                     <th>Total</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($allBookings as $booking)
+                                @foreach($incomplete as $booking)
                                     <tr>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>

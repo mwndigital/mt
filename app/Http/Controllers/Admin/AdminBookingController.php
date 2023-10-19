@@ -77,6 +77,12 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.deletedBookings', compact('allBookings'));
     }
 
+    public function incompleteBookings(){
+        $incomplete = Booking::where('status', 'draft')->get();
+
+        return view('admin.pages.bookings.incompleteBookings', compact('incomplete'));
+    }
+
 
 
     /**
