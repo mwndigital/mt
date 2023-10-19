@@ -58,7 +58,7 @@
                                aria-controls="list-messages">All Bookings</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table w-100 dataTablesTable">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
