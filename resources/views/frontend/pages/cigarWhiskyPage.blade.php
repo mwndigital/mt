@@ -39,17 +39,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>Cigar Pavilion</h2>
+                    <h3>Retail Store</h3>
                     <p>
-                        The cigar pavilion is a cozy, enclosed structure with cushioned seats, providing a comfortable and inviting space for cigar enthusiasts.  It's equipped with soft lighting, ensuring a relaxed ambiance, and a heater to maintain a comfortable temperature, allowing enjoyment even in the highland winter.  The pavilion offers a retreat-like atmosphere, perfect for savoring cigars and engaging in conversations with fellow aficionados.
+                        The small retail whisky and cigar shop boast an inviting ambiance, centered around a prominent 3-door humidor showcashing an array of cigars.  This humidor houses a carefully curated selected of both Cuban and new world cigars, ranging from £8 to £90, providing aficionados with a diverse choice of flavours and profiles.
+                    </p>
+                    <p>
+                        Adorning the walls are shelves displaying an extensive assortment of whiskies, capturing the essence of different regions and styles.  The shop invites patrons to explore this rich spectrum of whiskies, catering to both seasoned enthusiasts and those new to the world of whisky.  Overall, the space exudes an air of sophistication, beckoning enthusiasts to immerse themselves in the pleasure of premium cigars and whiskies.
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/cigar-pavilion.png') }}">
+                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/whisky-shelf.jpg') }}">
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <section class="cigarWhiskyBanner">
         <div class="container">
@@ -71,16 +76,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Retail Store</h3>
+                    <h2>Cigar Pavilion</h2>
                     <p>
-                        The small retail whisky and cigar shop boast an inviting ambiance, centered around a prominent 3-door humidor showcashing an array of cigars.  This humidor houses a carefully curated selected of both Cuban and new world cigars, ranging from £8 to £90, providing aficionados with a diverse choice of flavours and profiles.
-                    </p>
-                    <p>
-                        Adorning the walls are shelves displaying an extensive assortment of whiskies, capturing the essence of different regions and styles.  The shop invites patrons to explore this rich spectrum of whiskies, catering to both seasoned enthusiasts and those new to the world of whisky.  Overall, the space exudes an air of sophistication, beckoning enthusiasts to immerse themselves in the pleasure of premium cigars and whiskies.
+                        The cigar pavilion is a cozy, enclosed structure with cushioned seats, providing a comfortable and inviting space for cigar enthusiasts.  It's equipped with soft lighting, ensuring a relaxed ambiance, and a heater to maintain a comfortable temperature, allowing enjoyment even in the highland winter.  The pavilion offers a retreat-like atmosphere, perfect for savoring cigars and engaging in conversations with fellow aficionados.
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/whisky-shelf.jpg') }}">
+                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/cigar-pavilion.png') }}">
                 </div>
             </div>
         </div>
