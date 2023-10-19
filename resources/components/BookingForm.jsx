@@ -9,6 +9,7 @@ function BookingForm() {
     const [children, setChildren] = useState(0);
     const [adults, setAdults] = useState(1);
     const [unavailableDates, setUnavailableDates] = useState([]);
+    const [fullAvailability, setFullAvailability] = useState(true);
 
     const handleType = (e) => setRoomType(e.target.value);
 
@@ -23,6 +24,13 @@ function BookingForm() {
         getUnavailableDates().then((res) => {
             if (res.error) return;
             setUnavailableDates(res.unavailable_dates);
+            setFullAvailability(res.success);
+
+            // if children and adults are not available, alert user
+            if (!res.success)
+                alert(
+                    "No availability for adults or children.\nCalendar disabled."
+                );
         });
     }, [roomType, adults, children]);
 
@@ -34,6 +42,7 @@ function BookingForm() {
                         roomType={roomType}
                         minimumNights={roomType === "room" ? 1 : 2}
                         unavailableDates={unavailableDates}
+                        fullAvailability={fullAvailability}
                     />
                 </div>
                 <div className="col-md-6">

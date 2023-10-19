@@ -44,9 +44,9 @@ class AvailableController extends Controller
         endif;
 
         return response()->json([
-            'success' => true,
+            'success' => $rooms->count() > 0,
             'type' => $request->type,
-            'unavailable_dates' => $unavailable_dates
+            'unavailable_dates' => $unavailable_dates,
         ]);
     }
 
