@@ -316,7 +316,7 @@ class BookingController extends Controller
 
     public function thankYou(Request $request)
     {
-        $transactionId = $request->session()->get('transactionId');
+        $transactionId = $request->transactionId;
 
         $booking = Booking::where('booking_ref', $transactionId)->first();
 
