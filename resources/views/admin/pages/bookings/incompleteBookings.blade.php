@@ -67,9 +67,9 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Check-In</th>
-                                    <th>Check-Out</th>
                                     <th>Rooms</th>
                                     <th>Total</th>
+                                    <th>Attempted</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -78,13 +78,13 @@
                                     <tr>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
-                                        <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
                                         <td>
                                             @foreach ($booking->rooms as $room )
                                                 {{ $room->name }}<br/>
                                             @endforeach
                                         </td>
                                         <td>{!! $booking->getStatus() !!}</td>
+                                        <td>{{ date('d/m/Y', strtotime($booking->created_at)) }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
