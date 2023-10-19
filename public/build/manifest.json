@@ -67,7 +67,7 @@
     "src": "resources/assets/fonts/Poppins-Regular.ttf"
   },
   "resources/assets/js/admin.js": {
-    "file": "assets/admin-d646a8b7.js",
+    "file": "assets/admin-61131983.js",
     "isEntry": true,
     "src": "resources/assets/js/admin.js"
   },
@@ -85,7 +85,7 @@
     "src": "resources/assets/js/frontend.js"
   },
   "resources/assets/sass/admin.scss": {
-    "file": "assets/admin-623bf3eb.css",
+    "file": "assets/admin-d7986800.css",
     "isEntry": true,
     "src": "resources/assets/sass/admin.scss"
   },

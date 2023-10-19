@@ -20,8 +20,11 @@
             <div class="col-md-8">
                 <ul class="d-flex justify-content-end">
                     <li>
-                        <button type="button" class="sidebarToggleBtn">
+                        <button type="button" class="sidebarToggleBtn d-none d-sm-none d-md-none d-lg-block d-xl-block">
                             <i class="fa fa-times"></i> <span>Close Menu</span>
+                        </button>
+                        <button type="button" class="sidebarToggleBtnMobile d-sm-block d-md-block d-lg-none d-xl-none">
+                            <i class="fa fa-bars"></i> <span>Open Menu</span>
                         </button>
                     </li>
                     <li class="dropdown">
@@ -36,10 +39,10 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <div class="row align-items-center notifTopItem">
-                                    <div class="col-md-8">
+                                    <div class="col-6">
                                         <h5>Notifications</h5>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-6">
                                         <form action="{{ route('admin.mark-all-notifications-as-read') }}" method="post">
                                             @csrf
                                             <button type="submit">Mark all as read</button>

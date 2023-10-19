@@ -24,7 +24,7 @@
 
 //responsive stuff
 @media screen and (min-width: 320px) and (max-width: 812px) {
-
+    @import "admin/responsive/mobile";
 }
 /*@media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
     @import "responsive-styles/mobile-land";
