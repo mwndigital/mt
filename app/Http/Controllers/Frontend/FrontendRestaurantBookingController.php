@@ -71,6 +71,57 @@ class FrontendRestaurantBookingController extends Controller
             ->get();
 
         $reservedTableIds = [];
+        $normalTablesBooked = 0;
+        $sixSeatTablesBooked = 0;
+
+        // Iterate through reservations to extract table IDs
+        foreach ($reservations as $reservation) {
+            $tableIds = json_decode($reservation->table_ids);
+            if (is_array($tableIds)) {
+                $reservedTableIds = array_merge($reservedTableIds, $tableIds);
+
+                // Check if reservation includes a normal table or a 6-seat table
+                if (in_array(6, $tableIds)) {
+                    $sixSeatTablesBooked += 1;
+                } else {
+                    $normalTablesBooked += count($tableIds);
+                }
+            }
+        }
+
+        // Filter the unique table IDs
+        $reservedTableIds = array_unique($reservedTableIds);
+
+        // Define your limits for normal and 6-seat tables
+        $normalTableLimit = 2; // Set your desired limit for normal tables
+        $sixSeatTableLimit = 1; // Set your desired limit for 6-seat tables
+
+        // Get all available tables that match the number of guests and are not fully booked
+        $tables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
+            ->whereNotIn('id', $reservedTableIds)
+            ->get();
+
+        // Check if the limit for normal tables, 6-seat tables, or both is reached and display the appropriate error message
+        if ($normalTablesBooked >= $normalTableLimit && $sixSeatTablesBooked >= $sixSeatTableLimit) {
+            return redirect()->back()->with('error', 'We are fully booked on this date, please choose another date.');
+        } elseif ($normalTablesBooked >= $normalTableLimit) {
+            return redirect()->back()->with('error', 'Unfortunately we do not have tables available for your party size on this date, please choose another date.');
+        } elseif ($sixSeatTablesBooked >= $sixSeatTableLimit) {
+            return redirect()->back()->with('error', 'Unfortunately we do not have tables available for your part size on this date, please choose another.');
+        }
+
+        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
+    }
+
+    /*public function stepTwoShow(Request $request) {
+        $table_booking = $request->session()->get('table_booking');
+
+        // Get the reservations matching the reservation date
+        $reservations = RestaurantBooking::orderBy('reservation_date')
+            ->where('reservation_date', $table_booking->reservation_date)
+            ->get();
+
+        $reservedTableIds = [];
 
         // Iterate through reservations to extract table IDs
         foreach ($reservations as $reservation) {
@@ -93,7 +144,7 @@ class FrontendRestaurantBookingController extends Controller
         }
 
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
-    }
+    }*/
     public function stepTwoStore(Request $request) {
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
