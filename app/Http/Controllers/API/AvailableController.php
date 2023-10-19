@@ -22,24 +22,26 @@ class AvailableController extends Controller
         $rooms = Rooms::getAll($isRoom, [
             'no_of_adults' => $adults,
             'no_of_children' => $children
-
         ]);
 
         $unavailable_dates = [];
         $room_unavailable_dates = [];
 
-        foreach ($rooms as $room) {
-            $room_unavailable_dates[] = [
-                'room_id' => $room->id,
-                'room_name' => $room->name,
-                'unavailable_dates' => $room->getUnavailableDates($today, $monthsAfter)
-            ];
-        }
 
-        // If every room is unavailable in same date, then it is unavailable
-        $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
-        // remove key from array
-        $unavailable_dates = array_values($unavailable_dates);
+        if (!$rooms->isEmpty()) :
+            foreach ($rooms as $room) {
+                $room_unavailable_dates[] = [
+                    'room_id' => $room->id,
+                    'room_name' => $room->name,
+                    'unavailable_dates' => $room->getUnavailableDates($today, $monthsAfter)
+                ];
+            }
+
+            // If every room is unavailable in same date, then it is unavailable
+            $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
+            // remove key from array
+            $unavailable_dates = array_values($unavailable_dates);
+        endif;
 
         return response()->json([
             'success' => true,

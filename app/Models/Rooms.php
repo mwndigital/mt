@@ -61,9 +61,6 @@ class Rooms extends Model
     }
 
 
-
-
-
     public function checkAvailability($checkIn, $checkOut)
     {
         $booked = $this->getBookedDates($checkIn, $checkOut);
