@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="bookingFormWrap">
-                        <h4 class="stepTitle">Choose a room</h4>
+                        <h4 class="stepTitle">Choose rooms</h4>
                         <div class="stepBanner">
                             <div class="innerWrap">
                                 <span>Step 2</span>
