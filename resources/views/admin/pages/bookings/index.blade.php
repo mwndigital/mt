@@ -74,7 +74,13 @@
                                             @endforeach
                                         </td>
                                         <td>{!! $booking->getStatus() !!}</td>
-                                        <td>{{ date('d/m/Y', strtotime($booking->created_at)) }}</td>
+                                        <td>
+                                            @if($booking->created_at == NULL)
+                                                IMPORTED
+                                            @else
+                                                {{ date('d/m/Y', strtotime($booking->created_at)) }}
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
