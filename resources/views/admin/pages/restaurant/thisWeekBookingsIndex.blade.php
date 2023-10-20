@@ -48,14 +48,7 @@
                 <div class="col-12">
                     <div class="tab-panels-wrap">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action" id="list-home-list"
-                               href="{{ route('admin.restaurant-bookings.index') }}">Todays Bookings</a>
-                            <a class="list-group-item list-group-item-action active" id="list-profile-list"
-                               data-bs-toggle="list" href="{{ route('admin.restaurant-bookings.this-weeks-bookings') }}"
-                               role="tab">This Weeks Bookings</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list"
-                               href="{{ route('admin.restaurant-bookings.all-bookings') }}" role="tab"
-                               aria-controls="list-messages">All Bookings</a>
+                            @include('admin.pages.restaurant.tabMenu')
                         </div>
 
                         <div class="tab-content" id="nav-tabContent">

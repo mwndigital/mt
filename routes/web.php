@@ -139,6 +139,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('all-bookings', [AdminBookingController::class, 'allBookingsIndex'])->name('book-a-room.all-bookings-index');
         Route::get('deleted-bookings', [AdminBookingController::class, 'deletedIndex'])->name('book-a-room.deleted-bookings-index');
         Route::get('incomplete-bookings', [AdminBookingController::class, 'incompleteBookings'])->name('book-a-room.incomplete-bookings');
+        Route::get('todays-bookings', [AdminBookingController::class, 'todaysBookings'])->name('book-a-room.todays-bookings');
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::put('bookings/{id}/status/{status}', [AdminBookingController::class, 'updateStatus'])->name('book-a-room.update-status');
@@ -153,8 +154,9 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('print-today-bookings', [AdminRestaurantBookingController::class, 'printTodayBookings'])->name('restaurant-bookings.print-today-bookings');
         Route::get('print-this-week-bookings', [AdminRestaurantBookingController::class, 'printThisWeeksBookings'])->name('restaurant-bookings.print-this-week-bookings');
         Route::get('print-all-bookings', [AdminRestaurantBookingController::class, 'printAllBookings'])->name('restaurant-bookings.print-all-bookings');
-        Route::get('restaurant-bookings-this-weeks-bookings', [AdminRestaurantBookingController::class, 'thisWeeksBookingsIndex'])->name('restaurant-bookings.this-weeks-bookings');
-        Route::get('restaurant-bookings-all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
+        Route::get('this-weeks-bookings', [AdminRestaurantBookingController::class, 'thisWeeksBookingsIndex'])->name('restaurant-bookings.this-weeks-bookings');
+        Route::get('all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
+        Route::get('todays-bookings', [AdminRestaurantBookingController::class, 'todaysBookingsIndex'])->name('restaurant-bookings.todays-bookings');
     });
     Route::put('restaurant-bookings/{id}/cancel-booking', [AdminRestaurantBookingController::class, 'cancelBooking'])->name('restaurant-bookings.cancel-booking');
     Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);
