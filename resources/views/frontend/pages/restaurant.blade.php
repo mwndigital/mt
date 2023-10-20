@@ -81,8 +81,8 @@
                 <div class="col-md-8 offset-md-2">
                     <h3 class="secTitle">{{ $content->book_banner_title }}</h3>
                     {!! $content->book_banner_content !!}
-                    <button class="darkGoldBtn"
-                            href="{{ $content->book_banner_button_link }}">{{ $content->book_banner_button_content }}</button>
+                    <a class="darkGoldBtn"
+                            href="{{ $content->book_banner_button_link }}">{{ $content->book_banner_button_content }}</a>
                 </div>
             </div>
         </div>
