@@ -139,6 +139,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('all-bookings', [AdminBookingController::class, 'allBookingsIndex'])->name('book-a-room.all-bookings-index');
         Route::get('deleted-bookings', [AdminBookingController::class, 'deletedIndex'])->name('book-a-room.deleted-bookings-index');
         Route::get('incomplete-bookings', [AdminBookingController::class, 'incompleteBookings'])->name('book-a-room.incomplete-bookings');
+        Route::get('todays-bookings', [AdminBookingController::class, 'todaysBookings'])->name('book-a-room.todays-bookings');
     });
     Route::put('bookings/{id}/mark-as-paid', [AdminBookingController::class, 'markAsPaid'])->name('book-a-room.mark-as-paid');
     Route::put('bookings/{id}/status/{status}', [AdminBookingController::class, 'updateStatus'])->name('book-a-room.update-status');
