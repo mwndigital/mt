@@ -15,6 +15,7 @@ class DevController extends Controller
             shell_exec('/usr/local/cpanel/bin/uapi VersionControlDeployment create repository_root=/home/mashtunaberlour/repositories/mt');
             echo "done";
             \Artisan::call('view:clear');
+            \Artisan::call('route:cache');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
