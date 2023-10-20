@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-    Admin Restaurant Booking
+    Admin Todays Restaurant Booking
 @endpush
 @push('page-scripts')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>All Restaurant Bookings</h1>
+                    <h1>Todays Restaurant Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -50,10 +50,8 @@
                         <div class="list-group" id="list-tab" role="tablist">
                             @include('admin.pages.restaurant.tabMenu')
                         </div>
-
                         <div class="tab-content" id="nav-tabContent">
-
-                            <table class="table">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -66,15 +64,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($allBookings as $booking)
+                                @foreach($todaysBookings as $booking)
                                     <tr>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
-                                        <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
+                                        <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                         <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->no_of_guests }}</td>
                                         <td>
-                                            @if($booking->table_ids && $booking->table_id == 1)
+                                            @if(isset($booking->table_ids) && is_array(json_decode($booking->table_ids)))
                                                 @foreach(json_decode($booking->table_ids) as $tableId)
                                                     Table {{ $tableId }}
                                                 @endforeach

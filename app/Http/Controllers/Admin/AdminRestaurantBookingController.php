@@ -23,6 +23,11 @@ class AdminRestaurantBookingController extends Controller
      */
     public function index()
     {
+        $latestBookings = RestaurantBooking::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.pages.restaurant.index', compact('latestBookings'));
+    }
+
+    public function todaysBookingsIndex(){
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
@@ -35,7 +40,7 @@ class AdminRestaurantBookingController extends Controller
 
 
 
-        return view('admin.pages.restaurant.index', compact('todaysBookings',));
+        return view('admin.pages.restaurant.todayBookings', compact('todaysBookings',));
     }
 
     public function thisWeeksBookingsIndex() {
