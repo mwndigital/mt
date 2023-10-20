@@ -58,6 +58,7 @@
                                     <th>Check-Out</th>
                                     <th>Rooms</th>
                                     <th>Total</th>
+                                    <th>Booking made</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -73,6 +74,7 @@
                                             @endforeach
                                         </td>
                                         <td>{!! $booking->getStatus() !!}</td>
+                                        <td>{{ date('d/m/Y', strtotime($booking->created_at)) }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
