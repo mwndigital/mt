@@ -32,6 +32,8 @@ class AdminIndexController extends Controller
             ->orderBy('reservation_date', 'asc')
             ->get();
 
+        $newestRestaurantBookings = RestaurantBooking::orderBy('created_at', 'desc')->limit(10)->get();
+
         $roomToday = Booking::where('checkin_date', '>=', $today)
             ->where('checkin_date', '<', $today->copy()->addDay())
             ->where('status', '!=', BookingStatus::DRAFT)
@@ -43,7 +45,9 @@ class AdminIndexController extends Controller
             ->orderBy('checkin_date', 'asc')
             ->get();
 
-        return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek', 'roomToday', 'roomThisWeek'));
+        $newestRoomBookings = Booking::orderBy('created_at', 'desc')->limit(10)->get();
+
+        return view('admin.pages.dashboard', compact('restaurantToday', 'restaurantThisWeek', 'roomToday', 'roomThisWeek', 'newestRestaurantBookings', 'newestRoomBookings'));
     }
 
     public function formSubmissionTestEmail(){
