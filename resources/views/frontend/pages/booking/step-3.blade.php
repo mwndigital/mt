@@ -150,7 +150,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Postcode *</label>
-                                    <input type="text" name="postcode" id="postcode"
+                                    <input type="text" name="postcode" id="postcode" maxlength="8"
                                            value="{{ $booking ? $booking->postcode : '' }}" required>
                                 </div>
                             </div>
