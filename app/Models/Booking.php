@@ -117,12 +117,12 @@ class Booking extends Model implements \Serializable
     public function getStatus()
     {
         return match ($this->status) {
-            'pending' => '<span class="badge text-bg-warning">Deposit Paid</span>',
-            'confirmed' => '<span class="badge text-bg-success">Approved</span>',
-            'cancelled' => '<span class="badge text-bg-danger">Cancelled</span>',
-            'refunded' => '<span class="badge text-bg-danger">Refunded</span>',
-            'draft' => '<span class="badge text-bg-warning">Draft</span>',
-            'paid' => '<span class="badge text-bg-success">Paid In Full</span>',
+            'pending' => '<span class="badge text-bg-warning p-2">Deposit Paid</span>',
+            'confirmed' => '<span class="badge text-bg-secondary text-bg-approved p-2">Approved</span>',
+            'cancelled' => '<span class="badge text-bg-danger p-2">Cancelled</span>',
+            'refunded' => '<span class="badge text-bg-danger p-2">Refunded</span>',
+            'draft' => '<span class="badge text-bg-secondary p-2">Draft</span>',
+            'paid' => '<span class="badge text-bg-success p-2">Paid In Full</span>',
             default => '<span class="badge text-bg-warning">Pending</span>',
         };
     }
@@ -213,6 +213,4 @@ class Booking extends Model implements \Serializable
             return $this->country;
         }
     }
-
-
 }
