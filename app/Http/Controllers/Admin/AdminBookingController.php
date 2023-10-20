@@ -512,4 +512,18 @@ class AdminBookingController extends Controller
 
         return redirect()->back()->with('success', 'Booking marked as paid');
     }
+
+    public function updateStatus(Request $request, int $id, string $status)
+    {
+
+        // Only allow BookingStatus enum values
+        if (!in_array($status, ['confirmed', 'pending', 'paid', 'cancelled'])) {
+            return redirect()->back()->with('error', 'Invalid booking status');
+        }
+        $booking = Booking::findOrFail($id);
+
+        $booking->updateStatus($request->status);
+
+        return redirect()->back()->with('success', 'Booking status updated successfully');
+    }
 }
