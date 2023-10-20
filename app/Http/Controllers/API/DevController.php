@@ -16,6 +16,7 @@ class DevController extends Controller
             echo "done";
             \Artisan::call('view:clear');
             \Artisan::call('route:cache');
+            \Artisan::call('config:cache');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
