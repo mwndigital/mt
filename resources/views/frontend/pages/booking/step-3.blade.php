@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @push('page-title')
-    Book a room - Step 3 | Aberlour Moray Scotland
+    Book rooms - Step 3 | Aberlour Moray Scotland
 @endpush
 @push('page-styles')
     <style>
