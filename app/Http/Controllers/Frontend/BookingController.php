@@ -351,18 +351,26 @@ class BookingController extends Controller
 
     private function getCardDetails($booking, $request)
     {
-        return new CreditCard([
+        $email = $booking->email_address;
+        // Just in case the email address is invalid
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $email = 'invalid-email@mash-tun.com';
+        }
+        $detail = new CreditCard([
             'firstName' => $request->name,
             'lastName' => '',
-            'email' => $booking->email_address,
+            'email' => $email,
             'BillingFirstName' => $booking->first_name,
             'BillingLastName' => $booking->last_name,
             'BillingAddress1' => $booking->address_line_one,
             'BillingCity' => $booking->city,
-            'BillingPostCode' => str_replace(' ', '', $booking->postcode),
+            'BillingPostCode' => substr(str_replace(' ', '', $booking->postcode), 0, 8),
             'BillingCountry' => $booking->country,
-            'BillingState' => '',
         ]);
+
+        if($booking->country == 'US')$detail->setBillingState('US');
+
+        return $detail;
     }
 
     public function sagepayNotify(Request $request)
