@@ -365,10 +365,12 @@ class BookingController extends Controller
             'BillingAddress1' => $booking->address_line_one,
             'BillingCity' => $booking->city,
             'BillingPostCode' => substr(str_replace(' ', '', $booking->postcode), 0, 8),
-            'BillingCountry' => $booking->country,
+            'BillingCountry' => $booking->country
         ]);
 
-        if($booking->country == 'US')$detail->setBillingState('US');
+        if ($booking->country == 'US') {
+            $detail->setBillingState('NY');
+        }
 
         return $detail;
     }

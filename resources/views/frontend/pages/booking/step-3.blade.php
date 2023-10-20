@@ -168,7 +168,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Phone number *</label>
-                                    <input type="tel" name="phone_number" id="phone_number"
+                                    <input type="tel" name="phone_number" id="phone_number" maxlength="13"
                                            value="{{ $booking ? $booking->phone_number : '' }}" required>
                                 </div>
                                 <div class="col-md-6">
