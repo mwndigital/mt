@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use MailchimpMarketing\ApiClient;
+use MailchimpMarketing\ApiException;
 use Spatie\Permission\Models\Role;
 
 class FrontendRestaurantBookingController extends Controller
@@ -65,26 +67,35 @@ class FrontendRestaurantBookingController extends Controller
     public function stepTwoShow(Request $request) {
         $table_booking = $request->session()->get('table_booking');
 
-        // Get the reservations matching the reservation date
-        $reservations = RestaurantBooking::orderBy('reservation_date')
-            ->where('reservation_date', $table_booking->reservation_date)
+        // Calculate the reservation end time by adding 2 hours to the reservation time
+        $reservationStartTime = $table_booking->reservation_time;
+        $reservationEndTime = strtotime($reservationStartTime) + 7200; // 7200 seconds = 2 hours
+
+        // Get the reservations matching the reservation date and time
+        $reservations = RestaurantBooking::where('reservation_date', $table_booking->reservation_date)
             ->get();
 
         $reservedTableIds = [];
         $normalTablesBooked = 0;
         $sixSeatTablesBooked = 0;
 
-        // Iterate through reservations to extract table IDs
+        // Iterate through reservations to extract table IDs and count 6-seat table reservations
         foreach ($reservations as $reservation) {
-            $tableIds = json_decode($reservation->table_ids);
-            if (is_array($tableIds)) {
-                $reservedTableIds = array_merge($reservedTableIds, $tableIds);
+            $startTime = strtotime($reservation->reservation_time);
+            $endTime = strtotime($reservation->reservation_end_time);
 
-                // Check if reservation includes a normal table or a 6-seat table
-                if (in_array(6, $tableIds)) {
-                    $sixSeatTablesBooked += 1;
-                } else {
-                    $normalTablesBooked += count($tableIds);
+            // Check if the reservation overlaps with the desired time
+            if (($startTime <= $reservationEndTime && $startTime >= $reservationStartTime) ||
+                ($endTime <= $reservationEndTime && $endTime >= $reservationStartTime)) {
+                $tableIds = json_decode($reservation->table_ids);
+                if (is_array($tableIds)) {
+                    $reservedTableIds = array_merge($reservedTableIds, $tableIds);
+
+                    if (in_array(6, $tableIds)) {
+                        $sixSeatTablesBooked += 1;
+                    } else {
+                        $normalTablesBooked += count($tableIds);
+                    }
                 }
             }
         }
@@ -93,13 +104,18 @@ class FrontendRestaurantBookingController extends Controller
         $reservedTableIds = array_unique($reservedTableIds);
 
         // Define your limits for normal and 6-seat tables
-        $normalTableLimit = 2; // Set your desired limit for normal tables
-        $sixSeatTableLimit = 1; // Set your desired limit for 6-seat tables
+        $normalTableLimit = 8; // Set your desired limit for normal tables
+        $sixSeatTableLimit = 2; // Set your desired limit for 6-seat tables
 
         // Get all available tables that match the number of guests and are not fully booked
-        $tables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
+        $availableTables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
             ->whereNotIn('id', $reservedTableIds)
             ->get();
+
+        // Check if the selected table is available during the requested time
+        if (in_array($table_booking->table_id, $reservedTableIds)) {
+            return redirect()->back()->with('error', 'This table is already booked for the selected time. Please choose another table or time.');
+        }
 
         // Check if the limit for normal tables, 6-seat tables, or both is reached and display the appropriate error message
         if ($normalTablesBooked >= $normalTableLimit && $sixSeatTablesBooked >= $sixSeatTableLimit) {
@@ -107,10 +123,10 @@ class FrontendRestaurantBookingController extends Controller
         } elseif ($normalTablesBooked >= $normalTableLimit) {
             return redirect()->back()->with('error', 'Unfortunately we do not have tables available for your party size on this date, please choose another date.');
         } elseif ($sixSeatTablesBooked >= $sixSeatTableLimit) {
-            return redirect()->back()->with('error', 'Unfortunately we do not have tables available for your part size on this date, please choose another.');
+            return redirect()->back()->with('error', 'Unfortunately we do not have 6-seat tables available for your party size on this date, please choose another table or time.');
         }
 
-        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
+        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'availableTables'));
     }
 
     /*public function stepTwoShow(Request $request) {
@@ -146,6 +162,7 @@ class FrontendRestaurantBookingController extends Controller
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
     }*/
     public function stepTwoStore(Request $request) {
+        $signMeUp = $request->has('newsletter_signup');
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -212,6 +229,72 @@ class FrontendRestaurantBookingController extends Controller
 
             //Redirect to thank you
             return redirect()->route('book-a-table-thank-you', ['table_booking_id' => $table_booking->id]);
+        }
+        elseif($signMeUp) {
+            //Save the session
+            $table_booking = RestaurantBooking::create([
+                'first_name' => $table_booking->first_name,
+                'last_name' => $table_booking->last_name,
+                'email' => $table_booking->email,
+                'reservation_date' => $table_booking->reservation_date,
+                'reservation_time' => $table_booking->reservation_time,
+                'reservation_end_time' => $reservation_time_end,
+                'no_of_guests' => $table_booking->no_of_guests,
+                'table_id' => $table_booking->table_id,
+                'joining_for' => $table_booking->joining_for,
+                'additional_information' => $table_booking->additional_information,
+                'dietary_info' => $table_booking->dietary_info,
+            ]);
+
+            //forget session
+            $request->session()->forget('table_booking');
+
+            //Mailchimp
+            $email = $table_booking->email;
+            $first_name = $table_booking->first_name;
+            $last_name = $table_booking->last_name;
+            $listId = env('MAILCHIMP_LIST_ID');
+
+            $client = new ApiClient();
+            $client->setConfig([
+                'apiKey' => env("MAILCHIMP_API_KEY"),
+                'server' => 'us14'
+            ]);
+
+            try {
+                // Check if the email is already a member of the list
+                //$existingMember = $client->lists->getListMember($listId, md5(strtolower($email)));
+
+                // If the email already exists, you can display a warning message
+                /*if ($existingMember) {
+                    return redirect()->back()->with('warning', 'This email is already subscribed to our mailing list.');
+                }*/
+
+                $member = $client->lists->addListMember($listId, [
+                    'email_address' => $email,
+                    'status' => 'subscribed',
+                ]);
+
+                //Send email to customer
+                Mail::to($validated['email'])->send(new TableBookingConfirmationEmail($table_booking));
+
+                //Send email to MT
+                Mail::to('reservations@mashtun-aberlour.com')->send(new AdminTableBookingConfirmationEmail($table_booking));
+
+                //Send notif
+                $adminRoles = ['admin', 'super admin'];
+                $adminUsers = Role::whereIn('name', $adminRoles)->first()->users;
+                foreach($adminUsers as $adminUser){
+                    $adminUser->notify(new NewTableBookingNotification($table_booking));
+                }
+
+                //redirect to thank you
+                return redirect()->route('book-a-table-thank-you', ['table_booking_id' => $table_booking->id])->with('success', "You're booking has been sent and you are now subscribed to our mailing list");
+            } catch (ApiException $e) {
+                // Handle the MailChimp API exception, log it, or provide user feedback.
+                return redirect()->back()->with('error', 'Unable to subscribe. Please try again later.');
+            }
+
         }
         else {
             //Save the session
