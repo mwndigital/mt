@@ -104,8 +104,9 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form action="" method="post">
+                    <form action="{{ route('admin.bookings.update', $booking->id) }}" method="post">
                         @csrf
+                        @method('push')
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Check in date *</label>
