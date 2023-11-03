@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
+use App\Http\Controllers\Admin\Pages\AdminCigarWhiskyPageController;
 use App\Http\Controllers\Admin\Pages\AdminContactUsPageController;
 use App\Http\Controllers\Admin\Pages\AdminDiningPageContent;
 use App\Http\Controllers\Admin\Pages\AdminFaqsPageController;
@@ -176,6 +177,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::resource('dining-page', AdminDiningPageContent::class);
         Route::resource('lodge-page', AdminLodgePageController::class);
         Route::resource('contact-page', AdminContactUsPageController::class);
+        ROute::resource('cigar-whisky-page', AdminCigarWhiskyPageController::class);
     });
 
     //Search

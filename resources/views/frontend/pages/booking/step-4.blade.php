@@ -141,6 +141,14 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <input type="checkbox" name="newsletter_signup" id="newsletter_signup" checked>
+                                        <label for="" class="ms-2">I would like to be kept up to date with all of the latest news, events and offers at The Mash Tun </label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
