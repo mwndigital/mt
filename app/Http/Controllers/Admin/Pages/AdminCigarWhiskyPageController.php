@@ -177,7 +177,7 @@ class AdminCigarWhiskyPageController extends Controller
             $fileName = time().'_'.$hero_bg_image->getClientOriginalName();
             $folder = 'public/pages/cigar_whisky_shop_page';
 
-            $hero_bg_image_path = $hero_bg_image->storeAs($folder, $fileName);
+            $hero_bg_image_path = $hero_bg_image->storeAs($folder, $fileName, 'public');
         }
         else {
             $hero_bg_image_path = $content->hero_bg_image;
@@ -186,7 +186,7 @@ class AdminCigarWhiskyPageController extends Controller
             $banner_one_image = $request->file('banner_one_image');
             $fileName = time().'_'. $banner_one_image->getClientOriginalName();
             $folder = 'public/pages/cigar_whisky_shop_page';
-            $banner_one_image_path = $banner_one_image->storeAs($folder, $fileName);
+            $banner_one_image_path = $banner_one_image->storeAs($folder, $fileName, 'public');
         }
         else {
             $banner_one_image_path = $content->banner_one_image;
@@ -195,7 +195,7 @@ class AdminCigarWhiskyPageController extends Controller
             $banner_two_image = $request->file('banner_two_image');
             $fileName = time().'_'. $banner_two_image->getClientOriginalName();
             $folder = 'public/pages/cigar_whisky_shop_page';
-            $banner_two_image_path = $banner_two_image->storeAs($folder, $fileName);
+            $banner_two_image_path = $banner_two_image->storeAs($folder, $fileName, 'public');
         }
         else {
             $banner_two_image_path = $content->banner_two_image;
@@ -204,7 +204,7 @@ class AdminCigarWhiskyPageController extends Controller
             $banner_three_image = $request->file('banner_three_image');
             $fileName = time().'_'. $banner_three_image->getClientOriginalName();
             $folder = 'public/pages/cigar_whisky_shop_page';
-            $banner_three_image_path = $banner_three_image->storeAs($folder, $fileName);
+            $banner_three_image_path = $banner_three_image->storeAs($folder, $fileName, 'public');
         }
         else {
             $banner_three_image_path = $content->banner_three_image;
@@ -213,7 +213,7 @@ class AdminCigarWhiskyPageController extends Controller
             $seo_image = $request->file('seo_image');
             $fileName = time().'_'. $seo_image->getClientOriginalName();
             $folder = 'public/pages/cigar_whisky_shop_page';
-            $seo_image_path = $seo_image->storeAs($folder, $fileName);
+            $seo_image_path = $seo_image->storeAs($folder, $fileName, 'public');
         }
         else {
             $seo_image_path = $content->seo_image;
