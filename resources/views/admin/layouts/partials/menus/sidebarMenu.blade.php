@@ -29,9 +29,9 @@
                     <a href="{{ route('admin.contact-page.edit', ['contact_page' => 1]) }}">Contact Us</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.cigar-whisky-page.edit', ['cigar_whisky_page' => 1]) }}">
+                    {{--<a href="{{ route('admin.cigar-whisky-page.edit', ['cigar_whisky_page' => 1]) }}">
                         Cigar & Whisky Shop Page
-                    </a>
+                    </a>--}}
                 </li>
             </ul>
         </li>
