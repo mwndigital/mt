@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use MailchimpMarketing\ApiClient;
+use MailchimpMarketing\ApiException;
 use Monarobase\CountryList\CountryList;
 use Monarobase\CountryList\CountryListFacade;
 use Omnipay\Common\CreditCard;
@@ -263,6 +265,7 @@ class BookingController extends Controller
     {
         $validated = $request->validate([
             'cancellationPolicyAgree' => ['required'],
+            'newsletter_signup' => ['nullable']
         ]);
 
         $booking = $request->session()->get('booking');
@@ -319,6 +322,37 @@ class BookingController extends Controller
         $transactionId = $request->transactionId;
 
         $booking = Booking::where('booking_ref', $transactionId)->first();
+
+        if($booking->signMeUp) {
+            //Mailchimp
+            $email = $booking->email_address;
+            $listId = env('MAILCHIMP_LIST_ID');
+
+            $client = new ApiClient();
+            $client->setConfig([
+                'apiKey' => env("MAILCHIMP_API_KEY"),
+                'server' => 'us14'
+            ]);
+
+            try {
+                // Check if the email is already a member of the list
+                //$existingMember = $client->lists->getListMember($listId, md5(strtolower($email)));
+
+                // If the email already exists, you can display a warning message
+                /*if ($existingMember) {
+                    return redirect()->back()->with('warning', 'This email is already subscribed to our mailing list.');
+                }*/
+
+                $member = $client->lists->addListMember($listId, [
+                    'email_address' => $email,
+                    'status' => 'subscribed',
+                ]);
+            }catch (ApiException $e) {
+                // Handle the MailChimp API exception, log it, or provide user feedback.
+                Log::error($e->getMessage);
+                //return flash('error', 'Unable to subscribe. Please try again later.');
+            }
+        }
 
         // Send email to customer
         try {
