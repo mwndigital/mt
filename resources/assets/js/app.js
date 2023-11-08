@@ -3,9 +3,9 @@ import DataTable from 'datatables.net-dt';
 
 
 $(document).ready(function(){
-   $('.dataTablesTable').dataTable({
+   /*$('.dataTablesTable').dataTable({
        paging: true,
        searching: true,
        scrollX:true
-   });
+   });*/
 });

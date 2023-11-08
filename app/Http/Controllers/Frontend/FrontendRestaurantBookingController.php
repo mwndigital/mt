@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminTableBookingConfirmationEmail;
 use App\Mail\TableBookingConfirmationEmail;
+use App\Models\RestaurantBlockedDates;
 use App\Models\RestaurantBooking;
 use App\Models\RestaurantTable;
 use App\Models\User;
@@ -20,6 +21,11 @@ use Spatie\Permission\Models\Role;
 
 class FrontendRestaurantBookingController extends Controller
 {
+    public function getBlockedDates(){
+        $blockedDates = RestaurantBlockedDates::pluck('date')->toArray();
+        return response()->json($blockedDates);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +48,7 @@ class FrontendRestaurantBookingController extends Controller
 
     public function indexStore(Request $request) {
         $validated = $request->validate([
-            'reservation_date' => ['required', 'date'],
+            'reservation_date' => ['required', 'string'],
             'reservation_time' => ['required', 'string'],
             'no_of_guests' => ['required', 'integer'],
             'joining_for' => ['required', 'string', 'max:255'],
@@ -50,12 +56,23 @@ class FrontendRestaurantBookingController extends Controller
 
         if(empty($request->session()->get('table_booking'))){
             $table_booking = new RestaurantBooking();
-            $table_booking->fill($validated);
+            $table_booking->fill([
+                'reservation_date' => Carbon::parse($table_booking->reservation_date)->format('Y-m-d'),
+                /*'reservation_date' => date('Y-m-d', strtotime($validated['reservation_date'])),*/
+                'reservation_time' => $validated['reservation_time'],
+                'no_of_guests' => $validated['no_of_guests'],
+                'joining_for' => $validated['joining_for'],
+            ]);
             $request->session()->put('table_booking', $table_booking);
         }
         else {
             $table_booking = $request->session()->get('table_booking');
-            $table_booking->fill($validated);
+            $table_booking->fill([
+                'reservation_date' => Carbon::parse($table_booking->reservation_date)->format('Y-m-d'),
+                'reservation_time' => $validated['reservation_time'],
+                'no_of_guests' => $validated['no_of_guests'],
+                'joining_for' => $validated['joining_for'],
+            ]);
             $request->session()->put('table_booking', $table_booking);
         }
 
@@ -129,38 +146,6 @@ class FrontendRestaurantBookingController extends Controller
         return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'availableTables'));
     }
 
-    /*public function stepTwoShow(Request $request) {
-        $table_booking = $request->session()->get('table_booking');
-
-        // Get the reservations matching the reservation date
-        $reservations = RestaurantBooking::orderBy('reservation_date')
-            ->where('reservation_date', $table_booking->reservation_date)
-            ->get();
-
-        $reservedTableIds = [];
-
-        // Iterate through reservations to extract table IDs
-        foreach ($reservations as $reservation) {
-            $tableIds = json_decode($reservation->table_ids);
-            if (is_array($tableIds)) {
-                $reservedTableIds = array_merge($reservedTableIds, $tableIds);
-            }
-        }
-
-        // Filter the unique table IDs
-        $reservedTableIds = array_unique($reservedTableIds);
-
-        // Get available tables that match the number of guests
-        $tables = RestaurantTable::where('no_of_seats', $table_booking->no_of_guests)
-            ->whereNotIn('id', $reservedTableIds)
-            ->get();
-
-        if($tables == NULL) {
-            return redirect()->back()->with('error', 'We are fully booked on this date, please choose another.');
-        }
-
-        return view('frontend.pages.restaurant-bookings.step-2', compact('table_booking', 'tables'));
-    }*/
     public function stepTwoStore(Request $request) {
         $signMeUp = $request->has('newsletter_signup');
         $validated = $request->validate([
@@ -179,6 +164,10 @@ class FrontendRestaurantBookingController extends Controller
         //Get the reservation time and set the reservation end time
         $reservation_time = Carbon::parse($table_booking->reservation_time);
         $reservation_time_end = $reservation_time->copy()->addHours(2);
+
+        $reservation_date = date('Y-m-d H:i:s', strtotime($table_booking->reservation_date));
+
+        //dd($reservation_date);;
 
         //If create account is yes create user and store data for res
         if($request->create_account == 'yes') {
@@ -200,7 +189,7 @@ class FrontendRestaurantBookingController extends Controller
                 'user_id' => $user->id,
                 'email' => $table_booking->email,
                 'mobile_number' => $table_booking->mobile_number,
-                'reservation_date' => $table_booking->reservation_date,
+                'reservation_date' => $reservation_date,
                 'reservation_time' => $table_booking->reservation_time,
                 'reservation_end_time' => $reservation_time_end,
                 'no_of_guests' => $table_booking->no_of_guests,
@@ -236,7 +225,7 @@ class FrontendRestaurantBookingController extends Controller
                 'first_name' => $table_booking->first_name,
                 'last_name' => $table_booking->last_name,
                 'email' => $table_booking->email,
-                'reservation_date' => $table_booking->reservation_date,
+                'reservation_date' => $reservation_date,
                 'reservation_time' => $table_booking->reservation_time,
                 'reservation_end_time' => $reservation_time_end,
                 'no_of_guests' => $table_booking->no_of_guests,

@@ -69,6 +69,12 @@
                 </li>
             @endrole
             <li>
+                <a href="{{ route('admin.restaurant-blocked-dates.index') }}">All Blocked Dates</a>
+            </li>
+            <li>
+                <a href="{{ route('admin.restaurant-blocked-dates.create') }}">Create Blocked Date</a>
+            </li>
+            <li>
                 <a href="{{ route('admin.restaurant-tables.index') }}">All Tables</a>
             </li>
             <li>
