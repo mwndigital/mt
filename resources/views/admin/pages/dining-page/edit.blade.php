@@ -36,7 +36,7 @@
                     <form action="{{ route('admin.dining-page.update', $content->id) }}" method="post"
                           enctype="multipart/form-data">
                         @csrf
-                        @method('push')
+                        @method('put')
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Page Title *</label>
