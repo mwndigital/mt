@@ -44,7 +44,7 @@ class AdminDiningPageContent extends Controller
             'page_title' => ['required', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_content' => ['required'],
-            'hero_banner_background_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+            'hero_background_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'banner_one_title' => ['required', 'string', 'max:255'],
             'banner_one_content' => ['required'],
             'banner_one_image' => ['required', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
@@ -157,7 +157,7 @@ class AdminDiningPageContent extends Controller
             'page_title' => ['required', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_content' => ['required'],
-            'hero_banner_background_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
+            'hero_background_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
             'banner_one_title' => ['required', 'string', 'max:255'],
             'banner_one_content' => ['required'],
             'banner_one_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,svg,webp'],
@@ -181,7 +181,7 @@ class AdminDiningPageContent extends Controller
             $heroBannerBackgroundImagePath = $heroBannerBackgroundImage->storeAs($folder,  $fileName);
         }
         else {
-            $heroBannerBackgroundImagePath = $content->hero_banner_background_image;
+            $heroBannerBackgroundImagePath = $content->hero_background_image;
         }
         if($request->hasFile('banner_one_image')){
             $bannerOneImage = $request->file('banner_one_image');
