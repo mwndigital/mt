@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminGalleryCategoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminIndexController;
+use App\Http\Controllers\Admin\AdminRestaurantBlockedDates;
+use App\Http\Controllers\Admin\AdminRestaurantBlockedDatesController;
 use App\Http\Controllers\Admin\AdminRestaurantBookingController;
 use App\Http\Controllers\Admin\AdminRestaurantTableController;
 use App\Http\Controllers\Admin\AdminSearchController;
@@ -158,6 +160,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('this-weeks-bookings', [AdminRestaurantBookingController::class, 'thisWeeksBookingsIndex'])->name('restaurant-bookings.this-weeks-bookings');
         Route::get('all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
         Route::get('todays-bookings', [AdminRestaurantBookingController::class, 'todaysBookingsIndex'])->name('restaurant-bookings.todays-bookings');
+
+        Route::resource('restaurant-blocked-dates', AdminRestaurantBlockedDatesController::class);
     });
     Route::put('restaurant-bookings/{id}/cancel-booking', [AdminRestaurantBookingController::class, 'cancelBooking'])->name('restaurant-bookings.cancel-booking');
     Route::resource('restaurant-bookings', AdminRestaurantBookingController::class);
@@ -272,6 +276,8 @@ Route::prefix('book-a-table')->group(function () {
     Route::get('step-two', [FrontendRestaurantBookingController::class, 'stepTwoShow'])->name('book-a-table-step-two-show');
     Route::post('step-two-store', [FrontendRestaurantBookingController::class, 'stepTwoStore'])->name('book-a-table-step-two-store');
     Route::get('thank-you', [FrontendRestaurantBookingController::class, 'thankYou'])->name('book-a-table-thank-you');
+
+    Route::get('blocked-dates', [FrontendRestaurantBookingController::class, 'getBlockedDates'])->name('blocked-dates-check');
 });
 
 

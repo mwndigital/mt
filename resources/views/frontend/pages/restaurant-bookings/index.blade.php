@@ -6,47 +6,6 @@
 
 @endpush
 @push('page-scripts')
-    <script>
-        $(document).ready(function () {
-            var selectedJoiningFor = '';
-
-            $('#joining_for').change(function () {
-                selectedJoiningFor = $(this).val();
-                updateReservationTime(selectedJoiningFor);
-            });
-
-            function updateReservationTime(joiningFor) {
-                var timeOptions = '';
-
-                if (joiningFor === 'lunch') {
-                    timeOptions =
-                        '<option value="12:00">12:00</option>' +
-                        '<option value="12:15">12:15</option>' +
-                        '<option value="12:30">12:30</option>' +
-                        '<option value="12:45">12:45</option>' +
-                        '<option value="13:00">13:00</option>' +
-                        '<option value="13:15">13:15</option>' +
-                        '<option value="13:30">13:30</option>' +
-                        '<option value="13:45">13:45</option>' +
-                        '<option value="14:00">14:00</option>'
-                } else if (joiningFor === 'evening') {
-                    timeOptions =
-                        '<option value="18:00">18:00</option>' +
-                        '<option value="18:15">18:15</option>' +
-                        '<option value="18:30">18:30</option>' +
-                        '<option value="18:45">18:45</option>' +
-                        '<option value="19:00">19:00</option>' +
-                        '<option value="19:15">19:15</option>' +
-                        '<option value="19:30">19:30</option>' +
-                        '<option value="19:45">19:45</option>' +
-                        '<option value="20:00">20:00</option>'
-                }
-
-                //Update the html element
-                $('#reservation_time').html(timeOptions);
-            }
-        });
-    </script>
 @endpush
 @section('content')
     <section class="bookingPageTop"
@@ -106,10 +65,11 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="">Choose your date *</label>
-                                    <input type="date" name="reservation_date" id="reservation_date"
+                                    {{--<input type="text" name="reservation_date" id="reservation_date" class="" data-enable-time="false" placeholder="Select your preferred date..." readonly>--}}
+                                    <input type="text" name="reservation_date" id="reservation_date"
                                            min="{{ $min_date->format('Y-m-d') }}"
                                            max="{{ $max_date->addMonths(6)->format('Y-m-d') }}"
-                                           value="{{ old('reservation_date', isset($table_booking) ? $table_booking->reservation_date : null) }}">
+                                           value="{{ old('reservation_date', isset($table_booking) ? $table_booking->reservation_date : null) }}" readonly>
                                     @error('reservation_date')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -172,4 +132,108 @@
             </div>
         </div>
     </section>
+
+
+    <script>
+        $(document).ready(function () {
+            // Initialize blockedDates as an empty array
+            var blockedDates = [];
+
+            // Function to initialize the date picker
+            function initializeDatePicker() {
+                $('#reservation_date').datepicker({
+                    dateFormat: 'dd/mm/yy', // Update the date format to match your input
+                    minDate: 0,
+                    beforeShowDay: function (date) {
+                        // Convert the date to a format matching your blocked dates
+                        const dateString = moment(date).format('YYYY-MM-DD');
+
+                        // Check if the date is blocked
+                        const isDateBlocked = blockedDates.includes(dateString);
+
+                        // Conditions to block certain dates
+                        if (isDateBlocked) {
+                            return [false];
+                        }
+
+                        // Allow all other dates
+                        return [true];
+                    },
+                    onSelect: function (dateText) {
+                        // Update the displayed date as dd/mm/yyyy
+                        const formattedDisplayDate = moment(dateText, 'DD/MM/YY').format('DD/MM/YYYY');
+                        $('#selected_date_display').text(formattedDisplayDate);
+
+                        // Update the hidden input field with a backend-friendly format (yyyy-mm-dd)
+                        const backendDate = moment(dateText, 'DD/MM/YY').format('YYYY-MM-DD');
+                        $('#reservation_date_backend').val(backendDate);
+                    }
+                });
+            }
+
+            // Function to fetch blocked dates
+            function fetchBlockedDates() {
+                // Make an AJAX request to your server to fetch blocked dates
+                $.ajax({
+                    url: '/book-a-table/blocked-dates', // Replace with your API endpoint
+                    method: 'GET',
+                    success: function (data) {
+                        // Update the blockedDates array with the fetched data
+                        blockedDates = data;
+
+                        // Initialize the date picker after fetching the blocked dates
+                        initializeDatePicker();
+                    },
+                    error: function (error) {
+                        console.error('Error fetching blocked dates', error);
+                    }
+                });
+            }
+
+            // Call the function to fetch blocked dates
+            fetchBlockedDates();
+        });
+
+
+
+        $(document).ready(function () {
+            var selectedJoiningFor = '';
+
+            $('#joining_for').change(function () {
+                selectedJoiningFor = $(this).val();
+                updateReservationTime(selectedJoiningFor);
+            });
+
+            function updateReservationTime(joiningFor) {
+                var timeOptions = '';
+
+                if (joiningFor === 'lunch') {
+                    timeOptions =
+                        '<option value="12:00">12:00</option>' +
+                        '<option value="12:15">12:15</option>' +
+                        '<option value="12:30">12:30</option>' +
+                        '<option value="12:45">12:45</option>' +
+                        '<option value="13:00">13:00</option>' +
+                        '<option value="13:15">13:15</option>' +
+                        '<option value="13:30">13:30</option>' +
+                        '<option value="13:45">13:45</option>' +
+                        '<option value="14:00">14:00</option>'
+                } else if (joiningFor === 'evening') {
+                    timeOptions =
+                        '<option value="18:00">18:00</option>' +
+                        '<option value="18:15">18:15</option>' +
+                        '<option value="18:30">18:30</option>' +
+                        '<option value="18:45">18:45</option>' +
+                        '<option value="19:00">19:00</option>' +
+                        '<option value="19:15">19:15</option>' +
+                        '<option value="19:30">19:30</option>' +
+                        '<option value="19:45">19:45</option>' +
+                        '<option value="20:00">20:00</option>'
+                }
+
+                //Update the html element
+                $('#reservation_time').html(timeOptions);
+            }
+        });
+    </script>
 @endsection

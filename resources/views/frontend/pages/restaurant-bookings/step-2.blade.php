@@ -117,7 +117,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row" style="display: block">
+                                    <div class="row" style="display: none;">
                                         <div class="col-12">
                                             <label for="table_id">Table</label>
                                             <select name="table_id" id="table_id">
@@ -191,7 +191,7 @@
                                                 <strong>Reservation Date</strong>
                                             </li>
                                             <li class="list-inline-item">
-                                                {{ date('d/m/Y', strtotime($table_booking->reservation_date)) }}
+                                                {{ date('d/m/Y', strtotime($table_booking->reservation_date))  }}
                                             </li>
                                         </ul>
                                         <hr>

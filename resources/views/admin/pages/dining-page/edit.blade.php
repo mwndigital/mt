@@ -82,8 +82,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Background image *</label>
-                                <input type="file" name="hero_banner_background_image" id="hero_banner_background_image"
-                                       required>
+                                <input type="file" name="hero_banner_background_image" id="hero_banner_background_image">
                                 @error('hero_background_image')
                                 <div class="text-danger">
                                     {{ $message }}
