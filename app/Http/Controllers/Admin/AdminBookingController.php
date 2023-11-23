@@ -180,10 +180,10 @@ class AdminBookingController extends Controller
             return $room->checkAvailability($checkInDate, $checkOutDate);
         });
 
+
         if ($filteredRooms->isEmpty() || (!$isRoom && $filteredRooms->count() != $rooms->count())) {
             // Booking conflicts exist, redirect /admin/bookings/create
-            return redirect()->route('admin.bookings.create')
-                ->with('room_conflict', true);
+            return back()->with('room_conflict', true)->with('checkin_date', Carbon::parse($checkInDate)->format('d-m-Y'))->with('checkout_date', Carbon::parse($checkOutDate)->format('d-m-Y'));
         }
 
         return view('admin.pages.bookings.create-steps.step-two', compact('booking', 'filteredRooms'));

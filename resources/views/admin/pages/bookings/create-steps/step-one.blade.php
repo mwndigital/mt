@@ -8,7 +8,6 @@
         $(document).ready(function () {
             $('#checkin_date').datepicker({
                 dateFormat: "dd-mm-yy",
-                defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
                 minDate: 0,
                 onSelect: function (selectedDate) {
                     const type = $('#type').val();
@@ -26,7 +25,6 @@
 
             $('#checkout_date').datepicker({
                 dateFormat: "dd-mm-yy",
-                defaultDate: "{{ now()->setTimezone('Europe/London')->format('d-m-y') }}",
                 minDate: 1,
             });
 
@@ -45,9 +43,12 @@
             document.getElementById('no_of_adults').defaultValue = '1';
             document.getElementById('no_of_children').defaultValue = '0';
             // Check in date default value today
-            document.getElementById('checkin_date').defaultValue = '{{ now()->setTimezone('Europe/London')->format('d-m-Y') }}';
+            @if(session('checkin_date')) $checkInDate = '{{ session('checkin_date') }}'; @else $checkInDate = '{{ now()->format('d-m-Y') }}'; @endif
+
+            document.getElementById('checkin_date').defaultValue = $checkInDate;
             // Check out date default value tomorrow
-            document.getElementById('checkout_date').defaultValue = '{{ now()->setTimezone('Europe/London')->addDay()->format('d-m-Y') }}';
+            @if(session('checkout_date')) $checkOutDate = '{{ session('checkout_date') }}'; @else $checkOutDate = '{{ now()->format('d-m-Y') }}'; @endif
+            document.getElementById('checkout_date').defaultValue = $checkOutDate;
 
             // Function to toggle visibility of adult and children inputs
             function toggleGuestInputs() {
@@ -136,12 +137,12 @@
                                 <div class="col-md-4">
                                     <label for="">Check in date</label>
                                     <input type="text" name="checkin_date" id="checkin_date"
-                                           value="{{ $booking ? $booking->checkin_date : '' }}" autocomplete="off">
+                                           value="" autocomplete="off">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Check out date</label>
                                     <input type="text" name="checkout_date" id="checkout_date" autocomplete="off"
-                                           value="{{ $booking ? $booking->checkout_date : '' }}">
+                                           value="">
                                 </div>
                                 <div class="col-md-4">
                                     <label for="">Type</label>
