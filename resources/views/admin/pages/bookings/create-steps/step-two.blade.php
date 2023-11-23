@@ -3,22 +3,7 @@
     Admin - Create booking step two
 @endpush
 @push('page-scripts')
-    <script>
-        const radioButtons = document.querySelectorAll('input[type="radio"]');
 
-        radioButtons.forEach((radio) => {
-            radio.addEventListener('change', () => {
-                if (radio.checked) {
-                    radioButtons.forEach((otherRadio) => {
-                        if (otherRadio !== radio) {
-                            otherRadio.parentElement.classList.remove('checked');
-                        }
-                    });
-                    radio.parentElement.classList.add('checked');
-                }
-            });
-        });
-    </script>
 @endpush
 @push('page-styles')
     <style>
@@ -83,7 +68,7 @@
                                         @foreach($filteredRooms as $room)
                                             <div class="col-md-6">
                                                 <label class="checkItem">
-                                                    <input type="radio" name="room_id[]" id="room_{{ $room->id }}"
+                                                    <input type="checkbox" name="room_id[]" id="room_{{ $room->id }}"
                                                            value="{{ $room->id }}"
                                                            @if($booking && $booking->room_id == $room->id) checked @endif>
                                                     <label for="room_{{ $room->id }}">
