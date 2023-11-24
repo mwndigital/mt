@@ -251,14 +251,6 @@ class FrontendRestaurantBookingController extends Controller
             ]);
 
             try {
-                // Check if the email is already a member of the list
-                //$existingMember = $client->lists->getListMember($listId, md5(strtolower($email)));
-
-                // If the email already exists, you can display a warning message
-                /*if ($existingMember) {
-                    return redirect()->back()->with('warning', 'This email is already subscribed to our mailing list.');
-                }*/
-
                 $member = $client->lists->addListMember($listId, [
                     'email_address' => $email,
                     'status' => 'subscribed',
