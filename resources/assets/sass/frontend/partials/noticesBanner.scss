@@ -1,0 +1,43 @@
+.noticesBanner {
+    background-color: $w;
+    border: 0;
+    border-radius: 0;
+
+
+    padding: .5rem 0;
+    text-align: center;
+
+    button {
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: $darkBlue;
+        font-family: $popMed;
+        font-size: 1rem;
+        outline: none;
+
+        @include transition(all .4s ease-in-out);
+
+        i {
+            font-size: 0;
+            @include transition(all .4s ease-in-out);
+            &:first-of-type {
+                margin-left: 5px;
+            }
+        }
+
+        &:hover {
+            box-shadow: none;
+            color: $darkGold;
+            outline: none;
+            text-decoration: none;
+
+            i {
+                font-size: .75rem;
+                &:first-of-type {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

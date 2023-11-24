@@ -13,14 +13,38 @@ header {
             flex-direction: column;
             gap: 5px;
             margin-bottom: 10px;
+            li {
+                a {
+                    font-size: .75rem;
+                }
+            }
         }
         ul.socialLinks {
             display: none;
+        }
+        .tripAdviserBanner {
+            ul {
+                li {
+                    font-size: .75rem;
+                }
+            }
+        }
+    }
+    .noticesBanner {
+        padding: .25rem;
+
+        button {
+            font-size: .7rem;
         }
     }
     .navbar {
         .navbar-toggler {
             color: $w;
+        }
+        .navbar-brand {
+            img {
+                height: 100px;
+            }
         }
         #frontendMainNavbar {
             height: 450px;
