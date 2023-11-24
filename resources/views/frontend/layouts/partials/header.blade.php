@@ -55,6 +55,7 @@
     <body>
         <header>
             @include('frontend.layouts.partials.topBar')
+            @include('frontend.layouts.partials.noticesBanner')
             @include('frontend.layouts.partials.mainMenu')
         </header>
         @include('sweetalert::alert')

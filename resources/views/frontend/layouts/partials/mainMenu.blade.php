@@ -28,7 +28,7 @@
                 <li>
                     <a href="{{ route('cigar-whisky-shop.index') }}">Cigar & Whisky Shop</a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown d-none d-sm-none d-md-none d-lg-block d-xl-block">
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
                     <ul class="dropdown-menu">
                         <li>
@@ -53,6 +53,34 @@
                         </li>
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewChristmasMenuModal">Christmas Menu</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown d-sm-block d-md-block d-lg-none d-xl-none">
+                    <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Our Menus</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-dinner-menu-new.pdf') }}" target="_blank">Dinner Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/the-mash-tub-aberlour-whisky-menu-new.pdf') }}" target="_blank">Whisky Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-wine-list-new.pdf') }}" target="_blank">Wine Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-cocktails-list.pdf') }}" target="_blank">Cocktails Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-whisky-flights.pdf') }}" target="_blank">
+                                Whisky Flights Menu
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-cigar-menu.pdf') }}" target="_blank">Cigar Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ asset('images/menus/mash-tun-christmas-menu.pdf') }}" target="_blank">Christmas Menu</a>
                         </li>
                     </ul>
                 </li>
