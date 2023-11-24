@@ -51,6 +51,9 @@
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewCigarMenuModal">Cigar Menu</a>
                         </li>
+                        <li>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewChristmasMenuModal">Christmas Menu</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
