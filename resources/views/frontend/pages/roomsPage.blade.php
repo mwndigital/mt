@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now <i class="fas fa-star"></i></a>
+                                <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now <i class="fas fa-bolt"></i></a>
                             </div>
                         </div>
                     </div>
