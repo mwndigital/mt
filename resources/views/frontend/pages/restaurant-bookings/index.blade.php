@@ -69,7 +69,8 @@
                                     <input type="text" name="reservation_date" id="reservation_date"
                                            min="{{ $min_date->format('Y-m-d') }}"
                                            max="{{ $max_date->addMonths(6)->format('Y-m-d') }}"
-                                           value="{{ old('reservation_date', isset($table_booking) ? $table_booking->reservation_date : null) }}" readonly>
+
+                                           readonly>
                                     @error('reservation_date')
                                     <div class="text-danger">
                                         {{ $message }}
@@ -138,14 +139,12 @@
         $(document).ready(function () {
             // Initialize blockedDates as an empty array
             var blockedDates = [];
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
 
             // Function to initialize the date picker
             function initializeDatePicker() {
                 $('#reservation_date').datepicker({
                     dateFormat: 'dd/mm/yy', // Update the date format to match your input
-                    minDate: 0,
+                    minDate: 1,
                     beforeShowDay: function (date) {
                         // Convert the date to a format matching your blocked dates
                         const dateString = moment(date).format('YYYY-MM-DD');
@@ -153,10 +152,8 @@
                         // Check if the date is blocked
                         const isDateBlocked = blockedDates.includes(dateString);
 
-                        const isToday = moment().isSame(date, 'day');
-
                         // Conditions to block certain dates
-                        if (isDateBlocked || isToday) {
+                        if (isDateBlocked) {
                             return [false];
                         }
 

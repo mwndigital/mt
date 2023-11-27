@@ -54,30 +54,25 @@ class FrontendRestaurantBookingController extends Controller
             'joining_for' => ['required', 'string', 'max:255'],
         ]);
 
-        if(empty($request->session()->get('table_booking'))){
+        // Check if there's an existing table_booking in the session
+        if (empty($request->session()->get('table_booking'))) {
             $table_booking = new RestaurantBooking();
-            $table_booking->fill([
-                'reservation_date' => Carbon::parse($table_booking->reservation_date)->format('Y-m-d'),
-                /*'reservation_date' => date('Y-m-d', strtotime($validated['reservation_date'])),*/
-                'reservation_time' => $validated['reservation_time'],
-                'no_of_guests' => $validated['no_of_guests'],
-                'joining_for' => $validated['joining_for'],
-            ]);
-            $request->session()->put('table_booking', $table_booking);
-        }
-        else {
+        } else {
             $table_booking = $request->session()->get('table_booking');
-            $table_booking->fill([
-                'reservation_date' => Carbon::parse($table_booking->reservation_date)->format('Y-m-d'),
-                'reservation_time' => $validated['reservation_time'],
-                'no_of_guests' => $validated['no_of_guests'],
-                'joining_for' => $validated['joining_for'],
-            ]);
-            $request->session()->put('table_booking', $table_booking);
         }
 
-        //dd($table_booking);
+        // Update the fields
+        $table_booking->fill([
+            'reservation_date' => Carbon::createFromFormat('d/m/Y', $validated['reservation_date'])->format('Y-m-d'),
+            'reservation_time' => $validated['reservation_time'],
+            'no_of_guests' => $validated['no_of_guests'],
+            'joining_for' => $validated['joining_for'],
+        ]);
 
+        // Save the updated table_booking in the session
+        $request->session()->put('table_booking', $table_booking);
+
+        // Redirect to the next step
         return to_route('book-a-table-step-two-show');
     }
 
