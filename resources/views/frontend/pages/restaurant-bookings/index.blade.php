@@ -138,6 +138,8 @@
         $(document).ready(function () {
             // Initialize blockedDates as an empty array
             var blockedDates = [];
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
 
             // Function to initialize the date picker
             function initializeDatePicker() {
@@ -151,8 +153,10 @@
                         // Check if the date is blocked
                         const isDateBlocked = blockedDates.includes(dateString);
 
+                        const isToday = moment().isSame(date, 'day');
+
                         // Conditions to block certain dates
-                        if (isDateBlocked) {
+                        if (isDateBlocked || isToday) {
                             return [false];
                         }
 
