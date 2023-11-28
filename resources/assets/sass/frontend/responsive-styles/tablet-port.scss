@@ -168,3 +168,11 @@ header {
         padding-top: 150px;
     }
 }
+
+footer {
+    img.xmasTinsel {
+        left: calc(100% / 2 - 250px);
+        top: -1rem;
+        width: 500px;
+    }
+}

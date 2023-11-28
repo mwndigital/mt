@@ -99,6 +99,11 @@ header {
     svg {
         bottom: -90px;
     }
+    img.xmasTreeGraphic {
+        height: 200px;
+        right: 2rem;
+        bottom: 0;
+    }
 }
 #homepageWelcomeBanner {
     img {
@@ -425,6 +430,12 @@ header {
 }
 
 footer {
+
+    img.xmasTinsel {
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
     .footerBottom {
         p {
             margin-bottom: 20px;

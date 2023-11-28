@@ -95,12 +95,12 @@
     "src": "resources/assets/sass/app.scss"
   },
   "resources/assets/sass/customer.scss": {
-    "file": "assets/customer-11920c17.css",
+    "file": "assets/customer-fcb07db4.css",
     "isEntry": true,
     "src": "resources/assets/sass/customer.scss"
   },
   "resources/assets/sass/frontend.scss": {
-    "file": "assets/frontend-00b7e81b.css",
+    "file": "assets/frontend-f1ed6363.css",
     "isEntry": true,
     "src": "resources/assets/sass/frontend.scss"
   },
