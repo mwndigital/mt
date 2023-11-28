@@ -82,30 +82,28 @@
 
     <section id="roomsPageRoomsBanner">
         <div class="container">
-            <div class="row">
+            <div class="row g-5">
                 @foreach($rooms as $room)
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="roomItem card">
+                            <a href="{{ route('select-room',$room->id)}}"><h4 class="d-flex justify-content-center">{{ $room->name }}</h4></a>
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
-                                    <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}"
-                                         style="height: 238px;">
+                                    <img class="img-fluid" src="{{ Storage::url($room->featured_image) }}" >
                                 </div>
                                 @foreach($room->images as $image)
-                                    <div class="item">
-                                        <img class="img-fluid" src="{{ Storage::url($image->image) }}"
-                                             style="height: 238px;">
+                                    <div class="item justify-content-center">
+                                        <img class="img-fluid" src="{{ Storage::url($image->image) }}" >
                                     </div>
                                 @endforeach
                             </div>
                             <div class="card-body">
-                                <h4>{{ $room->name }}</h4>
                                 <div class="content">
                                     {!! $room->short_description !!}
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now</a>
+                                <a href="{{ route('select-room',$room->id)}}" class="blueBtn">Book Now <i class="fas fa-bolt"></i></a>
                             </div>
                         </div>
                     </div>
