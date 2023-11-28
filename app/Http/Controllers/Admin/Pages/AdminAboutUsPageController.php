@@ -25,7 +25,7 @@ class AdminAboutUsPageController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.about-page.create');
+        return view('admin.pages.our-history-page.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class AdminAboutUsPageController extends Controller
             'banner_two_image' => $bannerTwoImagePath,
         ]);
 
-        return redirect()->back()->with('success', 'About page content added successfully');
+        return redirect()->back()->with('success', 'Our History page content added successfully');
     }
 
     /**
@@ -99,7 +99,7 @@ class AdminAboutUsPageController extends Controller
     public function edit(string $id)
     {
         $apc = AboutPageContent::findOrFail($id);
-        return view('admin.pages.about-page.edit', compact('apc'));
+        return view('admin.pages.our-history-page.edit', compact('apc'));
     }
 
     /**
@@ -176,7 +176,7 @@ class AdminAboutUsPageController extends Controller
         $apc->banner_two_image = $bannerTwoImagePath;
         $apc->save();
 
-        return redirect()->back()->with('success', 'About Page has been updated successfully');
+        return redirect()->back()->with('success', 'Our History has been updated successfully');
     }
 
     /**
