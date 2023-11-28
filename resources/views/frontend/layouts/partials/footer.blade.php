@@ -117,10 +117,11 @@
 
         <footer>
             <div class="footerMain">
+                <img class="img-fluid xmasTinsel" src="{{ asset('images/xmas/xmas-tinsel-graphic.png') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
-                            <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
+                            <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-xmas-logo.svg') }}">
                             <ul class="list-unstyled footerAddress">
                                 <li>
                                     The Mash Tun,
@@ -142,7 +143,8 @@
                                 <li>
                                     <a href="/">Home</a>
                                 </li>
-                                <li><a href="{{ route('about-us') }}">Our History</a></li>
+                                <li><a href="{{ route('about-us') }}">About Us</a></li>
+                                <li><a href="{{ route('our-history') }}">Our History</a></li>
                                 <li><a href="{{ route('faqs.index') }}">FAQs</a></li>
                                 <li><a href="{{ route('gallery.index') }}">Gallery</a></li>
                                 <li><a href="{{ route('bar') }}">Bar</a></li>

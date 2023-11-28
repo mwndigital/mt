@@ -29,6 +29,7 @@
 @import "frontend/pages/loginPage";
 @import "frontend/pages/faqsPage";
 @import "frontend/pages/cigarWhiskyPage";
+@import "frontend/pages/aboutUsPageMain";
 
 //Footer
 @import "frontend/partials/footer";
@@ -37,12 +38,6 @@
 @media screen and (min-width: 320px) and (max-width: 812px)  {
     @import "frontend/responsive-styles/mobile-port";
 }
-@media screen and (min-width: 320px) and (max-width: 812px) and (orientation: landscape) {
-    @import "frontend/responsive-styles/mobile-land";
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+@media screen and (min-width: 768px) and (max-width: 1112px) {
     @import "frontend/responsive-styles/tablet-port";
-}
-@media screen and (min-width: 1024px) and (max-width: 1112px) and (orientation: landscape) {
-    @import "responsive-styles/tablet-land";
 }

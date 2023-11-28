@@ -1,0 +1,93 @@
+#aboutPageTopNew {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 650px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .content {
+        align-items: center;
+        background-color: rgba(0, 44, 80, .45);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;;
+        height: 100%;
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+
+        h1 {
+            color: $w;
+            font-family: $popBold;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+        p{
+            color: $w;
+            font-family: $popMed;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+    }
+}
+
+#aboutPageMainBannerOne,
+#aboutPageMainBannerTwo,
+#aboutPageMainBannerFour,
+#aboutPageMainBannerFive,
+#aboutPageMainBannerSix,
+#aboutPageMainBannerEight{
+    background-color: $w;
+    padding: 3rem 0;
+
+    h2, h3, h4 {
+        color: $darkGold;
+        font-family: $popBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1rem;
+    }
+    img.mainImg {
+        border-radius: 40px;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 75%;
+    }
+}
+
+#aboutPageMainBannerThree,
+#aboutPageMainBannerSeven {
+    background-color: $w;
+    padding: 3rem 0;
+    text-align: center;
+
+    h3, h4 {
+        color: $darkGold;
+        font-family: $popBold;
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    p {
+        color: $darkBlue;
+        font-family: $popReg;
+        font-size: 1rem;
+    }
+}
