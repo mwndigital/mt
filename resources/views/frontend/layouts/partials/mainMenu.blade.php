@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-xl">
     <div class="container-fluid">
         <a href="/" class="navbar-brand">
-            <img class="img-fluid" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
+            <img class="img-fluid" src="{{ asset('logos/mash-tun-xmas-logo.svg') }}">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#frontendMainNavbar" aria-controls="frontendMainNavbar" aria-expanded="false" aria-label="Toggle Navigation">
             <i class="fa fa-bars"></i>

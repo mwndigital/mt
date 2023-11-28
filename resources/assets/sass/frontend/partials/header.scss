@@ -112,9 +112,11 @@ header {
     @import "noticesBanner";
     .navbar {
         .navbar-brand {
+            margin-right: 0;
+            padding-right: 0;
             img {
                 display: block;
-                height: 150px;
+                height: 130px;
                 margin: 0 2rem -60px 0;
                 position: relative;
                 width: auto;
@@ -149,6 +151,8 @@ header {
             }
         }
         ul {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
             li {
                 margin-right: 20px;
                 a {
@@ -204,7 +208,7 @@ header {
             }
         }
         ul.rightMenu {
-
+            margin-left: 20px !important;
             li {
                 .dropdown {
                     button.darkGoldBtn {
