@@ -3,9 +3,18 @@ footer {
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     border-top: 2px solid $darkGold;
-    overflow: hidden;
+    //overflow: hidden;
+    position: relative;
+
+    img.xmasTinsel {
+        left: calc(100% / 2 - 400px);
+        position: absolute;
+        top: -2rem;
+        width: 800px;
+    }
+
     .footerMain {
-        padding: 2rem 0 1rem 0;
+        padding: 8rem 0 1rem 0;
         img.footerLogo {
             display: block;
             height: 150px;

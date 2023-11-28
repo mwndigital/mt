@@ -117,10 +117,11 @@
 
         <footer>
             <div class="footerMain">
+                <img class="img-fluid xmasTinsel" src="{{ asset('images/xmas/xmas-tinsel-graphic.png') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
-                            <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
+                            <img class="img-fluid footerLogo" src="{{ asset('logos/mash-tun-xmas-logo.svg') }}">
                             <ul class="list-unstyled footerAddress">
                                 <li>
                                     The Mash Tun,
