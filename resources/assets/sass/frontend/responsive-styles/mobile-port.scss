@@ -388,6 +388,35 @@ header {
     }
 }
 
+#aboutPageTopNew {
+
+    .content {
+        padding-top: 150px;
+    }
+}
+#aboutPageMainBannerOne,
+#aboutPageMainBannerTwo,
+#aboutPageMainBannerFour,
+#aboutPageMainBannerFive,
+#aboutPageMainBannerSix,
+#aboutPageMainBannerEight {
+
+    h2, h3, h4, h5 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    img.mainImg {
+        margin-bottom: 30px;
+    }
+}
+#aboutPageMainBannerThree,
+#aboutPageMainBannerSeven{
+    h3, h4 {
+        font-size: 2rem;
+    }
+}
+
 
 .awardsBanner {
     .awardsWrap {

@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\AboutPageContent;
 use Illuminate\Http\Request;
 
-class AboutUsPageController extends Controller
+class FrontendOurHistoryPageController extends Controller
 {
     public function index() {
         $apc = AboutPageContent::first();
-        return view('frontend.pages.aboutUs', compact('apc'));
+        return view('frontend.pages.ourHistoryPage', compact('apc'));
     }
 }

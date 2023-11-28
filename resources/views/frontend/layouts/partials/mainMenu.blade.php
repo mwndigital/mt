@@ -9,7 +9,10 @@
         <div class="collapse navbar-collapse" id="frontendMainNavbar">
             <ul class="navbar-nav ms-auto">
                 <li><a href="/">Home</a></li>
-                <li><a href="{{ route('about-us') }}">Our History</a></li>
+                <li>
+                    <a href="{{ route('about-us') }}">About Us</a>
+                </li>
+                <li><a href="{{ route('our-history') }}">Our History</a></li>
                 <li>
                     <a href="{{ route('gallery.index') }}">
                         Gallery
