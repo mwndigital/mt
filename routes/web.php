@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminUserManagementController;
 use App\Http\Controllers\Admin\MenuCategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\Pages\AdminAboutUsPageController;
+use App\Http\Controllers\Admin\Pages\AdminAboutUsPageNewController;
 use App\Http\Controllers\Admin\Pages\AdminBarPageController;
 use App\Http\Controllers\Admin\Pages\AdminBarRestaurantPageController;
 use App\Http\Controllers\Admin\Pages\AdminCigarWhiskyPageController;
@@ -174,7 +175,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     //Pages
     Route::prefix('pages')->group(function () {
         Route::resource('homepage', AdminHomepageController::class);
-        Route::resource('about-us', AdminAboutUsPageController::class);
+        Route::resource('our-history', AdminAboutUsPageController::class);
         Route::resource('bar-restaurant', AdminBarRestaurantPageController::class);
         Route::resource('rooms-page', AdminRoomsPageController::class);
         Route::resource('policy-pages', AdminPolicyPagesController::class);
@@ -183,7 +184,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::resource('dining-page', AdminDiningPageContent::class);
         Route::resource('lodge-page', AdminLodgePageController::class);
         Route::resource('contact-page', AdminContactUsPageController::class);
-        ROute::resource('cigar-whisky-page', AdminCigarWhiskyPageController::class);
+        Route::resource('cigar-whisky-page', AdminCigarWhiskyPageController::class);
+        Route::resource('about-us', AdminAboutUsPageNewController::class);
     });
 
     //Search

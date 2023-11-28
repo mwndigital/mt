@@ -12,7 +12,10 @@
                     <a href="{{ route('admin.homepage.edit', ['homepage' => 1]) }}">Homepage</a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.about-us.edit', ['about_u' => 1]) }}">About us</a>
+                    <a href="{{ route('admin.about-us.create') }}">About Us</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.our-history.edit', ['our_history' => 1]) }}">Our History</a>
                 </li>
                 <li><a href="{{ route('admin.rooms-page.edit', ['rooms_page' => 1]) }}">The Rooms</a></li>
 
