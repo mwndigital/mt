@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/assets/sass/customer.scss",
                 "resources/assets/js/app.js",
                 "resources/assets/js/admin.js",
+                "resources/assets/js/upload.js",
                 "resources/assets/js/frontend.js",
                 "resources/components/Calendar.jsx",
                 "resources/components/BookingForm.jsx",
