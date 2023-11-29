@@ -13,17 +13,13 @@
 @endpush
 @push('page-scripts')
     <script>
-
-        <!-- Owl carousel-->
-        $(document).ready(function () {
+            $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
                 loop: false,
                 margin: 0,
                 nav: true,
-                dots: false,
-                autoplay: true,
-                autoplayTimeout: 5000,
-                autoplayHoverPause: true,
+                dots: true,
+                autoplay: false,
                 // Right and left arrow with icon
                 navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
                 responsive: {
@@ -44,22 +40,19 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
+            padding: 0 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            background: transparent;
         }
 
-        .owl-prev,
-        .owl-next {
-            background-color: #fff; /* Adjust the background color as needed */
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .owl-prev {
-            order: 1;
-        }
-
-        .owl-next {
-            order: 2;
+        .owl-dots {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            transform: translateY(-50%);
         }
     </style>
 
