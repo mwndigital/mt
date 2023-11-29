@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@vite(['resources/assets/js/upload.js'])
 @push('page-title')
     Admin Edit {{ $room->name }}
 @endpush
@@ -29,107 +30,6 @@
             });
         });
     </script>
-
-    <script>
-        $(document).ready(function () {
-            // Add event listener for delete buttons
-            $('.delete-image').click(function () {
-                var imageId = $(this).data('image');
-                $('#image_id').val(imageId);
-                if (confirm('Are you sure you want to delete this image?')) {
-                    const response = $.ajax({
-                        url: '{{ route('admin.remove-image') }}',
-                        method: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            id: imageId
-                        },
-                        success: function (data) {
-                            if (data.success) {
-                                $('#image-card-' + imageId).remove();
-                                alert('Image deleted successfully');
-                            } else {
-                                alert('There was an error deleting the image');
-                            }
-
-                        }
-                    });
-
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#addImageButton').click(function () {
-                $('#upload-btn').removeClass('d-none');
-                var newInput = '<div class="input-group mb-3">';
-                newInput += '<input type="file" name="images[]" class="form-control">';
-                newInput += '<div class="input-group-append">';
-                newInput += '<input type="button" class="btn btn-danger remove-image" value="Remove">';
-                newInput += '</div></div>';
-                $('#imageContainer').append(newInput);
-            });
-
-            $(document).on('click', '.remove-image', function () {
-                $(this).closest('.input-group').remove();
-            });
-
-            $(document).on('click', '#uploadImageButton', function () {
-                var totalImages = $('input[name^="images"]').length;
-                var uploadedCount = 0;
-
-                $('input[name^="images"]').each(function (index, element) {
-                    var formData = new FormData();
-                    formData.append('image', element.files[0]);
-                    formData.append('id', '{{ $room->id }}');
-                    formData.append('_token', '{{ csrf_token() }}');
-
-                    $.ajax({
-                        url: '{{ route('admin.upload-image') }}',
-                        type: 'POST',
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        xhr: function () {
-                            var xhr = new XMLHttpRequest();
-
-                            // Listen to the progress event
-                            xhr.upload.addEventListener('progress', function (event) {
-                                if (event.lengthComputable) {
-                                    var percentComplete = (event.loaded / event.total) * 100;
-                                    console.log('Upload Progress: ' + percentComplete + '%');
-                                }
-                            }, false);
-
-                            return xhr;
-                        },
-                        success: function (response) {
-                            uploadedCount++;
-
-                            if (response.success) {
-                                console.log('Image uploaded successfully: ' + response.image);
-
-                                // Check if all images are uploaded
-                                if (uploadedCount === totalImages) {
-                                    alert('All images uploaded successfully');
-                                    // remove input fields
-                                    $('input[name^="images"]').remove();
-                                    $('#upload-btn').addClass('d-none');
-                                    // remove `remove` buttons
-                                    $('.remove-image').remove();
-                                    // Add to gallery
-                                }
-                            } else {
-                                alert('Error uploading image.');
-                            }
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-
 @endpush
 @push('page-styles')
 
@@ -167,6 +67,7 @@
                           enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" name="id" value="{{ $room->id }}">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">Room Name *</label>
