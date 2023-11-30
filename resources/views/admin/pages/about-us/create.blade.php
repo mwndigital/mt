@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.about-us.create') }}" method="post">
+                    <form action="{{ route('admin.about-us.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-12">
@@ -77,17 +77,6 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="">Background Image *</label>
-                                <input type="file" name="hero_bg_image" id="hero_bg_image" required>
-                                @error('hero_bg_image')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
                                 <h4 class="pageSecTitle my-4">Banner One</h4>
                             </div>
                         </div>
@@ -115,17 +104,6 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_one_image" id="banner_one_image" required>
-                                @error('banner_one_image')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
                                 <h4 class="pageSecTitle my-4">Banner Two</h4>
                             </div>
                         </div>
@@ -145,17 +123,6 @@
                                 <label for="">Content *</label>
                                 <textarea name="banner_two_content" id="banner_two_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_two_content') }}</textarea>
                                 @error('banner_two_content')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_two_image" id="banner_two_image" required>
-                                @error('banner_two_image')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
@@ -218,17 +185,6 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_four_image" id="banner_four_image" required>
-                                @error('banner_four_image')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
                                 <h4 class="pageSecTitle my-4">Banner Five</h4>
                             </div>
                         </div>
@@ -248,17 +204,6 @@
                                 <label for="">Content *</label>
                                 <textarea name="banner_five_content" id="banner_five_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_five_content') }}</textarea>
                                 @error('banner_five_content')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_five_image" id="banner_five_image" required>
-                                @error('banner_five_image')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
@@ -287,17 +232,6 @@
                                 <label for="">Content *</label>
                                 <textarea name="banner_six_content" id="banner_six_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_six_content') }}</textarea>
                                 @error('banner_sic_content')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_six_image" id="banner_six_image" required>
-                                @error('banner_six_content')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>
@@ -352,17 +286,6 @@
                                 <label for="">Content *</label>
                                 <textarea name="banner_eight_content" id="banner_eight_content" cols="30" rows="10" class="tinyEditor" required>{{ old('banner_eight_content') }}</textarea>
                                 @error('banner_eight_content')
-                                    <div class="text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Image *</label>
-                                <input type="file" name="banner_eight_image" id="banner_eight_image" required>
-                                @error('banner_eight_image')
                                     <div class="text-danger">
                                         {{ $message }}
                                     </div>

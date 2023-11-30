@@ -2,7 +2,9 @@
 /node_modules
 /storage/*.index
 /public/hot
-
+/storage/
+/public/storage/*
+public/storage/
 
 /vendor
 .env
