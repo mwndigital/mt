@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutPageContentNew;
 use Illuminate\Http\Request;
 
 class FrontendAboutUsPageController extends Controller
@@ -12,8 +13,8 @@ class FrontendAboutUsPageController extends Controller
      */
     public function index()
     {
-
-        return view('frontend.pages.aboutUsPage');
+        $content = AboutPageContentNew::first();
+        return view('frontend.pages.aboutUsPage', compact('content'));
     }
 
     /**
