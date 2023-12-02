@@ -28,7 +28,7 @@ use App\Http\Controllers\Admin\Pages\AdminPolicyPagesController;
 use App\Http\Controllers\Admin\Pages\AdminRoomsPageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\WhiskyController;
-use App\Http\Controllers\Customer\CustomerAccountController;
+use App\Http\Controllers\Admin\AdminCouponController;
 use App\Http\Controllers\Customer\CustomerIndexController;
 use App\Http\Controllers\Customer\CustomerRestaurantController;
 use App\Http\Controllers\Customer\CustomerRoomBookingsController;
@@ -67,6 +67,9 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::delete('remove-image', [\App\Http\Controllers\Admin\ApiController::class, 'removeImage'])->name('remove-image');
     Route::post('upload-image', [\App\Http\Controllers\Admin\ApiController::class, 'uploadImage'])->name('upload-image');
     Route::post('sort-images', [\App\Http\Controllers\Admin\ApiController::class, 'sortImages'])->name('sort-images');
+
+    // Coupons
+    Route::resource('coupons', AdminCouponController::class);
 
     //Dashboard
     Route::post('contact-form-submission-test-email', [AdminIndexController::class, 'formSubmissionTestEmail'])->name('contact-form-submission-test-email');

@@ -18,19 +18,15 @@ class CreateCouponsTable extends Migration
             $table->string('code')->unique();
             $table->enum('type', ['percentage', 'fixed'])->default('fixed');
             $table->decimal('value', 10, 2)->default(0);
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->boolean('status')->default(true);
             $table->unsignedInteger('max_uses')->default(20);
             $table->unsignedInteger('uses')->default(0);
             $table->timestamps();
 
-            // Indexes if needed
-            $table->index('start_date');
-            $table->index('end_date');
+
             $table->index('status');
-            $table->index('max_uses');
-            $table->index('uses');
         });
     }
 

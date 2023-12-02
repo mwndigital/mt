@@ -40,8 +40,8 @@ class Coupon extends Model
         'start_date' => 'required|date',
         'end_date' => 'required|date|after:start_date',
         'status' => 'required',
-        'max_uses' => 'required|integer|min:1',
-        'uses' => 'required|integer|min:0',
+        // 'max_uses' => 'required|integer|min:1',
+        // 'uses' => 'required|integer|min:0',
     ];
 
     // Custom validation method
@@ -60,5 +60,54 @@ class Coupon extends Model
     {
         $now = Carbon::now();
         return ($this->start_date <= $now && $this->end_date >= $now && $this->status);
+    }
+
+    public function isPercentage(): bool
+    {
+        return $this->type === self::TYPE_PERCENTAGE;
+    }
+
+    public function isFixed(): bool
+    {
+        return $this->type === self::TYPE_FIXED;
+    }
+
+    public function getDiscount($total): float
+    {
+        if ($this->isPercentage()) {
+            return $this->value / 100 * $total;
+        }
+
+        return $this->value;
+    }
+
+    public function getDiscountedTotal($total): float
+    {
+        return $total - $this->getDiscount($total);
+    }
+
+    public function getFormattedDiscount($total): string
+    {
+        if ($this->isPercentage()) {
+            return $this->value . '%';
+        }
+
+        return '£' . $this->value;
+    }
+
+    // get status attribute
+    public function getStatusAttribute($value)
+    {
+        return $value ? 'Active' : 'Inactive';
+    }
+
+    public function getStartDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }
