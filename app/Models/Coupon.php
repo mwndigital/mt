@@ -50,12 +50,6 @@ class Coupon extends Model
         return validator($data, self::$rules);
     }
 
-    // Accessor method to get the type in a human-readable format
-    public function getTypeAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
     public function isValid(): bool
     {
         $now = Carbon::now();
