@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\Booking;
 
 class Coupon extends Model
 {
@@ -43,6 +44,11 @@ class Coupon extends Model
         // 'max_uses' => 'required|integer|min:1',
         // 'uses' => 'required|integer|min:0',
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 
     // Custom validation method
     public static function validate(array $data)

@@ -115,7 +115,10 @@ class Booking extends Model implements \Serializable
         }
 
         // Apply discount
-        $total -= $this->getDiscount();
+        if ($this->coupon) {
+            $this->discount = $this->coupon->getDiscount($total);
+            $total -= $this->discount;
+        }
 
         return $total;
     }
@@ -223,11 +226,5 @@ class Booking extends Model implements \Serializable
         } catch (\Exception $e) {
             return $this->country;
         }
-    }
-
-    public function getDiscount()
-    {
-        if (!$this->coupon) return 0;
-        return $this->coupon->getDiscount($this->getTotalAmount());
     }
 }
