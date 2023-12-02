@@ -66,6 +66,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     // API will move to api.php
     Route::delete('remove-image', [\App\Http\Controllers\Admin\ApiController::class, 'removeImage'])->name('remove-image');
     Route::post('upload-image', [\App\Http\Controllers\Admin\ApiController::class, 'uploadImage'])->name('upload-image');
+    Route::post('sort-images', [\App\Http\Controllers\Admin\ApiController::class, 'sortImages'])->name('sort-images');
 
     //Dashboard
     Route::post('contact-form-submission-test-email', [AdminIndexController::class, 'formSubmissionTestEmail'])->name('contact-form-submission-test-email');

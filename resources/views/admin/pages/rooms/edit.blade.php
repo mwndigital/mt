@@ -30,6 +30,34 @@
             });
         });
     </script>
+    <script>
+    $(function() {
+    	$('#sortable').sortable({
+    	    animation: 350,
+    	    easing: "cubic-bezier(0.42, 0, 0.58, 1.0)",
+    	    update: function (evt) {
+    	        let newSortOrder = {};
+    	        $('.each-image').each(function() {
+    	            newSortOrder[$(this).index()] = $(this).data('id');
+    	        });
+
+                $.ajax({
+                    url: '{{ route('admin.sort-images') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        sort_order: newSortOrder
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+
+
+    	    },
+    	});
+    });
+</script>
 @endpush
 @push('page-styles')
 
@@ -219,9 +247,9 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <h2 class="gallerySectionTitle">Image Gallery</h2>
-                    <div class="row">
+                    <div class="row" id="sortable">
                         @foreach($room->images as $image)
-                            <div class="col-4 mt-2" id="image-card-{{ $image->id }}">
+                            <div class="col-4 mt-2 each-image" id="image-card-{{ $image->id }}" data-id="{{ $image->id }}">
                                 <div class="card">
                                     <img src="{{ Storage::url($image->image) }}" class="card-img-top" alt="Image">
                                     <div class="card-body">
