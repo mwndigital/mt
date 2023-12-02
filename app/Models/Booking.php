@@ -106,6 +106,10 @@ class Booking extends Model implements \Serializable
         foreach ($this->rooms as $room) {
             $total += $room->getTotal($this->isDouble()) * $this->duration_of_stay;
         }
+
+        // Apply discount
+        $total -= $this->getDiscount();
+
         return $total;
     }
 
@@ -212,5 +216,16 @@ class Booking extends Model implements \Serializable
         } catch (\Exception $e) {
             return $this->country;
         }
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
+
+    public function getDiscount()
+    {
+        if (!$this->coupon) return 0;
+        return $this->coupon->getDiscount($this->getTotalAmount());
     }
 }

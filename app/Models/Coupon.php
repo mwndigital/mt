@@ -75,20 +75,6 @@ class Coupon extends Model
         return $this->value;
     }
 
-    public function getDiscountedTotal($total): float
-    {
-        return $total - $this->getDiscount($total);
-    }
-
-    public function getFormattedDiscount($total): string
-    {
-        if ($this->isPercentage()) {
-            return $this->value . '%';
-        }
-
-        return '£' . $this->value;
-    }
-
     // get status attribute
     public function getStatusAttribute($value)
     {
