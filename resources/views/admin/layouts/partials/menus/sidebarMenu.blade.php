@@ -86,6 +86,16 @@
         </ul>
     </li>
     @role('super admin|admin')
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Marketing</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{ route('admin.coupons.index') }}">Coupons</a>
+                </li>
+            </ul>
+        </li>
+    @endrole
+    @role('super admin|admin')
         <li><a href="/admin/rooms">Rooms</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gallery</a>
