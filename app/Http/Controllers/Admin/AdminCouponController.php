@@ -10,7 +10,7 @@ class AdminCouponController extends Controller
 {
     public function index()
     {
-        $coupons = Coupon::all();
+        $coupons = Coupon::orderBy('created_at', 'desc')->get();
         return view('admin.pages.coupons.index', compact('coupons'));
     }
 
