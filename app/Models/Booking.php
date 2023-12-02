@@ -24,7 +24,7 @@ class Booking extends Model implements \Serializable
 
     protected $keyType = 'string';
 
-    public $deposit = 50; // will be dynamic later
+    public $deposit = 50;
 
     protected $fillable = [
         'id',
@@ -51,6 +51,8 @@ class Booking extends Model implements \Serializable
         'additional_information',
         'type',
         'user_id',
+        'coupon_id',
+        'discount',
     ];
 
     protected $appends = [
@@ -72,6 +74,11 @@ class Booking extends Model implements \Serializable
     public function rooms()
     {
         return $this->belongsToMany(Rooms::class, 'booking_room', 'booking_id', 'room_id');
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
     }
 
     public function serialize()
@@ -216,11 +223,6 @@ class Booking extends Model implements \Serializable
         } catch (\Exception $e) {
             return $this->country;
         }
-    }
-
-    public function coupon()
-    {
-        return $this->belongsTo(Coupon::class);
     }
 
     public function getDiscount()

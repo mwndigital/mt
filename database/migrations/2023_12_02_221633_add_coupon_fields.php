@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('coupon_id')->nullable()->after('total');
             // Add total discount column
             $table->decimal('discount', 10, 2)->default(0)->after('coupon_id');
-
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('set null');
         });
     }
