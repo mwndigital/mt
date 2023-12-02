@@ -270,6 +270,10 @@
                                     £{{$booking->getTotalAmount()}}
                                 </li>
                             </ul>
+                            <div class="applyCoupon">
+                                <input type="text" name="coupon_code" id="coupon_code" placeholder="Enter coupon code" class="form form-control">
+                                <button type="button" id="applyCouponBtn" class="btn btn-primary">Apply</button>
+                            </div>
                         </div>
                     </aside>
                 </div>
