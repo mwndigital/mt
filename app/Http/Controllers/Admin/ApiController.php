@@ -45,4 +45,11 @@ class ApiController extends Controller
             'image' => $imageName,
         ]);
     }
+
+    // Sort images
+    public function sortImages(Request $request)
+    {
+        RoomGalleries::setNewOrder($request->sort_order);
+        return response()->json(['success' => true]);
+    }
 }

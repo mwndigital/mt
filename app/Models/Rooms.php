@@ -28,7 +28,7 @@ class Rooms extends Model
 
     public function images()
     {
-        return $this->hasMany(RoomGalleries::class, 'room_id');
+        return $this->hasMany(RoomGalleries::class, 'room_id')->orderBy('sort', 'asc');
     }
 
     public function bookings()
