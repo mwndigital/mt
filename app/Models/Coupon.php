@@ -100,14 +100,4 @@ class Coupon extends Model
     {
         return $value ? 'Active' : 'Inactive';
     }
-
-    public function getStartDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
-
-    public function getEndDateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
 }

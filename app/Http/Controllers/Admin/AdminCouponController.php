@@ -36,17 +36,14 @@ class AdminCouponController extends Controller
     public function edit(string $id)
     {
         $coupon = Coupon::findOrFail($id);
-        return view('admin.coupons.edit', compact('coupon'));
+        return view('admin.pages.coupons.edit', compact('coupon'));
     }
 
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
+            ...Coupon::$rules,
             'code' => 'required|unique:coupons,code,' . $id,
-            'type' => 'required|in:percentage,fixed',
-            'value' => 'required|numeric',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
         ]);
 
         $coupon = Coupon::findOrFail($id);
