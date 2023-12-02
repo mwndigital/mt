@@ -27,19 +27,19 @@ class AdminCouponController extends Controller
         return redirect()->route('admin.coupons.index')->with('success', 'Coupon created successfully');
     }
 
-    public function show(string $id)
+    public function show(int $id)
     {
         $coupon = Coupon::findOrFail($id);
         return view('admin.pages.coupons.show', compact('coupon'));
     }
 
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $coupon = Coupon::findOrFail($id);
         return view('admin.pages.coupons.edit', compact('coupon'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
         $validatedData = $request->validate([
             ...Coupon::$rules,
@@ -51,7 +51,7 @@ class AdminCouponController extends Controller
         return redirect()->route('admin.coupons.index')->with('success', 'Coupon updated successfully');
     }
 
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $coupon = Coupon::findOrFail($id);
         $coupon->delete();
