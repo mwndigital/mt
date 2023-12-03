@@ -38,6 +38,7 @@ class MainController extends Controller
             'status' => true,
             'message' => 'Coupon applied successfully',
             'total' => $booking->getTotalAmount(),
+            'discount' => $booking->discount,
         ]);
     }
 }
