@@ -59,7 +59,7 @@ class Coupon extends Model
     public function isValid(): bool
     {
         $now = Carbon::now();
-        return ($this->start_date <= $now && $this->end_date >= $now && $this->status);
+        return ($this->start_date <= $now && $this->end_date >= $now && $this->status == 'Active');
     }
 
     public function isPercentage(): bool
