@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AvailableController;
 use App\Http\Controllers\API\DevController;
+use App\Http\Controllers\API\MainController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/available', [AvailableController::class, 'index']);
 Route::post('/check-room', [AvailableController::class, 'checkRoom']);
+
+Route::post('/apply-coupon', [MainController::class, 'applyCoupon']);
 
 // Dev Routes
 Route::post('/dev/deployment', [DevController::class, 'deployment']);
