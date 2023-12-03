@@ -262,18 +262,44 @@
                                     £{{$booking->getPayableAmount()}} </li>
                             </ul>
 
+                            @if($booking->coupon)
+                            <hr>
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                    <strong>Discount</strong>
+                                </li>
+                                <li class="list-inline-item"
+                                    style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">
+                                    £{{$booking->discount}}
+                                </li>
+                            </ul>
+                             <hr>
+                             <ul class="list-inline">
+                            <li class="list-inline-item" style="font-size: 1rem; width: 48%; color: #002C50;">
+                                <strong>Coupon applied</strong>
+                            </li>
+                            <li class="list-inline-item"
+                                style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">
+                                {{$booking->coupon->code}}
+                            </li>
+                        </ul>
+                        <hr>
+                        @endif
                             <ul class="list-inline">
                                 <li class="list-inline-item" style="font-size: 2rem; width: 48%; color: #BEA058;">
                                     <strong>TOTAL</strong></li>
                                 <li class="list-inline-item"
+                                    id="totalAmount"
                                     style="font-size: 2rem; text-align: right; width: 48%; color: #BEA058;">
                                     £{{$booking->getTotalAmount()}}
                                 </li>
                             </ul>
+                            @if(!$booking->coupon)
                             <div class="applyCoupon">
                                 <input type="text" name="coupon_code" id="coupon_code" placeholder="Enter coupon code" class="form form-control">
                                 <button type="button" id="applyCouponBtn" class="btn btn-primary">Apply</button>
                             </div>
+                            @endif
                         </div>
                     </aside>
                 </div>
