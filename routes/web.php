@@ -47,6 +47,7 @@ use App\Http\Controllers\Frontend\FrontendRestaurantBookingController;
 use App\Http\Controllers\Frontend\FrontendRestaurantPageController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\RoomsPageController;
+use App\Http\Controllers\API\MainController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Sitemap\SitemapGenerator;
 
@@ -288,6 +289,8 @@ Route::prefix('book-a-table')->group(function () {
 
     Route::get('blocked-dates', [FrontendRestaurantBookingController::class, 'getBlockedDates'])->name('blocked-dates-check');
 });
+
+Route::post('/api/apply-coupon', [MainController::class, 'applyCoupon']);
 
 
 //Sitemap generation URL do not touch
