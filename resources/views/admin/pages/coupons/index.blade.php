@@ -34,6 +34,7 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th>
+                                <th>Total Used</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -46,6 +47,7 @@
                                     <td>{{ $coupon->start_date }}</td>
                                     <td>{{ $coupon->end_date }}</td>
                                     <td>{{ $coupon->status }}</td>
+                                    <td>{{ $coupon->bookings->count() }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"

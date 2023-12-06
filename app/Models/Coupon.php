@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Models\Booking;
-
+use App\Enums\BookingStatus;
 class Coupon extends Model
 {
     use HasFactory;
@@ -47,7 +47,7 @@ class Coupon extends Model
 
     public function bookings()
     {
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(Booking::class)->where('status', '!=', BookingStatus::DRAFT);
     }
 
     // Custom validation method
