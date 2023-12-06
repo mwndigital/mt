@@ -45,6 +45,11 @@
                             </tr>
 
                             <tr>
+                                <td><strong>Total Used</strong></td>
+                                <td>{{ $coupon->bookings->count() }}</td>
+                            </tr>
+
+                            <tr>
                                 <td><strong>Start Date:</strong></td>
                                 <td>{{ $coupon->start_date }}</td>
                             </tr>
