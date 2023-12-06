@@ -17,7 +17,7 @@ class MainController extends Controller
         if (!$coupon) {
             return response()->json([
                 'status' => false,
-                'message' => 'Coupon does not exist'
+                'message' => 'Coupon is invalid'
             ]);
         }
 
