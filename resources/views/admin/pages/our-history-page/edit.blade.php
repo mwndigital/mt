@@ -75,6 +75,7 @@
                                     <strong>{{ $message }}</strong>
                                 </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current background image:</label>
@@ -126,6 +127,7 @@
                                     <strong>{{ $message }}</strong>
                                 </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current image</label>
@@ -215,6 +217,7 @@
                                     <strong>{{ $message }}</strong>
                                 </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current Image</label>

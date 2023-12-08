@@ -205,6 +205,10 @@
                 text-decoration: none;
             }
         }
+        small {
+            display: block;
+            width: 100%;
+        }
         select {
             background-color: $w;
             border: 0;
