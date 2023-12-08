@@ -88,6 +88,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -127,6 +128,7 @@
                                         {{ $message  }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -167,6 +169,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -233,6 +236,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -272,6 +276,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -311,6 +316,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 
@@ -377,6 +383,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                         </div>
 

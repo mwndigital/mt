@@ -88,6 +88,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current background image</label>
@@ -115,6 +116,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current image</label>
@@ -273,6 +275,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current background image</label>
@@ -318,6 +321,7 @@
                                     page</small>
                                 <br>
                                 <input type="file" name="page_image" id="page_image">
+                                <small>Please ensure images are no larger than 1500px wide.</small>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Current page image</label>
