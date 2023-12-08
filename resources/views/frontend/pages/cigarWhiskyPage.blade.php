@@ -13,7 +13,7 @@
 @endpush
 @section('content')
     <section class="cigarWhiskyPageTop">
-        <img class="img-fluid" src="{{ asset('images/whisky-cigar/cigar-whisky-door.jpg') }}">
+        <img class="img-fluid" src="{{ Storage::url($content->hero_bg_image) }}">
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -41,7 +41,7 @@
                     {!! $content->banner_one_content !!}
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/whisky-shelf.jpg') }}">
+                    <img class="img-fluid" src="{{ Storage::url($content->banner_one_image) }}">
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/sun-loungers.jpg') }}">
+                    <img class="img-fluid" src="{{ Storage::url($content->banner_two_image) }}">
                 </div>
                 <div class="col-md-6">
                     <h2>{{ $content->banner_two_title }}</h2>
@@ -71,7 +71,7 @@
                     {!! $content->banner_three_content !!}
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ asset('images/whisky-cigar/cigar-pavilion.png') }}">
+                    <img class="img-fluid" src="{{ Storage::url($content->banner_three_image) }}">
                 </div>
             </div>
         </div>
