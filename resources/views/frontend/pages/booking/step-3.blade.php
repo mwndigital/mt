@@ -258,6 +258,7 @@
                                     <small>Payable 24 hours prior</small>
                                 </li>
                                 <li class="list-inline-item"
+                                    id="payableAmount"
                                     style="font-size: 1rem; text-align: right; width: 48%; color: #002C50;">
                                     £{{$booking->getPayableAmount()}} </li>
                             </ul>

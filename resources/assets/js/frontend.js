@@ -148,6 +148,7 @@ $(document).ready(function () {
                 if (data.status) {
                     // Change the total price
                     $("#totalAmount").text(`£${data.total}`);
+                    $("#payableAmount").text(`£${data.payable}`);
                     $(".applyCoupon").html(
                         `<span class="text-success">Coupon Applied -  £${data.discount} Discount</span>`
                     );
