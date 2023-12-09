@@ -109,7 +109,6 @@ ul.ui-timepicker-viewport {
                     width: 25%;
                 }
             }
-
         }
         .stepTitle {
             color: $darkBlue;
@@ -132,14 +131,14 @@ ul.ui-timepicker-viewport {
                 margin-bottom: 5px;
             }
 
-            input[type='text'],
-            input[type='email'],
-            input[type='tel'],
-            input[type='number'],
-            input[type='date'],
-            input[type='time'],
-            input[type='password'],
-            select{
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="number"],
+            input[type="date"],
+            input[type="time"],
+            input[type="password"],
+            select {
                 background-color: $w;
                 border: 0;
                 border-bottom: 1px solid $darkBlue;
@@ -147,8 +146,8 @@ ul.ui-timepicker-viewport {
                 display: block;
 
                 height: 40px;
-                padding: .5rem ;
-                @include transition(all .4s ease-in-out);
+                padding: 0.5rem;
+                @include transition(all 0.4s ease-in-out);
                 width: 100%;
 
                 &:focus {
@@ -167,8 +166,8 @@ ul.ui-timepicker-viewport {
                 border-bottom: 1px solid $darkBlue;
                 border-radius: 0;
                 display: block;
-                padding: .5rem;
-                @include transition(all .4s ease-in-out);
+                padding: 0.5rem;
+                @include transition(all 0.4s ease-in-out);
                 width: 100%;
 
                 &:focus {
@@ -189,7 +188,7 @@ ul.ui-timepicker-viewport {
                     label {
                         border: 2px solid transparent;
                         text-align: left;
-                        @include transition(all .4s ease-in-out);
+                        @include transition(all 0.4s ease-in-out);
                         img {
                             display: block;
                             height: 200px;
@@ -199,7 +198,7 @@ ul.ui-timepicker-viewport {
                         }
 
                         .content {
-                            padding: 1rem .75rem;
+                            padding: 1rem 0.75rem;
                             h4 {
                                 color: $darkBlue;
                                 font-family: $libBold;
@@ -209,7 +208,7 @@ ul.ui-timepicker-viewport {
 
                             h6.price {
                                 color: $darkGold;
-                                font-family:$libReg;
+                                font-family: $libReg;
                                 font-size: 1rem;
                                 margin-bottom: 20px;
                             }
@@ -221,9 +220,9 @@ ul.ui-timepicker-viewport {
                                 color: $w;
                                 font-family: $popMed;
                                 font-size: 1rem;
-                                padding: .5rem;
+                                padding: 0.5rem;
                                 text-align: center;
-                                @include transition(all .4s ease-in-out);
+                                @include transition(all 0.4s ease-in-out);
                                 width: 100%;
 
                                 &:hover {
@@ -243,7 +242,7 @@ ul.ui-timepicker-viewport {
                             }
                         }
                     }
-                    input[type='checkbox'] {
+                    input[type="checkbox"] {
                         height: 100%;
                         left: 0;
                         opacity: 0;
@@ -251,25 +250,21 @@ ul.ui-timepicker-viewport {
                         top: 0;
                         width: 100%;
                     }
-                    input[type='checkbox']:checked~label {
+                    input[type="checkbox"]:checked ~ label {
                         background-color: $lightGrey;
                         border: 2px solid $darkGold;
-                        -webkit-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
-                        -moz-box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
-                        box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.4);
+                        -webkit-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.4);
+                        -moz-box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.4);
+                        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.4);
 
                         .content {
                             button {
                                 background-color: $darkBlue;
                             }
                         }
-
                     }
-
                 }
-
             }
-
 
             a.backBtn,
             button.backBtn {
@@ -279,15 +274,15 @@ ul.ui-timepicker-viewport {
                 color: $w;
                 font-family: $libBold;
                 font-size: 1.1rem;
-                padding: .75rem 2rem;
+                padding: 0.75rem 2rem;
                 text-align: center;
                 text-decoration: none;
-                @include transition(all .4s ease-in-out);
+                @include transition(all 0.4s ease-in-out);
 
                 i {
                     font-size: 1rem;
                     margin-right: 5px;
-                    @include transition(all .4s ease-in-out);
+                    @include transition(all 0.4s ease-in-out);
                 }
 
                 &:hover {
@@ -298,28 +293,28 @@ ul.ui-timepicker-viewport {
                     text-decoration: none;
 
                     i {
-                        margin-right: 10px
+                        margin-right: 10px;
                     }
                 }
             }
 
             a.nextBtn,
-            button.nextBtn{
+            button.nextBtn {
                 background-color: $darkGold;
                 border: 0;
                 border-radius: 0;
                 color: $w;
                 font-family: $libBold;
                 font-size: 1.1rem;
-                padding: .75rem 2rem;
+                padding: 0.75rem 2rem;
                 text-align: center;
                 text-decoration: none;
-                @include transition(all .4s ease-in-out);
+                @include transition(all 0.4s ease-in-out);
 
                 i {
                     font-size: 1rem;
                     margin-left: 5px;
-                    @include transition(all .4s ease-in-out);
+                    @include transition(all 0.4s ease-in-out);
                 }
 
                 &:hover {
@@ -330,7 +325,7 @@ ul.ui-timepicker-viewport {
                     text-decoration: none;
 
                     i {
-                        margin-left: 10px
+                        margin-left: 10px;
                     }
                 }
             }
@@ -348,7 +343,7 @@ ul.ui-timepicker-viewport {
 
             &:after {
                 background-color: $darkGold;
-                content: '';
+                content: "";
                 display: block;
                 height: 1px;
                 margin: 10px 0;
@@ -367,10 +362,9 @@ ul.ui-timepicker-viewport {
                 strong {
                     color: $darkBlue;
                     font-size: 1.15rem;
-
                 }
                 i {
-                    color:$darkGold;
+                    color: $darkGold;
                     font-size: 1.5rem;
                 }
 
@@ -380,7 +374,7 @@ ul.ui-timepicker-viewport {
             }
         }
         ul.adultChildCap,
-        ul.roomList{
+        ul.roomList {
             align-items: center;
             display: flex;
             flex-direction: row;
@@ -424,7 +418,7 @@ ul.ui-timepicker-viewport {
 }
 
 .bookingThankYouPageMainRestaurant,
-.bookingThankYouPageMainRoom{
+.bookingThankYouPageMainRoom {
     height: 700px;
     overflow: hidden;
     position: relative;
@@ -440,9 +434,9 @@ ul.ui-timepicker-viewport {
 
     .content {
         align-items: center;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
-        flex-direction: column;;
+        flex-direction: column;
         height: 100%;
         justify-content: center;
         padding-top: 100px;
@@ -463,12 +457,11 @@ ul.ui-timepicker-viewport {
             font-size: 1rem;
             margin-bottom: 50px;
         }
-
     }
 }
 
 .bookingThankYouPageMain,
-.bookingPaymentErrorPageMain{
+.bookingPaymentErrorPageMain {
     background-color: $w;
     padding: 80px 0;
     text-align: center;
@@ -483,6 +476,33 @@ ul.ui-timepicker-viewport {
         color: $darkBlue;
         font-family: $libReg;
         font-size: 1rem;
-        font-style: italic;;
+        font-style: italic;
     }
+}
+
+.applyCoupon {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.applyCoupon input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+#applyCouponBtn {
+    padding: 10px 20px;
+    border: none;
+    background-color: $darkBlue;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#applyCouponBtn:hover {
+    background-color: $darkGold;
 }

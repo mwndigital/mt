@@ -83,7 +83,8 @@
                         </tr>
                         <tr>
                             <td><strong>Total Amount</strong></td>
-                            <td>£{{ $booking->total }} </td>
+                            <td>£{{ $booking->total }} @if($booking->coupon)  - <span
+                                    class="text-success"><b>Discount: </b> £{{ $booking->discount }} ( {{ $booking->coupon->code }} )</span> @endif</td>
                         </tr>
                         <tr>
                             <td><strong>Captured Amount</strong></td>
