@@ -135,7 +135,16 @@
                                 <li>Scotland,</li>
                                 <li>AB38 9QP</li>
                             </ul>
-
+                            <h5 class="footerTitle mt-4 mb-2">Bar Hours</h5>
+                            <ul class="list-unstyled footerAddress">
+                                <li><strong class="me-3">Monday</strong>  11am - 10pm</li>
+                                <li><strong class="me-3">Tuesday</strong> 11am - 10pm</li>
+                                <li><strong class="me-3">Wednesday</strong> 11am - 10pm</li>
+                                <li><strong class="me-3">Thursday</strong> 11am - 11pm</li>
+                                <li><strong class="me-3">Friday</strong> 11am - 11pm</li>
+                                <li><strong class="me-3">Saturday</strong> 11am - 11pm</li>
+                                <li><strong class="me-3">Sunday</strong> 11am - 9pm</li>
+                            </ul>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h5 class="footerTitle">Quick Links</h5>
