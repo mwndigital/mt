@@ -61,7 +61,7 @@
                             8 Broomfield Square,
                         </li>
                         <li>
-                            Arberlour, Speyside,
+                            Aberlour, Speyside,
                         </li>
                         <li>Scotland,</li>
                         <li>AB38 9QP</li>
