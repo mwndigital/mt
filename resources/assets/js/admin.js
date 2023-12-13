@@ -39,6 +39,35 @@ $(document).ready(function(){
        $('main.main').toggleClass('full', 1200);
     }
 
+    $('.dateSortingTable').DataTable({
+        paging: true,
+        searching: false,
+        ordering: true,
+        scrollX: true,
+        pageLength: 30,
+        columnDefs: [
+            {
+                targets: [0],
+                type: 'datetime-moment',
+                render: function(data, type, row) {
+                    // Split the date and time
+                    var dateArray = data.split('<br>');
+                    var date = dateArray[0].trim();
+
+                    // Adjust the format if required
+                    return moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                }
+            }
+        ]
+    });
+    $('.dataTablesTable').DataTable({
+        paging: false,
+        searching: false,
+        ordering: true,
+        scrollX: true,
+        pageLength: 30,
+    })
+
     //Confirm delete button popup
     $('.confirm-delete-btn').click(function(event){
         var form = $(this).closest("form");

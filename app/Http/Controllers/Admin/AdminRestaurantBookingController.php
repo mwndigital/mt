@@ -114,6 +114,7 @@ class AdminRestaurantBookingController extends Controller
         RestaurantBooking::create([
            'first_name' => $validated['first_name'],
            'last_name' => $validated['last_name'],
+            'full_name' => $validated['first_name'] . ' ' . $validated['last_name'],
            'email' => $validated['email'],
            'mobile_number' => $validated['mobile_number'],
            'joining_for' => $validated['joining_for'],
@@ -240,6 +241,7 @@ class AdminRestaurantBookingController extends Controller
         $booking->update([
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
+            'full_name' => $validated['first_name'] . ' ' . $validated['last_name'],
             'email' => $validated['email'],
             'mobile_number' => $validated['mobile_number'],
             'joining_for' => $validated['joining_for'],
@@ -319,6 +321,16 @@ class AdminRestaurantBookingController extends Controller
 
         $pdf = PDF::loadView('admin.pages.restaurant.allPdf', compact('today', 'allBookings'));
         return $pdf->stream('all-restaurant-bookings.pdf');
+    }
+
+    public function combineNames(){
+        $users = RestaurantBooking::all();
+
+        foreach($users as $user) {
+            $user->full_name = $user->first_name . ' ' . $user->last_name;
+            $user->save();
+        }
+        return redirect('admin/restaurant-bookings')->with('success', 'Names combined successfully');
     }
 
     public function destroy($id)
