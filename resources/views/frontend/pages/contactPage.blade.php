@@ -96,6 +96,16 @@
                                                                                             src="{{ asset('images/restaurant-guru-logo-icon-only.svg') }}"></a>
                         </li>
                     </ul>
+                    <h5 class="contactPageBarOpenTitle mt-4 mb-2">Bar Hours</h5>
+                    <ul class="list-unstyled contactPageOpenTimes">
+                        <li><strong class="me-3">Monday</strong>  11am - 10pm</li>
+                        <li><strong class="me-3">Tuesday</strong> 11am - 10pm</li>
+                        <li><strong class="me-3">Wednesday</strong> 11am - 10pm</li>
+                        <li><strong class="me-3">Thursday</strong> 11am - 11pm</li>
+                        <li><strong class="me-3">Friday</strong> 11am - 11pm</li>
+                        <li><strong class="me-3">Saturday</strong> 11am - 11pm</li>
+                        <li><strong class="me-3">Sunday</strong> 11am - 9pm</li>
+                    </ul>
                 </div>
                 <div class="col-lg-6">
                     <h2>Send us a message</h2>
