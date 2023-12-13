@@ -143,7 +143,7 @@
                                 <li><strong class="me-3">Thursday</strong> 11am - 11pm</li>
                                 <li><strong class="me-3">Friday</strong> 11am - 11pm</li>
                                 <li><strong class="me-3">Saturday</strong> 11am - 11pm</li>
-                                <li><strong class="me-3">Sunday</strong> 11am - 9pm</li>
+                                <li><strong class="me-3">Sunday</strong> 12pm - 9pm</li>
                             </ul>
                         </div>
                         <div class="col-lg-3 col-md-6">
