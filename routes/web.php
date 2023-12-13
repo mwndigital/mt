@@ -169,6 +169,8 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
         Route::get('todays-bookings', [AdminRestaurantBookingController::class, 'todaysBookingsIndex'])->name('restaurant-bookings.todays-bookings');
 
+        Route::post('restaurant-bookings.combine-names', [AdminRestaurantBookingController::class, 'combineNames'])->name('combine-names');
+
         Route::resource('restaurant-blocked-dates', AdminRestaurantBlockedDatesController::class);
     });
     Route::put('restaurant-bookings/{id}/cancel-booking', [AdminRestaurantBookingController::class, 'cancelBooking'])->name('restaurant-bookings.cancel-booking');
@@ -229,13 +231,13 @@ Route::middleware(['auth'])->name('customer.')->prefix('customer')->group(functi
         Route::get('/', [CustomerRoomBookingsController::class, 'index'])->name('room-bookings');
     });
 
-    //Account
+    /*//Account
     Route::prefix('my-account')->group(function () {
         Route::get('/{id}', [CustomerAccountController::class, 'show'])->name('my-account');
         Route::get('/edit/{id}', [CustomerAccountController::class, 'edit'])->name('my-account.edit');
         Route::put('/update/{id}', [CustomerAccountController::class, 'update'])->name('my-account.update');
         Route::get('/change-password/{id}', [CustomerAccountController::class, 'changePasswordView'])->name('my-account.change-password');
-    });
+    });*/
 });
 
 Auth::routes();

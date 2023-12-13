@@ -51,13 +51,13 @@
                             @include('admin.pages.restaurant.tabMenu')
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table w-100">
+                            <table class="table w-100 dateSortingTable">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Joining for</th>
                                     <th>Date</th>
                                     <th>Time</th>
+                                    <th>Name</th>
+                                    <th>Joining for</th>
                                     <th>No of guests</th>
                                     <th>Table</th>
                                     <th>Actions</th>
@@ -66,10 +66,10 @@
                                 <tbody>
                                 @foreach($todaysBookings as $booking)
                                     <tr>
-                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
-                                        <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
                                         <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                         <td>{{ $booking->reservation_time }}</td>
+                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+                                        <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
                                         <td>{{ $booking->no_of_guests }}</td>
                                         <td>
                                             @if(isset($booking->table_ids) && is_array(json_decode($booking->table_ids)))

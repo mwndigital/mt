@@ -25,7 +25,6 @@
             </div>
         </div>
     </section>
-
     <section class="pageActionsBanner">
         <div class="container">
             <div class="row">
@@ -53,13 +52,13 @@
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <table class="table">
+                            <table class="table w-100 dateSortingTable">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Joining for</th>
                                     <th>Date</th>
                                     <th>Time</th>
+                                    <th>Name</th>
+                                    <th>Joining for</th>
                                     <th>No of guests</th>
                                     <th>Table</th>
                                     <th>Actions</th>
@@ -68,10 +67,10 @@
                                 <tbody>
                                 @foreach($allBookings as $booking)
                                     <tr>
+                                        <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
+                                        <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
-                                        <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
-                                        <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->no_of_guests }}</td>
                                         <td>
                                             @if($booking->table_ids && $booking->table_id == 1)

@@ -181,6 +181,7 @@ class FrontendRestaurantBookingController extends Controller
             $table_booking = RestaurantBooking::create([
                 'first_name' => $table_booking->first_name,
                 'last_name' => $table_booking->last_name,
+                'full_name' => $table_booking->first_name . ' ' . $table_booking->last_name,
                 'user_id' => $user->id,
                 'email' => $table_booking->email,
                 'mobile_number' => $table_booking->mobile_number,
@@ -219,6 +220,7 @@ class FrontendRestaurantBookingController extends Controller
             $table_booking = RestaurantBooking::create([
                 'first_name' => $table_booking->first_name,
                 'last_name' => $table_booking->last_name,
+                'full_name' => $table_booking->first_name . ' ' . $table_booking->last_name,
                 'email' => $table_booking->email,
                 'reservation_date' => $reservation_date,
                 'reservation_time' => $table_booking->reservation_time,
@@ -277,6 +279,7 @@ class FrontendRestaurantBookingController extends Controller
             $table_booking = RestaurantBooking::create([
                 'first_name' => $table_booking->first_name,
                 'last_name' => $table_booking->last_name,
+                'full_name' => $table_booking->first_name . ' ' . $table_booking->last_name,
                 'email' => $table_booking->email,
                 'reservation_date' => $table_booking->reservation_date,
                 'reservation_time' => $table_booking->reservation_time,
