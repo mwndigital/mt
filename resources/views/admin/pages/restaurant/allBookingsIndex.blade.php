@@ -52,7 +52,7 @@
 
                         <div class="tab-content" id="nav-tabContent">
 
-                            <table class="table w-100 dateSortingTable">
+                            <table class="table  w-100 allBookingsDateSortingTable">
                                 <thead>
                                 <tr>
                                     <th>Date</th>
@@ -67,7 +67,7 @@
                                 <tbody>
                                 @foreach($allBookings as $booking)
                                     <tr>
-                                        <td>{{ date('d/m/Y', strtotime($booking->reservation_date)) }}</td>
+                                        <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                         <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
