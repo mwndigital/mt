@@ -2,7 +2,7 @@
     <li>
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     </li>
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Pages
@@ -48,7 +48,7 @@
             <li>
                 <a href="{{ route('admin.bookings.create') }}">Create room booking</a>
             </li>
-            @role('super admin|admin')
+            @role(['super admin', 'admin'])
                 <li>
                     <a href="{{ route('admin.book-a-room.csv-upload') }}">
                         Upload CSV
@@ -66,7 +66,7 @@
             <li>
                 <a href="{{ route('admin.restaurant-bookings.create') }}">Create Booking</a>
             </li>
-            @role('super admin|admin')
+            @role(['super admin', 'admin'])
                 <li>
                     <a href="{{ route('admin.restaurant-bookings.csv-upload') }}">Upload CSV for Bookings</a>
                 </li>
@@ -85,7 +85,7 @@
             </li>
         </ul>
     </li>
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Marketing</a>
             <ul class="dropdown-menu">
@@ -95,7 +95,7 @@
             </ul>
         </li>
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li><a href="/admin/rooms">Rooms</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gallery</a>
@@ -115,7 +115,7 @@
             </ul>
         </li>
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
             <ul class="dropdown-menu">
@@ -134,8 +134,8 @@
             </ul>
         </li>
     @endrole
-    @role('super admin|admin')
-        <li class="dropdown">
+    @role(['super admin', 'admin'])
+        {{--<li class="dropdown">
             <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Whisky Selection
             </a>
@@ -147,9 +147,9 @@
                     <a href="{{ route('admin.whisky.create') }}">Add New Whisky</a>
                 </li>
             </ul>
-        </li>
+        </li>--}}
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li class="dropdown">
             <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="falase">
                 FAQs
@@ -170,7 +170,7 @@
             </ul>
         </li>
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li class="dropdown">
             <a href="" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Policy Pages
@@ -183,10 +183,10 @@
             </ul>
         </li>
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li><a href="">Settings</a></li>
     @endrole
-    @role('super admin|admin')
+    @role(['super admin', 'admin'])
         <li>
             <a href="{{ route('admin.users.index') }}">Users</a>
         </li>

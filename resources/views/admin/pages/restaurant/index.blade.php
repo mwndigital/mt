@@ -26,10 +26,10 @@
         </div>
     </section>
 
-    <form action="{{ route('admin.combine-names') }}" method="post">
+    {{--<form action="{{ route('admin.combine-names') }}" method="post">
         @csrf
         <button type="submit">Combine Names</button>
-    </form>
+    </form>--}}
 
     <section class="pageActionsBanner">
         <div class="container">
@@ -72,7 +72,7 @@
                                 <tbody>
                                 @foreach($latestBookings as $booking)
                                     <tr>
-                                        <td>{{ date('d/m/y l', strtotime($booking->reservation_date)) }}</td>
+                                        <td>{{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                         <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
@@ -141,7 +141,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{ $latestBookings->links() }}
+
                         </div>
                     </div>
                 </div>
