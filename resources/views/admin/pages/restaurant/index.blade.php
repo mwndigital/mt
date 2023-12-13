@@ -26,10 +26,10 @@
         </div>
     </section>
 
-    <form action="{{ route('admin.combine-names') }}" method="post">
+    {{--<form action="{{ route('admin.combine-names') }}" method="post">
         @csrf
         <button type="submit">Combine Names</button>
-    </form>
+    </form>--}}
 
     <section class="pageActionsBanner">
         <div class="container">
