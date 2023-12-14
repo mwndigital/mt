@@ -41,10 +41,10 @@
         </div>
     </section>
 
-    <form action="{{ route('admin.bookings.combine-names') }}" method="post">
+    {{--<form action="{{ route('admin.bookings.combine-names') }}" method="post">
         @csrf
         <button type="submit">Combine Names</button>
-    </form>
+    </form>--}}
 
     <section class="pageMain">
         <div class="container">
