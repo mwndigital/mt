@@ -50,7 +50,7 @@
                             @include('admin.pages.bookings.tabsMenu')
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table table-hovered">
+                            <table class="table table-hovered w-100 allBookingsDateSortingTable">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
