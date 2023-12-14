@@ -160,7 +160,7 @@
             </ul>
         </li>
     @endrole
-    
+
     @role(['super admin', 'admin'])
         <li><a href="">Settings</a></li>
     @endrole

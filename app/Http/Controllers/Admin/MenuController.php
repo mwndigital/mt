@@ -34,17 +34,10 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        $image = null;
-        if($request->hasFile('image')){
-            $image = $request->file('image')->store('public/uploads/menu-items');
-        }
-
         Menu::create([
            'name' => $request->name,
            'description' => $request->description,
-           'image' => $image,
-           'price' => $request->price,
-           'category' => $request->category
+           'order' => $request->order,
         ]);
         return redirect('admin/menu')->with('success', 'New Menu Item added successfully');
     }
@@ -64,35 +57,21 @@ class MenuController extends Controller
     public function edit(string $id)
     {
         $menu = Menu::findOrFail($id);
-        $category = MenuCategory::all();
-        return view('admin.pages.menu.edit', compact('menu', 'category'));
+        return view('admin.pages.menu.edit', compact('menu',));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(MenuStoreRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         $menu = Menu::findOrFail($id);
 
-        $oldImagePath = $menu->image;
-        $image = null;
-
-        if($request->hasFile('image')){
-            $image = $request->file('image')->store('public/uploads/menu-items');
-        }
-
-        $menu->name = $request->name;
-        $menu->description = $request->description;
-        $menu->price = $request->price;
-        $menu->category = $request->category;
-        $menu->image = $image;
-
-        if($menu->save()){
-            if($oldImagePath) {
-                Storage::delete($oldImagePath);
-            }
-        }
+        $menu->update([
+           'name' => $request->name,
+           'description' => $request->description,
+           'order' => $request->order,
+        ]);
         return redirect('admin/menu')->with('success', 'Menu item has been updated successfully');
 
     }

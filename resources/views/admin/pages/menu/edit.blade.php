@@ -71,7 +71,7 @@
                             <div class="col-12">
                                 <label for="">Description *</label>
                                 <textarea name="description" id="description" cols="30" rows="10" class=""
-                                          required>{{ old('description') }}</textarea>
+                                          required>{{ old('description', $menu->description) }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -80,49 +80,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Price *</label>
-                                <input type="number" name="price" id="pruce" step="any"
-                                       value="{{ old('price', $menu->price) }}" required>
-                                @error('price')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <div class="col-12">
+                                <label for="">Order *</label>
+                                <input type="number" name="order" id="order" value="{{ $menu->order }}" required>
+                                @error('order')
+                                <div class="text-danger">
+                                    {{ $message }}
+                                </div>
                                 @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Category *</label>
-                                <select name="category" id="category" required>
-                                    @foreach($category as $cat)
-                                        <option value="{{ $cat->name }}"
-                                                @if($cat->name == $menu->category) selected @endif>{{ $cat->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Image</label>
-                                <input type="file" name="image" id="image">
-                                @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Current Image</label>
-                                @if($menu->image)
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
-                                         class="img-fluid" src="{{ Storage::url($menu->image) }}">
-                                @else
-                                    <small>Currently no image set</small>
-                                @endif
                             </div>
                         </div>
                         <div class="col-12">

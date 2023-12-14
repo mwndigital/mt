@@ -60,24 +60,10 @@
                             <td>{!! $menu->description !!}</td>
                         </tr>
                         <tr>
-                            <td><strong>Price:</strong></td>
-                            <td>£{{ $menu->price }}</td>
+                            <td><strong>Order:</strong></td>
+                            <td>{{ $menu->order }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Category:</strong></td>
-                            <td>{{ $menu->category }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Image:</strong></td>
-                            <td>
-                                @if($menu->image)
-                                    <img style="display: block; height: 100px; margin: 0; width: auto;"
-                                         class="img-fluid" src="{{ Storage::url($menu->image) }}">
-                                @else
-                                    --
-                                @endif
-                            </td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
