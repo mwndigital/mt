@@ -227,4 +227,11 @@ class Booking extends Model implements \Serializable
             return $this->country;
         }
     }
+
+    public function toSearchableArray()
+    {
+        return [
+
+        ];
+    }
 }

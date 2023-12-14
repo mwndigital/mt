@@ -543,4 +543,15 @@ class AdminBookingController extends Controller
 
         return redirect()->back()->with('success', 'Booking status updated successfully');
     }
+
+    public function combineNames(){
+        $users = Booking::all();
+
+        foreach($users as $user) {
+            $user->full_name = $user->first_name . ' ' . $user->last_name;
+            $user->save();
+        }
+
+        return redirect('admin/bookings')->with('success', 'Names combined successfully');
+    }
 }
