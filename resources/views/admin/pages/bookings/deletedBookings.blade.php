@@ -50,12 +50,13 @@
                             @include('admin.pages.bookings.tabsMenu')
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table table-hovered">
+                            <table class="table table-hovered w-100 allBookingsDateSortingTable">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
+
                                     <th>Check-In</th>
                                     <th>Check-Out</th>
+                                    <th>Name</th>
                                     <th>Room</th>
                                     <th>Total</th>
                                     <th>Actions</th>
@@ -64,9 +65,9 @@
                                 <tbody>
                                 @foreach($allBookings as $booking)
                                     <tr>
-                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
                                         <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
+                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>
                                             @foreach ($booking->rooms as $room )
                                                 {{ $room->name }}<br/>
