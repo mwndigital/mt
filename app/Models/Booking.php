@@ -231,7 +231,11 @@ class Booking extends Model implements \Serializable
     public function toSearchableArray()
     {
         return [
-
+            'booking_ref' => $this->booking_ref,
+            'full_name' => $this->full_name,
+            'phone_number' => $this->phone_number,
+            'email_address' => $this->email_address,
+            'checkin_date' => $this->checkin_date,
         ];
     }
 }
