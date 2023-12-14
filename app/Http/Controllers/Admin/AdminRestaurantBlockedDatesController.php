@@ -36,12 +36,9 @@ class AdminRestaurantBlockedDatesController extends Controller
             'date' => ['required', 'unique:restaurant_blocked_dates']
         ]);
 
-        if($validated->fails()){
-            return redirect()->back()->with('error', 'There is already a blocked date for the date you have selected!');
-        }
 
         RestaurantBlockedDates::create([
-            'date' => $validated('date'),
+            'date' => $validated['date']
         ]);
 
         return redirect('admin/restaurant-bookings/restaurant-blocked-dates')->with('success', 'Blocked date added');
