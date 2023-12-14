@@ -16,9 +16,9 @@ class AdminSearchController extends Controller
     {
         $query = $request->input('search');
 
-        //$bookings = Booking::search($query)->get();
+        $bookings = Booking::search($query)->get();
         $restaurantBooking = RestaurantBooking::search($query)->get();
 
-        return view('admin.pages.search.results', compact( 'restaurantBooking'));
+        return view('admin.pages.search.results', compact( 'restaurantBooking', 'bookings'));
     }
 }
