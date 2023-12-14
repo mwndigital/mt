@@ -5,7 +5,7 @@
                     <div class="row">
                         <div class="col-lg-10 offset-lg-1">
                             <div class="awardsWrap">
-                                <a href="https://www.secret-scotland.com/" rel="nofollow" target="_blank">
+                                <a href="https://www.secret-scotland.com/blog/scotland-travel-blog-june-08" rel="nofollow" target="_blank">
                                     <img class='img-fluid' src="{{ asset('images/secret-scotland-logo.webp') }}" alt="Secret Scotland Logo">
                                 </a>
                                 <a href="https://www.healthstaffdiscounts.co.uk/town/t/Aberlour" rel="nofollow" target="_blank">
