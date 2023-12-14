@@ -29,21 +29,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-responsive table-hovered">
+                    <table class="table table-hovered w-100">
                         <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Short Description</th>
+                                <th>Order</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @foreach($menu as $mi)
                             <tr>
                                 <td>{{ $mi->name }}</td>
-                                <td>£{{ $mi->price }}</td>
-                                <td>{{ $mi->category }}</td>
+                                <td>{!! Str::limit($mi->description, 50) !!}</td>
+                                <td>{{ $mi->order }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -63,7 +63,7 @@
                                                           method="POST">
                                                         @csrf
                                                         @method('delete')
-                                                        <button class="confirm-delete-btn" type="submit">Delete</button>
+                                                        <button type="submit">Delete</button>
                                                     </form>
                                                 </li>
                                             </ul>

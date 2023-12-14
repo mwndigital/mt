@@ -64,39 +64,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="">Price *</label>
-                                <input type="number" name="price" id="pruce" step="any" value="{{ old('price') }}"
-                                       required>
-                                @error('price')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="">Category *</label>
-                                <select name="category" id="category" required>
-                                    <option selected disabled>Please choose a category</option>
-                                    @foreach($category as $cat)
-                                        <option value="{{ $cat->name }}">{{ $cat->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-12">
-                                <label for="">Image</label>
-                                <input type="file" name="image" id="image">
-                                @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                <label for="">Order *</label>
+                                <input type="number" name="order" id="order" value="0" required>
+                                @error('order')
+                                    <div class="text-danger">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                         </div>
