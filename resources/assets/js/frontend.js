@@ -135,14 +135,12 @@ $(document).ready(function () {
 
     // Apply Coupon Code - Post Request TO apply-coupon endpoint
     $("#applyCouponBtn").click(function () {
-        const csrfToken = $('meta[name="csrf-token"]').attr("content");
         const couponCode = $("#coupon_code").val();
         $.ajax({
             url: "/api/apply-coupon",
             type: "POST",
             data: {
                 couponCode: couponCode,
-                _token: csrfToken,
             },
             success: function (data) {
                 if (data.status) {

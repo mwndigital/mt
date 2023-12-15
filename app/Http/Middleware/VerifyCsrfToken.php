@@ -15,5 +15,6 @@ class VerifyCsrfToken extends Middleware
         'payment/payment-failed',
         'payment/thank-you',
         'payment/sagepay/notify',
+        'api/apply-coupon',
     ];
 }
