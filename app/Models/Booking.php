@@ -197,7 +197,7 @@ class Booking extends Model implements \Serializable
     {
         $this->updateStatus(BookingStatus::CANCELLED);
         $transaction = $this->transactions->first();
-        $status =  $transaction->refund();
+        // $status =  $transaction->refund();
     }
 
 
