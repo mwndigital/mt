@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
+
 
 class DevController extends Controller
 {
@@ -13,9 +15,9 @@ class DevController extends Controller
             shell_exec('/usr/local/cpanel/bin/uapi VersionControl update name=mt repository_root=/home/mashtunaberlour/repositories/mt branch=main source_repository=\'{"remote_name":"origin"}\'
         ');
             shell_exec('/usr/local/cpanel/bin/uapi VersionControlDeployment create repository_root=/home/mashtunaberlour/repositories/mt');
+            Artisan::call('optimize:clear');
+            Artisan::call('storage:link');
             echo "done";
-            \Artisan::call('optimize:clear');
-            \Artisan::call('storage:link');
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
