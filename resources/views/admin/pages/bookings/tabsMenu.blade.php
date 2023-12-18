@@ -3,6 +3,7 @@
    href="{{ route('admin.book-a-room.todays-bookings') }}">Todays Bookings</a>
 <a class="list-group-item list-group-item-action {{ Route::is('admin.book-a-room.this-weeks-bookings-index') ? 'active' : '' }}" id="list-profile-list"
    href="{{ route('admin.book-a-room.this-weeks-bookings-index') }}">This Weeks</a>
+<a href="{{ route('admin.book-a-room.next-week-bookings') }}" class="list-group-item list-group-item-action {{ Route::is('admin.book-a-room.next-week-bookings') ? 'active' : '' }}">Next Weeks Bookings</a>
 <a class="list-group-item list-group-item-action {{ Route::is('admin.book-a-room.all-bookings-index') ? 'active' : '' }}" id="list-messages-list"
    href="{{ route('admin.book-a-room.all-bookings-index') }}" aria-controls="list-messages">All
     Bookings</a>
