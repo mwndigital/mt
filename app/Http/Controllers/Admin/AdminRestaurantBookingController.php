@@ -68,6 +68,21 @@ class AdminRestaurantBookingController extends Controller
         return view('admin.pages.restaurant.allBookingsIndex', compact('allBookings'));
     }
 
+    public function nextWeeksBookingsIndex(){
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $startOfNextWeek = $startOfWeek->copy()->addWeek(1);
+        $endOfNextWeek = $startOfNextWeek->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $nextWeeksBookings = RestaurantBooking::where('reservation_date', '>=', $startOfNextWeek)
+            ->where('reservation_date', '<=', $endOfNextWeek)
+            ->where('status', '!=', 'cancelled')
+            ->orderBy('reservation_date', 'asc')
+            ->get();
+
+        return view('admin.pages.restaurant.next-weeks-bookings', compact('startOfNextWeek','endOfNextWeek', 'nextWeeksBookings'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -311,6 +326,12 @@ class AdminRestaurantBookingController extends Controller
 
         $pdf = PDF::loadView('admin.pages.restaurant.thisWeekPdf', compact('thisWeeksBookings', 'today', 'endOfWeek', 'startOfWeek'));
         return $pdf->stream('this-week-restaurant-bookings.pdf');
+    }
+
+    public function printNextWeeksBookings(Request $request) {
+
+
+
     }
 
     public function printAllBookings(Request $request) {

@@ -170,6 +170,7 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
         Route::get('this-weeks-bookings', [AdminRestaurantBookingController::class, 'thisWeeksBookingsIndex'])->name('restaurant-bookings.this-weeks-bookings');
         Route::get('all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
         Route::get('todays-bookings', [AdminRestaurantBookingController::class, 'todaysBookingsIndex'])->name('restaurant-bookings.todays-bookings');
+        Route::get('next-weeks-bookings', [AdminRestaurantBookingController::class, 'nextWeeksBookingsIndex'])->name('restaurant-bookings.next-weeks-bookings');
 
         Route::post('restaurant-bookings.combine-names', [AdminRestaurantBookingController::class, 'combineNames'])->name('combine-names');
 
