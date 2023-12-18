@@ -63,6 +63,7 @@ class AdminRestaurantBookingController extends Controller
         $today = Carbon::today()->startOfDay();
         $allBookings = RestaurantBooking::orderBy('reservation_date', 'asc')
             ->where('reservation_date', '>=', $today)
+            ->where('status', '!=', 'cancelled')
             ->get();
 
         return view('admin.pages.restaurant.allBookingsIndex', compact('allBookings'));
