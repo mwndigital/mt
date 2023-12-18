@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Today room Bookings</title>
+    <title>Next weeks room Bookings</title>
 
     <style>
         table {
@@ -49,7 +49,7 @@
             </ul>
         </td>
         <td style="text-align: right; color: #002C50; width: 60%;">
-            <h4>This weeks bookings - {{ date('d/m/Y', strtotime($startOfWeek)) }} - {{ date('d/m/Y', strtotime($endOfWeek)) }}</h4>
+            <h4>This weeks bookings - {{ date('d/m/Y', strtotime($startOfNextWeek)) }} - {{ date('d/m/Y', strtotime($endOfNextWeek)) }}</h4>
 
         </td>
     </tr>
@@ -66,7 +66,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach($thisWeeksBookings as $booking)
+    @foreach($nextWeeksBookings as $booking)
         <tr>
             <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
             <td>

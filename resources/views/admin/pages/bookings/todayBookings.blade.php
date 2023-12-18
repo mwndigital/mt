@@ -35,6 +35,7 @@
                            class="btn btn-primary">Print Today's Bookings</a>
                         <a href="{{ route('admin.book-a-room.print-this-weeks-booking') }}" target="_blank"
                            class="btn btn-primary">Print This Weeks Bookings</a>
+                        <a href="{{ route('admin.book-a-room.print-next-weeks-bookings') }}" class="btn btn-primary" target="_blank">Print Next Weeks Bookings</a>
                     </div>
                 </div>
             </div>

@@ -145,12 +145,15 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
 
         Route::get('print-today-bookings', [AdminBookingController::class, 'printTodayBooking'])->name('book-a-room.print-today-booking');
         Route::get('print-this-week-bookings', [AdminBookingController::class, 'printThisWeeksBookings'])->name('book-a-room.print-this-weeks-booking');
+        Route::get('print-next-weeks-bookings', [AdminBookingController::class, 'printNextWeeksBookings'])->name('book-a-room.print-next-weeks-bookings');
 
         Route::get('this-weeks-bookings', [AdminBookingController::class, 'thisWeeksBookingsIndex'])->name('book-a-room.this-weeks-bookings-index');
         Route::get('all-bookings', [AdminBookingController::class, 'allBookingsIndex'])->name('book-a-room.all-bookings-index');
         Route::get('deleted-bookings', [AdminBookingController::class, 'deletedIndex'])->name('book-a-room.deleted-bookings-index');
         Route::get('incomplete-bookings', [AdminBookingController::class, 'incompleteBookings'])->name('book-a-room.incomplete-bookings');
         Route::get('todays-bookings', [AdminBookingController::class, 'todaysBookings'])->name('book-a-room.todays-bookings');
+        Route::get('next-weeks-bookings', [AdminBookingController::class, 'nextWeeksBookingsIndex'])->name('book-a-room.next-week-bookings');
+
 
         Route::post('combine-names', [AdminBookingController::class, 'combineNames'])->name('bookings.combine-names');
     });

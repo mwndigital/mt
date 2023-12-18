@@ -85,6 +85,22 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.allBookings', compact('allBookings'));
     }
 
+    public function nextWeeksBookingsIndex(){
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $startOfNextWeek = $startOfWeek->copy()->addWeek(1);
+        $endOfNextWeek = $startOfNextWeek->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $nextWeeksBookings = Booking::where('checkin_date', '>=', $startOfNextWeek)
+            ->where('checkin_date', '<=', $endOfNextWeek)
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->where('status', '!=', BookingStatus::CANCELLED)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        return view('admin.pages.bookings.nextWeeksBookings', compact('startOfNextWeek', 'endOfNextWeek', 'nextWeeksBookings'));
+    }
+
     public function deletedIndex()
     {
         $allBookings = Booking::onlyTrashed()
@@ -519,6 +535,23 @@ class AdminBookingController extends Controller
 
         $pdf = PDF::loadView('admin.pages.bookings.thisWeekPdf', compact('today', 'startOfWeek', 'endOfWeek', 'thisWeeksBookings'));
         return $pdf->stream('this-week-room-bookings.pdf');
+    }
+
+    public function printNextWeeksBookings(Request $request) {
+        $today = Carbon::today()->startOfDay();
+        $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
+        $startOfNextWeek = $startOfWeek->copy()->addWeek(1);
+        $endOfNextWeek = $startOfNextWeek->copy()->endOfWeek(Carbon::SUNDAY);
+
+        $nextWeeksBookings = Booking::where('checkin_date', '>=', $startOfNextWeek)
+            ->where('checkin_date', '<=', $endOfNextWeek)
+            ->where('status', '!=', BookingStatus::DRAFT)
+            ->where('status', '!=', BookingStatus::CANCELLED)
+            ->orderBy('checkin_date', 'asc')
+            ->get();
+
+        $pdf = PDF::loadView('admin.pages.bookings.nextWeeksBookingsPdf', compact('startOfNextWeek', 'endOfNextWeek', 'nextWeeksBookings'));
+        return $pdf->stream('next-weeks-room-bookings.pdf');
     }
 
     public function markAsPaid(Request $request, string $id)

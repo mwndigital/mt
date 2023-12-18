@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @push('page-title')
-    Admin Todays Bookings
+    Admin Next Weeks Bookings
 @endpush
 @push('page-scripts')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>Todays Bookings</h1>
+                    <h1>Next Weeks Bookings - {{ date('d/m/Y', strtotime($startOfNextWeek)) }} to {{ date('d/m/Y', strtotime($endOfNextWeek)) }}</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -42,6 +42,11 @@
         </div>
     </section>
 
+    {{--<form action="{{ route('admin.bookings.combine-names') }}" method="post">
+        @csrf
+        <button type="submit">Combine Names</button>
+    </form>--}}
+
     <section class="pageMain">
         <div class="container">
             <div class="row">
@@ -51,29 +56,39 @@
                             @include('admin.pages.bookings.tabsMenu')
                         </div>
                         <div class="tab-content" id="nav-tabContent">
-                            <table class="table table-hovered">
+                            <table class="table table-hovered w-100 allBookingsDateSortingTable">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
+
                                     <th>Check-In</th>
+                                    <th>Check-Out</th>
+                                    <th>Name</th>
                                     <th>Rooms</th>
                                     <th>Total</th>
-                                    <th>Attempted</th>
+                                    <th>Booking made</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($incomplete as $booking)
+                                @foreach($nextWeeksBookings as $booking)
                                     <tr>
-                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
+
                                         <td>{{ date('d/m/Y', strtotime($booking->checkin_date)) }}</td>
+                                        <td>{{ date('d/m/Y', strtotime($booking->checkout_date)) }}</td>
+                                        <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td>
                                             @foreach ($booking->rooms as $room )
                                                 {{ $room->name }}<br/>
                                             @endforeach
                                         </td>
                                         <td>{!! $booking->getStatus() !!}</td>
-                                        <td>{{ date('d/m/Y', strtotime($booking->created_at)) }}</td>
+                                        <td>
+                                            @if($booking->created_at == NULL)
+                                                IMPORTED
+                                            @else
+                                                {{ date('d/m/Y', strtotime($booking->created_at)) }}
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="dropdown-toggle" role="button" data-bs-toggle="dropdown"
@@ -88,30 +103,19 @@
                                                         <li>
                                                             <a href="{{ route('admin.bookings.edit', $booking->id) }}">Edit</a>
                                                         </li>
-                                                        <li>
-                                                            <form
-                                                                action="{{ route('admin.book-a-room.update-status', ['id'=>$booking->id,'status'=>'pending']) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <button type="submit" class="cancelBookingBtn">Mark
-                                                                    As Deposit Paid
-                                                                </button>
-                                                            </form>
-                                                        </li>
                                                         @if($booking->status != 'paid')
-                                                        <li>
-                                                            <form
-                                                                action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('PUT') <!-- Add this hidden field to override the method -->
-                                                                <button type="submit" class="cancelBookingBtn">Mark
-                                                                    As Paid
-                                                                </button>
-                                                            </form>
-                                                        </li>
-                                                    @endif
+                                                            <li>
+                                                                <form
+                                                                    action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('PUT') <!-- Add this hidden field to override the method -->
+                                                                    <button type="submit" class="cancelBookingBtn">Mark
+                                                                        As Paid
+                                                                    </button>
+                                                                </form>
+                                                            </li>
+                                                        @endif
                                                         <li>
                                                             <form
                                                                 action="{{ route('admin.bookings.destroy', $booking->id) }}"
@@ -131,6 +135,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
