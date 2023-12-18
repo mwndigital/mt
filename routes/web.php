@@ -164,9 +164,13 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
     Route::prefix('restaurant-bookings')->group(function () {
         Route::get('upload', [AdminRestaurantBookingController::class, 'csvUpload'])->name('restaurant-bookings.csv-upload');
         Route::post('csv-store', [AdminRestaurantBookingController::class, 'csvStore'])->name('restaurant-bookings.csv-store');
+
+
         Route::get('print-today-bookings', [AdminRestaurantBookingController::class, 'printTodayBookings'])->name('restaurant-bookings.print-today-bookings');
         Route::get('print-this-week-bookings', [AdminRestaurantBookingController::class, 'printThisWeeksBookings'])->name('restaurant-bookings.print-this-week-bookings');
         Route::get('print-all-bookings', [AdminRestaurantBookingController::class, 'printAllBookings'])->name('restaurant-bookings.print-all-bookings');
+        Route::get('print-next-weeks-bookings', [AdminRestaurantBookingController::class, 'printNextWeeksBookings'])->name('restaurant-bookings.print-next-weeks-bookings');
+
         Route::get('this-weeks-bookings', [AdminRestaurantBookingController::class, 'thisWeeksBookingsIndex'])->name('restaurant-bookings.this-weeks-bookings');
         Route::get('all-bookings', [AdminRestaurantBookingController::class, 'allBookingsIndex'])->name('restaurant-bookings.all-bookings');
         Route::get('todays-bookings', [AdminRestaurantBookingController::class, 'todaysBookingsIndex'])->name('restaurant-bookings.todays-bookings');
