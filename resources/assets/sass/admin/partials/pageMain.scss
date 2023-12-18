@@ -25,7 +25,7 @@
             tr {
                 th {
                     color: $darkBlue;
-                    font-family: $libBold;
+                    font-family: $libReg;
                     font-size: 1rem;
                     height: auto;
                     width: auto;
@@ -511,10 +511,10 @@
                 border: 0;
                 border-radius: 0;
                 font-family: $popBold;
-                font-size: 1rem;
+                font-size: .9rem;
 
 
-                padding: .75rem 1.5rem;
+                padding: .75rem 1rem;
                 @include transition(all .4s ease-in-out);
 
                 &.show,

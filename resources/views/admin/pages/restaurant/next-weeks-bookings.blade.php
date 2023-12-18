@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <h1>All Restaurant Bookings</h1>
+                    <h1>Latest Restaurant Bookings</h1>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex justify-content-end">
@@ -25,6 +25,12 @@
             </div>
         </div>
     </section>
+
+    {{--<form action="{{ route('admin.combine-names') }}" method="post">
+        @csrf
+        <button type="submit">Combine Names</button>
+    </form>--}}
+
     <section class="pageActionsBanner">
         <div class="container">
             <div class="row">
@@ -42,6 +48,7 @@
         </div>
     </section>
 
+
     <section class="pageMain">
         <div class="container">
             <div class="row">
@@ -50,10 +57,8 @@
                         <div class="list-group" id="list-tab" role="tablist">
                             @include('admin.pages.restaurant.tabMenu')
                         </div>
-
                         <div class="tab-content" id="nav-tabContent">
-
-                            <table class="table  w-100 allBookingsDateSortingTable">
+                            <table class="table w-100 dateSortingTable">
                                 <thead>
                                 <tr>
                                     <th>Date</th>
@@ -62,24 +67,33 @@
                                     <th>Joining for</th>
                                     <th>No of guests</th>
                                     <th>Table</th>
+                                    <th>Booking made</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($allBookings as $booking)
+                                @foreach($nextWeeksBookings as $booking)
                                     <tr>
-                                        <td>{{ date('l', strtotime($booking->reservation_date)) }} {{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
+                                        <td>{{ date('d/m/y', strtotime($booking->reservation_date)) }}</td>
                                         <td>{{ $booking->reservation_time }}</td>
                                         <td>{{ $booking->first_name }} {{ $booking->last_name }}</td>
                                         <td style="text-transform: uppercase;">{{ $booking->joining_for }}</td>
+
                                         <td>{{ $booking->no_of_guests }}</td>
                                         <td>
-                                            @if($booking->table_ids && $booking->table_id == 1)
+                                            @if(isset($booking->table_ids) && is_array(json_decode($booking->table_ids)))
                                                 @foreach(json_decode($booking->table_ids) as $tableId)
                                                     Table {{ $tableId }}
                                                 @endforeach
                                             @else
                                                 Table {{ $booking->table_id }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($booking->created_at == NULL)
+                                                IMPORTED
+                                            @else
+                                                {{ date('d/m/Y', strtotime($booking->created_at)) }}
                                             @endif
                                         </td>
                                         <td>
@@ -129,6 +143,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
