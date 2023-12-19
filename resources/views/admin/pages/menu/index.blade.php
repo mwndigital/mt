@@ -42,7 +42,7 @@
                         @foreach($menu as $mi)
                             <tr>
                                 <td>{{ $mi->name }}</td>
-                                <td>{!! Str::limit($mi->description, 50) !!}</td>
+                                <td>{!! generate_excerpt($mi->description) !!}</td>
                                 <td>{{ $mi->order }}</td>
                                 <td>
                                     <div class="dropdown">

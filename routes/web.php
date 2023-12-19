@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminFaqCategoryController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminGalleryCategoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
+use App\Http\Controllers\Admin\AdminImageUploadController;
 use App\Http\Controllers\Admin\AdminIndexController;
 use App\Http\Controllers\Admin\AdminRestaurantBlockedDates;
 use App\Http\Controllers\Admin\AdminRestaurantBlockedDatesController;
@@ -82,6 +83,11 @@ Route::middleware(['auth', 'role:super admin|admin|staff'])->name('admin.')->pre
 
     // Booking status
     Route::get('booking-status/{id}', [AdminBookingController::class, 'changeStatus'])->name('booking-status');
+
+    //File/image upload
+    Route::post('upload-image', [AdminImageUploadController::class, 'upload'])
+        ->name('image-upload')
+        ->middleware('web');
 
     //FAQs
     Route::prefix('faqs')->group(function () {
