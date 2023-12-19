@@ -17,13 +17,15 @@ class AdminSearchController extends Controller
     {
         $query = $request->input('search');
 
-        // Format date if it matches a specific pattern (e.g., 'd/m/Y')
-        if ($this->isDate($query)) {
-            $formattedDate = Carbon::createFromFormat('d/m/Y', $query)->format('Y-m-d');
+        // Check if the input is a valid date
+        $formattedDate = $this->tryFormatDate($query);
+
+        if ($formattedDate !== null) {
+            // If it's a valid date, perform the search with the formatted date
             $bookings = Booking::search($formattedDate)->get();
             $restaurantBooking = RestaurantBooking::search($formattedDate)->get();
         } else {
-            // Handle other types of queries or directly use the input query
+            // If it's not a date, directly use the input for searching
             $bookings = Booking::search($query)->get();
             $restaurantBooking = RestaurantBooking::search($query)->get();
         }
@@ -32,16 +34,19 @@ class AdminSearchController extends Controller
     }
 
     /**
-     * Check if the input is a date with the specified format.
+     * Try to format the input as a date. Returns null if the input is not a valid date.
      *
      * @param string $input
      * @param string $format
-     * @return bool
+     * @return string|null
      */
-    private function isDate($input, $format = 'd/m/Y')
+    private function tryFormatDate($input, $format = 'd/m/Y')
     {
-        $parsedDate = Carbon::createFromFormat($format, $input);
-
-        return $parsedDate && $parsedDate->format($format) === $input;
+        try {
+            $parsedDate = Carbon::createFromFormat($format, $input);
+            return $parsedDate ? $parsedDate->format('Y-m-d') : null;
+        } catch (\Exception $e) {
+            return null; // Return null if the input is not a valid date
+        }
     }
 }
