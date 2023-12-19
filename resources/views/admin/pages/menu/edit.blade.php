@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.menu.update', $menu->id) }}" method="post">
+                    <form action="{{ route('admin.menu.update', $menu->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -70,7 +70,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="">Description *</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class=""
+                                <textarea name="description" id="description" cols="30" rows="10" class="tinyEditor"
                                           required>{{ old('description', $menu->description) }}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
