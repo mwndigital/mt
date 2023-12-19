@@ -215,7 +215,7 @@
                                 <select name="country" id="country" required>
                                     @foreach($countries as $country)
                                         <option value="{{ $country }}"
-                                                @if($country === $booking->country) selected @endif>{{ $country }}</option>
+                                                @if($country == $booking->country) selected @endif>{{ $country }}</option>
                                     @endforeach
                                 </select>
                             </div>
