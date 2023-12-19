@@ -48,7 +48,7 @@ $(document).ready(function(){
         columnDefs: [
             {
                 targets: [0],
-                type: 'datetime-moment',
+                type: 'date',
                 render: function(data, type, row) {
                     // Split the date and time
                     var dateArray = data.split('<br>');
@@ -60,6 +60,11 @@ $(document).ready(function(){
             }
         ]
     });
+    // Add custom sorting for 'date-uk' type
+    $.fn.dataTable.ext.type.order['date-uk-pre'] = function (date) {
+        return moment(date, 'DD/MM/YYYY').valueOf();
+    };
+
     $('.allBookingsDateSortingTable').DataTable({
         paging: true,
         searching: false,
@@ -69,15 +74,12 @@ $(document).ready(function(){
         columnDefs: [
             {
                 targets: [0],
-                type: 'date', // Use 'date' type for date-only columns
-                render: function(data, type, row) {
-                    // Split the date and time
-                    var dateArray = data.split('<br>');
-                    var date = dateArray[0].trim();
-
-                    // Adjust the format if required
-                    return moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY');
-                }
+                type: 'date-uk', // Assuming data is in 'DD/MM/YYYY' format
+                render: function (data, type, row) {
+                    return moment(data, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                },
+                orderData: [0], // Specify the index for sorting
+                orderSequence: ['asc', 'desc'] // Sort ascending for all dates
             }
         ]
     });
