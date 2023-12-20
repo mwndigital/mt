@@ -14,6 +14,10 @@
         <!-- Meta -->
         <meta name="description" content="@stack('page-description')">
         <meta name="keywords" content="@stack('page-keywords')">
+        <!-- if envoirenment is staging/testing add noindex -->
+        @if (config('app.env') !== 'production')
+            <meta name="robots" content="noindex, nofollow">
+        @endif
 
         <link rel="canonical" href="{{ config('configurations.app_url', config('app.url')) }}/@stack('page-slug')">
 
