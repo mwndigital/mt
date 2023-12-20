@@ -24,3 +24,4 @@ yarn-error.log
 storage/*.key
 storage/*.pem
 storage/app/public/*
+robots.txt
