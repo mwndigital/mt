@@ -41,6 +41,7 @@ class CaptureFullPayment extends Command
 
             if ($now->greaterThanOrEqualTo($paymentDueDate)) {
                 try {
+                    $this->info("Final payment processed for Booking ID: {$booking->id}");
                     $transaction = $booking->transactions->first();
                     $status = $transaction->captureRemaining();
                     // Only update if operation successful
@@ -53,7 +54,6 @@ class CaptureFullPayment extends Command
                         $booking->status = BookingStatus::PAID;
                         $booking->save();
                     }
-                    $this->info("Final payment processed for Booking ID: {$booking->id}");
                 } catch (\Exception $e) {
                     $this->error("Error processing final payment for Booking ID: {$booking->id}");
                     $this->error($e->getMessage());
