@@ -16,9 +16,9 @@ class AvailableController extends Controller
         $isRoom = $request->type == 'room' ?? false;
         $adults = $request->adults ?? 1;
         $children = $request->children ?? 0;
-        // Get from current day to 5 month after all bookings and get unavailable dates
+        // Get from current day to 24 month after all bookings and get unavailable dates
         $today = now()->format('Y-m-d');
-        $monthsAfter = now()->addMonths(20)->format('Y-m-d');
+        $monthsAfter = now()->addMonths(24)->format('Y-m-d');
         $rooms = Rooms::getAll($isRoom, [
             'no_of_adults' => $adults,
             'no_of_children' => $children
