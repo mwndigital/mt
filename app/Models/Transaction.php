@@ -74,6 +74,7 @@ class Transaction extends Model
                 return true;
             } else {
                 $errorMessage = $response->getMessage();
+                echo $errorMessage."\n";
             }
         } catch (\Exception $e) {
             // Handle the exception (if needed)
