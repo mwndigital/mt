@@ -38,7 +38,10 @@ class AvailableController extends Controller
             }
 
             // If every room is unavailable in same date, then it is unavailable
-            $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
+            if($isRoom) $unavailable_dates = array_intersect(...array_column($room_unavailable_dates, 'unavailable_dates'));
+
+            // if any lodge is unavailable, then it is unavailable
+            if(!$isRoom) $unavailable_dates = array_merge(...array_column($room_unavailable_dates, 'unavailable_dates'));
             // remove key from array
             $unavailable_dates = array_values($unavailable_dates);
         endif;
