@@ -73,6 +73,10 @@ class AdminRestaurantBlockedDatesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $date = RestaurantBlockedDates::findOrFail($id);
+
+        $date->delete();
+
+        return redirect()->back()->with('success', 'Blocked date deleted');
     }
 }
