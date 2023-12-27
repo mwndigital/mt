@@ -468,12 +468,14 @@ class BookingController extends Controller
 
         // Now let Sage Pay know you have accepted and saved the result:
 
+        $paymentMethod = 'sagepay';
+
         // Save booking status as pending
         $booking = Booking::where('booking_ref', $transactionId)->first();
         $booking->status = BookingStatus::PENDING;
-        $booking->payment_method = 'sagepay';
+        $booking->payment_method = $paymentMethod;
         $booking->save();
-        $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT, json_encode($data), $finalTransactionReference);
+        $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT, $paymentMethod, json_encode($data), $finalTransactionReference);
 
         $notifyRequest->confirm(route('booking-thank-you', ['StatusDetail' => $statusDetail, 'transactionId' => $transactionId]));
     }
