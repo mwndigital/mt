@@ -165,7 +165,7 @@
                             <tr>
                                 <td>{{$transaction->transaction_ref}}</td>
                                 <td>£{{ $transaction->amount }}</td>
-                                <td>{{ $transaction->type }}</td>
+                                <td>{{ $transaction->type }} - {{ $transaction->payment_method }}</td>
                                 <td>
                                     <button type="button" class="btn btn-dark" data-toggle="popover"
                                             title="{{$transaction->data}}">View Data
