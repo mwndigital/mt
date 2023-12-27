@@ -292,6 +292,8 @@ class AdminBookingController extends Controller
     }
     public function stepFourStore(Request $request)
     {
+        $isDepositPaid = $request->input('depositPaid');
+
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
         $validated = $request->validate([
@@ -310,6 +312,11 @@ class AdminBookingController extends Controller
         ]));
 
         $book->rooms()->sync($booking->rooms);
+
+        // Create a transaction for the deposit
+        if ($isDepositPaid) {
+            $book->createTransaction($book->deposit, TransactionType::DEPOSIT->value, 'manual');
+        }
 
         // Send email to customer
         try {
