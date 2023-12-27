@@ -53,6 +53,7 @@ class Booking extends Model implements \Serializable
         'user_id',
         'coupon_id',
         'discount',
+        'payment_method',
     ];
 
     protected $appends = [
