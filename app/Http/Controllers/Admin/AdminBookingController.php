@@ -309,6 +309,7 @@ class AdminBookingController extends Controller
             'status' => BookingStatus::CONFIRMED,
             'total' =>  $booking->getTotalAmount(),
             'type' => $isRoom ? 'room' : 'lodge',
+            'payment_method' => 'manual',
         ]));
 
         $book->rooms()->sync($booking->rooms);
