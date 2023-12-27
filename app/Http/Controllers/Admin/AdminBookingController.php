@@ -571,7 +571,7 @@ class AdminBookingController extends Controller
         $booking = Booking::findOrFail($id);
 
 
-        if (!$booking->isFullyPaid())
+        if (!$booking->isPaid())
             $booking->createTransaction($booking->getRemainingAmount(), TransactionType::FULL->value, 'manual', null, null, 'FULL-' . $booking->booking_ref);
 
         $booking->updateStatus(BookingStatus::PAID);

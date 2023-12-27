@@ -129,10 +129,6 @@ class Booking extends Model implements \Serializable
         return $this->getTotalAmount() - $this->deposit;
     }
 
-    public function isFullyPaid()
-    {
-        return $this->getTotalAmount() == $this->getCapturedAmount();
-    }
 
     public function getRemainingAmount()
     {
