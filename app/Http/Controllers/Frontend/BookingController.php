@@ -323,7 +323,7 @@ class BookingController extends Controller
 
         $booking = Booking::where('booking_ref', $transactionId)->first();
 
-        if($booking->signMeUp) {
+        if ($booking->signMeUp) {
             //Mailchimp
             $email = $booking->email_address;
             $listId = env('MAILCHIMP_LIST_ID');
@@ -347,7 +347,7 @@ class BookingController extends Controller
                     'email_address' => $email,
                     'status' => 'subscribed',
                 ]);
-            }catch (ApiException $e) {
+            } catch (ApiException $e) {
                 // Handle the MailChimp API exception, log it, or provide user feedback.
                 Log::error($e->getMessage);
                 //return flash('error', 'Unable to subscribe. Please try again later.');
@@ -468,11 +468,14 @@ class BookingController extends Controller
 
         // Now let Sage Pay know you have accepted and saved the result:
 
+        $paymentMethod = 'sagepay';
+
         // Save booking status as pending
         $booking = Booking::where('booking_ref', $transactionId)->first();
         $booking->status = BookingStatus::PENDING;
+        $booking->payment_method = $paymentMethod;
         $booking->save();
-        $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT, json_encode($data), $finalTransactionReference);
+        $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT, $paymentMethod, json_encode($data), $finalTransactionReference);
 
         $notifyRequest->confirm(route('booking-thank-you', ['StatusDetail' => $statusDetail, 'transactionId' => $transactionId]));
     }

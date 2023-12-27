@@ -21,6 +21,7 @@ use App\Mail\AdminBookingConfirmationMail;
 use App\Notifications\AdminNewRoomBookingNotification;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
+use App\Enums\TransactionType;
 
 class AdminBookingController extends Controller
 {
@@ -42,7 +43,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.index', compact('latestBookings'));
     }
 
-    public function todaysBookings(){
+    public function todaysBookings()
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = $today->copy()->endOfWeek(Carbon::SUNDAY);
@@ -85,7 +87,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.allBookings', compact('allBookings'));
     }
 
-    public function nextWeeksBookingsIndex(){
+    public function nextWeeksBookingsIndex()
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $startOfNextWeek = $startOfWeek->copy()->addWeek(1);
@@ -110,7 +113,8 @@ class AdminBookingController extends Controller
         return view('admin.pages.bookings.deletedBookings', compact('allBookings'));
     }
 
-    public function incompleteBookings(){
+    public function incompleteBookings()
+    {
         $incomplete = Booking::where('status', 'draft')->get();
 
         return view('admin.pages.bookings.incompleteBookings', compact('incomplete'));
@@ -288,6 +292,8 @@ class AdminBookingController extends Controller
     }
     public function stepFourStore(Request $request)
     {
+        $isDepositPaid = $request->input('depositPaid');
+
         $booking = $request->session()->get('booking');
         $isRoom = $request->session()->get('isRoom');
         $validated = $request->validate([
@@ -306,6 +312,11 @@ class AdminBookingController extends Controller
         ]));
 
         $book->rooms()->sync($booking->rooms);
+
+        // Create a transaction for the deposit
+        if ($isDepositPaid) {
+            $book->createTransaction($book->deposit, TransactionType::DEPOSIT->value, 'manual');
+        }
 
         // Send email to customer
         try {
@@ -537,7 +548,8 @@ class AdminBookingController extends Controller
         return $pdf->stream('this-week-room-bookings.pdf');
     }
 
-    public function printNextWeeksBookings(Request $request) {
+    public function printNextWeeksBookings(Request $request)
+    {
         $today = Carbon::today()->startOfDay();
         $startOfWeek = $today->copy()->startOfWeek(Carbon::MONDAY);
         $startOfNextWeek = $startOfWeek->copy()->addWeek(1);
@@ -558,9 +570,24 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
-        $booking->update(['status' => 'paid']);
+
+        if (!$booking->isFullyPaid())
+            $booking->createTransaction($booking->getRemainingAmount(), TransactionType::FULL->value, 'manual', null, null, 'FULL-' . $booking->booking_ref);
+
+        $booking->updateStatus(BookingStatus::PAID);
 
         return redirect()->back()->with('success', 'Booking marked as paid');
+    }
+
+    public function markAsDepositPaid(Request $request, string $id)
+    {
+        $booking = Booking::findOrFail($id);
+
+        $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT->value, 'manual');
+
+        $booking->updateStatus(BookingStatus::CONFIRMED);
+
+        return redirect()->back()->with('success', 'Booking marked as deposit paid');
     }
 
     public function updateStatus(Request $request, int $id, string $status)
@@ -577,10 +604,11 @@ class AdminBookingController extends Controller
         return redirect()->back()->with('success', 'Booking status updated successfully');
     }
 
-    public function combineNames(){
+    public function combineNames()
+    {
         $users = Booking::all();
 
-        foreach($users as $user) {
+        foreach ($users as $user) {
             $user->full_name = $user->first_name . ' ' . $user->last_name;
             $user->save();
         }

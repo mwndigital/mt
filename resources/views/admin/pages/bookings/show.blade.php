@@ -53,6 +53,13 @@
                         <a href="{{ route('admin.booking-status', $booking->id) }}?status=cancelled"
                            class="btn btn-warning" onclick="cancelBooking(event)">Cancel</a>
                         <a href="{{ route('admin.bookings.edit', $booking->id) }}" class="btn editBtn">Edit</a>
+                        @if($booking->getCapturedAmount() === 0)
+                            <form action="{{ route('admin.book-a-room.mark-as-deposit', $booking->id) }}" method="POST">
+                                @csrf
+                                @method('PUT') <!-- Add this hidden field to override the method -->
+                                <button type="submit" class="depositPaidBtn">Mark As Deposit Paid</button>
+                            </form>
+                        @endif
                         @if($booking->status != 'paid')
                             <form action="{{ route('admin.book-a-room.mark-as-paid', $booking->id) }}" method="POST">
                                 @csrf
@@ -165,7 +172,7 @@
                             <tr>
                                 <td>{{$transaction->transaction_ref}}</td>
                                 <td>£{{ $transaction->amount }}</td>
-                                <td>{{ $transaction->type }}</td>
+                                <td>{{ $transaction->type }} - {{ $transaction->payment_method }}</td>
                                 <td>
                                     <button type="button" class="btn btn-dark" data-toggle="popover"
                                             title="{{$transaction->data}}">View Data

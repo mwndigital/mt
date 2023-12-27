@@ -30,7 +30,9 @@ class CaptureFullPayment extends Command
 
         $bookings = Booking::whereDate('checkin_date', '<=', now()->toDateString())
             ->whereIn('status', [BookingStatus::CONFIRMED, BookingStatus::PENDING])
-            ->whereHas('transactions')
+            ->whereHas('transactions', function ($query) {
+                $query->where('payment_method', 'sagepay');
+            })
             ->get();
 
         foreach ($bookings as $booking) {

@@ -122,13 +122,13 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            {{--<div class="row">
+                            <div class="row">
                                 <div class="col-12">
                                     <label for="">
-                                        <input type="checkbox" name="cancellationPolicyAgree" id="cancellationPolicyAgree" value="I have read and agree to The Mash Tun's Deposit and Cancellation Policy" required> By submitting your booking you agree to The Mash Tun's <a href="/deposit-cancellations-policy" target="_blank">Deposit & Cancellation Policy</a>.
+                                        <input type="checkbox" name="depositPaid" > Is deposit Paid?
                                     </label>
                                 </div>
-                            </div>--}}
+                            </div>
 
                             <div class="row align-items-center mt-4">
                                 <div class="col-md-6">
