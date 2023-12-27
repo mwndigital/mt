@@ -585,7 +585,7 @@ class AdminBookingController extends Controller
 
         $booking->createTransaction($booking->deposit, TransactionType::DEPOSIT->value, 'manual');
 
-        $booking->updateStatus(BookingStatus::PENDING);
+        $booking->updateStatus(BookingStatus::CONFIRMED);
 
         return redirect()->back()->with('success', 'Booking marked as deposit paid');
     }
