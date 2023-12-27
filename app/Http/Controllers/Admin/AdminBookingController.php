@@ -570,6 +570,8 @@ class AdminBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
+        $booking->createTransaction($booking->getPayableAmount(), TransactionType::FULL->value, 'manual', null, null, 'FULL-' . $booking->booking_ref);
+
         $booking->updateStatus(BookingStatus::PENDING);
 
         return redirect()->back()->with('success', 'Booking marked as paid');

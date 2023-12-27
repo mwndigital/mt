@@ -172,10 +172,12 @@ class Booking extends Model implements \Serializable
         return $booking;
     }
 
-    public function createTransaction($amount, $type, $payment_method = null, $data = null, $data2 = null)
+    public function createTransaction($amount, $type, $payment_method = null, $data = null, $data2 = null, $transaction_ref = null)
     {
+        if (!$transaction_ref) $transaction_ref = $this->booking_ref;
+
         $this->transactions()->create([
-            'transaction_ref' => $this->booking_ref,
+            'transaction_ref' => $transaction_ref,
             'booking_id' => $this->id,
             'amount' => $amount,
             'type' => $type,
