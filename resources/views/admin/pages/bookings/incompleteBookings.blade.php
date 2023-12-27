@@ -90,7 +90,7 @@
                                                         </li>
                                                         <li>
                                                             <form
-                                                                action="{{ route('admin.book-a-room.update-status', ['id'=>$booking->id,'status'=>'pending']) }}"
+                                                                action="{{ route('admin.book-a-room.mark-as-deposit', $booking->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('PUT')
