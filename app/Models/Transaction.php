@@ -17,6 +17,7 @@ class Transaction extends Model
         'type',
         'data',
         'data2',
+        'payment_method',
     ];
 
     /**
@@ -74,7 +75,7 @@ class Transaction extends Model
                 return true;
             } else {
                 $errorMessage = $response->getMessage();
-                echo $errorMessage."\n";
+                echo $errorMessage . "\n";
             }
         } catch (\Exception $e) {
             // Handle the exception (if needed)
