@@ -8,9 +8,6 @@
                                 <a href="https://www.secret-scotland.com/blog/scotland-travel-blog-june-08" rel="nofollow" target="_blank">
                                     <img class='img-fluid' src="{{ asset('images/secret-scotland-logo.webp') }}" alt="Secret Scotland Logo">
                                 </a>
-                                <a href="https://www.healthstaffdiscounts.co.uk/town/t/Aberlour" rel="nofollow" target="_blank">
-                                    <img class="img-fluid" src="{{ asset('images/nhs-support-badge.webp') }}" alt="NHS Support Badge">
-                                </a>
                                 <a href="https://restaurantguru.com/Mash-Tun-Aberlour" rel="nofollow" target="_blank">
                                     <img class="img-fluid" src="{{ asset('logos/restaurant-guru.png') }}" alt="Resaurant Guru Image">
                                 </a>
