@@ -90,7 +90,7 @@
                 <li>
                     <a href="{{ route('faqs.index') }}">FAQs</a>
                 </li>
-                <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
+                <li><a href="{{ route('contact-us') }}">Contact Us test</a></li>
                 <li>
                     <a href="@if(Auth::check())
                                  {{ route('customer.dashboard') }}
