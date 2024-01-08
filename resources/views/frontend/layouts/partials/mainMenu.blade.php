@@ -79,9 +79,6 @@
                         <li>
                             <a href="{{ asset('images/menus/mash-tun-cigar-menu.pdf') }}" target="_blank">Cigar Menu</a>
                         </li>
-                        <li>
-                            <a href="{{ asset('images/menus/mash-tun-christmas-menu.pdf') }}" target="_blank">Christmas Menu</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
