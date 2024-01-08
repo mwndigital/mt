@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-xl">
     <div class="container-fluid">
         <a href="/" class="navbar-brand">
-            <img class="img-fluid" src="{{ asset('logos/mash-tun-xmas-logo.svg') }}">
+            <img class="img-fluid" src="{{ asset('logos/mash-tun-new-logo-main.webp') }}">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#frontendMainNavbar" aria-controls="frontendMainNavbar" aria-expanded="false" aria-label="Toggle Navigation">
             <i class="fa fa-bars"></i>
@@ -53,9 +53,6 @@
                         </li>
                         <li>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#viewCigarMenuModal">Cigar Menu</a>
-                        </li>
-                        <li>
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#viewChristmasMenuModal">Christmas Menu</a>
                         </li>
                     </ul>
                 </li>
